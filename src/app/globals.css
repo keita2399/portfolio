@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  --accent: #c8860a;
+  --bg: #faf9f6;
+  --bg-alt: #f3f1ec;
+  --border: #e5e2dc;
+  --text: #2a2a2a;
+  --text-light: #666;
+  --text-muted: #888;
+  --text-faint: #999;
+  --blue: #4a90d9;
+  --purple: #7c5cbf;
+  --green: #2d8f4e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  font-family: var(--font-ibm-plex-mono, 'IBM Plex Mono'), 'Courier New', monospace;
+}
+
+.font-serif-jp {
+  font-family: var(--font-noto-serif-jp, 'Noto Serif JP'), serif;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll indicator bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.scroll-indicator {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Section wrapper */
+.section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 100px 32px;
+}
+
+.section-inner-narrow {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 100px 32px;
+}
+
+/* Work card hover */
+.work-card {
+  transition: all 0.3s ease;
+}
+.work-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent) !important;
+  box-shadow: 0 8px 24px rgba(200,134,10,0.12);
+}
+
+/* CTA button hover */
+.cta-primary:hover { opacity: 0.9; }
+.cta-secondary:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+
+/* Input focus */
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+}
+
+/* Nav link */
+.nav-link { transition: color 0.2s; }
+.nav-link:hover { color: var(--accent) !important; }
+
+/* Skill bar animation */
+.skill-bar {
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
