@@ -6,9 +6,21 @@ import FadeIn from "./FadeIn";
 import { projects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
+  const Wrapper = project.externalUrl
+    ? ({ children }: { children: React.ReactNode }) => (
+        <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+          {children}
+        </a>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <Link href={`/works/${project.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+          {children}
+        </Link>
+      );
+
   return (
     <FadeIn>
-      <Link href={`/works/${project.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+      <Wrapper>
         <div
           className="work-card"
           style={{
@@ -57,10 +69,10 @@ function WorkCard({ project }: { project: Project }) {
           </div>
 
           <div style={{ marginTop: 16, fontSize: 11, color: project.badgeColor, letterSpacing: 1 }}>
-            詳細を見る →
+            {project.externalUrl ? "デモを試す ↗" : "詳細を見る →"}
           </div>
         </div>
-      </Link>
+      </Wrapper>
     </FadeIn>
   );
 }

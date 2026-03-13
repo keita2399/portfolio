@@ -7,6 +7,7 @@ export type Project = {
   description: string;
   stats: string[];
   tags: string[];
+  externalUrl?: string;
   // 詳細ページ用
   detail: {
     overview: string;
@@ -226,6 +227,109 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 14 + TypeScript + Tailwind CSS + Prisma + PostgreSQL + Docker。認証はNextAuth.js。メール通知はNodemailer。",
+    },
+  },
+  {
+    slug: "ai-document-checker",
+    title: "AI 書類解析アプリ",
+    badge: "デモ公開中",
+    badgeColor: "#6366f1",
+    borderColor: "#6366f1",
+    externalUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
+    description:
+      "Claude Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
+    stats: ["Claude Vision API", "画像→構造化データ"],
+    tags: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "書類画像をアップロードすると、Claude Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
+      challenges: [
+        "多様な書類フォーマットへの対応（許可証、契約書、請求書等）",
+        "画像品質（傾き、ぼけ、影）による認識精度への影響",
+        "AIレスポンスの構造化（自由テキスト→JSON変換）",
+      ],
+      approach: [
+        "Claude Vision APIのマルチモーダル機能で画像を直接解析",
+        "プロンプトエンジニアリングで構造化JSON出力を実現",
+        "PNG/JPEG/WebP/GIF対応、4MBまでのサイズ制限",
+      ],
+      results: [
+        "画像アップロードからAI解析結果表示までワンステップ",
+        "書類種別・内容・有効期限・注意点を自動抽出",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + Anthropic SDK（Claude Vision API）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
+    },
+  },
+  {
+    slug: "travel-time-app",
+    title: "移動時間計算アプリ",
+    badge: "デモ公開中",
+    badgeColor: "#0ea5e9",
+    borderColor: "#0ea5e9",
+    externalUrl: "https://travel-time-app-keita2399s-projects.vercel.app",
+    description:
+      "Google Maps APIを活用した移動時間・距離計算アプリ。住所入力のオートコンプリート、地図クリックでの地点選択、車・電車・徒歩・自転車の4つの移動手段に対応。ルートも地図上に表示。",
+    stats: ["Google Maps API", "4移動手段対応"],
+    tags: ["Next.js", "TypeScript", "Google Maps API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "出発地と目的地を入力すると、Google Maps Directions APIでルート検索を行い、移動時間・距離・ルートを地図上に表示するWebアプリケーション。",
+      challenges: [
+        "Google Maps JavaScript APIの新しいfunctional API（setOptions/importLibrary）への対応",
+        "地図クリックイベントのstale closure問題（useRef パターンで解決）",
+        "移動手段によってルートが存在しない場合のエラーハンドリング",
+      ],
+      approach: [
+        "Google Places Autocompleteで住所入力を補完",
+        "地図クリック→Geocoderで逆ジオコーディング（座標→住所）",
+        "DirectionsServiceで4つの移動手段（車/電車/徒歩/自転車）のルート計算",
+        "DirectionsRendererでルートを地図上に描画",
+      ],
+      results: [
+        "住所入力・地図クリックの2つの方法で地点選択可能",
+        "4つの移動手段でリアルタイムにルート計算",
+        "ルートが見つからない場合のエラー表示",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + @googlemaps/js-api-loader。Maps JavaScript API, Directions API, Places API, Geocoding APIを使用。",
+    },
+  },
+  {
+    slug: "line-notify-app",
+    title: "LINE 通知デモアプリ",
+    badge: "デモ公開中",
+    badgeColor: "#06c755",
+    borderColor: "#06c755",
+    externalUrl: "https://line-notify-app-keita2399s-projects.vercel.app",
+    description:
+      "LINE Messaging APIを使ったプッシュ通知デモアプリ。テキスト・画像・スタンプの3種類のメッセージをBotからLINEユーザーに送信可能。Webhookによるメッセージ受信にも対応。",
+    stats: ["LINE Messaging API", "3種メッセージ対応"],
+    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "LINE Messaging APIを活用し、Webアプリからワンクリックでテキスト・画像・スタンプをLINEに送信できるデモアプリケーション。送信履歴の管理やWebhookでのメッセージ受信にも対応。",
+      challenges: [
+        "LINE Developers ConsoleとOfficial Account Managerの設定手順の整理",
+        "Webhook署名検証（HMAC-SHA256）の実装",
+        "Channel Access TokenとUser IDの安全な管理",
+      ],
+      approach: [
+        "@line/bot-sdk でMessaging APIクライアントを構築",
+        "pushMessage APIでテキスト・画像・スタンプの3種類に対応",
+        "Webhookエンドポイントで受信メッセージの署名検証",
+        "送信履歴をクライアント側で管理・表示",
+      ],
+      results: [
+        "テキスト・画像URL・LINE公式スタンプの送信に対応",
+        "送信成功/失敗のステータス表示",
+        "Webhook署名検証によるセキュアなメッセージ受信",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + @line/bot-sdk。LINE Messaging API（pushMessage / Webhook）。",
     },
   },
 ];
