@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <rect x="40" y="60" width="200" height="240" rx="8" fill="#fff" stroke="#6366f1" stroke-opacity="0.2" stroke-width="2"/>
+  <rect x="60" y="90" width="160" height="8" rx="2" fill="#6366f1" fill-opacity="0.15"/>
+  <rect x="60" y="110" width="120" height="6" rx="2" fill="#6366f1" fill-opacity="0.1"/>
+  <rect x="60" y="126" width="140" height="6" rx="2" fill="#6366f1" fill-opacity="0.1"/>
+  <rect x="60" y="142" width="100" height="6" rx="2" fill="#6366f1" fill-opacity="0.1"/>
+  <rect x="60" y="170" width="160" height="80" rx="4" fill="#6366f1" fill-opacity="0.06" stroke="#6366f1" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="140" y="215" text-anchor="middle" font-family="system-ui" font-size="11" fill="#6366f1" fill-opacity="0.4">Upload</text>
+  <path d="M350 120 L580 120" stroke="#6366f1" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="6,4"/>
+  <circle cx="380" cy="160" r="20" fill="#6366f1" fill-opacity="0.1"/>
+  <text x="380" y="165" text-anchor="middle" font-family="system-ui" font-size="16" fill="#6366f1" fill-opacity="0.5">AI</text>
+  <rect x="420" y="148" width="160" height="8" rx="2" fill="#6366f1" fill-opacity="0.12"/>
+  <rect x="420" y="164" width="120" height="6" rx="2" fill="#6366f1" fill-opacity="0.08"/>
+  <rect x="350" y="200" width="230" height="1" fill="#6366f1" fill-opacity="0.1"/>
+  <rect x="350" y="220" width="100" height="6" rx="2" fill="#6366f1" fill-opacity="0.1"/>
+  <rect x="350" y="236" width="180" height="6" rx="2" fill="#6366f1" fill-opacity="0.08"/>
+  <rect x="350" y="252" width="140" height="6" rx="2" fill="#6366f1" fill-opacity="0.08"/>
+  <rect x="350" y="268" width="160" height="6" rx="2" fill="#6366f1" fill-opacity="0.08"/>
+  <text x="320" y="185" text-anchor="middle" font-family="system-ui" font-size="20" fill="#6366f1" fill-opacity="0.3">→</text>
+</svg>

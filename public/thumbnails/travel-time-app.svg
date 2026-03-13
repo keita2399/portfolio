@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0ea5e9;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <!-- Map area -->
+  <rect x="220" y="30" width="390" height="300" rx="8" fill="#fff" stroke="#0ea5e9" stroke-opacity="0.15" stroke-width="1"/>
+  <!-- Grid lines (map feel) -->
+  <line x1="220" y1="105" x2="610" y2="105" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="220" y1="180" x2="610" y2="180" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="220" y1="255" x2="610" y2="255" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="350" y1="30" x2="350" y2="330" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1"/>
+  <line x1="480" y1="30" x2="480" y2="330" stroke="#0ea5e9" stroke-opacity="0.06" stroke-width="1"/>
+  <!-- Route -->
+  <path d="M300 240 C340 200, 380 120, 420 100 C460 80, 500 130, 540 110" fill="none" stroke="#0ea5e9" stroke-opacity="0.5" stroke-width="3" stroke-linecap="round"/>
+  <!-- Pins -->
+  <circle cx="300" cy="240" r="8" fill="#0ea5e9" fill-opacity="0.8"/>
+  <circle cx="300" cy="240" r="3" fill="#fff"/>
+  <circle cx="540" cy="110" r="8" fill="#ef4444" fill-opacity="0.8"/>
+  <circle cx="540" cy="110" r="3" fill="#fff"/>
+  <!-- Side panel -->
+  <rect x="30" y="30" width="170" height="300" rx="8" fill="#fff" stroke="#0ea5e9" stroke-opacity="0.15" stroke-width="1"/>
+  <rect x="45" y="55" width="140" height="28" rx="4" fill="#0ea5e9" fill-opacity="0.06" stroke="#0ea5e9" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="60" y="73" font-family="system-ui" font-size="10" fill="#0ea5e9" fill-opacity="0.5">出発地</text>
+  <rect x="45" y="95" width="140" height="28" rx="4" fill="#ef4444" fill-opacity="0.06" stroke="#ef4444" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="60" y="113" font-family="system-ui" font-size="10" fill="#ef4444" fill-opacity="0.5">目的地</text>
+  <!-- Result -->
+  <rect x="45" y="145" width="140" height="1" fill="#0ea5e9" fill-opacity="0.1"/>
+  <text x="55" y="170" font-family="system-ui" font-size="9" fill="#666" fill-opacity="0.5">距離</text>
+  <text x="145" y="170" text-anchor="end" font-family="system-ui" font-size="11" font-weight="600" fill="#0ea5e9" fill-opacity="0.6">12.3 km</text>
+  <text x="55" y="195" font-family="system-ui" font-size="9" fill="#666" fill-opacity="0.5">時間</text>
+  <text x="145" y="195" text-anchor="end" font-family="system-ui" font-size="11" font-weight="600" fill="#0ea5e9" fill-opacity="0.6">18 分</text>
+  <!-- Mode buttons -->
+  <rect x="45" y="220" width="30" height="22" rx="3" fill="#0ea5e9" fill-opacity="0.12"/>
+  <rect x="80" y="220" width="30" height="22" rx="3" fill="#0ea5e9" fill-opacity="0.05"/>
+  <rect x="115" y="220" width="30" height="22" rx="3" fill="#0ea5e9" fill-opacity="0.05"/>
+  <rect x="150" y="220" width="30" height="22" rx="3" fill="#0ea5e9" fill-opacity="0.05"/>
+</svg>

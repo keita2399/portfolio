@@ -8,6 +8,7 @@ export type Project = {
   stats: string[];
   tags: string[];
   externalUrl?: string;
+  thumbnail?: string;
   // 詳細ページ用
   detail: {
     overview: string;
@@ -236,6 +237,7 @@ export const projects: Project[] = [
     badgeColor: "#6366f1",
     borderColor: "#6366f1",
     externalUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/ai-document-checker.svg",
     description:
       "Claude Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
     stats: ["Claude Vision API", "画像→構造化データ"],
@@ -269,6 +271,7 @@ export const projects: Project[] = [
     badgeColor: "#0ea5e9",
     borderColor: "#0ea5e9",
     externalUrl: "https://travel-time-app-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/travel-time-app.svg",
     description:
       "Google Maps APIを活用した移動時間・距離計算アプリ。住所入力のオートコンプリート、地図クリックでの地点選択、車・電車・徒歩・自転車の4つの移動手段に対応。ルートも地図上に表示。",
     stats: ["Google Maps API", "4移動手段対応"],
@@ -304,6 +307,7 @@ export const projects: Project[] = [
     badgeColor: "#06c755",
     borderColor: "#06c755",
     externalUrl: "https://line-notify-app-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/line-notify-app.svg",
     description:
       "LINE Messaging APIを使ったプッシュ通知デモアプリ。テキスト・画像・スタンプの3種類のメッセージをBotからLINEユーザーに送信可能。Webhookによるメッセージ受信にも対応。",
     stats: ["LINE Messaging API", "3種メッセージ対応"],

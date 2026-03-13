@@ -24,10 +24,38 @@ function WorkCard({ project }: { project: Project }) {
         <div
           className="work-card"
           style={{
-            padding: 28, border: "1px solid var(--border)", borderTop: `3px solid ${project.borderColor}`,
+            border: "1px solid var(--border)", borderTop: `3px solid ${project.borderColor}`,
             borderRadius: 4, background: "#fff", cursor: "pointer", height: "100%",
+            overflow: "hidden",
           }}
         >
+          {/* Thumbnail */}
+          {project.thumbnail && (
+            <div style={{
+              position: "relative", width: "100%", aspectRatio: "16 / 9",
+              background: `linear-gradient(135deg, ${project.badgeColor}18, ${project.badgeColor}08)`,
+              borderBottom: "1px solid var(--border)",
+              overflow: "hidden",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.thumbnail}
+                alt={project.title}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              {/* LIVE DEMO badge */}
+              <div style={{
+                position: "absolute", top: 10, right: 10,
+                background: project.badgeColor, color: "#fff",
+                fontSize: 9, fontWeight: 700, letterSpacing: 1.5,
+                padding: "3px 10px", borderRadius: 2,
+              }}>
+                LIVE DEMO
+              </div>
+            </div>
+          )}
+
+          <div style={{ padding: 28 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
             <div style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a" }}>{project.title}</div>
             <div style={{ fontSize: 10, color: project.badgeColor, letterSpacing: 1, fontWeight: 600 }}>{project.badge}</div>
@@ -70,6 +98,7 @@ function WorkCard({ project }: { project: Project }) {
 
           <div style={{ marginTop: 16, fontSize: 11, color: project.badgeColor, letterSpacing: 1 }}>
             {project.externalUrl ? "デモを試す ↗" : "詳細を見る →"}
+          </div>
           </div>
         </div>
       </Wrapper>
