@@ -161,6 +161,43 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "habitat-pli",
+    title: "PL/I → Web 変換（Habitat）",
+    badge: "82%削減",
+    badgeColor: "#8b5cf6",
+    borderColor: "#8b5cf6",
+    externalUrl: "https://habitat-1986.onrender.com",
+    thumbnail: "/thumbnails/habitat-pli.svg",
+    description:
+      "1986年にLucasfilm Games Divisionが開発した世界初のグラフィカルMMO「Habitat」。PL/I（Stratus VOS）26,218行をPython+React 4,622行に変換。108種類のオブジェクトクラスを全実装し、ブラウザ上で動作するデモを公開。",
+    stats: ["26,218行 → 4,622行", "108クラス全実装"],
+    tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
+    detail: {
+      overview:
+        "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
+      challenges: [
+        "PL/IのBASED構造体＋ENTRY変数による事実上のvtable（仮想関数テーブル）の解読",
+        "Stratus VOS固有API（s$task_wait_event, s$keyed_read等）——OSごと消滅した技術の現代等価物への置換",
+        "108種類のオブジェクトクラス（アバター、ATM、銃、テレポーター、自販機、ゴースト等）の全実装",
+        "5種類のメッセージング（n_msg/b_msg/p_msg/e_msg/r_msg）の再現",
+      ],
+      approach: [
+        "PL/IのClass_TableディスパッチをPython辞書 + getattrディスパッチに変換",
+        "s$task_wait_eventループをasyncio + WebSocketに変換",
+        "Stratus VOSキー付きファイルをSQLiteに変換",
+        "C64クライアント（6502アセンブラ）をHTML5 Canvas 2D + Reactで再現",
+      ],
+      results: [
+        "コード量82%削減（26,218行 → 4,622行）",
+        "ファイル数83%削減（261 → 44ファイル）",
+        "108種類のオブジェクトクラスを全て実装",
+        "1986年の設計パターンが現代のWebSocket/asyncioパターンとほぼ同一であることを実証",
+      ],
+      techDetail:
+        "Python 3.12 + FastAPI + WebSocket + aiosqlite / React 19 + TypeScript 5.9 + Vite + Canvas 2D。元ソースはMITライセンス（Museum of Art and Digital Entertainment公開）。",
+    },
+  },
+  {
     slug: "acas-gl",
     title: "COBOL会計システム分析",
     badge: "100K行",
