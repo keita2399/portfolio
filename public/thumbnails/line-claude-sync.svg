@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06c755;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#06c755;stop-opacity:0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <!-- Phone (LINE side) -->
+  <rect x="40" y="30" width="160" height="280" rx="18" fill="#fff" stroke="#06c755" stroke-opacity="0.25" stroke-width="2"/>
+  <rect x="80" y="40" width="80" height="5" rx="2.5" fill="#06c755" fill-opacity="0.15"/>
+  <text x="120" y="68" text-anchor="middle" font-family="system-ui" font-size="9" font-weight="600" fill="#06c755" fill-opacity="0.7">Claude Sync</text>
+  <!-- Chat bubbles in phone -->
+  <rect x="55" y="82" width="100" height="22" rx="10" fill="#06c755" fill-opacity="0.15"/>
+  <rect x="62" y="90" width="60" height="4" rx="2" fill="#06c755" fill-opacity="0.25"/>
+  <rect x="75" y="115" width="110" height="28" rx="10" fill="#fff" stroke="#e5e2dc" stroke-width="1"/>
+  <rect x="82" y="123" width="70" height="4" rx="2" fill="#ccc" fill-opacity="0.5"/>
+  <rect x="82" y="131" width="50" height="4" rx="2" fill="#ccc" fill-opacity="0.3"/>
+  <rect x="55" y="155" width="90" height="22" rx="10" fill="#06c755" fill-opacity="0.15"/>
+  <rect x="62" y="163" width="55" height="4" rx="2" fill="#06c755" fill-opacity="0.25"/>
+  <!-- Input bar -->
+  <rect x="50" y="270" width="100" height="22" rx="11" fill="#f5f5f5" stroke="#e5e2dc" stroke-width="1"/>
+  <rect x="155" y="270" width="35" height="22" rx="11" fill="#06c755" fill-opacity="0.8"/>
+  <text x="172" y="285" text-anchor="middle" font-family="system-ui" font-size="8" fill="#fff" font-weight="600">Send</text>
+  <!-- Arrow 1: Phone to Gist -->
+  <text x="230" y="165" font-family="system-ui" font-size="18" fill="#06c755" fill-opacity="0.5">→</text>
+  <!-- Gist (center) -->
+  <rect x="265" y="90" width="110" height="150" rx="8" fill="#fff" stroke="#06c755" stroke-opacity="0.2" stroke-width="1.5"/>
+  <rect x="275" y="100" width="20" height="20" rx="4" fill="#06c755" fill-opacity="0.12"/>
+  <text x="285" y="115" text-anchor="middle" font-family="system-ui" font-size="12" fill="#06c755" fill-opacity="0.5">G</text>
+  <text x="305" y="114" font-family="system-ui" font-size="9" font-weight="600" fill="#333" fill-opacity="0.6">GitHub Gist</text>
+  <!-- File icons in Gist -->
+  <rect x="280" y="132" width="80" height="16" rx="3" fill="#06c755" fill-opacity="0.06"/>
+  <text x="290" y="143" font-family="system-ui" font-size="7" fill="#06c755" fill-opacity="0.5">conversation.json</text>
+  <rect x="280" y="154" width="80" height="16" rx="3" fill="#06c755" fill-opacity="0.06"/>
+  <text x="290" y="165" font-family="system-ui" font-size="7" fill="#06c755" fill-opacity="0.5">claude-memo.md</text>
+  <rect x="280" y="176" width="80" height="16" rx="3" fill="#06c755" fill-opacity="0.06"/>
+  <text x="290" y="187" font-family="system-ui" font-size="7" fill="#06c755" fill-opacity="0.5">settings.json</text>
+  <!-- Auto sync label -->
+  <text x="320" y="215" text-anchor="middle" font-family="system-ui" font-size="7" fill="#06c755" fill-opacity="0.6">AUTO SYNC</text>
+  <!-- Arrow 2: Gist to PC -->
+  <text x="405" y="165" font-family="system-ui" font-size="18" fill="#06c755" fill-opacity="0.5">→</text>
+  <!-- PC (CLI side) -->
+  <rect x="440" y="55" width="170" height="220" rx="8" fill="#1a1a1a" stroke="#06c755" stroke-opacity="0.2" stroke-width="1.5"/>
+  <!-- Terminal title bar -->
+  <circle cx="455" cy="70" r="4" fill="#ff5f57" fill-opacity="0.6"/>
+  <circle cx="467" cy="70" r="4" fill="#febc2e" fill-opacity="0.6"/>
+  <circle cx="479" cy="70" r="4" fill="#28c840" fill-opacity="0.6"/>
+  <text x="525" y="73" text-anchor="middle" font-family="monospace" font-size="8" fill="#888">CLAUDE.md</text>
+  <!-- Terminal content -->
+  <text x="455" y="100" font-family="monospace" font-size="7" fill="#06c755" fill-opacity="0.7">$ claude</text>
+  <text x="455" y="115" font-family="monospace" font-size="7" fill="#888" fill-opacity="0.6"># Mobile Sync</text>
+  <text x="455" y="130" font-family="monospace" font-size="6" fill="#ccc" fill-opacity="0.5">[2026/3/14 9:28]</text>
+  <text x="455" y="145" font-family="monospace" font-size="6" fill="#ccc" fill-opacity="0.4">User: app idea...</text>
+  <text x="455" y="158" font-family="monospace" font-size="6" fill="#06c755" fill-opacity="0.4">AI: Let's build...</text>
+  <text x="455" y="175" font-family="monospace" font-size="6" fill="#ccc" fill-opacity="0.5">[2026/3/14 9:35]</text>
+  <text x="455" y="188" font-family="monospace" font-size="6" fill="#ccc" fill-opacity="0.4">User: features?</text>
+  <text x="455" y="201" font-family="monospace" font-size="6" fill="#06c755" fill-opacity="0.4">AI: Here are...</text>
+  <!-- Cursor -->
+  <rect x="455" y="218" width="5" height="10" fill="#06c755" fill-opacity="0.6"/>
+  <!-- Bottom label -->
+  <text x="320" y="340" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#06c755" fill-opacity="0.5">LINE → Gist → Claude Code CLI</text>
+</svg>

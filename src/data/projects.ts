@@ -276,19 +276,19 @@ export const projects: Project[] = [
     externalUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
     thumbnail: "/thumbnails/ai-document-checker.svg",
     description:
-      "Claude Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
-    stats: ["Claude Vision API", "画像→構造化データ"],
-    tags: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
+      "Gemini Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
+    stats: ["Gemini Vision API", "画像→構造化データ"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
     detail: {
       overview:
-        "書類画像をアップロードすると、Claude Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
+        "書類画像をアップロードすると、Gemini Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
       challenges: [
         "多様な書類フォーマットへの対応（許可証、契約書、請求書等）",
         "画像品質（傾き、ぼけ、影）による認識精度への影響",
         "AIレスポンスの構造化（自由テキスト→JSON変換）",
       ],
       approach: [
-        "Claude Vision APIのマルチモーダル機能で画像を直接解析",
+        "Gemini Vision APIのマルチモーダル機能で画像を直接解析",
         "プロンプトエンジニアリングで構造化JSON出力を実現",
         "PNG/JPEG/WebP/GIF対応、4MBまでのサイズ制限",
       ],
@@ -298,7 +298,7 @@ export const projects: Project[] = [
         "ポートフォリオ利用通知（LINE連携）",
       ],
       techDetail:
-        "Next.js 14 + TypeScript + Tailwind CSS + Anthropic SDK（Claude Vision API）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
+        "Next.js 14 + TypeScript + Tailwind CSS + Gemini API（Vision）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
     },
   },
   {
@@ -371,6 +371,43 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 14 + TypeScript + Tailwind CSS + @line/bot-sdk。LINE Messaging API（pushMessage / Webhook）。",
+    },
+  },
+  {
+    slug: "line-claude-sync",
+    title: "LINE Claude Sync",
+    badge: "デモ公開中",
+    badgeColor: "#06c755",
+    borderColor: "#06c755",
+    externalUrl: "/demo/chat",
+    thumbnail: "/thumbnails/line-claude-sync.svg",
+    description:
+      "スマホのLINEからAIに相談 → 会話が自動でPCのClaude Code CLIに共有される仕組み。Gemini/Claude切替対応。GitHub Gistをストレージにしたサーバーレス構成で、手動操作ゼロの完全自動同期を実現。",
+    stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
+    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
+    detail: {
+      overview:
+        "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
+      challenges: [
+        "スマホ（LINE）とPC（Claude Code CLI）の間にネイティブな連携手段がない",
+        "「メモして」などの手動トリガーではユーザーが忘れる",
+        "複数のCLIインスタンス間での情報共有",
+        "サーバーレスでデータベースを使わない設計",
+      ],
+      approach: [
+        "LINE Messaging API + Vercel Serverless Functionsでwebhookを処理",
+        "GitHub Gistをストレージとして活用（会話ログ + 設定を保存）",
+        "毎メッセージ自動保存（バッチ処理・手動トリガー不要）",
+        "PC側はタスクスケジューラで5分おきにGist→CLAUDE.mdに同期",
+      ],
+      results: [
+        "ユーザー操作ゼロの完全自動同期を実現",
+        "Gemini（無料）/ Claude（有料）のLINE上での切替機能",
+        "全CLIインスタンスで共有される~/.claude/CLAUDE.mdへの自動反映",
+        "サーバーレス＆DB不要のシンプル構成",
+      ],
+      techDetail:
+        "Next.js 15 + TypeScript + Vercel Serverless Functions。LINE Messaging API（Webhook）+ Gemini API / Claude API（切替可能）。GitHub Gist API をストレージとして使用。PC側はPowerShellスクリプト + Windows タスクスケジューラで自動同期。",
     },
   },
 ];
