@@ -58,9 +58,13 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const data = await res.json();
     if (data.error) {
       console.error("Gemini API error:", data.error);
+      const errorMsg =
+        data.error.code === 429
+          ? "Gemini APIの無料枠を超えたため、現在利用できません。時間をおいて再度お試しください。"
+          : "AIの応答に失敗しました";
       return NextResponse.json(
-        { error: "AIの応答に失敗しました" },
-        { status: 500 }
+        { error: errorMsg },
+        { status: data.error.code === 429 ? 429 : 500 }
       );
     }
 
