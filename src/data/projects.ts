@@ -217,6 +217,26 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Python 3.12 + FastAPI + WebSocket + aiosqlite / React 19 + TypeScript 5.9 + Vite + Canvas 2D。元ソースはMITライセンス（Museum of Art and Digital Entertainment公開）。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  LoginScreen → プレイヤー名入力\n       │ WebSocket接続\n       ▼\n  /ws/{player_name}\n       │\n       ▼\n  FastAPIサーバー（Python）\n  ├─ WebSocketエンドポイント\n  ├─ Avatar読込/作成（DB）\n  └─ リージョン参加\n       │\n       ▼\n  RegionProcessor（リージョン状態管理）\n  ├─ OBJECT_REGISTRY[class_id]\n  │   └─ 25ハンドラー → 108+クラス\n  ├─ broadcast()（全員へ）\n  ├─ send_to()（個別送信）\n  └─ SQLite（永続化）\n       │\n       ▼ WebSocket JSON\n  クライアント（React）\n  ├─ GameCanvas（640x400 レトロ描画）\n  ├─ ActionPanel / ChatLog\n  ├─ Inventory / StatusBar\n  └─ MiniMap（リージョン移動）\n─────────────────────────────\nPL/I → Python 変換マッピング:\n  Class_Table vtable → OBJECT_REGISTRY dict\n  s$task_wait_event  → asyncio event loop\n  n_msg/b_msg/p_msg  → broadcast()/send_to()\n  Stratus keyed files → SQLite\n  C64 6502 ASM client → React + Canvas 2D",
+        dataFlow: [
+          "プレイヤー名を入力 → WebSocket接続（/ws/{player_name}）",
+          "サーバーがAvatar読込/作成 → リージョンに参加 → INITメッセージ送信（全状態同期）",
+          "クライアント操作（クリック/ボタン）→ {action, noid, args} をJSON送信",
+          "RegionProcessorがOBJECT_REGISTRY[class_id]でハンドラーをディスパッチ",
+          "ハンドラーが処理（状態更新、DB永続化）→ broadcast/send_toで結果送信",
+          "リージョン移動時: AVATAR_LEAVE→DB更新→新リージョン参加→REGION_CHANGE送信",
+          "切断時: AVATAR_LEAVE送信、アバター状態をDB保存、クリーンアップ",
+        ],
+        apiSpecs: [
+          { method: "GET", path: "/api/regions", description: "全リージョン一覧をJSON配列で返却" },
+          { method: "GET", path: "/api/regions/{id}", description: "リージョン詳細（オブジェクト・アバター含む）" },
+          { method: "WS", path: "/ws/{player_name}", description: "双方向JSON通信（15種類のメッセージタイプ）" },
+        ],
+        dataModels:
+          "# SQLite 3テーブル構成\n\nregions:\n  region_id(PK), name, terrain_type\n  neighbor_west/east/north/south\n\nobjects:\n  noid(PK AUTO), class_id(161種),\n  region_id(FK), x, y,\n  container_noid, extra(JSON)\n\navatars:\n  noid(PK), name(UNIQUE),\n  health, bank_account, tokens_in_hand,\n  curse_type(0=なし,2=SMILEY,4=FLY),\n  deaths, kills, travel\n\n# オブジェクトクラス: 108+種類\n# ハンドラー: 25モジュール\n# アクション: 13種類(GO,DO,GRAB,WALK...)",
+      },
     },
   },
   {
