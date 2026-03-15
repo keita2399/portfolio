@@ -16,6 +16,14 @@ export type Project = {
     approach: string[];
     results: string[];
     techDetail: string;
+    // 設計書セクション（任意）
+    designDoc?: {
+      architecture: string;
+      dataFlow: string[];
+      apiSpecs?: { method: string; path: string; description: string }[];
+      dataModels?: string;
+      envVars?: { name: string; required: boolean; description: string }[];
+    };
   };
 };
 
@@ -53,6 +61,20 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Rust + crossterm（ターミナルUI）。EUC-JP→UTF-8の文字コード変換、Cargo workspaceによるモジュール管理。CI/CDはGitHub Actions。",
+      designDoc: {
+        architecture:
+          "main.rs\n  ├─→ init.rs ──→ init_txt.rs（データファイル読込）\n  ├─→ birth.rs ──→ birth_data.rs（キャラ作成データ）\n  ├─→ dungeon.rs（ゲームループ）\n  │     ├─→ game_state.rs（状態管理）\n  │     ├─→ game_types.rs（型定義）\n  │     ├─→ spell_data.rs（魔法データ）\n  │     ├─→ store.rs（店舗）\n  │     ├─→ save.rs（永続化）\n  │     └─→ z_rand.rs（乱数）\n  ├─→ z_term.rs（ターミナル抽象化）\n  │     └─→ main_gcu.rs（crossterm実装）\n  └─→ z_util.rs, z_form.rs（ユーティリティ群）",
+        dataFlow: [
+          "CLIフラグ解析（--dungeon で完全ゲーム起動）",
+          "GameState初期化: k_info.txt, r_info.txt, f_info.txt 等のデータファイルを読込",
+          "キャラクター作成: 性別→種族(37)→職業(27)→性格(12)→ステータスロール",
+          "ダンジョン生成: 部屋配置→通路接続→階段→罠→モンスター(3-8体)配置",
+          "ゲームループ: プレイヤー入力→モンスターAI→戦闘→経験値→レベルアップ",
+          "セーブ/ロード: バイナリ形式（マジックヘッダー 0x48454E47 + v2フォーマット）",
+        ],
+        dataModels:
+          "struct PlayerType {\n  name: String,\n  race: usize,        // 37種族\n  class: usize,       // 27職業\n  stat_max: [i32; 6], // STR,INT,WIS,DEX,CON,CHR\n  lev: i32,           // 最大50\n  hp: i32, mhp: i32,\n  mp: i32, mmp: i32,\n  ac: i32, to_h: i32, to_d: i32,\n}\n\nstruct MonsterRace {\n  name: String,\n  level: i32,\n  hp_dice: (i32, i32),\n  blows: Vec<MonsterBlow>, // 最大4攻撃\n  flags: u64,\n}\n\nstruct GameState {\n  player: PlayerType,\n  dungeon_level: i32,     // 1-50\n  cave: [[CaveType; MAX_WID]; MAX_HGT],\n  monsters: Vec<MonsterInstance>,\n  // C言語の約200グローバル変数を統合\n}",
+      },
     },
   },
   {
@@ -299,6 +321,29 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 14 + TypeScript + Tailwind CSS + Gemini API（Vision）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  UploadArea ──→ ImagePreview\n       │ Base64変換\n       ▼\n  page.tsx ──→ POST /api/analyze\n       │\n       ▼\n  AnalysisResult ──→ ResultField × N\n                 ──→ AlertBadge × N\n─────────────────────────────\nサーバー（Next.js API Route）\n  route.ts\n  ├─ 画像データ検証（MIME型、4MB制限）\n  ├─ Gemini API呼び出し\n  ├─ JSONレスポンス解析\n  └─ LINE通知送信（非同期）\n─────────────────────────────\n       ├─→ Gemini API（主系統）\n       ├─→ Claude API（代替系統）\n       └─→ LINE API（利用通知）",
+        dataFlow: [
+          "ユーザーが画像をドラッグ＆ドロップまたはクリック選択でアップロード",
+          "クライアント側で検証（MIME型チェック、4MB以下）→ FileReaderでBase64変換",
+          "POST /api/analyze にBase64データとMIME型を送信",
+          "サーバーで再検証（多層防御）後、Gemini 2.5 Flash APIに画像を送信",
+          "AIが書類種別を判定、各項目を信頼度スコア付きで抽出（JSON形式）",
+          "LINE Messaging APIで利用通知を非同期送信（失敗してもアプリに影響なし）",
+          "構造化された解析結果をクライアントに返却、信頼度バー・アラートバッジ付きで表示",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/analyze", description: "画像をBase64+MIME型で送信 → AIが書類種別・項目・信頼度・アラートをJSON返却" },
+        ],
+        dataModels:
+          "interface AnalysisResult {\n  documentType: string;\n  fields: AnalysisField[];  // 各項目\n  alerts: AnalysisAlert[];  // 警告\n  summary: string;\n  overallConfidence: number; // 0.0〜1.0\n}\n\ninterface AnalysisField {\n  label: string;\n  value: string;\n  confidence: number;\n}\n\ninterface AnalysisAlert {\n  type: 'error' | 'warning' | 'info';\n  message: string;\n}",
+        envVars: [
+          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API キー" },
+          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
+          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
+        ],
+      },
     },
   },
   {
@@ -335,6 +380,28 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 14 + TypeScript + Tailwind CSS + @googlemaps/js-api-loader。Maps JavaScript API, Directions API, Places API, Geocoding APIを使用。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  AddressInput(出発地) ←→ Places Autocomplete\n  AddressInput(目的地) ←→ Places Autocomplete\n  TravelModeSelector（車/電車/徒歩/自転車）\n       │\n       ▼\n  MapDisplay\n  ├─ DirectionsService.route()（ルート計算）\n  ├─ DirectionsRenderer（ルート描画）\n  ├─ Marker（出発地:青A、目的地:赤B）\n  └─ 地図クリック → Geocoder（逆ジオコーディング）\n       │\n       ▼\n  ResultCard（距離・時間表示）\n       │ POST /api/notify（非同期）\n       ▼\n  LINE Messaging API（利用通知）",
+        dataFlow: [
+          "Google Maps JavaScript APIを初期化（日本語/日本リージョン、デフォルト中心: 東京駅）",
+          "ユーザーが出発地を入力 → Placesオートコンプリートで候補表示（日本限定）",
+          "ユーザーが目的地を入力（入力 or 地図クリック→逆ジオコーディング）",
+          "移動手段を選択（車🚗/電車🚃/徒歩🚶/自転車🚲）",
+          "DirectionsService.route() でルート計算 → 地図上に緑色ポリラインで描画",
+          "ResultCardに距離・所要時間を表示、非同期でLINE通知を送信",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/notify", description: "出発地・目的地・移動手段をLINE Messaging APIで通知" },
+        ],
+        dataModels:
+          "type TravelMode = 'driving' | 'transit'\n                 | 'walking' | 'bicycling';\n\ninterface TravelResult {\n  origin: string;\n  destination: string;\n  distance: string;   // 例: \"15.2 km\"\n  duration: string;   // 例: \"25分\"\n  mode: TravelMode;\n}\n\ninterface LocationInput {\n  address: string;\n  lat: number;\n  lng: number;\n}",
+        envVars: [
+          { name: "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY", required: true, description: "Google Maps APIキー（クライアント公開）" },
+          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
+          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
+        ],
+      },
     },
   },
   {
@@ -371,6 +438,29 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 14 + TypeScript + Tailwind CSS + @line/bot-sdk。LINE Messaging API（pushMessage / Webhook）。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  MessageForm\n  ├─ メッセージ種別選択（テキスト/画像/スタンプ）\n  ├─ 内容入力\n  └─ 送信ボタン\n       │ POST /api/send\n       ▼\n  MessageHistory ←── 送信結果を追記\n─────────────────────────────\nサーバー（Next.js API Routes）\n  /api/send\n  ├─ バリデーション\n  ├─ LINE SDK → pushMessage\n  └─ 利用通知（非同期）\n\n  /api/webhook\n  ├─ HMAC-SHA256署名検証\n  └─ イベントログ出力\n─────────────────────────────\n       ▼\n  LINE Messaging API → ユーザーのLINE",
+        dataFlow: [
+          "ユーザーがメッセージ種別を選択（テキスト/画像URL/スタンプ）",
+          "対応する入力欄に内容を入力し、送信ボタンを押下",
+          "POST /api/send にリクエスト → サーバーで入力バリデーション",
+          "LINE SDK の MessagingApiClient でプッシュメッセージ送信",
+          "利用通知を非同期送信（Fire & Forget）",
+          "成功/失敗レスポンスをクライアントに返却、MessageHistoryに追加表示",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/send", description: "テキスト/画像/スタンプをLINE Messaging APIで送信" },
+          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信（HMAC-SHA256署名検証）" },
+        ],
+        dataModels:
+          "interface SendMessageRequest {\n  type: 'text' | 'image' | 'sticker';\n  text?: string;\n  imageUrl?: string;\n  packageId?: string;\n  stickerId?: string;\n}\n\ninterface MessageLog {\n  id: string;\n  type: 'text' | 'image' | 'sticker';\n  content: string;\n  status: 'sent' | 'failed';\n  timestamp: Date;\n}",
+        envVars: [
+          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE Bot認証トークン" },
+          { name: "LINE_CHANNEL_SECRET", required: true, description: "Webhook署名検証用シークレット" },
+          { name: "LINE_DEFAULT_USER_ID", required: true, description: "メッセージ送信先ユーザーID" },
+        ],
+      },
     },
   },
   {
@@ -408,6 +498,32 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 15 + TypeScript + Vercel Serverless Functions。LINE Messaging API（Webhook）+ Gemini API / Claude API（切替可能）。GitHub Gist API をストレージとして使用。PC側はPowerShellスクリプト + Windows タスクスケジューラで自動同期。",
+      designDoc: {
+        architecture:
+          "モバイル層（LINE）\n  ユーザー → LINE App → LINE Messaging API\n       │ Webhook POST\n       ▼\nサーバー層（Vercel / Next.js）\n  /api/webhook/route.ts\n  1. LINE署名検証（HMAC-SHA256）\n  2. Gist読取: conversation.json + settings\n  3. AIルーティング（Claude or Gemini）\n  4. 会話履歴に追記\n  5. Gist更新（JSON + Markdown）\n  6. LINEへ応答返信\n       │\n       ├─→ GitHub Gist API（ストレージ）\n       ├─→ Claude API / Gemini API\n       │\n       │ 5分間隔で同期\n       ▼\nデスクトップ層（Windows / Unix）\n  sync-gist.ps1 / sync-gist.sh\n  ├─ GitHub API経由でGist取得\n  └─ ~/.claude/CLAUDE.md に書き込み\n  → Claude Code CLI が更新コンテキストを読込",
+        dataFlow: [
+          "ユーザーがLINEでメッセージ送信 → LINE PlatformがWebhook POSTを送信",
+          "HMAC-SHA256で署名検証 → GitHub GistからGist読取（conversation.json, settings.json）",
+          "モデル切替コマンドチェック（\"claude\"/\"gemini\"/\"クロード\"/\"ジェミニ\"）",
+          "直近20メッセージをコンテキストとしてAI APIに送信 → 応答を受信",
+          "conversation.jsonに会話追加、claude-memo.mdにタイムスタンプ付きログを追記",
+          "Gist更新（PATCH API）→ LINEにreplyTokenで応答返信（4900文字制限）",
+          "PC側: タスクスケジューラが5分間隔でGist→CLAUDE.mdに同期",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信 → AI応答 → Gist保存 → LINE返信" },
+        ],
+        dataModels:
+          "// GitHub Gist ストレージ構成\n\nconversation.json:\n[\n  { \"role\": \"user\", \"content\": \"...\" },\n  { \"role\": \"assistant\", \"content\": \"...\" }\n]  // 直近20件保持\n\nsettings.json:\n{ \"model\": \"claude\" | \"gemini\" }\n\nclaude-memo.md:\n# LINE会話ログ\n**[2026/3/14 9:28:01]**\n**ユーザー:** こんにちは\n**Claude:** こんにちは！",
+        envVars: [
+          { name: "LINE_CHANNEL_SECRET", required: true, description: "LINE署名検証用シークレット" },
+          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE API認証トークン" },
+          { name: "ANTHROPIC_API_KEY", required: true, description: "Claude API アクセスキー" },
+          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API アクセスキー" },
+          { name: "GITHUB_TOKEN", required: true, description: "GitHub Gist読み書き用トークン" },
+          { name: "GIST_ID", required: true, description: "対象GistのID" },
+        ],
+      },
     },
   },
 ];

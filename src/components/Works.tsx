@@ -2,10 +2,12 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import FadeIn from "./FadeIn";
 import { projects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
+  const router = useRouter();
   const Wrapper = project.externalUrl
     ? ({ children }: { children: React.ReactNode }) => (
         <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
@@ -96,8 +98,23 @@ function WorkCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          <div style={{ marginTop: 16, fontSize: 11, color: project.badgeColor, letterSpacing: 1 }}>
-            {project.externalUrl ? "デモを試す ↗" : "詳細を見る →"}
+          <div style={{ marginTop: 16, fontSize: 11, color: project.badgeColor, letterSpacing: 1, display: "flex", alignItems: "center", gap: 12 }}>
+            {project.externalUrl ? (
+              <>
+                <span>デモを試す ↗</span>
+                <span style={{ color: "var(--border)" }}>|</span>
+                <span
+                  role="link"
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/works/${project.slug}`); }}
+                  className="nav-link"
+                  style={{ cursor: "pointer" }}
+                >
+                  詳細を見る →
+                </span>
+              </>
+            ) : (
+              "詳細を見る →"
+            )}
           </div>
           </div>
         </div>

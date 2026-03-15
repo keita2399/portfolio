@@ -156,6 +156,157 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </section>
         </FadeIn>
 
+        {/* Design Doc */}
+        {project.detail.designDoc && (
+          <>
+            <FadeIn>
+              <section style={{ marginBottom: 48 }}>
+                <div style={{ fontSize: 10, color: project.badgeColor, letterSpacing: 4, marginBottom: 20 }}>
+                  // DESIGN DOCUMENT
+                </div>
+                <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: `2px solid ${project.borderColor}` }}>
+                  アーキテクチャ
+                </h2>
+                <div style={{
+                  padding: "20px 24px", background: "#1a1a1a", color: "#e0e0e0",
+                  borderRadius: 4, fontSize: 12, lineHeight: 1.6,
+                  fontFamily: "inherit", whiteSpace: "pre", overflowX: "auto",
+                }}>
+                  {project.detail.designDoc.architecture}
+                </div>
+              </section>
+            </FadeIn>
+
+            <FadeIn>
+              <section style={{ marginBottom: 48 }}>
+                <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
+                  処理フロー
+                </h2>
+                <div style={{ display: "grid", gap: 12 }}>
+                  {project.detail.designDoc.dataFlow.map((item, i) => (
+                    <div key={i} style={{
+                      display: "flex", gap: 16, padding: "14px 20px",
+                      background: "#fff", border: "1px solid var(--border)", borderRadius: 4,
+                      fontSize: 13, color: "var(--text-light)", lineHeight: 1.7,
+                    }}>
+                      <span style={{
+                        color: "#fff", background: project.badgeColor,
+                        width: 24, height: 24, borderRadius: "50%",
+                        display: "flex", alignItems: "center", justifyContent: "center",
+                        fontSize: 11, fontWeight: 700, flexShrink: 0,
+                      }}>
+                        {i + 1}
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+
+            {project.detail.designDoc.apiSpecs && (
+              <FadeIn>
+                <section style={{ marginBottom: 48 }}>
+                  <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
+                    API仕様
+                  </h2>
+                  <div style={{ overflowX: "auto" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                      <thead>
+                        <tr style={{ borderBottom: `2px solid ${project.borderColor}` }}>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>メソッド</th>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>パス</th>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>説明</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {project.detail.designDoc.apiSpecs.map((api, i) => (
+                          <tr key={i} style={{ borderBottom: "1px solid var(--border)" }}>
+                            <td style={{ padding: "10px 12px" }}>
+                              <span style={{
+                                fontSize: 11, padding: "2px 8px", background: project.badgeColor,
+                                color: "#fff", borderRadius: 2, fontWeight: 600,
+                              }}>
+                                {api.method}
+                              </span>
+                            </td>
+                            <td style={{ padding: "10px 12px", fontFamily: "inherit", color: "var(--text)" }}>
+                              {api.path}
+                            </td>
+                            <td style={{ padding: "10px 12px", color: "var(--text-light)" }}>
+                              {api.description}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </FadeIn>
+            )}
+
+            {project.detail.designDoc.dataModels && (
+              <FadeIn>
+                <section style={{ marginBottom: 48 }}>
+                  <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
+                    データモデル
+                  </h2>
+                  <div style={{
+                    padding: "20px 24px", background: "#1a1a1a", color: "#e0e0e0",
+                    borderRadius: 4, fontSize: 12, lineHeight: 1.7,
+                    fontFamily: "inherit", whiteSpace: "pre", overflowX: "auto",
+                  }}>
+                    {project.detail.designDoc.dataModels}
+                  </div>
+                </section>
+              </FadeIn>
+            )}
+
+            {project.detail.designDoc.envVars && (
+              <FadeIn>
+                <section style={{ marginBottom: 48 }}>
+                  <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
+                    環境変数
+                  </h2>
+                  <div style={{ overflowX: "auto" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                      <thead>
+                        <tr style={{ borderBottom: `2px solid ${project.borderColor}` }}>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>変数名</th>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>必須</th>
+                          <th style={{ textAlign: "left", padding: "8px 12px", color: "#1a1a1a", fontWeight: 600 }}>説明</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {project.detail.designDoc.envVars.map((env, i) => (
+                          <tr key={i} style={{ borderBottom: "1px solid var(--border)" }}>
+                            <td style={{ padding: "10px 12px", fontFamily: "inherit", color: "var(--text)", fontWeight: 500 }}>
+                              {env.name}
+                            </td>
+                            <td style={{ padding: "10px 12px" }}>
+                              <span style={{
+                                fontSize: 11, padding: "2px 8px", borderRadius: 2,
+                                background: env.required ? project.badgeColor : "var(--bg-alt)",
+                                color: env.required ? "#fff" : "var(--text-muted)",
+                                fontWeight: 600,
+                              }}>
+                                {env.required ? "必須" : "任意"}
+                              </span>
+                            </td>
+                            <td style={{ padding: "10px 12px", color: "var(--text-light)" }}>
+                              {env.description}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+              </FadeIn>
+            )}
+          </>
+        )}
+
         {/* Back link */}
         <FadeIn>
           <div style={{ textAlign: "center", paddingTop: 24 }}>
