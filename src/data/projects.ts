@@ -30,6 +30,42 @@ export type Project = {
 export const projects: Project[] = [
   // === デモあり（動くものが先） ===
   {
+    slug: "contract-checker",
+    title: "契約書リスクチェッカー",
+    badge: "デモ公開中",
+    badgeColor: "#10b981",
+    borderColor: "#10b981",
+    externalUrl: "https://contract-checker-vert.vercel.app",
+    thumbnail: "/thumbnails/contract-checker.svg",
+    description:
+      "契約書をアップロードするだけで、AIが条項ごとにリスクを判定。自動更新・違約金・損害賠償上限なし・知的財産権の全譲渡・競業避止など、フリーランスが見落としがちな不利条項を検出し、具体的な修正案を提示。",
+    stats: ["Gemini Vision API", "条項別リスク判定"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
+    detail: {
+      overview:
+        "契約書の画像をアップロードすると、Gemini 2.5 Flash が全条項を読み取り、フリーランス・個人事業主にとって不利な条項をHIGH/MEDIUM/LOW/SAFEの4段階で判定。条項ごとに問題点と具体的な修正案を提示し、欠落している条項（損害賠償上限、解除条件等）も検出する。",
+      challenges: [
+        "契約書の法的な文脈を正確に理解するプロンプト設計",
+        "条項ごとのリスク判定基準の策定（自動更新、違約金、競業避止等）",
+        "欠落条項の検出（あるべきなのに書かれていない条項）",
+        "法的助言にならない範囲でのリスク提示のバランス",
+      ],
+      approach: [
+        "フリーランス契約のリスクパターンをプロンプトに体系化",
+        "HIGH/MEDIUM/LOW/SAFEの4段階判定 + リスクスコア算出",
+        "条項ごとに原文抜粋・問題点・修正案を構造化出力",
+        "推測禁止ルールで読めない部分の幻覚を防止",
+      ],
+      results: [
+        "条項別のリスク判定と具体的な修正案を自動生成",
+        "欠落条項（損害賠償上限、反社排除等）の検出",
+        "リスクスコアの可視化（メーター + 危険/注意/欠落の件数表示）",
+        "法的免責事項を明示したUX設計",
+      ],
+      techDetail: "Next.js + TypeScript + Tailwind CSS + Gemini 2.5 Flash（Vision API）。契約書リスクの体系的なプロンプト設計が核心。",
+    },
+  },
+  {
     slug: "receipt-scanner",
     title: "AI レシートスキャナー",
     badge: "デモ公開中",
