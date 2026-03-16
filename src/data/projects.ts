@@ -30,6 +30,42 @@ export type Project = {
 export const projects: Project[] = [
   // === デモあり（動くものが先） ===
   {
+    slug: "receipt-scanner",
+    title: "AI レシートスキャナー",
+    badge: "デモ公開中",
+    badgeColor: "#f59e0b",
+    borderColor: "#f59e0b",
+    externalUrl: "https://receipt-scanner-iota.vercel.app",
+    thumbnail: "/thumbnails/receipt-scanner.svg",
+    description:
+      "レシートを撮影するだけで、AIが店舗名・商品・金額・税率を読み取り、勘定科目を自動判定。項目ごとの信頼度スコア表示、合計金額の自動検証、軽減税率（8%）と標準税率（10%）の区別に対応。確定申告の経費入力を効率化。",
+    stats: ["Gemini Vision API", "勘定科目自動判定"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
+    detail: {
+      overview:
+        "レシート画像をアップロードまたはスマホカメラで撮影すると、Gemini 2.5 Flash（Vision API）が内容を読み取り、店舗名・日付・商品明細・税率・合計金額を構造化データとして抽出。さらに確定申告の勘定科目（会議費・消耗品費・旅費交通費等）を自動判定する。",
+      challenges: [
+        "デザイン文字・ロゴフォントの店舗名読み取り（ドン・キホーテ等）",
+        "軽減税率8%（※マーク）と標準税率10%の区別",
+        "AIの推測・幻覚を防ぎ、読めない場合は正直に「不明」と返す設計",
+        "合計金額と明細の整合性検証",
+      ],
+      approach: [
+        "Gemini Vision APIのマルチモーダル機能で画像を直接解析",
+        "確定申告の勘定科目ルールをプロンプトに埋め込み（業務知識 × AI）",
+        "推測禁止ルール: 読めない文字は「不明」、補助情報（電話番号・住所）は参考として別途出力",
+        "サーバーサイドで合計金額の自動検証（計算値とレシート表示の不一致を検出）",
+      ],
+      results: [
+        "ドン・キホーテのデザイン文字ロゴも97%の信頼度で読み取り",
+        "商品名・金額・税率を項目ごとに信頼度スコア付きで表示",
+        "信頼度が低い箇所を赤くハイライトし、確認すべき箇所を明示",
+        "勘定科目の自動判定（会議費/交際費/消耗品費/旅費交通費等）",
+      ],
+      techDetail: "Next.js + TypeScript + Tailwind CSS + Gemini 2.5 Flash（Vision API）。推測禁止プロンプト設計で幻覚を抑制。",
+    },
+  },
+  {
     slug: "legacy-code-archive",
     title: "Legacy Code Museum & コード鑑定書",
     badge: "383K件収集",
