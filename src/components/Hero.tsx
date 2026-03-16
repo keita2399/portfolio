@@ -3,8 +3,8 @@
 import FadeIn from "./FadeIn";
 import ScrollIndicator from "./ScrollIndicator";
 
-const oldTech = ["COBOL", "PL/I", "ASM", "Java"];
-const newTech = ["TypeScript", "Next.js", "AI"];
+const oldTech = ["COBOL", "PL/I", "ASM", "MUMPS", "Fortran"];
+const newTech = ["TypeScript", "React", "Python", "Rust", "AI"];
 
 export default function Hero() {
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

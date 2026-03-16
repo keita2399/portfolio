@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#0f0d0a"/>
+  <text x="320" y="120" text-anchor="middle" font-family="monospace" font-size="48" font-weight="bold" fill="#d4a574">Legacy Code</text>
+  <text x="320" y="175" text-anchor="middle" font-family="monospace" font-size="48" font-weight="bold" fill="#6bbfb0">Museum</text>
+  <text x="320" y="230" text-anchor="middle" font-family="monospace" font-size="18" fill="#8a7e6d">383,418 comments · 12 repos · 8 languages</text>
+  <text x="320" y="280" text-anchor="middle" font-family="monospace" font-size="14" fill="#5a5244">// コード考古学のインタラクティブ博物館</text>
+</svg>

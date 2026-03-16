@@ -546,6 +546,144 @@ export const projects: Project[] = [
       },
     },
   },
+  {
+    slug: "hengband-web",
+    title: "C+Lua → Python+React 変換（Hengband Web）",
+    badge: "98.7%削減",
+    badgeColor: "#c8860a",
+    borderColor: "#c8860a",
+    description:
+      "日本製ローグライクRPG「Hengband」のC+Lua 33万行をPython+React 4,245行に変換。ブラウザ上でプレイ可能なWebアプリとして再実装。Lua 5.0バインディング3万行を含むレガシーコードの完全現代化。",
+    stats: ["330,000行 → 4,245行", "ブラウザで動作"],
+    tags: ["C言語", "Lua", "FastAPI", "React", "Claude Code"],
+    detail: {
+      overview:
+        "C言語33万行+Lua 5.0スクリプティングで構成された日本製ローグライクRPGを、Python+Reactのモダンなフルスタック構成に変換。ブラウザ上でターミナルUIを再現。",
+      challenges: [
+        "C言語33万行+Lua 5.0バインディング3万行の巨大コードベース",
+        "tolua自動生成コードの解読",
+        "ターミナルベースのゲームUIをWebで再現",
+        "EUC-JP→UTF-8の文字コード変換",
+      ],
+      approach: [
+        "ソースコード静的解析で主要モジュールを特定",
+        "C→Python、Lua→React State管理への変換パターンを確立",
+        "WebSocketによるリアルタイムゲーム通信",
+        "HTML5 Canvasでターミナル描画を再現",
+      ],
+      results: [
+        "コード量98.7%削減（330,000行 → 4,245行）",
+        "ブラウザ上で完全にプレイ可能",
+        "ローグライクの全機能（ダンジョン生成、戦闘、魔法、アイテム）を再現",
+        "レガシーC+Lua→モダンWeb変換のパターンを確立",
+      ],
+      techDetail: "FastAPI + React + WebSocket + Canvas 2D。tolua 3万行の自動バインディングをPython辞書ディスパッチに変換。",
+    },
+  },
+  {
+    slug: "mumps-vista",
+    title: "MUMPS → Web 変換",
+    badge: "78%削減",
+    badgeColor: "#e55b3c",
+    borderColor: "#e55b3c",
+    description:
+      "米国退役軍人省の医療情報システム VistA の Problem List モジュール。MUMPS（M言語）7,677行をPython+React 1,650行に変換。グローバル変数ベースの階層型DBをSQLiteに移行。",
+    stats: ["7,677行 → 1,650行", "MUMPS → Python"],
+    tags: ["MUMPS", "VistA", "FastAPI", "React"],
+    detail: {
+      overview:
+        "米国退役軍人省（VA）の電子健康記録システムVistAのProblem List（問題リスト）モジュールを、MUMPS言語からPython+Reactに変換。",
+      challenges: [
+        "MUMPS独特の構文（省略形コマンド、後置条件、グローバル変数）",
+        "階層型データベース（グローバル ^AUPNPROB）のリレーショナル化",
+        "FileMan（VistA独自のデータ辞書）の解読",
+        "医療用語コード体系（ICD/SNOMED CT）への対応",
+      ],
+      approach: [
+        "MUMPSのグローバル変数パターンをSQLiteテーブルに変換",
+        "FileManデータ辞書からスキーマを自動生成",
+        "MUMPS省略形コマンドの完全マッピング表を作成",
+        "医療用語のバリデーションロジックを再実装",
+      ],
+      results: [
+        "コード量78%削減（7,677行 → 1,650行）",
+        "MUMPS→Python変換パターンを確立",
+        "階層型DB→リレーショナルDB変換の手法を確立",
+        "医療システム特有のデータ整合性を維持",
+      ],
+      techDetail: "FastAPI + React + SQLite。元のMUMPS/VistAソースを完全解析し、FileManデータ辞書から型情報を抽出。",
+    },
+  },
+  {
+    slug: "saturn-fortran",
+    title: "Fortran → Web 変換",
+    badge: "22%削減",
+    badgeColor: "#6366f1",
+    borderColor: "#6366f1",
+    description:
+      "NASAの土星磁場モデル（Fortran 77）をPython+React+Plotlyに変換。科学計算の精度を維持しつつ、3Dインタラクティブ可視化をブラウザで実現。",
+    stats: ["2,334行 → 1,808行", "3D可視化対応"],
+    tags: ["Fortran", "Python", "React", "Plotly"],
+    detail: {
+      overview:
+        "1980年代にNASAが開発した土星の磁場モデルをFortran 77からPython+Reactに変換。球面調和関数による磁場計算を維持しつつ、Plotlyで3Dインタラクティブ可視化を追加。",
+      challenges: [
+        "Fortran 77固有の固定形式コード（桁位置の意味）",
+        "科学計算の精度維持（浮動小数点の扱い）",
+        "球面調和関数・ルジャンドル多項式の正確な移植",
+        "COMMONブロックの変換",
+      ],
+      approach: [
+        "Fortran→NumPy配列への変換パターンを確立",
+        "COMMONブロックをPythonクラスに変換",
+        "Plotlyで磁力線・ベクトル場の3D描画を実装",
+        "計算結果の元Fortranとの数値比較検証",
+      ],
+      results: [
+        "科学計算の精度を完全に維持",
+        "ブラウザ上で3Dインタラクティブ可視化を実現",
+        "Fortran→Python科学計算変換のパターンを確立",
+        "コード量22%削減（科学計算は圧縮率が低い傾向）",
+      ],
+      techDetail: "FastAPI + React + NumPy + Plotly。球面調和関数の計算精度は元Fortranと10^-12以内の一致を確認。",
+    },
+  },
+  {
+    slug: "legacy-code-archive",
+    title: "Legacy Code Museum & コード鑑定書",
+    badge: "383K件収集",
+    badgeColor: "#d4a574",
+    borderColor: "#d4a574",
+    externalUrl: "https://gstate-gk.github.io/legacy-code-museum/",
+    thumbnail: "/thumbnails/legacy-code-museum.svg",
+    description:
+      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書シリーズ（BRL-CAD、QEMU、NASA NASTRAN等）を制作。",
+    stats: ["383,418コメント収集", "鑑定書6本制作"],
+    tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
+    detail: {
+      overview:
+        "90年代以前のレガシーコードを系統的に収集・分析するプロジェクト。12リポジトリから383,418件のコメントを抽出し、感情分析（frustration, humor等8感情）とタグ検出（TODO/FIXME/HACK等）を自動実行。成果物としてインタラクティブWebアプリとコード鑑定書シリーズを制作。",
+      challenges: [
+        "8言語（C, COBOL, PL/I, RPG, VB6, Lua, Fortran, Ada）のコメント解析パーサー開発",
+        "383,418件のコメントの感情分析・スコアリング",
+        "鑑定書のストーリー構築（コメントから歴史を読み解く）",
+        "Museum Webアプリのインタラクティブ機能（クイズ、鑑定対決等）",
+      ],
+      approach: [
+        "言語別パーサーによるコメント抽出パイプライン構築",
+        "キーワードベースの感情分析（8カテゴリ）+ 興味度スコアリング",
+        "AIによるソースコード深掘り解析 → ストーリー素材発掘",
+        "Next.js + GitHub Pages でMuseumアプリをデプロイ",
+      ],
+      results: [
+        "12リポジトリ・8言語から383,418件のコメントを収集",
+        "鑑定書6本のドラフトを1日で制作（BRL-CAD, DSPython, QEMU, Whitaker's WORDS, NASA NASTRAN, DikuMUD）",
+        "Legacy Code Museum をGitHub Pagesにデプロイ",
+        "コード考古学の手法とパイプラインを確立",
+      ],
+      techDetail: "Python（収集パイプライン）+ Next.js + TypeScript + Tailwind CSS（Museum）。GitHub Actions で自動デプロイ。データは JSON 形式で管理。",
+    },
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
