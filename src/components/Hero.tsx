@@ -43,8 +43,9 @@ export default function Hero() {
         </FadeIn>
 
         <FadeIn>
-          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 16px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.7, maxWidth: 520, fontWeight: 300 }}>
+          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 16px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.7, maxWidth: 560, fontWeight: 300 }}>
             レガシーからクラウドへ —<br />
+            <strong style={{ color: "var(--accent)" }}>10言語・41万行</strong>のレガシーシステム変換実績を持つ<br />
             40年の経験を持つITエンジニア
           </div>
         </FadeIn>

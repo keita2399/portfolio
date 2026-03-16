@@ -28,6 +28,80 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  // === デモあり（動くものが先） ===
+  {
+    slug: "legacy-code-archive",
+    title: "Legacy Code Museum & コード鑑定書",
+    badge: "383K件収集",
+    badgeColor: "#d4a574",
+    borderColor: "#d4a574",
+    externalUrl: "https://gstate-gk.github.io/legacy-code-museum/",
+    thumbnail: "/thumbnails/legacy-code-museum.svg",
+    description:
+      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書シリーズ（BRL-CAD、QEMU、NASA NASTRAN等）を制作。",
+    stats: ["383,418コメント収集", "鑑定書6本制作"],
+    tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
+    detail: {
+      overview:
+        "90年代以前のレガシーコードを系統的に収集・分析するプロジェクト。12リポジトリから383,418件のコメントを抽出し、感情分析（frustration, humor等8感情）とタグ検出（TODO/FIXME/HACK等）を自動実行。成果物としてインタラクティブWebアプリとコード鑑定書シリーズを制作。",
+      challenges: [
+        "8言語（C, COBOL, PL/I, RPG, VB6, Lua, Fortran, Ada）のコメント解析パーサー開発",
+        "383,418件のコメントの感情分析・スコアリング",
+        "鑑定書のストーリー構築（コメントから歴史を読み解く）",
+        "Museum Webアプリのインタラクティブ機能（クイズ、鑑定対決等）",
+      ],
+      approach: [
+        "言語別パーサーによるコメント抽出パイプライン構築",
+        "キーワードベースの感情分析（8カテゴリ）+ 興味度スコアリング",
+        "AIによるソースコード深掘り解析 → ストーリー素材発掘",
+        "Next.js + GitHub Pages でMuseumアプリをデプロイ",
+      ],
+      results: [
+        "12リポジトリ・8言語から383,418件のコメントを収集",
+        "鑑定書6本のドラフトを1日で制作（BRL-CAD, DSPython, QEMU, Whitaker's WORDS, NASA NASTRAN, DikuMUD）",
+        "Legacy Code Museum をGitHub Pagesにデプロイ",
+        "コード考古学の手法とパイプラインを確立",
+      ],
+      techDetail: "Python（収集パイプライン）+ Next.js + TypeScript + Tailwind CSS（Museum）。GitHub Actions で自動デプロイ。データは JSON 形式で管理。",
+    },
+  },
+  {
+    slug: "habitat-pli",
+    title: "PL/I → Web 変換（Habitat）",
+    badge: "82%削減",
+    badgeColor: "#8b5cf6",
+    borderColor: "#8b5cf6",
+    externalUrl: "https://habitat-1986.onrender.com",
+    thumbnail: "/thumbnails/habitat-pli.svg",
+    description:
+      "1986年にLucasfilm Games Divisionが開発した世界初のグラフィカルMMO「Habitat」。PL/I（Stratus VOS）26,218行をPython+React 4,622行に変換。108種類のオブジェクトクラスを全実装し、ブラウザ上で動作するデモを公開。",
+    stats: ["26,218行 → 4,622行", "108クラス全実装"],
+    tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
+    detail: {
+      overview:
+        "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
+      challenges: [
+        "PL/IのBASED構造体＋ENTRY変数による事実上のvtable（仮想関数テーブル）の解読",
+        "Stratus VOS固有API（s$task_wait_event, s$keyed_read等）——OSごと消滅した技術の現代等価物への置換",
+        "108種類のオブジェクトクラス（アバター、ATM、銃、テレポーター、自販機、ゴースト等）の全実装",
+        "5種類のメッセージング（n_msg/b_msg/p_msg/e_msg/r_msg）の再現",
+      ],
+      approach: [
+        "PL/IのClass_TableディスパッチをPython辞書 + getattrディスパッチに変換",
+        "s$task_wait_eventループをasyncio + WebSocketに変換",
+        "Stratus VOSキー付きファイルをSQLiteに変換",
+        "C64クライアント（6502アセンブラ）をHTML5 Canvas 2D + Reactで再現",
+      ],
+      results: [
+        "コード量82%削減（26,218行 → 4,622行）",
+        "ファイル数83%削減（261 → 44ファイル）",
+        "108種類のオブジェクトクラスを全て実装",
+        "1986年の設計パターンが現代のWebSocket/asyncioパターンとほぼ同一であることを実証",
+      ],
+      techDetail:
+        "Python 3.12 + FastAPI + WebSocket + aiosqlite / React 19 + TypeScript 5.9 + Vite + Canvas 2D。元ソースはMITライセンス（Museum of Art and Digital Entertainment公開）。",
+    },
+  },
   {
     slug: "hengband-rust",
     title: "C → Rust 言語変換",
@@ -180,63 +254,6 @@ export const projects: Project[] = [
       ],
       techDetail:
         "FastAPI + React + SQLite。元のRPGソースはILE RPG（/FREE形式含む）。DDSファイル（DSPF/PF/LF）の完全解析。",
-    },
-  },
-  {
-    slug: "habitat-pli",
-    title: "PL/I → Web 変換（Habitat）",
-    badge: "82%削減",
-    badgeColor: "#8b5cf6",
-    borderColor: "#8b5cf6",
-    externalUrl: "https://habitat-1986.onrender.com",
-    thumbnail: "/thumbnails/habitat-pli.svg",
-    description:
-      "1986年にLucasfilm Games Divisionが開発した世界初のグラフィカルMMO「Habitat」。PL/I（Stratus VOS）26,218行をPython+React 4,622行に変換。108種類のオブジェクトクラスを全実装し、ブラウザ上で動作するデモを公開。",
-    stats: ["26,218行 → 4,622行", "108クラス全実装"],
-    tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
-    detail: {
-      overview:
-        "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
-      challenges: [
-        "PL/IのBASED構造体＋ENTRY変数による事実上のvtable（仮想関数テーブル）の解読",
-        "Stratus VOS固有API（s$task_wait_event, s$keyed_read等）——OSごと消滅した技術の現代等価物への置換",
-        "108種類のオブジェクトクラス（アバター、ATM、銃、テレポーター、自販機、ゴースト等）の全実装",
-        "5種類のメッセージング（n_msg/b_msg/p_msg/e_msg/r_msg）の再現",
-      ],
-      approach: [
-        "PL/IのClass_TableディスパッチをPython辞書 + getattrディスパッチに変換",
-        "s$task_wait_eventループをasyncio + WebSocketに変換",
-        "Stratus VOSキー付きファイルをSQLiteに変換",
-        "C64クライアント（6502アセンブラ）をHTML5 Canvas 2D + Reactで再現",
-      ],
-      results: [
-        "コード量82%削減（26,218行 → 4,622行）",
-        "ファイル数83%削減（261 → 44ファイル）",
-        "108種類のオブジェクトクラスを全て実装",
-        "1986年の設計パターンが現代のWebSocket/asyncioパターンとほぼ同一であることを実証",
-      ],
-      techDetail:
-        "Python 3.12 + FastAPI + WebSocket + aiosqlite / React 19 + TypeScript 5.9 + Vite + Canvas 2D。元ソースはMITライセンス（Museum of Art and Digital Entertainment公開）。",
-      designDoc: {
-        architecture:
-          "クライアント（ブラウザ）\n  LoginScreen → プレイヤー名入力\n       │ WebSocket接続\n       ▼\n  /ws/{player_name}\n       │\n       ▼\n  FastAPIサーバー（Python）\n  ├─ WebSocketエンドポイント\n  ├─ Avatar読込/作成（DB）\n  └─ リージョン参加\n       │\n       ▼\n  RegionProcessor（リージョン状態管理）\n  ├─ OBJECT_REGISTRY[class_id]\n  │   └─ 25ハンドラー → 108+クラス\n  ├─ broadcast()（全員へ）\n  ├─ send_to()（個別送信）\n  └─ SQLite（永続化）\n       │\n       ▼ WebSocket JSON\n  クライアント（React）\n  ├─ GameCanvas（640x400 レトロ描画）\n  ├─ ActionPanel / ChatLog\n  ├─ Inventory / StatusBar\n  └─ MiniMap（リージョン移動）\n─────────────────────────────\nPL/I → Python 変換マッピング:\n  Class_Table vtable → OBJECT_REGISTRY dict\n  s$task_wait_event  → asyncio event loop\n  n_msg/b_msg/p_msg  → broadcast()/send_to()\n  Stratus keyed files → SQLite\n  C64 6502 ASM client → React + Canvas 2D",
-        dataFlow: [
-          "プレイヤー名を入力 → WebSocket接続（/ws/{player_name}）",
-          "サーバーがAvatar読込/作成 → リージョンに参加 → INITメッセージ送信（全状態同期）",
-          "クライアント操作（クリック/ボタン）→ {action, noid, args} をJSON送信",
-          "RegionProcessorがOBJECT_REGISTRY[class_id]でハンドラーをディスパッチ",
-          "ハンドラーが処理（状態更新、DB永続化）→ broadcast/send_toで結果送信",
-          "リージョン移動時: AVATAR_LEAVE→DB更新→新リージョン参加→REGION_CHANGE送信",
-          "切断時: AVATAR_LEAVE送信、アバター状態をDB保存、クリーンアップ",
-        ],
-        apiSpecs: [
-          { method: "GET", path: "/api/regions", description: "全リージョン一覧をJSON配列で返却" },
-          { method: "GET", path: "/api/regions/{id}", description: "リージョン詳細（オブジェクト・アバター含む）" },
-          { method: "WS", path: "/ws/{player_name}", description: "双方向JSON通信（15種類のメッセージタイプ）" },
-        ],
-        dataModels:
-          "# SQLite 3テーブル構成\n\nregions:\n  region_id(PK), name, terrain_type\n  neighbor_west/east/north/south\n\nobjects:\n  noid(PK AUTO), class_id(161種),\n  region_id(FK), x, y,\n  container_noid, extra(JSON)\n\navatars:\n  noid(PK), name(UNIQUE),\n  health, bank_account, tokens_in_hand,\n  curse_type(0=なし,2=SMILEY,4=FLY),\n  deaths, kills, travel\n\n# オブジェクトクラス: 108+種類\n# ハンドラー: 25モジュール\n# アクション: 13種類(GO,DO,GRAB,WALK...)",
-      },
     },
   },
   {
@@ -646,42 +663,6 @@ export const projects: Project[] = [
         "コード量22%削減（科学計算は圧縮率が低い傾向）",
       ],
       techDetail: "FastAPI + React + NumPy + Plotly。球面調和関数の計算精度は元Fortranと10^-12以内の一致を確認。",
-    },
-  },
-  {
-    slug: "legacy-code-archive",
-    title: "Legacy Code Museum & コード鑑定書",
-    badge: "383K件収集",
-    badgeColor: "#d4a574",
-    borderColor: "#d4a574",
-    externalUrl: "https://gstate-gk.github.io/legacy-code-museum/",
-    thumbnail: "/thumbnails/legacy-code-museum.svg",
-    description:
-      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書シリーズ（BRL-CAD、QEMU、NASA NASTRAN等）を制作。",
-    stats: ["383,418コメント収集", "鑑定書6本制作"],
-    tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
-    detail: {
-      overview:
-        "90年代以前のレガシーコードを系統的に収集・分析するプロジェクト。12リポジトリから383,418件のコメントを抽出し、感情分析（frustration, humor等8感情）とタグ検出（TODO/FIXME/HACK等）を自動実行。成果物としてインタラクティブWebアプリとコード鑑定書シリーズを制作。",
-      challenges: [
-        "8言語（C, COBOL, PL/I, RPG, VB6, Lua, Fortran, Ada）のコメント解析パーサー開発",
-        "383,418件のコメントの感情分析・スコアリング",
-        "鑑定書のストーリー構築（コメントから歴史を読み解く）",
-        "Museum Webアプリのインタラクティブ機能（クイズ、鑑定対決等）",
-      ],
-      approach: [
-        "言語別パーサーによるコメント抽出パイプライン構築",
-        "キーワードベースの感情分析（8カテゴリ）+ 興味度スコアリング",
-        "AIによるソースコード深掘り解析 → ストーリー素材発掘",
-        "Next.js + GitHub Pages でMuseumアプリをデプロイ",
-      ],
-      results: [
-        "12リポジトリ・8言語から383,418件のコメントを収集",
-        "鑑定書6本のドラフトを1日で制作（BRL-CAD, DSPython, QEMU, Whitaker's WORDS, NASA NASTRAN, DikuMUD）",
-        "Legacy Code Museum をGitHub Pagesにデプロイ",
-        "コード考古学の手法とパイプラインを確立",
-      ],
-      techDetail: "Python（収集パイプライン）+ Next.js + TypeScript + Tailwind CSS（Museum）。GitHub Actions で自動デプロイ。データは JSON 形式で管理。",
     },
   },
 ];
