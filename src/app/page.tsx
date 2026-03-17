@@ -5,6 +5,7 @@ import Skills from "@/components/Skills";
 import Works from "@/components/Works";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import ChatBot from "@/components/ChatBot";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Works />
       <ContactForm />
       <Footer />
+      <ChatBot />
     </>
   );
 }
