@@ -156,7 +156,7 @@ export default function Works() {
             display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 24,
           }}>
             {[
-              { value: "15", label: "プロジェクト", sub: "完了" },
+              { value: "18", label: "プロジェクト", sub: "完了" },
               { value: "10", label: "言語", sub: "対応" },
               { value: "41万行", label: "変換実績", sub: "→ 2.7万行（平均85%削減）" },
               { value: "383K", label: "コメント", sub: "収集・感情分析" },
