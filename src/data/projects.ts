@@ -30,6 +30,40 @@ export type Project = {
 export const projects: Project[] = [
   // === デモあり（動くものが先） ===
   {
+    slug: "portfolio-chatbot",
+    title: "AIチャットボット（このサイト）",
+    badge: "このサイトで稼働中",
+    badgeColor: "#c8860a",
+    borderColor: "#c8860a",
+    description:
+      "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
+    stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
+    detail: {
+      overview:
+        "ポートフォリオサイトの訪問者が、スキル・実績・受けたい案件について自由に質問できるAIチャットボット。業務経歴書の全情報（40年分のプロジェクト履歴、スキル、業務知識等）をprofile.mdとしてGemini AIに渡し、RAG的にナレッジベースとして活用。プロフィールにない情報は「お問い合わせください」と正直に回答する設計。",
+      challenges: [
+        "業務経歴書の情報量（30件以上のプロジェクト）を正確に伝えるプロンプト設計",
+        "Markdownで返答すると小さなチャット窓では見づらい問題",
+        "既存のLINE Claude Syncデモ用APIとの共存",
+        "IME確定時のEnter誤送信防止",
+      ],
+      approach: [
+        "業務経歴書をprofile.mdに構造化し、システムプロンプトに全文注入",
+        "プレーンテキスト限定の回答ルールで視認性を確保",
+        "APIパスを/api/portfolio-chatに分離し既存機能と共存",
+        "isComposingチェックで日本語入力時のEnter誤送信を防止",
+      ],
+      results: [
+        "訪問者がスキル・実績を対話的に把握できるUXを実現",
+        "40年分の業務経歴から的確な回答を生成",
+        "Gemini無料枠で運用コストゼロ",
+        "フローティングボタン型UIでページ遷移なしに利用可能",
+      ],
+      techDetail: "Next.js API Route + Gemini 2.5 Flash。profile.md（業務経歴書）をビルド時に読み込み、システムプロンプトに注入するRAG的アプローチ。会話履歴（直近10件）をコンテキストに含めて文脈を維持。",
+    },
+  },
+  {
     slug: "contract-checker",
     title: "契約書リスクチェッカー",
     badge: "デモ公開中",
