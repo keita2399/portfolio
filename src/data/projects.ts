@@ -405,14 +405,14 @@ export const projects: Project[] = [
     badgeColor: "#16a34a",
     borderColor: "#16a34a",
     description:
-      "建設業界向けのBtoBマッチングプラットフォーム。地図ベースの検索、会員管理、決済連携、メールテンプレート管理など約30画面・40API・24テーブルの本格業務システム。企画提案から設計・実装・本番デプロイまで一人で担当。",
+      "業界特化型のBtoBマッチングプラットフォーム。地図ベースの検索、会員管理、決済連携、メールテンプレート管理など約30画面・40API・24テーブルの本格業務システム。企画提案から設計・実装・本番デプロイまで一人で担当。",
     stats: ["約30画面", "40 APIエンドポイント", "24テーブル"],
     tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "nodemailer"],
     thumbnail: "/thumbnails/btob-matching/03-home-map.png",
     screenshots: [
       { src: "/thumbnails/btob-matching/01-login.png", caption: "ログイン画面 — Cookie認証によるセッション管理" },
       { src: "/thumbnails/btob-matching/03-home-map.png", caption: "ホーム（地図検索） — 最大500件のピン同時表示・レスポンシブ対応" },
-      { src: "/thumbnails/btob-matching/04-search.png", caption: "ワード検索 — 工期・土質・数量・フリーワードで絞り込み" },
+      { src: "/thumbnails/btob-matching/04-search.png", caption: "ワード検索 — 複数条件・フリーワードで絞り込み" },
       { src: "/thumbnails/btob-matching/06-admin-dashboard.png", caption: "管理者ダッシュボード — 会員数・現場数・売上をリアルタイム集計" },
       { src: "/thumbnails/btob-matching/07-admin-users.png", caption: "会員管理 — 承認ワークフロー・ステータス管理" },
       { src: "/thumbnails/btob-matching/08-admin-projects.png", caption: "現場管理 — 登録内容の審査・承認" },
@@ -421,12 +421,12 @@ export const projects: Project[] = [
     ],
     detail: {
       overview:
-        "建設業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用まで一貫して担当。",
+        "特定業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用まで一貫して担当。",
       challenges: [
-        "地図上に最大500件のピンを同時表示しつつ、パフォーマンスを維持する検索UI",
+        "Google Maps上に最大500件のピンを同時表示しつつ、パフォーマンスを維持する検索UI",
         "会員登録→一時保存→本登録→管理者承認という多段階ワークフローの設計",
         "Cookie認証（httpOnly sessionToken）＋ HMAC署名による改ざん防止の実装",
-        "外部決済サービス（ZEUS Payment）とのWebhook連携・署名検証",
+        "外部決済サービスとのWebhook連携・署名検証",
         "24テーブル・日本語Enumを含むPrismaスキーマの設計と運用",
         "メールテンプレートの変数埋め込み時のXSS対策（HTMLエスケープ）",
       ],
@@ -440,13 +440,13 @@ export const projects: Project[] = [
       ],
       results: [
         "約30画面・40APIエンドポイント・24テーブルの業務システムを本番稼働",
-        "企画提案から本番デプロイまで一人で完遂（設計136人日規模）",
+        "企画提案から本番デプロイまで一人で完遂",
         "セキュリティレビューを実施し、セッション署名・CSRF対策・XSS防止・エラー情報漏洩対策を強化",
         "Vercel＋Neonのサーバーレス構成でインフラ管理コストを最小化",
         "管理者向けダッシュボード・メールテンプレート管理など運用機能も充実",
       ],
       techDetail:
-        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: ZEUS Payment Service (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
+        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
     },
   },
   {

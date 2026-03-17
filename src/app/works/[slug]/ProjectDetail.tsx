@@ -177,7 +177,7 @@ export default function ProjectDetail({ project }: { project: Project }) {
         <FadeIn>
           <section style={{ marginBottom: 48 }}>
             <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
-              課題
+              技術的チャレンジ
             </h2>
             <ul style={{ listStyle: "none", padding: 0 }}>
               {project.detail.challenges.map((item, i) => (
