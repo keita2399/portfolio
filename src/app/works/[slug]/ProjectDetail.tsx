@@ -1,8 +1,95 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { type Project } from "@/data/projects";
 import FadeIn from "@/components/FadeIn";
+
+function ScreenshotGallery({ screenshots, badgeColor }: { screenshots: { src: string; caption: string }[]; badgeColor: string }) {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  return (
+    <>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
+        {screenshots.map((ss, i) => (
+          <button
+            key={i}
+            onClick={() => setSelected(i)}
+            style={{
+              cursor: "pointer", border: "1px solid var(--border)", borderRadius: 4,
+              overflow: "hidden", background: "#fff", padding: 0, textAlign: "left",
+              transition: "box-shadow 0.2s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.boxShadow = `0 4px 16px ${badgeColor}22`)}
+            onMouseLeave={e => (e.currentTarget.style.boxShadow = "none")}
+          >
+            <div style={{ position: "relative", width: "100%", aspectRatio: "16/10", background: "#f5f5f5" }}>
+              <Image src={ss.src} alt={ss.caption} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" />
+            </div>
+            <div style={{ padding: "10px 12px", fontSize: 11, color: "var(--text-muted)", lineHeight: 1.5 }}>
+              {ss.caption}
+            </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      {selected !== null && (
+        <div
+          onClick={() => setSelected(null)}
+          style={{
+            position: "fixed", inset: 0, zIndex: 9999,
+            background: "rgba(0,0,0,0.85)", display: "flex",
+            alignItems: "center", justifyContent: "center",
+            cursor: "zoom-out", padding: 24,
+          }}
+        >
+          <div style={{ position: "relative", maxWidth: "90vw", maxHeight: "85vh", width: "100%" }}>
+            <Image
+              src={screenshots[selected].src}
+              alt={screenshots[selected].caption}
+              width={1280}
+              height={800}
+              style={{ width: "100%", height: "auto", maxHeight: "85vh", objectFit: "contain", borderRadius: 4 }}
+            />
+            <div style={{
+              position: "absolute", bottom: -36, left: 0, right: 0,
+              textAlign: "center", color: "#ccc", fontSize: 13,
+            }}>
+              {screenshots[selected].caption}
+            </div>
+          </div>
+          {/* Prev/Next */}
+          {selected > 0 && (
+            <button
+              onClick={e => { e.stopPropagation(); setSelected(selected - 1); }}
+              style={{
+                position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)",
+                background: "rgba(255,255,255,0.15)", border: "none", color: "#fff",
+                fontSize: 28, width: 44, height: 44, borderRadius: "50%", cursor: "pointer",
+              }}
+            >
+              ‹
+            </button>
+          )}
+          {selected < screenshots.length - 1 && (
+            <button
+              onClick={e => { e.stopPropagation(); setSelected(selected + 1); }}
+              style={{
+                position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)",
+                background: "rgba(255,255,255,0.15)", border: "none", color: "#fff",
+                fontSize: 28, width: 44, height: 44, borderRadius: "50%", cursor: "pointer",
+              }}
+            >
+              ›
+            </button>
+          )}
+        </div>
+      )}
+    </>
+  );
+}
 
 export default function ProjectDetail({ project }: { project: Project }) {
   return (
@@ -73,6 +160,18 @@ export default function ProjectDetail({ project }: { project: Project }) {
             </p>
           </section>
         </FadeIn>
+
+        {/* Screenshots */}
+        {project.screenshots && project.screenshots.length > 0 && (
+          <FadeIn>
+            <section style={{ marginBottom: 48 }}>
+              <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: `2px solid ${project.borderColor}` }}>
+                画面イメージ
+              </h2>
+              <ScreenshotGallery screenshots={project.screenshots} badgeColor={project.badgeColor} />
+            </section>
+          </FadeIn>
+        )}
 
         {/* Challenges */}
         <FadeIn>
