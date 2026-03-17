@@ -1,44 +1,74 @@
 ## 基本情報
 名前：松井 慶太
 拠点：山梨県
-経験年数：IT業界40年以上
-ポートフォリオ：https://portfolio-two-orpin-45.vercel.app/
+経験年数：IT業界40年以上（1985年〜）
+キャッチコピー：実装主導型フルスタックWebエンジニア（業務理解・設計対応可）
+
+## 職務要約
+業務理解を前提としたWebアプリケーションの設計・実装を得意とし、要件整理から実装・運用まで一貫して対応可能。
+特に、ユーザーが実現したい業務・体験をUI/UXとして具体化し、データ構造・API設計まで含めて実装として成立する形に落とし込むことを強みとする。
+AIツール（Claude Code等）を活用し、設計補助・実装支援・レビュー補助を取り入れながら、開発速度と品質の両立を実践。
+小規模チームでは設計方針整理や技術選定にも関与可能。現在は実装を主軸とし、チームの開発速度・品質を底上げする形で価値提供するスタイルを志向。
 
 ## スキル
 
 ### 業務級（40年の実務経験）
 - COBOL / PL/I — 金融系基幹システム開発
-- IBM メインフレーム アセンブラ（S/360系）
-- Java / J2EE / Oracle — 大規模業務システム設計・開発（25年）
+- IBM メインフレーム アセンブラ（S/360系）— 人事管理システム等（MVS, zLinux, AIX）
+- Java / J2EE / Spring Boot / Oracle — 大規模業務システム設計・開発（25年）
 
 ### 実践中（現在積極的に使用）
-- Python — FastAPI、データ分析、AI連携
 - TypeScript / React / Next.js — フルスタックWeb開発
+- Python / FastAPI — バックエンドAPI、データ分析、AI連携
+- Node.js — API実装、サーバーレス
 - AI活用（Claude Code、Gemini API）— 開発効率化、OCR、データ分析
 - Tailwind CSS — モダンUI構築
+- PostgreSQL / Prisma — データベース設計
 
 ### 習得中
 - Rust — システムプログラミング（33万行のC→Rust変換で実証済み）
 
+### DB・インフラ
+- PostgreSQL（Aurora PostgreSQL含む）, Oracle, MySQL, UDB
+- AWS, Azure（クラウド環境での開発・移行経験）
+- Docker, nginx, Vercel, GitHub Actions
+
+### 開発手法
+- アジャイル（スクラム）開発リード経験
+- ウォーターフォール開発対応可
+- 要件定義〜設計〜開発〜テスト〜保守（全工程経験）
+
 ## 得意なこと
 - レガシーシステム（COBOL/PL/I/RPG/VB6/MUMPS/Fortran等）のモダンWeb化
-- AI（Claude Code）を活用した高速開発 — 1日で鑑定書8本のドラフトを作成した実績
-- 40年の業務知識をAIのプロンプトに注入し、業務判断できるアプリを構築
+- ユーザー業務や利用シーンを理解した上での機能設計・UI設計
+- AI（Claude Code）を活用した高速開発
 - ソースコード読解のみ（仕様書なし）でのシステム分析・変換
+- 技術課題の調査・解決推進
+- 既存システムのモダナイズ・刷新
 
 ## 受けたい案件
+- フルスタックWebアプリ開発（Next.js + Python/FastAPI + PostgreSQL）
 - レガシーシステムのモダナイゼーション（Web化）
-- フルスタックWebアプリ開発（Next.js + Python/FastAPI）
 - AIを活用した業務効率化ツールの開発
-- コード品質評価・システム分析
+- SaaS型プロダクト開発
+- Java（Spring Boot）等の既存基盤との連携開発
+
+## 業務知識
+- 金融（生命保険、変額保険、銀行、証券）
+- BtoB取引DX
+- ECサイト
+- 輸送機器販売支援
+- 建設業
+- 公共系システム
 
 ## 実績サマリー
-- 17プロジェクト完了
+- 17プロジェクト完了（ポートフォリオ掲載分）
 - 10言語対応（COBOL, PL/I, RPG, VB6, MUMPS, Fortran, C, Lua, Ada, Rust）
 - 41万行のレガシーコード → 2.7万行に変換（平均85%削減）
 - 383,418件のコードコメントを収集・感情分析
+- 30件以上の業務プロジェクト経験（1985年〜現在）
 
-## 主要プロジェクト
+## 主要プロジェクト（ポートフォリオ掲載）
 
 ### AIアプリ（デモ公開中）
 1. **契約書リスクチェッカー** — 契約書をAIが条項ごとにリスク判定、修正案を提示
@@ -57,28 +87,24 @@
 12. **Fortran → Web** — NASAの土星磁場モデルを3Dインタラクティブ可視化（22%削減）
 
 ### コード鑑定書シリーズ（8本制作）
-13. **#001 hengband-lua** — 日本製ローグライク + Lua 5.0（note.com公開済み）
-14. **#002 BRL-CAD** — 米陸軍が40年メンテし続けたCADコード
-15. **#003 DSPython** — Nintendo DSの4MBにPythonを載せた話
-16. **#004 QEMU** — 天才が書いた47万行のCPUエミュレータ
-17. **#005 Whitaker's WORDS** — 米空軍大佐がAdaでラテン語辞書を作った話
-18. **#006 NASA NASTRAN** — 宇宙を飛ばすために書かれた10万行のFortran
-19. **#007 DikuMUD II** — コペンハーゲンの大学生が作ったMMORPG始祖
-20. **#008 NCSA Mosaic** — 世界初のWebブラウザのソースコード
+古いソースコードを発掘・分析し、コメントに残された開発者の声を伝える記事シリーズ。
+13〜20. hengband-lua, BRL-CAD, DSPython, QEMU, Whitaker's WORDS, NASA NASTRAN, DikuMUD II, NCSA Mosaic
 
-### その他
-21. **BtoBマッチング** — 建設業向けプラットフォーム（NDAにより詳細非公開、9割完了）
+### 業務系開発
+21. **BtoBマッチング** — 建設現場向け発生土・受入土マッチングプラットフォーム（Next.js + PostgreSQL + Docker、NDA）
 22. **移動時間計算** — Google Maps API連携
 23. **LINE通知 / LINE Claude Sync** — スマホ↔PC自動同期
 
-## 技術スタック
-- フロントエンド: React, Next.js, TypeScript, Tailwind CSS
-- バックエンド: FastAPI (Python), Node.js
-- データベース: SQLite, PostgreSQL, Prisma
-- AI: Claude Code, Gemini API (Vision/Text)
-- インフラ: Vercel, GitHub Pages, Docker, GitHub Actions
-- レガシー: COBOL, PL/I, RPG, VB6, MUMPS, Fortran, C, IBM ASM
+## 業務経歴（抜粋）
+- 建設現場マッチングプラットフォーム新規開発（1人請負 / 3ヶ月、フルスタック）
+- レガシーコード近代化PoC・技術記事制作（1人請負 / 1ヶ月）
+- B2B取引DX — 要件定義・基本設計・PostgreSQLバージョンアップ対応
+- 変額保険WEBシステム開発 — 開発リーダー兼PM / 26ヶ月、Azure移行・アジャイル導入
+- 保全解約システムペーパーレス対応 — PMリーダー / 15ヶ月、COBOL→Java刷新
+- 会員サイト管理システム改修 — Struts1削除、レスポンシブデザイン適用
+- 人事管理システム — PM / 85ヶ月（MVS, zLinux, AIX, COBOL, PLI, Java）
+- 音声コード管理システム — PM / 30ヶ月（C, C++, C#）
 
-## このポートフォリオについて
-このサイト自体もNext.js + TypeScript + Tailwind CSSで構築し、Vercelにデプロイしています。
-AIを活用した開発スタイルで、短期間で高品質なアウトプットを出せることが強みです。
+## 自己PR
+ユーザー業務や利用シーンを理解した上での機能設計・UI設計を重視しており、エンドユーザーや業務利用者に近い領域で価値を発揮することを志向している。
+SaaS型プロダクト開発、業務系システム開発いずれにも対応可能だが、ユーザー価値が明確に見えるプロジェクトにおいて特にパフォーマンスを発揮できる。
