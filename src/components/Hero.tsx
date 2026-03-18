@@ -3,8 +3,8 @@
 import FadeIn from "./FadeIn";
 import ScrollIndicator from "./ScrollIndicator";
 
-const oldTech = ["COBOL", "PL/I", "ASM", "MUMPS", "Fortran"];
-const newTech = ["TypeScript", "React", "Python", "Rust", "AI"];
+const mainTech = ["TypeScript", "React", "Next.js", "Node.js", "Python"];
+const aiTech = ["Claude Code", "Gemini AI"];
 
 export default function Hero() {
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -44,22 +44,22 @@ export default function Hero() {
 
         <FadeIn>
           <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 16px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.7, maxWidth: 560, fontWeight: 300 }}>
-            レガシーからクラウドへ —<br />
-            <strong style={{ color: "var(--accent)" }}>10言語・41万行</strong>のレガシーシステム変換実績を持つ<br />
-            40年の経験を持つITエンジニア
+            AIペア開発で、一人で「チーム」の成果を —<br />
+            <strong style={{ color: "var(--accent)" }}>設計・実装・レビュー・運用</strong>を一貫して完結<br />
+            40年の経験 × AIで、アイデアを動くプロダクトに
           </div>
         </FadeIn>
 
         <FadeIn>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40, alignItems: "center" }}>
-            {oldTech.map((t) => (
-              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid #ccc", borderRadius: 2, color: "var(--text-muted)", letterSpacing: 1 }}>
+            {mainTech.map((t) => (
+              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid var(--accent)", borderRadius: 2, color: "var(--accent)", letterSpacing: 1 }}>
                 {t}
               </span>
             ))}
-            <span style={{ color: "var(--accent)", fontSize: 14, margin: "0 4px" }}>→</span>
-            {newTech.map((t) => (
-              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid var(--accent)", borderRadius: 2, color: "var(--accent)", letterSpacing: 1 }}>
+            <span style={{ color: "var(--accent)", fontSize: 14, margin: "0 4px" }}>×</span>
+            {aiTech.map((t) => (
+              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid #2d8f4e", borderRadius: 2, color: "#2d8f4e", letterSpacing: 1, fontWeight: 600 }}>
                 {t}
               </span>
             ))}

@@ -29,6 +29,58 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  // === 本番稼働・モダンWeb・AIアプリ ===
+  {
+    slug: "btob-matching",
+    title: "業務系マッチングWebアプリ",
+    badge: "本番稼働中",
+    badgeColor: "#16a34a",
+    borderColor: "#16a34a",
+    description:
+      "業界特化型のBtoBマッチングプラットフォーム。地図ベースの検索、会員管理、決済連携、メールテンプレート管理など約30画面・40API・24テーブルの本格業務システム。企画提案から設計・実装・本番デプロイまで一人で担当。",
+    stats: ["約30画面", "40 APIエンドポイント", "24テーブル"],
+    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "nodemailer"],
+    thumbnail: "/thumbnails/btob-matching/03-home-map.png",
+    screenshots: [
+      { src: "/thumbnails/btob-matching/01-login.png", caption: "ログイン画面 — Cookie認証によるセッション管理" },
+      { src: "/thumbnails/btob-matching/03-home-map.png", caption: "ホーム（地図検索） — 最大500件のピン同時表示・レスポンシブ対応" },
+      { src: "/thumbnails/btob-matching/04-search.png", caption: "ワード検索 — 複数条件・フリーワードで絞り込み" },
+      { src: "/thumbnails/btob-matching/06-admin-dashboard.png", caption: "管理者ダッシュボード — 会員数・現場数・売上をリアルタイム集計" },
+      { src: "/thumbnails/btob-matching/07-admin-users.png", caption: "会員管理 — 承認ワークフロー・ステータス管理" },
+      { src: "/thumbnails/btob-matching/08-admin-projects.png", caption: "現場管理 — 登録内容の審査・承認" },
+      { src: "/thumbnails/btob-matching/09-admin-email.png", caption: "メールテンプレート管理 — テンプレート変数・プレビュー機能" },
+      { src: "/thumbnails/btob-matching/10-mobile-home.png", caption: "モバイル対応 — レスポンシブデザインで現場からも利用可能" },
+    ],
+    detail: {
+      overview:
+        "特定業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用まで一貫して担当。",
+      challenges: [
+        "Google Maps上に最大500件のピンを同時表示しつつ、パフォーマンスを維持する検索UI",
+        "会員登録→一時保存→本登録→管理者承認という多段階ワークフローの設計",
+        "Cookie認証（httpOnly sessionToken）＋ HMAC署名による改ざん防止の実装",
+        "外部決済サービスとのWebhook連携・署名検証",
+        "24テーブル・日本語Enumを含むPrismaスキーマの設計と運用",
+        "メールテンプレートの変数埋め込み時のXSS対策（HTMLエスケープ）",
+      ],
+      approach: [
+        "Next.js 14 App Routerでフロントエンド・APIを統合し、フルスタック構成を実現",
+        "Prisma ORM＋PostgreSQLで型安全なデータアクセス。日本語Enumで業務ロジックを直感的に表現",
+        "ミドルウェアでセッション検証・CSRF対策・管理者権限チェックを一元管理",
+        "Vercel（ホスティング）＋ Neon（PostgreSQL）＋ Vercel Blob（ファイルストレージ）のサーバーレス構成",
+        "nodemailerによるメール通知。テンプレート管理画面でマークダウン編集・リアルタイムプレビュー",
+        "タイムゾーン統一設計（DB/サーバーはUTC、フロント表示はJST変換）で日時の不整合を防止",
+      ],
+      results: [
+        "約30画面・40APIエンドポイント・24テーブルの業務システムを本番稼働",
+        "企画提案から本番デプロイまで一人で完遂",
+        "セキュリティレビューを実施し、セッション署名・CSRF対策・XSS防止・エラー情報漏洩対策を強化",
+        "Vercel＋Neonのサーバーレス構成でインフラ管理コストを最小化",
+        "管理者向けダッシュボード・メールテンプレート管理など運用機能も充実",
+      ],
+      techDetail:
+        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
+    },
+  },
   // === デモあり（動くものが先） ===
   {
     slug: "portfolio-chatbot",
@@ -136,6 +188,244 @@ export const projects: Project[] = [
       techDetail: "Next.js + TypeScript + Tailwind CSS + Gemini 2.5 Flash（Vision API）。推測禁止プロンプト設計で幻覚を抑制。",
     },
   },
+  {
+    slug: "ai-document-checker",
+    title: "AI 書類解析アプリ",
+    badge: "デモ公開中",
+    badgeColor: "#6366f1",
+    borderColor: "#6366f1",
+    externalUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/ai-document-checker.svg",
+    description:
+      "Gemini Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
+    stats: ["Gemini Vision API", "画像→構造化データ"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "書類画像をアップロードすると、Gemini Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
+      challenges: [
+        "多様な書類フォーマットへの対応（許可証、契約書、請求書等）",
+        "画像品質（傾き、ぼけ、影）による認識精度への影響",
+        "AIレスポンスの構造化（自由テキスト→JSON変換）",
+      ],
+      approach: [
+        "Gemini Vision APIのマルチモーダル機能で画像を直接解析",
+        "プロンプトエンジニアリングで構造化JSON出力を実現",
+        "PNG/JPEG/WebP/GIF対応、4MBまでのサイズ制限",
+      ],
+      results: [
+        "画像アップロードからAI解析結果表示までワンステップ",
+        "書類種別・内容・有効期限・注意点を自動抽出",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + Gemini API（Vision）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  UploadArea ──→ ImagePreview\n       │ Base64変換\n       ▼\n  page.tsx ──→ POST /api/analyze\n       │\n       ▼\n  AnalysisResult ──→ ResultField × N\n                 ──→ AlertBadge × N\n─────────────────────────────\nサーバー（Next.js API Route）\n  route.ts\n  ├─ 画像データ検証（MIME型、4MB制限）\n  ├─ Gemini API呼び出し\n  ├─ JSONレスポンス解析\n  └─ LINE通知送信（非同期）\n─────────────────────────────\n       ├─→ Gemini API（主系統）\n       ├─→ Claude API（代替系統）\n       └─→ LINE API（利用通知）",
+        dataFlow: [
+          "ユーザーが画像をドラッグ＆ドロップまたはクリック選択でアップロード",
+          "クライアント側で検証（MIME型チェック、4MB以下）→ FileReaderでBase64変換",
+          "POST /api/analyze にBase64データとMIME型を送信",
+          "サーバーで再検証（多層防御）後、Gemini 2.5 Flash APIに画像を送信",
+          "AIが書類種別を判定、各項目を信頼度スコア付きで抽出（JSON形式）",
+          "LINE Messaging APIで利用通知を非同期送信（失敗してもアプリに影響なし）",
+          "構造化された解析結果をクライアントに返却、信頼度バー・アラートバッジ付きで表示",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/analyze", description: "画像をBase64+MIME型で送信 → AIが書類種別・項目・信頼度・アラートをJSON返却" },
+        ],
+        dataModels:
+          "interface AnalysisResult {\n  documentType: string;\n  fields: AnalysisField[];  // 各項目\n  alerts: AnalysisAlert[];  // 警告\n  summary: string;\n  overallConfidence: number; // 0.0〜1.0\n}\n\ninterface AnalysisField {\n  label: string;\n  value: string;\n  confidence: number;\n}\n\ninterface AnalysisAlert {\n  type: 'error' | 'warning' | 'info';\n  message: string;\n}",
+        envVars: [
+          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API キー" },
+          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
+          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
+        ],
+      },
+    },
+  },
+  {
+    slug: "travel-time-app",
+    title: "移動時間計算アプリ",
+    badge: "デモ公開中",
+    badgeColor: "#0ea5e9",
+    borderColor: "#0ea5e9",
+    externalUrl: "https://travel-time-app-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/travel-time-app.svg",
+    description:
+      "Google Maps APIを活用した移動時間・距離計算アプリ。住所入力のオートコンプリート、地図クリックでの地点選択、車・電車・徒歩・自転車の4つの移動手段に対応。ルートも地図上に表示。",
+    stats: ["Google Maps API", "4移動手段対応"],
+    tags: ["Next.js", "TypeScript", "Google Maps API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "出発地と目的地を入力すると、Google Maps Directions APIでルート検索を行い、移動時間・距離・ルートを地図上に表示するWebアプリケーション。",
+      challenges: [
+        "Google Maps JavaScript APIの新しいfunctional API（setOptions/importLibrary）への対応",
+        "地図クリックイベントのstale closure問題（useRef パターンで解決）",
+        "移動手段によってルートが存在しない場合のエラーハンドリング",
+      ],
+      approach: [
+        "Google Places Autocompleteで住所入力を補完",
+        "地図クリック→Geocoderで逆ジオコーディング（座標→住所）",
+        "DirectionsServiceで4つの移動手段（車/電車/徒歩/自転車）のルート計算",
+        "DirectionsRendererでルートを地図上に描画",
+      ],
+      results: [
+        "住所入力・地図クリックの2つの方法で地点選択可能",
+        "4つの移動手段でリアルタイムにルート計算",
+        "ルートが見つからない場合のエラー表示",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + @googlemaps/js-api-loader。Maps JavaScript API, Directions API, Places API, Geocoding APIを使用。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  AddressInput(出発地) ←→ Places Autocomplete\n  AddressInput(目的地) ←→ Places Autocomplete\n  TravelModeSelector（車/電車/徒歩/自転車）\n       │\n       ▼\n  MapDisplay\n  ├─ DirectionsService.route()（ルート計算）\n  ├─ DirectionsRenderer（ルート描画）\n  ├─ Marker（出発地:青A、目的地:赤B）\n  └─ 地図クリック → Geocoder（逆ジオコーディング）\n       │\n       ▼\n  ResultCard（距離・時間表示）\n       │ POST /api/notify（非同期）\n       ▼\n  LINE Messaging API（利用通知）",
+        dataFlow: [
+          "Google Maps JavaScript APIを初期化（日本語/日本リージョン、デフォルト中心: 東京駅）",
+          "ユーザーが出発地を入力 → Placesオートコンプリートで候補表示（日本限定）",
+          "ユーザーが目的地を入力（入力 or 地図クリック→逆ジオコーディング）",
+          "移動手段を選択（車🚗/電車🚃/徒歩🚶/自転車🚲）",
+          "DirectionsService.route() でルート計算 → 地図上に緑色ポリラインで描画",
+          "ResultCardに距離・所要時間を表示、非同期でLINE通知を送信",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/notify", description: "出発地・目的地・移動手段をLINE Messaging APIで通知" },
+        ],
+        dataModels:
+          "type TravelMode = 'driving' | 'transit'\n                 | 'walking' | 'bicycling';\n\ninterface TravelResult {\n  origin: string;\n  destination: string;\n  distance: string;   // 例: \"15.2 km\"\n  duration: string;   // 例: \"25分\"\n  mode: TravelMode;\n}\n\ninterface LocationInput {\n  address: string;\n  lat: number;\n  lng: number;\n}",
+        envVars: [
+          { name: "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY", required: true, description: "Google Maps APIキー（クライアント公開）" },
+          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
+          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
+        ],
+      },
+    },
+  },
+  {
+    slug: "line-notify-app",
+    title: "LINE 通知デモアプリ",
+    badge: "デモ公開中",
+    badgeColor: "#06c755",
+    borderColor: "#06c755",
+    externalUrl: "https://line-notify-app-keita2399s-projects.vercel.app",
+    thumbnail: "/thumbnails/line-notify-app.svg",
+    description:
+      "LINE Messaging APIを使ったプッシュ通知デモアプリ。テキスト・画像・スタンプの3種類のメッセージをBotからLINEユーザーに送信可能。Webhookによるメッセージ受信にも対応。",
+    stats: ["LINE Messaging API", "3種メッセージ対応"],
+    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Tailwind CSS"],
+    detail: {
+      overview:
+        "LINE Messaging APIを活用し、Webアプリからワンクリックでテキスト・画像・スタンプをLINEに送信できるデモアプリケーション。送信履歴の管理やWebhookでのメッセージ受信にも対応。",
+      challenges: [
+        "LINE Developers ConsoleとOfficial Account Managerの設定手順の整理",
+        "Webhook署名検証（HMAC-SHA256）の実装",
+        "Channel Access TokenとUser IDの安全な管理",
+      ],
+      approach: [
+        "@line/bot-sdk でMessaging APIクライアントを構築",
+        "pushMessage APIでテキスト・画像・スタンプの3種類に対応",
+        "Webhookエンドポイントで受信メッセージの署名検証",
+        "送信履歴をクライアント側で管理・表示",
+      ],
+      results: [
+        "テキスト・画像URL・LINE公式スタンプの送信に対応",
+        "送信成功/失敗のステータス表示",
+        "Webhook署名検証によるセキュアなメッセージ受信",
+        "ポートフォリオ利用通知（LINE連携）",
+      ],
+      techDetail:
+        "Next.js 14 + TypeScript + Tailwind CSS + @line/bot-sdk。LINE Messaging API（pushMessage / Webhook）。",
+      designDoc: {
+        architecture:
+          "クライアント（ブラウザ）\n  MessageForm\n  ├─ メッセージ種別選択（テキスト/画像/スタンプ）\n  ├─ 内容入力\n  └─ 送信ボタン\n       │ POST /api/send\n       ▼\n  MessageHistory ←── 送信結果を追記\n─────────────────────────────\nサーバー（Next.js API Routes）\n  /api/send\n  ├─ バリデーション\n  ├─ LINE SDK → pushMessage\n  └─ 利用通知（非同期）\n\n  /api/webhook\n  ├─ HMAC-SHA256署名検証\n  └─ イベントログ出力\n─────────────────────────────\n       ▼\n  LINE Messaging API → ユーザーのLINE",
+        dataFlow: [
+          "ユーザーがメッセージ種別を選択（テキスト/画像URL/スタンプ）",
+          "対応する入力欄に内容を入力し、送信ボタンを押下",
+          "POST /api/send にリクエスト → サーバーで入力バリデーション",
+          "LINE SDK の MessagingApiClient でプッシュメッセージ送信",
+          "利用通知を非同期送信（Fire & Forget）",
+          "成功/失敗レスポンスをクライアントに返却、MessageHistoryに追加表示",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/send", description: "テキスト/画像/スタンプをLINE Messaging APIで送信" },
+          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信（HMAC-SHA256署名検証）" },
+        ],
+        dataModels:
+          "interface SendMessageRequest {\n  type: 'text' | 'image' | 'sticker';\n  text?: string;\n  imageUrl?: string;\n  packageId?: string;\n  stickerId?: string;\n}\n\ninterface MessageLog {\n  id: string;\n  type: 'text' | 'image' | 'sticker';\n  content: string;\n  status: 'sent' | 'failed';\n  timestamp: Date;\n}",
+        envVars: [
+          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE Bot認証トークン" },
+          { name: "LINE_CHANNEL_SECRET", required: true, description: "Webhook署名検証用シークレット" },
+          { name: "LINE_DEFAULT_USER_ID", required: true, description: "メッセージ送信先ユーザーID" },
+        ],
+      },
+    },
+  },
+  {
+    slug: "line-claude-sync",
+    title: "LINE Claude Sync",
+    badge: "デモ公開中",
+    badgeColor: "#06c755",
+    borderColor: "#06c755",
+    externalUrl: "/demo/chat",
+    thumbnail: "/thumbnails/line-claude-sync.svg",
+    description:
+      "スマホのLINEからAIに相談 → 会話が自動でPCのClaude Code CLIに共有される仕組み。Gemini/Claude切替対応。GitHub Gistをストレージにしたサーバーレス構成で、手動操作ゼロの完全自動同期を実現。",
+    stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
+    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
+    detail: {
+      overview:
+        "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
+      challenges: [
+        "スマホ（LINE）とPC（Claude Code CLI）の間にネイティブな連携手段がない",
+        "「メモして」などの手動トリガーではユーザーが忘れる",
+        "複数のCLIインスタンス間での情報共有",
+        "サーバーレスでデータベースを使わない設計",
+      ],
+      approach: [
+        "LINE Messaging API + Vercel Serverless Functionsでwebhookを処理",
+        "GitHub Gistをストレージとして活用（会話ログ + 設定を保存）",
+        "毎メッセージ自動保存（バッチ処理・手動トリガー不要）",
+        "PC側はタスクスケジューラで5分おきにGist→CLAUDE.mdに同期",
+      ],
+      results: [
+        "ユーザー操作ゼロの完全自動同期を実現",
+        "Gemini（無料）/ Claude（有料）のLINE上での切替機能",
+        "全CLIインスタンスで共有される~/.claude/CLAUDE.mdへの自動反映",
+        "サーバーレス＆DB不要のシンプル構成",
+      ],
+      techDetail:
+        "Next.js 15 + TypeScript + Vercel Serverless Functions。LINE Messaging API（Webhook）+ Gemini API / Claude API（切替可能）。GitHub Gist API をストレージとして使用。PC側はPowerShellスクリプト + Windows タスクスケジューラで自動同期。",
+      designDoc: {
+        architecture:
+          "モバイル層（LINE）\n  ユーザー → LINE App → LINE Messaging API\n       │ Webhook POST\n       ▼\nサーバー層（Vercel / Next.js）\n  /api/webhook/route.ts\n  1. LINE署名検証（HMAC-SHA256）\n  2. Gist読取: conversation.json + settings\n  3. AIルーティング（Claude or Gemini）\n  4. 会話履歴に追記\n  5. Gist更新（JSON + Markdown）\n  6. LINEへ応答返信\n       │\n       ├─→ GitHub Gist API（ストレージ）\n       ├─→ Claude API / Gemini API\n       │\n       │ 5分間隔で同期\n       ▼\nデスクトップ層（Windows / Unix）\n  sync-gist.ps1 / sync-gist.sh\n  ├─ GitHub API経由でGist取得\n  └─ ~/.claude/CLAUDE.md に書き込み\n  → Claude Code CLI が更新コンテキストを読込",
+        dataFlow: [
+          "ユーザーがLINEでメッセージ送信 → LINE PlatformがWebhook POSTを送信",
+          "HMAC-SHA256で署名検証 → GitHub GistからGist読取（conversation.json, settings.json）",
+          "モデル切替コマンドチェック（\"claude\"/\"gemini\"/\"クロード\"/\"ジェミニ\"）",
+          "直近20メッセージをコンテキストとしてAI APIに送信 → 応答を受信",
+          "conversation.jsonに会話追加、claude-memo.mdにタイムスタンプ付きログを追記",
+          "Gist更新（PATCH API）→ LINEにreplyTokenで応答返信（4900文字制限）",
+          "PC側: タスクスケジューラが5分間隔でGist→CLAUDE.mdに同期",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信 → AI応答 → Gist保存 → LINE返信" },
+        ],
+        dataModels:
+          "// GitHub Gist ストレージ構成\n\nconversation.json:\n[\n  { \"role\": \"user\", \"content\": \"...\" },\n  { \"role\": \"assistant\", \"content\": \"...\" }\n]  // 直近20件保持\n\nsettings.json:\n{ \"model\": \"claude\" | \"gemini\" }\n\nclaude-memo.md:\n# LINE会話ログ\n**[2026/3/14 9:28:01]**\n**ユーザー:** こんにちは\n**Claude:** こんにちは！",
+        envVars: [
+          { name: "LINE_CHANNEL_SECRET", required: true, description: "LINE署名検証用シークレット" },
+          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE API認証トークン" },
+          { name: "ANTHROPIC_API_KEY", required: true, description: "Claude API アクセスキー" },
+          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API アクセスキー" },
+          { name: "GITHUB_TOKEN", required: true, description: "GitHub Gist読み書き用トークン" },
+          { name: "GIST_ID", required: true, description: "対象GistのID" },
+        ],
+      },
+    },
+  },
+  // === レガシーコード変換 ===
   {
     slug: "legacy-code-archive",
     title: "Legacy Code Museum & コード鑑定書",
@@ -396,294 +686,6 @@ export const projects: Project[] = [
       ],
       techDetail:
         "GnuCOBOL 3.2（ソースビルド）+ Berkeley DB + WSL2（Ubuntu）。COPY句解析にPythonスクリプトを使用。",
-    },
-  },
-  {
-    slug: "btob-matching",
-    title: "業務系マッチングWebアプリ",
-    badge: "本番稼働中",
-    badgeColor: "#16a34a",
-    borderColor: "#16a34a",
-    description:
-      "業界特化型のBtoBマッチングプラットフォーム。地図ベースの検索、会員管理、決済連携、メールテンプレート管理など約30画面・40API・24テーブルの本格業務システム。企画提案から設計・実装・本番デプロイまで一人で担当。",
-    stats: ["約30画面", "40 APIエンドポイント", "24テーブル"],
-    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "nodemailer"],
-    thumbnail: "/thumbnails/btob-matching/03-home-map.png",
-    screenshots: [
-      { src: "/thumbnails/btob-matching/01-login.png", caption: "ログイン画面 — Cookie認証によるセッション管理" },
-      { src: "/thumbnails/btob-matching/03-home-map.png", caption: "ホーム（地図検索） — 最大500件のピン同時表示・レスポンシブ対応" },
-      { src: "/thumbnails/btob-matching/04-search.png", caption: "ワード検索 — 複数条件・フリーワードで絞り込み" },
-      { src: "/thumbnails/btob-matching/06-admin-dashboard.png", caption: "管理者ダッシュボード — 会員数・現場数・売上をリアルタイム集計" },
-      { src: "/thumbnails/btob-matching/07-admin-users.png", caption: "会員管理 — 承認ワークフロー・ステータス管理" },
-      { src: "/thumbnails/btob-matching/08-admin-projects.png", caption: "現場管理 — 登録内容の審査・承認" },
-      { src: "/thumbnails/btob-matching/09-admin-email.png", caption: "メールテンプレート管理 — テンプレート変数・プレビュー機能" },
-      { src: "/thumbnails/btob-matching/10-mobile-home.png", caption: "モバイル対応 — レスポンシブデザインで現場からも利用可能" },
-    ],
-    detail: {
-      overview:
-        "特定業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用まで一貫して担当。",
-      challenges: [
-        "Google Maps上に最大500件のピンを同時表示しつつ、パフォーマンスを維持する検索UI",
-        "会員登録→一時保存→本登録→管理者承認という多段階ワークフローの設計",
-        "Cookie認証（httpOnly sessionToken）＋ HMAC署名による改ざん防止の実装",
-        "外部決済サービスとのWebhook連携・署名検証",
-        "24テーブル・日本語Enumを含むPrismaスキーマの設計と運用",
-        "メールテンプレートの変数埋め込み時のXSS対策（HTMLエスケープ）",
-      ],
-      approach: [
-        "Next.js 14 App Routerでフロントエンド・APIを統合し、フルスタック構成を実現",
-        "Prisma ORM＋PostgreSQLで型安全なデータアクセス。日本語Enumで業務ロジックを直感的に表現",
-        "ミドルウェアでセッション検証・CSRF対策・管理者権限チェックを一元管理",
-        "Vercel（ホスティング）＋ Neon（PostgreSQL）＋ Vercel Blob（ファイルストレージ）のサーバーレス構成",
-        "nodemailerによるメール通知。テンプレート管理画面でマークダウン編集・リアルタイムプレビュー",
-        "タイムゾーン統一設計（DB/サーバーはUTC、フロント表示はJST変換）で日時の不整合を防止",
-      ],
-      results: [
-        "約30画面・40APIエンドポイント・24テーブルの業務システムを本番稼働",
-        "企画提案から本番デプロイまで一人で完遂",
-        "セキュリティレビューを実施し、セッション署名・CSRF対策・XSS防止・エラー情報漏洩対策を強化",
-        "Vercel＋Neonのサーバーレス構成でインフラ管理コストを最小化",
-        "管理者向けダッシュボード・メールテンプレート管理など運用機能も充実",
-      ],
-      techDetail:
-        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
-    },
-  },
-  {
-    slug: "ai-document-checker",
-    title: "AI 書類解析アプリ",
-    badge: "デモ公開中",
-    badgeColor: "#6366f1",
-    borderColor: "#6366f1",
-    externalUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
-    thumbnail: "/thumbnails/ai-document-checker.svg",
-    description:
-      "Gemini Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
-    stats: ["Gemini Vision API", "画像→構造化データ"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
-    detail: {
-      overview:
-        "書類画像をアップロードすると、Gemini Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
-      challenges: [
-        "多様な書類フォーマットへの対応（許可証、契約書、請求書等）",
-        "画像品質（傾き、ぼけ、影）による認識精度への影響",
-        "AIレスポンスの構造化（自由テキスト→JSON変換）",
-      ],
-      approach: [
-        "Gemini Vision APIのマルチモーダル機能で画像を直接解析",
-        "プロンプトエンジニアリングで構造化JSON出力を実現",
-        "PNG/JPEG/WebP/GIF対応、4MBまでのサイズ制限",
-      ],
-      results: [
-        "画像アップロードからAI解析結果表示までワンステップ",
-        "書類種別・内容・有効期限・注意点を自動抽出",
-        "ポートフォリオ利用通知（LINE連携）",
-      ],
-      techDetail:
-        "Next.js 14 + TypeScript + Tailwind CSS + Gemini API（Vision）。サーバーサイドでAPI呼び出し、クライアントはBase64エンコードで画像送信。",
-      designDoc: {
-        architecture:
-          "クライアント（ブラウザ）\n  UploadArea ──→ ImagePreview\n       │ Base64変換\n       ▼\n  page.tsx ──→ POST /api/analyze\n       │\n       ▼\n  AnalysisResult ──→ ResultField × N\n                 ──→ AlertBadge × N\n─────────────────────────────\nサーバー（Next.js API Route）\n  route.ts\n  ├─ 画像データ検証（MIME型、4MB制限）\n  ├─ Gemini API呼び出し\n  ├─ JSONレスポンス解析\n  └─ LINE通知送信（非同期）\n─────────────────────────────\n       ├─→ Gemini API（主系統）\n       ├─→ Claude API（代替系統）\n       └─→ LINE API（利用通知）",
-        dataFlow: [
-          "ユーザーが画像をドラッグ＆ドロップまたはクリック選択でアップロード",
-          "クライアント側で検証（MIME型チェック、4MB以下）→ FileReaderでBase64変換",
-          "POST /api/analyze にBase64データとMIME型を送信",
-          "サーバーで再検証（多層防御）後、Gemini 2.5 Flash APIに画像を送信",
-          "AIが書類種別を判定、各項目を信頼度スコア付きで抽出（JSON形式）",
-          "LINE Messaging APIで利用通知を非同期送信（失敗してもアプリに影響なし）",
-          "構造化された解析結果をクライアントに返却、信頼度バー・アラートバッジ付きで表示",
-        ],
-        apiSpecs: [
-          { method: "POST", path: "/api/analyze", description: "画像をBase64+MIME型で送信 → AIが書類種別・項目・信頼度・アラートをJSON返却" },
-        ],
-        dataModels:
-          "interface AnalysisResult {\n  documentType: string;\n  fields: AnalysisField[];  // 各項目\n  alerts: AnalysisAlert[];  // 警告\n  summary: string;\n  overallConfidence: number; // 0.0〜1.0\n}\n\ninterface AnalysisField {\n  label: string;\n  value: string;\n  confidence: number;\n}\n\ninterface AnalysisAlert {\n  type: 'error' | 'warning' | 'info';\n  message: string;\n}",
-        envVars: [
-          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API キー" },
-          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
-          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
-        ],
-      },
-    },
-  },
-  {
-    slug: "travel-time-app",
-    title: "移動時間計算アプリ",
-    badge: "デモ公開中",
-    badgeColor: "#0ea5e9",
-    borderColor: "#0ea5e9",
-    externalUrl: "https://travel-time-app-keita2399s-projects.vercel.app",
-    thumbnail: "/thumbnails/travel-time-app.svg",
-    description:
-      "Google Maps APIを活用した移動時間・距離計算アプリ。住所入力のオートコンプリート、地図クリックでの地点選択、車・電車・徒歩・自転車の4つの移動手段に対応。ルートも地図上に表示。",
-    stats: ["Google Maps API", "4移動手段対応"],
-    tags: ["Next.js", "TypeScript", "Google Maps API", "Tailwind CSS"],
-    detail: {
-      overview:
-        "出発地と目的地を入力すると、Google Maps Directions APIでルート検索を行い、移動時間・距離・ルートを地図上に表示するWebアプリケーション。",
-      challenges: [
-        "Google Maps JavaScript APIの新しいfunctional API（setOptions/importLibrary）への対応",
-        "地図クリックイベントのstale closure問題（useRef パターンで解決）",
-        "移動手段によってルートが存在しない場合のエラーハンドリング",
-      ],
-      approach: [
-        "Google Places Autocompleteで住所入力を補完",
-        "地図クリック→Geocoderで逆ジオコーディング（座標→住所）",
-        "DirectionsServiceで4つの移動手段（車/電車/徒歩/自転車）のルート計算",
-        "DirectionsRendererでルートを地図上に描画",
-      ],
-      results: [
-        "住所入力・地図クリックの2つの方法で地点選択可能",
-        "4つの移動手段でリアルタイムにルート計算",
-        "ルートが見つからない場合のエラー表示",
-        "ポートフォリオ利用通知（LINE連携）",
-      ],
-      techDetail:
-        "Next.js 14 + TypeScript + Tailwind CSS + @googlemaps/js-api-loader。Maps JavaScript API, Directions API, Places API, Geocoding APIを使用。",
-      designDoc: {
-        architecture:
-          "クライアント（ブラウザ）\n  AddressInput(出発地) ←→ Places Autocomplete\n  AddressInput(目的地) ←→ Places Autocomplete\n  TravelModeSelector（車/電車/徒歩/自転車）\n       │\n       ▼\n  MapDisplay\n  ├─ DirectionsService.route()（ルート計算）\n  ├─ DirectionsRenderer（ルート描画）\n  ├─ Marker（出発地:青A、目的地:赤B）\n  └─ 地図クリック → Geocoder（逆ジオコーディング）\n       │\n       ▼\n  ResultCard（距離・時間表示）\n       │ POST /api/notify（非同期）\n       ▼\n  LINE Messaging API（利用通知）",
-        dataFlow: [
-          "Google Maps JavaScript APIを初期化（日本語/日本リージョン、デフォルト中心: 東京駅）",
-          "ユーザーが出発地を入力 → Placesオートコンプリートで候補表示（日本限定）",
-          "ユーザーが目的地を入力（入力 or 地図クリック→逆ジオコーディング）",
-          "移動手段を選択（車🚗/電車🚃/徒歩🚶/自転車🚲）",
-          "DirectionsService.route() でルート計算 → 地図上に緑色ポリラインで描画",
-          "ResultCardに距離・所要時間を表示、非同期でLINE通知を送信",
-        ],
-        apiSpecs: [
-          { method: "POST", path: "/api/notify", description: "出発地・目的地・移動手段をLINE Messaging APIで通知" },
-        ],
-        dataModels:
-          "type TravelMode = 'driving' | 'transit'\n                 | 'walking' | 'bicycling';\n\ninterface TravelResult {\n  origin: string;\n  destination: string;\n  distance: string;   // 例: \"15.2 km\"\n  duration: string;   // 例: \"25分\"\n  mode: TravelMode;\n}\n\ninterface LocationInput {\n  address: string;\n  lat: number;\n  lng: number;\n}",
-        envVars: [
-          { name: "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY", required: true, description: "Google Maps APIキー（クライアント公開）" },
-          { name: "LINE_NOTIFY_TOKEN", required: false, description: "LINE通知用アクセストークン" },
-          { name: "LINE_NOTIFY_USER_ID", required: false, description: "LINE通知先ユーザーID" },
-        ],
-      },
-    },
-  },
-  {
-    slug: "line-notify-app",
-    title: "LINE 通知デモアプリ",
-    badge: "デモ公開中",
-    badgeColor: "#06c755",
-    borderColor: "#06c755",
-    externalUrl: "https://line-notify-app-keita2399s-projects.vercel.app",
-    thumbnail: "/thumbnails/line-notify-app.svg",
-    description:
-      "LINE Messaging APIを使ったプッシュ通知デモアプリ。テキスト・画像・スタンプの3種類のメッセージをBotからLINEユーザーに送信可能。Webhookによるメッセージ受信にも対応。",
-    stats: ["LINE Messaging API", "3種メッセージ対応"],
-    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Tailwind CSS"],
-    detail: {
-      overview:
-        "LINE Messaging APIを活用し、Webアプリからワンクリックでテキスト・画像・スタンプをLINEに送信できるデモアプリケーション。送信履歴の管理やWebhookでのメッセージ受信にも対応。",
-      challenges: [
-        "LINE Developers ConsoleとOfficial Account Managerの設定手順の整理",
-        "Webhook署名検証（HMAC-SHA256）の実装",
-        "Channel Access TokenとUser IDの安全な管理",
-      ],
-      approach: [
-        "@line/bot-sdk でMessaging APIクライアントを構築",
-        "pushMessage APIでテキスト・画像・スタンプの3種類に対応",
-        "Webhookエンドポイントで受信メッセージの署名検証",
-        "送信履歴をクライアント側で管理・表示",
-      ],
-      results: [
-        "テキスト・画像URL・LINE公式スタンプの送信に対応",
-        "送信成功/失敗のステータス表示",
-        "Webhook署名検証によるセキュアなメッセージ受信",
-        "ポートフォリオ利用通知（LINE連携）",
-      ],
-      techDetail:
-        "Next.js 14 + TypeScript + Tailwind CSS + @line/bot-sdk。LINE Messaging API（pushMessage / Webhook）。",
-      designDoc: {
-        architecture:
-          "クライアント（ブラウザ）\n  MessageForm\n  ├─ メッセージ種別選択（テキスト/画像/スタンプ）\n  ├─ 内容入力\n  └─ 送信ボタン\n       │ POST /api/send\n       ▼\n  MessageHistory ←── 送信結果を追記\n─────────────────────────────\nサーバー（Next.js API Routes）\n  /api/send\n  ├─ バリデーション\n  ├─ LINE SDK → pushMessage\n  └─ 利用通知（非同期）\n\n  /api/webhook\n  ├─ HMAC-SHA256署名検証\n  └─ イベントログ出力\n─────────────────────────────\n       ▼\n  LINE Messaging API → ユーザーのLINE",
-        dataFlow: [
-          "ユーザーがメッセージ種別を選択（テキスト/画像URL/スタンプ）",
-          "対応する入力欄に内容を入力し、送信ボタンを押下",
-          "POST /api/send にリクエスト → サーバーで入力バリデーション",
-          "LINE SDK の MessagingApiClient でプッシュメッセージ送信",
-          "利用通知を非同期送信（Fire & Forget）",
-          "成功/失敗レスポンスをクライアントに返却、MessageHistoryに追加表示",
-        ],
-        apiSpecs: [
-          { method: "POST", path: "/api/send", description: "テキスト/画像/スタンプをLINE Messaging APIで送信" },
-          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信（HMAC-SHA256署名検証）" },
-        ],
-        dataModels:
-          "interface SendMessageRequest {\n  type: 'text' | 'image' | 'sticker';\n  text?: string;\n  imageUrl?: string;\n  packageId?: string;\n  stickerId?: string;\n}\n\ninterface MessageLog {\n  id: string;\n  type: 'text' | 'image' | 'sticker';\n  content: string;\n  status: 'sent' | 'failed';\n  timestamp: Date;\n}",
-        envVars: [
-          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE Bot認証トークン" },
-          { name: "LINE_CHANNEL_SECRET", required: true, description: "Webhook署名検証用シークレット" },
-          { name: "LINE_DEFAULT_USER_ID", required: true, description: "メッセージ送信先ユーザーID" },
-        ],
-      },
-    },
-  },
-  {
-    slug: "line-claude-sync",
-    title: "LINE Claude Sync",
-    badge: "デモ公開中",
-    badgeColor: "#06c755",
-    borderColor: "#06c755",
-    externalUrl: "/demo/chat",
-    thumbnail: "/thumbnails/line-claude-sync.svg",
-    description:
-      "スマホのLINEからAIに相談 → 会話が自動でPCのClaude Code CLIに共有される仕組み。Gemini/Claude切替対応。GitHub Gistをストレージにしたサーバーレス構成で、手動操作ゼロの完全自動同期を実現。",
-    stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
-    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
-    detail: {
-      overview:
-        "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
-      challenges: [
-        "スマホ（LINE）とPC（Claude Code CLI）の間にネイティブな連携手段がない",
-        "「メモして」などの手動トリガーではユーザーが忘れる",
-        "複数のCLIインスタンス間での情報共有",
-        "サーバーレスでデータベースを使わない設計",
-      ],
-      approach: [
-        "LINE Messaging API + Vercel Serverless Functionsでwebhookを処理",
-        "GitHub Gistをストレージとして活用（会話ログ + 設定を保存）",
-        "毎メッセージ自動保存（バッチ処理・手動トリガー不要）",
-        "PC側はタスクスケジューラで5分おきにGist→CLAUDE.mdに同期",
-      ],
-      results: [
-        "ユーザー操作ゼロの完全自動同期を実現",
-        "Gemini（無料）/ Claude（有料）のLINE上での切替機能",
-        "全CLIインスタンスで共有される~/.claude/CLAUDE.mdへの自動反映",
-        "サーバーレス＆DB不要のシンプル構成",
-      ],
-      techDetail:
-        "Next.js 15 + TypeScript + Vercel Serverless Functions。LINE Messaging API（Webhook）+ Gemini API / Claude API（切替可能）。GitHub Gist API をストレージとして使用。PC側はPowerShellスクリプト + Windows タスクスケジューラで自動同期。",
-      designDoc: {
-        architecture:
-          "モバイル層（LINE）\n  ユーザー → LINE App → LINE Messaging API\n       │ Webhook POST\n       ▼\nサーバー層（Vercel / Next.js）\n  /api/webhook/route.ts\n  1. LINE署名検証（HMAC-SHA256）\n  2. Gist読取: conversation.json + settings\n  3. AIルーティング（Claude or Gemini）\n  4. 会話履歴に追記\n  5. Gist更新（JSON + Markdown）\n  6. LINEへ応答返信\n       │\n       ├─→ GitHub Gist API（ストレージ）\n       ├─→ Claude API / Gemini API\n       │\n       │ 5分間隔で同期\n       ▼\nデスクトップ層（Windows / Unix）\n  sync-gist.ps1 / sync-gist.sh\n  ├─ GitHub API経由でGist取得\n  └─ ~/.claude/CLAUDE.md に書き込み\n  → Claude Code CLI が更新コンテキストを読込",
-        dataFlow: [
-          "ユーザーがLINEでメッセージ送信 → LINE PlatformがWebhook POSTを送信",
-          "HMAC-SHA256で署名検証 → GitHub GistからGist読取（conversation.json, settings.json）",
-          "モデル切替コマンドチェック（\"claude\"/\"gemini\"/\"クロード\"/\"ジェミニ\"）",
-          "直近20メッセージをコンテキストとしてAI APIに送信 → 応答を受信",
-          "conversation.jsonに会話追加、claude-memo.mdにタイムスタンプ付きログを追記",
-          "Gist更新（PATCH API）→ LINEにreplyTokenで応答返信（4900文字制限）",
-          "PC側: タスクスケジューラが5分間隔でGist→CLAUDE.mdに同期",
-        ],
-        apiSpecs: [
-          { method: "POST", path: "/api/webhook", description: "LINE Webhookイベント受信 → AI応答 → Gist保存 → LINE返信" },
-        ],
-        dataModels:
-          "// GitHub Gist ストレージ構成\n\nconversation.json:\n[\n  { \"role\": \"user\", \"content\": \"...\" },\n  { \"role\": \"assistant\", \"content\": \"...\" }\n]  // 直近20件保持\n\nsettings.json:\n{ \"model\": \"claude\" | \"gemini\" }\n\nclaude-memo.md:\n# LINE会話ログ\n**[2026/3/14 9:28:01]**\n**ユーザー:** こんにちは\n**Claude:** こんにちは！",
-        envVars: [
-          { name: "LINE_CHANNEL_SECRET", required: true, description: "LINE署名検証用シークレット" },
-          { name: "LINE_CHANNEL_ACCESS_TOKEN", required: true, description: "LINE API認証トークン" },
-          { name: "ANTHROPIC_API_KEY", required: true, description: "Claude API アクセスキー" },
-          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini API アクセスキー" },
-          { name: "GITHUB_TOKEN", required: true, description: "GitHub Gist読み書き用トークン" },
-          { name: "GIST_ID", required: true, description: "対象GistのID" },
-        ],
-      },
     },
   },
   {

@@ -3,14 +3,14 @@
 import FadeIn from "./FadeIn";
 
 const skills = [
+  { name: "AI活用 (Claude Code)", pct: 95, color: "#2d8f4e", level: "主力ツール" },
+  { name: "TypeScript", pct: 85, color: "#c8860a", level: "業務級" },
+  { name: "React / Next.js", pct: 85, color: "#c8860a", level: "業務級" },
+  { name: "Node.js / Prisma", pct: 80, color: "#c8860a", level: "業務級" },
+  { name: "Python / FastAPI", pct: 70, color: "#c8860a", level: "業務級" },
+  { name: "Java / Spring Boot", pct: 85, color: "#4a90d9", level: "業務級" },
+  { name: "PostgreSQL", pct: 80, color: "#4a90d9", level: "業務級" },
   { name: "COBOL / PL/I", pct: 95, color: "#999", level: "業務級" },
-  { name: "IBM Mainframe ASM", pct: 88, color: "#999", level: "業務級" },
-  { name: "Java", pct: 85, color: "#4a90d9", level: "業務級" },
-  { name: "Python", pct: 65, color: "#c8860a", level: "実践中" },
-  { name: "TypeScript", pct: 60, color: "#c8860a", level: "実践中" },
-  { name: "React / Next.js", pct: 55, color: "#c8860a", level: "実践中" },
-  { name: "Rust", pct: 40, color: "#c8860a", level: "習得中" },
-  { name: "AI活用 (Claude Code)", pct: 90, color: "#2d8f4e", level: "実践中" },
 ];
 
 export default function Skills() {
@@ -48,7 +48,7 @@ export default function Skills() {
           <div style={{ marginTop: 48, padding: "20px 24px", border: "1px solid #ddd", borderLeft: "3px solid var(--accent)", borderRadius: 2, maxWidth: 600, background: "#fff" }}>
             <div style={{ fontSize: 11, color: "var(--accent)", marginBottom: 8, letterSpacing: 1 }}>NOTE</div>
             <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>
-              モダン技術は現在も積極的に習得中です。40年の経験とAIを組み合わせ、レガシーとモダンの橋渡しができることが私の強みです。直近では8言語のレガシーシステム変換を完了し、383,418件のコードコメント分析プロジェクトを推進しています。
+              AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結。直近ではSaaSプラットフォームを4ヶ月で本番稼働させた実績があります。40年の業務理解力 × AIの開発速度で、一人でチーム規模の成果を出すスタイルです。
             </div>
           </div>
         </FadeIn>
