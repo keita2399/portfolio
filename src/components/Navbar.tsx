@@ -43,10 +43,11 @@ export default function Navbar() {
         ))}
         <Link
           href="/resume"
-          className="nav-link"
+          className="cta-primary"
           style={{
-            color: "var(--text-muted)", fontSize: 12, letterSpacing: 1,
-            textDecoration: "none", padding: 4, cursor: "pointer",
+            color: "#fff", fontSize: 11, letterSpacing: 1, fontWeight: 600,
+            textDecoration: "none", padding: "5px 14px", cursor: "pointer",
+            background: "var(--accent)", borderRadius: 3,
           }}
         >
           経歴書
