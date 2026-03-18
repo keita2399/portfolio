@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 const links = [
   { href: "#timeline", label: "キャリア" },
   { href: "#skills", label: "スキル" },
@@ -39,6 +41,16 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
+        <Link
+          href="/resume"
+          className="nav-link"
+          style={{
+            color: "var(--text-muted)", fontSize: 12, letterSpacing: 1,
+            textDecoration: "none", padding: 4, cursor: "pointer",
+          }}
+        >
+          経歴書
+        </Link>
       </div>
     </nav>
   );
