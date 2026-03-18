@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { projects, getProjectBySlug } from "@/data/projects";
+import { projects, legacyProjects, getProjectBySlug } from "@/data/projects";
 import type { Metadata } from "next";
 import ProjectDetail from "./ProjectDetail";
 
@@ -8,7 +8,7 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return [...projects, ...legacyProjects].map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -425,7 +425,30 @@ export const projects: Project[] = [
       },
     },
   },
-  // === レガシーコード変換 ===
+  // === レガシーコード変換（サマリー） ===
+  {
+    slug: "legacy-conversions",
+    title: "レガシーコード変換プロジェクト",
+    badge: "10言語対応",
+    badgeColor: "#999",
+    borderColor: "#999",
+    description:
+      "COBOL・PL/I・RPG・VB6・MUMPS・Fortran・C・Lua など10言語のレガシーシステムを、Python + React のモダンWebアプリに変換するPoCを実施。ソースコード読解のみ（仕様書なし）で、合計41万行を2.7万行に圧縮（平均85%削減）。",
+    stats: ["10言語対応", "41万行 → 2.7万行", "平均85%削減"],
+    tags: ["COBOL", "PL/I", "RPG", "VB6", "MUMPS", "Fortran", "C", "Rust", "FastAPI", "React", "Claude Code"],
+    externalUrl: "/works/legacy-conversions",
+    detail: {
+      overview: "レガシーコード変換プロジェクトの一覧ページへ",
+      challenges: [],
+      approach: [],
+      results: [],
+      techDetail: "",
+    },
+  },
+];
+
+// === レガシーコード変換（個別プロジェクト） ===
+export const legacyProjects: Project[] = [
   {
     slug: "legacy-code-archive",
     title: "Legacy Code Museum & コード鑑定書",
@@ -793,7 +816,7 @@ export const projects: Project[] = [
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
-  return projects.find((p) => p.slug === slug);
+  return projects.find((p) => p.slug === slug) || legacyProjects.find((p) => p.slug === slug);
 }
 
 export function getAllTags(): string[] {
