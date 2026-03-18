@@ -8,16 +8,18 @@ import { projects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
   const router = useRouter();
-  const Wrapper = project.externalUrl
+  const isInternal = !project.externalUrl || project.externalUrl.startsWith("/");
+  const href = project.externalUrl || `/works/${project.slug}`;
+  const Wrapper = isInternal
     ? ({ children }: { children: React.ReactNode }) => (
-        <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
-          {children}
-        </a>
-      )
-    : ({ children }: { children: React.ReactNode }) => (
-        <Link href={`/works/${project.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+        <Link href={href} style={{ textDecoration: "none", color: "inherit" }}>
           {children}
         </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+          {children}
+        </a>
       );
 
   return (
