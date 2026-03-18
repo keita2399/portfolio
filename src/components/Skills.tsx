@@ -48,7 +48,7 @@ export default function Skills() {
           <div style={{ marginTop: 48, padding: "20px 24px", border: "1px solid #ddd", borderLeft: "3px solid var(--accent)", borderRadius: 2, maxWidth: 600, background: "#fff" }}>
             <div style={{ fontSize: 11, color: "var(--accent)", marginBottom: 8, letterSpacing: 1 }}>NOTE</div>
             <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>
-              AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結。直近ではSaaSプラットフォームを4ヶ月で本番稼働させた実績があります。40年の業務理解力 × AIの開発速度で、一人でチーム規模の成果を出すスタイルです。
+              AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結。直近ではSaaSプラットフォームを3ヶ月で本番稼働させた実績があります。40年の業務理解力 × AIの開発速度で、一人でチーム規模の成果を出すスタイルです。
             </div>
           </div>
         </FadeIn>

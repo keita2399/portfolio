@@ -26,8 +26,8 @@ const aiWorkflow = [
 const careerHighlights = [
   {
     title: "建設現場向け発生土・受入土マッチングプラットフォーム新規開発",
-    meta: "建設 ｜ フルスタック（1人請負） ｜ 4ヶ月（2025/12〜2026/03）",
-    desc: "建設現場間で発生土・受入土をマッチングするSaaSプラットフォームを、企画ヒアリングから本番デプロイ・運用まで単独で担当。AIペア開発（Claude Code）により、当初見積もり136人日を大幅に超える機能を4ヶ月で実装・リリース。",
+    meta: "建設 ｜ フルスタック（1人請負） ｜ 3ヶ月（2026/01〜2026/03）",
+    desc: "建設現場間で発生土・受入土をマッチングするSaaSプラットフォームを、企画ヒアリングから本番デプロイ・運用まで単独で担当。AIペア開発（Claude Code）により、当初見積もり136人日を大幅に超える機能を3ヶ月で実装・リリース。",
     tech: "Next.js 14 (App Router), TypeScript, React 18, Prisma, PostgreSQL (Neon), Tailwind CSS, Vercel, Vercel Blob",
     features: [
       { cat: "地図検索", detail: "Google Maps API連携。ジオコーディング、最大500件ピン同時表示、Haversine距離計算" },
@@ -68,7 +68,7 @@ const careerHighlights = [
 
 const projectList = [
   { no: 1, industry: "IT", system: "レガシーコード近代化", role: "設計・開発", period: "26/03（1）", tech: "Python, FastAPI, React, SQLite, Claude Code" },
-  { no: 2, industry: "建設", system: "マッチングプラットフォーム", role: "フルスタック", period: "25/12-26/03（4）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE, Gemini AI" },
+  { no: 2, industry: "建設", system: "マッチングプラットフォーム", role: "フルスタック", period: "26/01-26/03（3）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE, Gemini AI" },
   { no: 3, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
   { no: 4, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
   { no: 5, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
@@ -181,7 +181,7 @@ export default function ResumePage() {
             AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結できるフルスタックエンジニア。
           </p>
           <p style={{ marginBottom: 16 }}>
-            直近の実績として、建設業向けSaaSプラットフォームを企画から本番運用まで4ヶ月・単独で構築。当初見積もり136人日の想定機能を大幅に上回る規模（地図検索・決済連携・LINE連携・AI検証・管理ダッシュボード等）を、AIペア開発により実現。
+            直近の実績として、建設業向けSaaSプラットフォームを企画から本番運用まで3ヶ月・単独で構築。当初見積もり136人日の想定機能を大幅に上回る規模（地図検索・決済連携・LINE連携・AI検証・管理ダッシュボード等）を、AIペア開発により実現。
           </p>
           <p>
             技術スタックは TypeScript / React / Next.js / Node.js を主軸とし、DB設計からAPI実装、外部サービス連携、インフラ構築（Vercel / AWS）まで対応。40年のキャリアで培った業務理解力をベースに、ユーザーが実現したいことを「動くプロダクト」として形にすることを得意とする。
