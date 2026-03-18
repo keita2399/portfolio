@@ -8,16 +8,18 @@ import { projects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
   const router = useRouter();
-  const Wrapper = project.externalUrl
+  const isInternal = !project.externalUrl || project.externalUrl.startsWith("/");
+  const href = project.externalUrl || `/works/${project.slug}`;
+  const Wrapper = isInternal
     ? ({ children }: { children: React.ReactNode }) => (
-        <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
-          {children}
-        </a>
-      )
-    : ({ children }: { children: React.ReactNode }) => (
-        <Link href={`/works/${project.slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+        <Link href={href} style={{ textDecoration: "none", color: "inherit" }}>
           {children}
         </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+          {children}
+        </a>
       );
 
   return (
@@ -150,16 +152,16 @@ export default function Works() {
           border: "1px solid rgba(200,134,10,0.2)",
         }}>
           <div className="font-serif-jp" style={{ textAlign: "center", fontSize: 14, color: "#b0a594", marginBottom: 24, lineHeight: 1.8 }}>
-            COBOL・PL/I・RPG・VB6・MUMPS・Fortran — <span style={{ color: "#c8860a", fontWeight: 600 }}>動かなくなった古いシステムを、動くWebアプリに変換します</span>
+            AIペア開発 × フルスタック — <span style={{ color: "#c8860a", fontWeight: 600 }}>アイデアを「動くプロダクト」にします</span>
           </div>
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 24,
           }}>
             {[
+              { value: "1人", label: "SaaS構築", sub: "企画〜本番運用" },
               { value: "18", label: "プロジェクト", sub: "完了" },
-              { value: "10", label: "言語", sub: "対応" },
-              { value: "41万行", label: "変換実績", sub: "→ 2.7万行（平均85%削減）" },
-              { value: "383K", label: "コメント", sub: "収集・感情分析" },
+              { value: "40年", label: "業務経験", sub: "COBOL → Next.js" },
+              { value: "AI", label: "Claude Code", sub: "設計〜レビュー全工程" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 800, color: "#c8860a", lineHeight: 1 }}>{s.value}</div>

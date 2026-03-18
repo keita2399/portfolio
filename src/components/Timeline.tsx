@@ -23,9 +23,9 @@ const entries = [
     era: "2020s–",
     color: "#c8860a",
     isAccent: true,
-    title: "TypeScript / React / Next.js / Python",
-    desc: "モダンWeb開発 + AIを活用したレガシー現代化",
-    pct: 55,
+    title: "TypeScript / React / Next.js + AI協働開発",
+    desc: "AIペア開発でフルスタック × 一人完結スタイルを確立",
+    pct: 80,
   },
 ];
 
