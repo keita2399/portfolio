@@ -113,18 +113,18 @@ const tableHead: React.CSSProperties = { ...tableCell, background: "var(--bg-alt
 
 export default function ResumePage() {
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "100px 32px 60px" }}>
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px 60px" }}>
       {/* Back link */}
       <Link href="/" style={{ fontSize: 12, color: "var(--accent)", textDecoration: "none", letterSpacing: 1 }}>
         ← ポートフォリオに戻る
       </Link>
 
       {/* Header */}
-      <div style={{ marginTop: 24, marginBottom: 40 }}>
-        <h1 style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 700, marginBottom: 8 }}>
+      <div style={{ marginTop: 24, marginBottom: 24 }}>
+        <h1 style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 700, marginBottom: 6 }}>
           業務<span style={{ color: "var(--accent)" }}>経歴書</span>
         </h1>
-        <p style={{ fontSize: 13, color: "var(--text-light)", marginBottom: 16 }}>
+        <p style={{ fontSize: 13, color: "var(--text-light)", marginBottom: 12 }}>
           更新日: 2026年3月18日
         </p>
 
@@ -150,49 +150,45 @@ export default function ResumePage() {
         </a>
       </div>
 
-      {/* Profile card */}
+      {/* Profile hero */}
       <div style={{
-        background: "linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%)",
-        borderRadius: 8, padding: "28px 32px", marginBottom: 48,
-        border: "1px solid rgba(200,134,10,0.2)",
+        background: "#fff",
+        borderRadius: 8, padding: "28px 32px", marginBottom: 32,
+        border: "1px solid var(--border)", borderTop: "3px solid var(--accent)",
       }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 24 }}>
-          {[
-            { value: "松井 慶太", sub: "Keita Matsui" },
-            { value: "約40年", sub: "1985年〜" },
-            { value: "フルスタック", sub: "AI協働開発" },
-          ].map((s) => (
-            <div key={s.sub} style={{ textAlign: "center" }}>
-              <div style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 800, color: "#c8860a", lineHeight: 1.2 }}>{s.value}</div>
-              <div style={{ fontSize: 11, color: "#b0a594", marginTop: 6 }}>{s.sub}</div>
-            </div>
-          ))}
+        <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
+          <div style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.2 }}>
+            松井 慶太
+          </div>
+          <div style={{ fontSize: 12, color: "var(--text-muted)", letterSpacing: 1 }}>Keita Matsui</div>
         </div>
-        <p style={{ fontSize: 14, color: "#d4c5a9", textAlign: "center", marginTop: 20, fontStyle: "italic" }}>
+
+        <p style={{ fontSize: 14, color: "#333", marginTop: 14, lineHeight: 1.6, fontStyle: "italic", borderLeft: "2px solid var(--accent)", paddingLeft: 16 }}>
           AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア
         </p>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", marginTop: 16, fontSize: 13, color: "var(--text-light)" }}>
+          <span>IT業界 約40年（1985年〜）</span>
+          <span>拠点: 山梨県</span>
+          <span>フルスタック ／ AI協働開発</span>
+        </div>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 14, fontSize: 12 }}>
+          <a href="https://portfolio-two-orpin-45.vercel.app" target="_blank" rel="noopener noreferrer"
+            style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent)" }}>
+            Portfolio Site ↗
+          </a>
+          <a href="https://github.com/keita2399/portfolio" target="_blank" rel="noopener noreferrer"
+            style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent)" }}>
+            GitHub ↗
+          </a>
+        </div>
       </div>
 
-      {/* 職務要約 */}
-      <section style={{ marginBottom: 48 }}>
-        {sectionTitle("職務要約")}
-        <div className="font-serif-jp" style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.9 }}>
-          <p style={{ marginBottom: 16 }}>
-            AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結できるフルスタックエンジニア。
-          </p>
-          <p style={{ marginBottom: 16 }}>
-            直近の実績として、建設業向けSaaSプラットフォームを企画から本番運用まで3ヶ月・単独で構築。当初見積もり136人日の想定機能を大幅に上回る規模（地図検索・決済連携・LINE連携・AI検証・管理ダッシュボード等）を、AIペア開発により実現。
-          </p>
-          <p>
-            技術スタックは TypeScript / React / Next.js / Node.js を主軸とし、DB設計からAPI実装、外部サービス連携、インフラ構築（Vercel / AWS）まで対応。40年のキャリアで培った業務理解力をベースに、ユーザーが実現したいことを「動くプロダクト」として形にすることを得意とする。
-          </p>
-        </div>
-      </section>
-
       {/* AI協働開発 */}
-      <section style={{ marginBottom: 48 }}>
+      <section style={{ marginBottom: 32 }}>
         {sectionTitle("AI協働開発")}
-        <p className="font-serif-jp" style={{ fontSize: 14, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 20 }}>
+        <p className="font-serif-jp" style={{ fontSize: 14, color: "var(--text-light)", lineHeight: 1.7, marginBottom: 16 }}>
           AIを補助ツールとしてではなく、設計パートナーとして活用するスタイルを確立。
         </p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
@@ -209,7 +205,7 @@ export default function ResumePage() {
       </section>
 
       {/* スキルサマリー */}
-      <section style={{ marginBottom: 48 }}>
+      <section style={{ marginBottom: 48, breakBefore: "page" }}>
         {sectionTitle("スキルサマリー")}
         <table style={{ width: "100%", borderCollapse: "collapse" }}>
           <tbody>
@@ -322,7 +318,7 @@ export default function ResumePage() {
                 <tr key={p.no}>
                   <td style={{ ...tableCell, textAlign: "center", fontWeight: 600 }}>{p.no}</td>
                   <td style={{ ...tableCell, whiteSpace: "nowrap" }}>{p.industry}</td>
-                  <td style={{ ...tableCell, fontWeight: 500 }}>{p.system}</td>
+                  <td style={{ ...tableCell, fontWeight: 500, whiteSpace: "nowrap" }}>{p.system}</td>
                   <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.role}</td>
                   <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.period}</td>
                   <td style={{ ...tableCell, fontSize: 11, color: "var(--text-light)" }}>{p.tech}</td>
