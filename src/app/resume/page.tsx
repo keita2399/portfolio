@@ -150,36 +150,56 @@ export default function ResumePage() {
         </a>
       </div>
 
-      {/* Profile hero */}
-      <div style={{
-        background: "#fff",
-        borderRadius: 8, padding: "28px 32px", marginBottom: 32,
-        border: "1px solid var(--border)", borderTop: "3px solid var(--accent)",
-      }}>
+      {/* Profile hero — Web: dark / Print(PDF): white */}
+      <style>{`
+        .profile-hero {
+          background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%);
+          border: 1px solid rgba(200,134,10,0.2);
+          border-radius: 8px; padding: 28px 32px; margin-bottom: 32px;
+        }
+        .profile-hero .profile-name { color: #c8860a; }
+        .profile-hero .profile-name-en { color: #b0a594; }
+        .profile-hero .profile-tagline { color: #d4c5a9; }
+        .profile-hero .profile-meta { color: #b0a594; }
+        .profile-hero .profile-link { color: #c8860a; border-bottom: 1px solid rgba(200,134,10,0.3); }
+        @media print {
+          .profile-hero {
+            background: #fff !important;
+            border: 1px solid var(--border) !important;
+            border-top: 3px solid var(--accent) !important;
+          }
+          .profile-hero .profile-name { color: #1a1a1a !important; }
+          .profile-hero .profile-name-en { color: var(--text-muted) !important; }
+          .profile-hero .profile-tagline { color: #333 !important; }
+          .profile-hero .profile-meta { color: var(--text-light) !important; }
+          .profile-hero .profile-link { color: var(--accent) !important; border-bottom-color: var(--accent) !important; }
+        }
+      `}</style>
+      <div className="profile-hero">
         <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
-          <div style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, color: "#1a1a1a", lineHeight: 1.2 }}>
+          <div className="profile-name" style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, lineHeight: 1.2 }}>
             松井 慶太
           </div>
-          <div style={{ fontSize: 12, color: "var(--text-muted)", letterSpacing: 1 }}>Keita Matsui</div>
+          <div className="profile-name-en" style={{ fontSize: 12, letterSpacing: 1 }}>Keita Matsui</div>
         </div>
 
-        <p style={{ fontSize: 14, color: "#333", marginTop: 14, lineHeight: 1.6, fontStyle: "italic", borderLeft: "2px solid var(--accent)", paddingLeft: 16 }}>
+        <p className="profile-tagline" style={{ fontSize: 14, marginTop: 14, lineHeight: 1.6, fontStyle: "italic", borderLeft: "2px solid var(--accent)", paddingLeft: 16 }}>
           AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア
         </p>
 
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", marginTop: 16, fontSize: 13, color: "var(--text-light)" }}>
+        <div className="profile-meta" style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", marginTop: 16, fontSize: 13 }}>
           <span>IT業界 約40年（1985年〜）</span>
           <span>拠点: 山梨県</span>
           <span>フルスタック ／ AI協働開発</span>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 14, fontSize: 12 }}>
-          <a href="https://portfolio-two-orpin-45.vercel.app" target="_blank" rel="noopener noreferrer"
-            style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent)" }}>
+          <a className="profile-link" href="https://portfolio-two-orpin-45.vercel.app" target="_blank" rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}>
             Portfolio Site ↗
           </a>
-          <a href="https://github.com/keita2399/portfolio" target="_blank" rel="noopener noreferrer"
-            style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1px solid var(--accent)" }}>
+          <a className="profile-link" href="https://github.com/keita2399/portfolio" target="_blank" rel="noopener noreferrer"
+            style={{ textDecoration: "none" }}>
             GitHub ↗
           </a>
         </div>
