@@ -81,6 +81,39 @@ export const projects: Project[] = [
         "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
     },
   },
+  {
+    slug: "estimate-ai",
+    title: "AI見積もりアシスタント",
+    badge: "社内ツール",
+    badgeColor: "#2563eb",
+    borderColor: "#2563eb",
+    description:
+      "やりたいことを話すだけで、AIが画面イメージ・技術スタック・概算工数を自動生成する営業支援ツール。複数の構築方式を比較し、機能別の金額・工数をドリルダウン表示。PDF出力で概算見積書を即座に作成。",
+    stats: ["Gemini / Claude API", "4ステップ自動見積"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用"],
+    detail: {
+      overview:
+        "営業の現場で「こんなアプリが欲しい」と言われた時に、その場で画面イメージと見積もりを提示できるAIツール。要件入力→画面プレビュー→構築方式比較→機能別見積もりの4ステップ。PDF出力機能で概算見積書として印刷可能。",
+      challenges: [
+        "AIが生成するHTML画面のリアルさと一貫性",
+        "構築方式ごとのメリデメ・コスト比較の精度",
+        "営業が使いやすいUI（戻る・進む・キャンセル・キャッシュ）",
+        "Gemini API無料枠の制限対策（複数キー + Claude フォールバック）",
+      ],
+      approach: [
+        "Gemini 2.5 FlashでHTML/CSS画面プレビューをリアルタイム生成",
+        "SaaS/ノーコード vs フルスクラッチ vs ハイブリッドを自動提案",
+        "時給8,000円ベースで機能別金額を自動算出",
+        "APIキー自動切替（Gemini×2 + Claude）でレート制限を回避",
+      ],
+      results: [
+        "要件入力から概算見積書PDFまで5分で完了",
+        "複数構築方式のメリデメ比較をワンクリックで",
+        "A4横のPDF出力で営業資料としてそのまま使える",
+      ],
+      techDetail: "Next.js + TypeScript + Tailwind CSS。Gemini 2.5 Flash / Claude Haiku 4.5 のデュアルAI構成。AbortControllerによるキャンセル機能、stateキャッシュによるステップ間自由移動。",
+    },
+  },
   // === デモあり（動くものが先） ===
   {
     slug: "portfolio-chatbot",
