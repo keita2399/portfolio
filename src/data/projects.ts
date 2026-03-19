@@ -87,6 +87,12 @@ export const projects: Project[] = [
     badge: "社内ツール",
     badgeColor: "#2563eb",
     borderColor: "#2563eb",
+    thumbnail: "/thumbnails/estimate-ai-screens.png",
+    screenshots: [
+      { src: "/thumbnails/estimate-ai-screens.png", caption: "Step 2: AIが生成した画面プレビュー（将棋アプリの対局画面）" },
+      { src: "/thumbnails/estimate-ai-stack.png", caption: "Step 3: 構築方式の比較（メリデメ・コスト・アーキテクチャ図）" },
+      { src: "/thumbnails/estimate-ai-estimate.png", caption: "Step 4: 機能別の金額・工数ドリルダウン" },
+    ],
     description:
       "やりたいことを話すだけで、AIが画面イメージ・技術スタック・概算工数を自動生成する営業支援ツール。複数の構築方式を比較し、機能別の金額・工数をドリルダウン表示。PDF出力で概算見積書を即座に作成。",
     stats: ["Gemini / Claude API", "4ステップ自動見積"],
