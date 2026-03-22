@@ -44,6 +44,7 @@ export const projects: Project[] = [
       "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、当初見積もり136人日を超える規模のシステムを3ヶ月・一人で構築。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
     stats: ["32画面", "67 APIエンドポイント", "19モデル"],
     tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer"],
+    thumbnail: "/thumbnails/btob-matching-arch.svg",
     detail: {
       overview:
         "特定業種の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理に加え、LINE連携によるプッシュ通知、Gemini AIによる登録情報の自動判定、業者間チャット、PWA対応など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・継続的な機能拡張まで一貫して担当。",
