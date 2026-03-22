@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Process from "@/components/Process";
 import Timeline from "@/components/Timeline";
 import Skills from "@/components/Skills";
 import Works from "@/components/Works";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <Process />
       <Timeline />
       <Skills />
       <Works />

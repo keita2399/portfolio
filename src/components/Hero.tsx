@@ -3,9 +3,6 @@
 import FadeIn from "./FadeIn";
 import ScrollIndicator from "./ScrollIndicator";
 
-const mainTech = ["TypeScript", "React", "Next.js", "Node.js", "Python"];
-const aiTech = ["Claude Code", "Gemini AI"];
-
 export default function Hero() {
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -30,36 +27,32 @@ export default function Hero() {
       <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <FadeIn>
           <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: 4, marginBottom: 24, opacity: 0.8 }}>
-            // PORTFOLIO — 2025
+            // KEITA MATSUI
           </div>
         </FadeIn>
 
         <FadeIn>
-          <h1 style={{ fontSize: "clamp(40px, 8vw, 80px)", fontWeight: 700, lineHeight: 1.05, marginBottom: 12 }}>
-            <span style={{ color: "#999" }}>松井</span>
+          <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20 }}>
+            <span style={{ color: "var(--text)" }}>やりたいことを伝えるだけで、</span>
             <br />
-            <span style={{ color: "var(--accent)" }}>慶太</span>
+            <span style={{ color: "var(--accent)" }}>動くシステムが手に入る</span>
           </h1>
         </FadeIn>
 
         <FadeIn>
-          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 16px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.7, maxWidth: 560, fontWeight: 300 }}>
-            AIペア開発で、一人で「チーム」の成果を —<br />
-            <strong style={{ color: "var(--accent)" }}>設計・実装・レビュー・運用</strong>を一貫して完結<br />
-            40年の経験 × AIで、アイデアを動くプロダクトに
+          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 15px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.9, maxWidth: 560, fontWeight: 300 }}>
+            業務の課題を理解し、企画から設計・実装・運用まで一貫して対応。
+            <br />
+            40年の業務システム経験 × AI協働開発で、
+            <br />
+            一人でチーム規模の成果を出します。
           </div>
         </FadeIn>
 
         <FadeIn>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 40, alignItems: "center" }}>
-            {mainTech.map((t) => (
-              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid var(--accent)", borderRadius: 2, color: "var(--accent)", letterSpacing: 1 }}>
-                {t}
-              </span>
-            ))}
-            <span style={{ color: "var(--accent)", fontSize: 14, margin: "0 4px" }}>×</span>
-            {aiTech.map((t) => (
-              <span key={t} style={{ fontSize: 11, padding: "4px 12px", border: "1px solid #2d8f4e", borderRadius: 2, color: "#2d8f4e", letterSpacing: 1, fontWeight: 600 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
+            {["業務系Webアプリ", "レガシー刷新", "AI活用", "上流から実装まで一貫対応"].map((t) => (
+              <span key={t} style={{ fontSize: 11, padding: "5px 14px", border: "1px solid var(--border)", borderRadius: 2, color: "var(--text-muted)", letterSpacing: 0.5 }}>
                 {t}
               </span>
             ))}
@@ -69,8 +62,8 @@ export default function Hero() {
         <FadeIn>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href="#works"
-              onClick={(e) => scrollTo(e, "#works")}
+              href="#process"
+              onClick={(e) => scrollTo(e, "#process")}
               className="cta-primary"
               style={{
                 padding: "12px 28px", background: "var(--accent)", color: "#fff",
@@ -78,11 +71,11 @@ export default function Hero() {
                 cursor: "pointer", fontWeight: 700, textDecoration: "none",
               }}
             >
-              実績を見る
+              進め方を見る
             </a>
             <a
-              href="#contact"
-              onClick={(e) => scrollTo(e, "#contact")}
+              href="#works"
+              onClick={(e) => scrollTo(e, "#works")}
               className="cta-secondary"
               style={{
                 padding: "12px 28px", background: "transparent", color: "var(--text)",
@@ -90,7 +83,7 @@ export default function Hero() {
                 cursor: "pointer", textDecoration: "none",
               }}
             >
-              お問い合わせ
+              実績を見る
             </a>
           </div>
         </FadeIn>

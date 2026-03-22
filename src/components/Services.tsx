@@ -4,23 +4,27 @@ import FadeIn from "./FadeIn";
 
 const serviceTypes = [
   {
-    title: "業務系Webアプリ新規開発",
-    desc: "要件定義から設計・実装・本番デプロイまで一貫対応。SaaS・管理画面・マッチングサイトなど。",
+    title: "「こんなサービスを作りたい」を形にする",
+    desc: "アイデア段階から入り、要件を一緒に整理して、動くシステムとして本番稼働させます。SaaS・業務アプリ・管理画面など。",
+    example: "例: 建設業向けマッチングSaaSを企画から3ヶ月で本番稼働",
     icon: "01",
   },
   {
-    title: "レガシーシステム刷新",
-    desc: "COBOL・VB6・RPG等の既存システムをモダンWeb（React/Next.js）に移行。40年の業務知識で仕様を読み解きます。",
+    title: "古いシステムを、今の技術で作り直す",
+    desc: "COBOL・VB6・RPG等の既存システムを、仕様書がなくてもソースコードから業務を読み解き、モダンWebに移行します。",
+    example: "例: 10言語・41万行のレガシーコードをモダン化",
     icon: "02",
   },
   {
-    title: "AI機能の組み込み",
-    desc: "既存システムへのAI機能追加。OCR検証・自動分類・チャットボット・見積もり自動生成など。",
+    title: "業務の手作業を、AIで自動化する",
+    desc: "書類のOCR、データの自動分類、見積もり生成など、人手で行っている業務にAIを組み込み、工数を削減します。",
+    example: "例: 許可証のOCR検証、契約書のリスク自動判定",
     icon: "03",
   },
   {
-    title: "既存システムの機能追加・改修",
-    desc: "Next.js / React / Spring Boot等のモダン技術スタックでの追加開発・保守対応。",
+    title: "今あるシステムを改善・拡張する",
+    desc: "既存システムへの機能追加や改修。業務を理解した上で、影響範囲を見極めて対応します。",
+    example: "例: Spring Boot業務システムの追加開発・保守（20ヶ月）",
     icon: "04",
   },
 ];
@@ -38,13 +42,13 @@ export default function Services() {
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <FadeIn>
           <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-            // 04 — SERVICES
+            // 05 — SERVICES
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
-            対応可能な<span style={{ color: "var(--accent)" }}>案件</span>
+            こんな<span style={{ color: "var(--accent)" }}>課題</span>に対応します
           </h2>
           <p className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 40 }}>
-            AIペア開発により、一人でも短期間で本番品質のシステムを構築します
+            業務を理解した上で、企画から本番運用まで一貫して対応します
           </p>
         </FadeIn>
 
@@ -55,6 +59,7 @@ export default function Services() {
               <div style={{
                 border: "1px solid var(--border)", borderRadius: 4,
                 padding: "24px 28px", background: "#fff", height: "100%",
+                display: "flex", flexDirection: "column",
               }}>
                 <div style={{ fontSize: 28, fontWeight: 800, color: "var(--accent)", opacity: 0.3, marginBottom: 8 }}>
                   {s.icon}
@@ -62,8 +67,11 @@ export default function Services() {
                 <div style={{ fontSize: 14, fontWeight: 600, color: "#1a1a1a", marginBottom: 8 }}>
                   {s.title}
                 </div>
-                <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>
+                <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 12, flex: 1 }}>
                   {s.desc}
+                </div>
+                <div style={{ fontSize: 11, color: "var(--text-faint)", borderTop: "1px solid var(--border)", paddingTop: 10 }}>
+                  {s.example}
                 </div>
               </div>
             </FadeIn>

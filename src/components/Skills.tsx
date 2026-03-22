@@ -18,7 +18,7 @@ export default function Skills() {
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <FadeIn>
           <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-            // 02 — SKILLS
+            // 03 — SKILLS
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 60, color: "#1a1a1a" }}>
             技術<span style={{ color: "var(--accent)" }}>スタック</span>

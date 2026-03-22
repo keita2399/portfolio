@@ -36,35 +36,39 @@ export const projects: Project[] = [
   {
     slug: "btob-matching",
     category: "flagship",
-    title: "業務系マッチングWebアプリ",
+    title: "建設業向けマッチングSaaS",
     badge: "本番稼働中",
     badgeColor: "#16a34a",
     borderColor: "#16a34a",
     description:
-      "業界特化型のBtoBマッチングプラットフォーム。地図ベースの検索、会員管理、決済連携、メールテンプレート管理など約30画面・40API・24テーブルの本格業務システム。企画提案から設計・実装・本番デプロイまで一人で担当。",
-    stats: ["約30画面", "40 APIエンドポイント", "24テーブル"],
-    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "nodemailer"],
+      "建設現場間の発生土・受入土のマッチングが電話とFAXで行われていた業務を、Webプラットフォームとして事業化。企画段階のヒアリングから参画し、当初見積もり136人日を超える規模のシステムを3ヶ月・一人で本番稼働。その後もLINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
+    stats: ["32画面", "67 APIエンドポイント", "19モデル"],
+    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer"],
     thumbnail: "/thumbnails/btob-matching/03-home-map.png",
     screenshots: [
       { src: "/thumbnails/btob-matching/01-login.png", caption: "ログイン画面 — Cookie認証によるセッション管理" },
       { src: "/thumbnails/btob-matching/03-home-map.png", caption: "ホーム（地図検索） — 最大500件のピン同時表示・レスポンシブ対応" },
       { src: "/thumbnails/btob-matching/04-search.png", caption: "ワード検索 — 複数条件・フリーワードで絞り込み" },
       { src: "/thumbnails/btob-matching/06-admin-dashboard.png", caption: "管理者ダッシュボード — 会員数・現場数・売上をリアルタイム集計" },
-      { src: "/thumbnails/btob-matching/07-admin-users.png", caption: "会員管理 — 承認ワークフロー・ステータス管理" },
-      { src: "/thumbnails/btob-matching/08-admin-projects.png", caption: "現場管理 — 登録内容の審査・承認" },
+      { src: "/thumbnails/btob-matching/07-admin-users.png", caption: "会員管理 — 承認ワークフロー・ステータス管理・AI判定" },
+      { src: "/thumbnails/btob-matching/08-admin-projects.png", caption: "現場管理 — 登録内容の審査・承認・AI判定" },
       { src: "/thumbnails/btob-matching/09-admin-email.png", caption: "メールテンプレート管理 — テンプレート変数・プレビュー機能" },
-      { src: "/thumbnails/btob-matching/10-mobile-home.png", caption: "モバイル対応 — レスポンシブデザインで現場からも利用可能" },
+      { src: "/thumbnails/btob-matching/10-mobile-home.png", caption: "モバイル対応 — PWA対応でホーム画面からアプリとして利用可能" },
     ],
     detail: {
       overview:
-        "特定業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用まで一貫して担当。",
+        "建設業界の企業間マッチングを支援するWebプラットフォーム。地図ベースの直感的な検索UI、会員登録から承認までのワークフロー、サブスクリプション決済、メールテンプレート管理に加え、LINE連携によるプッシュ通知、Gemini AIによる現場・会員情報の自動判定、業者間チャット、PWA対応など、業務システムに必要な機能をフルスタックで実装。企画提案書の作成段階からクライアントと協議し、設計・実装・本番デプロイ・保守運用・継続的な機能拡張まで一貫して担当。",
       challenges: [
         "Google Maps上に最大500件のピンを同時表示しつつ、パフォーマンスを維持する検索UI",
         "会員登録→一時保存→本登録→管理者承認という多段階ワークフローの設計",
         "Cookie認証（httpOnly sessionToken）＋ HMAC署名による改ざん防止の実装",
         "外部決済サービスとのWebhook連携・署名検証",
-        "24テーブル・日本語Enumを含むPrismaスキーマの設計と運用",
+        "19モデル・日本語Enumを含むPrismaスキーマの設計と運用",
         "メールテンプレートの変数埋め込み時のXSS対策（HTMLエスケープ）",
+        "LINE Messaging APIのWebhook署名検証（HMAC-SHA256）と双方向メッセージング",
+        "Gemini AIによる現場情報・会員情報の自動判定（プロンプト設計・構造化出力）",
+        "PWA対応（manifest.json・Service Worker・オフラインキャッシュ戦略）",
+        "業者間リアルタイムチャット機能の設計（未読管理・ルーム管理）",
       ],
       approach: [
         "Next.js 14 App Routerでフロントエンド・APIを統合し、フルスタック構成を実現",
@@ -73,16 +77,21 @@ export const projects: Project[] = [
         "Vercel（ホスティング）＋ Neon（PostgreSQL）＋ Vercel Blob（ファイルストレージ）のサーバーレス構成",
         "nodemailerによるメール通知。テンプレート管理画面でマークダウン編集・リアルタイムプレビュー",
         "タイムゾーン統一設計（DB/サーバーはUTC、フロント表示はJST変換）で日時の不整合を防止",
+        "LINE Messaging API連携でプッシュ通知・Webhook受信を実装。新規登録・工期終了・許可証期限など10種類以上の通知に対応",
+        "Gemini 2.5 FlashでAI判定機能を実装。管理者の現場審査・会員審査をAIが支援し、判定理由を構造化出力",
+        "PWA（manifest.json + Service Worker）でモバイルアプリ化。ホーム画面追加でスタンドアロン起動に対応",
+        "Vercel Cronによる日次バッチで、トライアル期限・工期終了・許可証有効期限を自動通知（メール＋LINE）",
       ],
       results: [
-        "約30画面・40APIエンドポイント・24テーブルの業務システムを本番稼働",
-        "企画提案から本番デプロイまで一人で完遂",
+        "32画面・67APIエンドポイント・19モデルの業務システムを本番稼働",
+        "企画提案から本番デプロイまで一人で完遂し、その後も継続的に機能拡張",
         "セキュリティレビューを実施し、セッション署名・CSRF対策・XSS防止・エラー情報漏洩対策を強化",
         "Vercel＋Neonのサーバーレス構成でインフラ管理コストを最小化",
-        "管理者向けダッシュボード・メールテンプレート管理など運用機能も充実",
+        "LINE連携・AI判定・チャット・PWAなど、リリース後に4つの主要機能を追加",
+        "管理者向けダッシュボード・メールテンプレート管理・AI使用量管理・利用料設定など運用機能も充実",
       ],
       techDetail:
-        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。ホスティング: Vercel + Vercel Blob。日付: dayjs (UTC/JST変換)。",
+        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。地図: Google Maps JavaScript API。通知: LINE Messaging API (Webhook + Push)。AI: Gemini 2.5 Flash (構造化出力)。PWA: manifest.json + Service Worker。ホスティング: Vercel + Vercel Blob + Vercel Cron。日付: dayjs (UTC/JST変換)。",
     },
   },
   {
@@ -99,7 +108,7 @@ export const projects: Project[] = [
       { src: "/thumbnails/estimate-ai-estimate.png", caption: "Step 4: 機能別の金額・工数ドリルダウン" },
     ],
     description:
-      "やりたいことを話すだけで、AIが画面イメージ・技術スタック・概算工数を自動生成する営業支援ツール。複数の構築方式を比較し、機能別の金額・工数をドリルダウン表示。PDF出力で概算見積書を即座に作成。",
+      "「こんなアプリが欲しい」と話すだけで、画面イメージ・構築方式の比較・概算見積書を自動生成。営業の現場で「その場で提案」を可能にし、商談のスピードを変える社内ツール。",
     stats: ["Gemini / Claude API", "4ステップ自動見積"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用"],
     detail: {
@@ -422,7 +431,7 @@ export const projects: Project[] = [
     externalUrl: "/demo/chat",
     thumbnail: "/thumbnails/line-claude-sync.svg",
     description:
-      "スマホのLINEからAIに相談 → 会話が自動でPCのClaude Code CLIに共有される仕組み。Gemini/Claude切替対応。GitHub Gistをストレージにしたサーバーレス構成で、手動操作ゼロの完全自動同期を実現。",
+      "移動中にスマホで思いついたアイデアを、LINEでAIに伝えるだけでPCの開発環境に自動で共有。「いつでもどこでも開発を止めない」ワークフローを実現した、自分のために作ったツール。",
     stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
     detail: {
@@ -485,7 +494,7 @@ export const projects: Project[] = [
     badgeColor: "#999",
     borderColor: "#999",
     description:
-      "COBOL・PL/I・RPG・VB6・MUMPS・Fortran・C・Lua など10言語のレガシーシステムを、Python + React のモダンWebアプリに変換するPoCを実施。ソースコード読解のみ（仕様書なし）で、合計41万行を2.7万行に圧縮（平均85%削減）。",
+      "「仕様書がない」「読める人がいない」——そんなレガシーシステムを、ソースコードだけを頼りにモダンWebアプリに変換。COBOL・VB6・RPG等10言語、合計41万行の実績。40年の業務知識があるからこそ、コードの裏にある業務を読み解ける。",
     stats: ["10言語対応", "41万行 → 2.7万行", "平均85%削減"],
     tags: ["COBOL", "PL/I", "RPG", "VB6", "MUMPS", "Fortran", "C", "Rust", "FastAPI", "React", "Claude Code"],
     externalUrl: "/works/legacy-conversions",

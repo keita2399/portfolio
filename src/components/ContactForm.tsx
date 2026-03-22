@@ -37,7 +37,7 @@ export default function ContactForm() {
       <div style={{ maxWidth: 560, margin: "0 auto" }}>
         <FadeIn>
           <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-            // 05 — CONTACT
+            // 06 — CONTACT
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
             ご<span style={{ color: "var(--accent)" }}>連絡</span>

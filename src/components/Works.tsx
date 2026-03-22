@@ -134,7 +134,7 @@ export default function Works() {
     <section id="works" className="section-inner">
       <FadeIn>
         <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-          // 03 — WORKS
+          // 04 — WORKS
         </div>
         <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 32, color: "#1a1a1a" }}>
           実績・<span style={{ color: "var(--accent)" }}>プロジェクト</span>
@@ -149,16 +149,16 @@ export default function Works() {
           border: "1px solid rgba(200,134,10,0.2)",
         }}>
           <div className="font-serif-jp" style={{ textAlign: "center", fontSize: 14, color: "#b0a594", marginBottom: 24, lineHeight: 1.8 }}>
-            AIペア開発 × フルスタック — <span style={{ color: "#c8860a", fontWeight: 600 }}>アイデアを「動くプロダクト」にします</span>
+            業務を理解して設計し、<span style={{ color: "#c8860a", fontWeight: 600 }}>一人で事業を形にしてきた実績</span>
           </div>
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 24,
           }}>
             {[
               { value: "1人", label: "SaaS構築", sub: "企画〜本番運用" },
-              { value: "18", label: "プロジェクト", sub: "完了" },
-              { value: "40年", label: "業務経験", sub: "COBOL → Next.js" },
-              { value: "AI", label: "Claude Code", sub: "設計〜レビュー全工程" },
+              { value: "40年", label: "業務システム", sub: "金融・建設・B2B" },
+              { value: "41万行", label: "レガシー変換", sub: "10言語対応" },
+              { value: "AI", label: "協働開発", sub: "設計〜運用を一貫" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 800, color: "#c8860a", lineHeight: 1 }}>{s.value}</div>

@@ -3,8 +3,8 @@
 import Link from "next/link";
 
 const links = [
+  { href: "#process", label: "進め方" },
   { href: "#timeline", label: "キャリア" },
-  { href: "#skills", label: "スキル" },
   { href: "#works", label: "実績" },
   { href: "#services", label: "対応案件" },
   { href: "#contact", label: "連絡" },

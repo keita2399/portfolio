@@ -4,28 +4,28 @@ import FadeIn from "./FadeIn";
 
 const entries = [
   {
-    era: "1980s–90s",
+    era: "1985–99",
     color: "#999",
-    title: "COBOL / PL/I / IBM Assembler",
-    desc: "金融系基幹システム開発",
-    pct: 95,
+    title: "金融の基幹業務を支えるシステムを設計・構築",
+    desc: "生命保険・人事管理など、止まることが許されない基幹システムを開発。業務の根幹を理解する力はこの時期に培われた。",
+    tech: "COBOL / PL/I / IBM Assembler",
     showLine: true,
   },
   {
-    era: "2000s–10s",
+    era: "2000–19",
     color: "#4a90d9",
-    title: "Java / J2EE / Oracle",
-    desc: "大規模業務システム設計・開発",
-    pct: 85,
+    title: "数万人が使う業務システムのPM・リーダー",
+    desc: "証券・保険・B2B取引・ECなど多業種で、要件定義から本番リリースまでチームを率いて遂行。業務理解 × 技術判断の両輪で20年。",
+    tech: "Java / Spring Boot / Oracle / AWS / Azure",
     showLine: true,
   },
   {
-    era: "2020s–",
+    era: "2020–",
     color: "#c8860a",
     isAccent: true,
-    title: "TypeScript / React / Next.js + AI協働開発",
-    desc: "AIペア開発でフルスタック × 一人完結スタイルを確立",
-    pct: 80,
+    title: "一人で事業を形にするスタイルを確立",
+    desc: "AI協働開発により、企画段階から設計・実装・運用まで単独で完結。建設業向けSaaSを3ヶ月で本番稼働させた実績を持つ。",
+    tech: "TypeScript / React / Next.js / AI協働開発",
   },
 ];
 
@@ -34,10 +34,10 @@ export default function Timeline() {
     <section id="timeline" className="section-inner">
       <FadeIn>
         <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-          // 01 — CAREER
+          // 02 — CAREER
         </div>
         <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 60, color: "#1a1a1a" }}>
-          キャリアの<span style={{ color: "var(--accent)" }}>旅路</span>
+          40年の<span style={{ color: "var(--accent)" }}>現場</span>から
         </h2>
       </FadeIn>
 
@@ -54,17 +54,17 @@ export default function Timeline() {
                 width: 12, height: 12, borderRadius: "50%", background: e.color, flexShrink: 0,
                 boxShadow: e.isAccent ? "0 0 12px rgba(200,134,10,0.4)" : undefined,
               }} />
-              {e.showLine && <div style={{ width: 1, height: 48, background: "#ddd", marginTop: 8 }} />}
+              {e.showLine && <div style={{ width: 1, height: 60, background: "#ddd", marginTop: 8 }} />}
             </div>
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: "clamp(14px, 2.5vw, 18px)", fontWeight: 600, color: e.isAccent ? "var(--accent)" : "#333", marginBottom: 4 }}>
+              <div style={{ fontSize: "clamp(14px, 2.5vw, 18px)", fontWeight: 600, color: e.isAccent ? "var(--accent)" : "#333", marginBottom: 6 }}>
                 {e.title}
               </div>
-              <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12 }}>
+              <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", marginBottom: 8, lineHeight: 1.8 }}>
                 {e.desc}
               </div>
-              <div style={{ height: 4, background: "#eee", borderRadius: 2, overflow: "hidden", maxWidth: 400 }}>
-                <div className="skill-bar" style={{ height: "100%", width: `${e.pct}%`, background: e.color, borderRadius: 2 }} />
+              <div style={{ fontSize: 11, color: "var(--text-faint)", letterSpacing: 0.5 }}>
+                {e.tech}
               </div>
             </div>
           </div>
