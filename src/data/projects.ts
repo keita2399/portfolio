@@ -95,6 +95,46 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "sanpo-series",
+    category: "flagship",
+    title: "美術館さんぽシリーズ",
+    badge: "公開中",
+    badgeColor: "#b45309",
+    borderColor: "#b45309",
+    externalUrl: "https://sanpo-met.vercel.app",
+    description:
+      "世界の美術館コレクションをスマホで気軽に楽しめるFlutter Webアプリシリーズ。GPUシェーダーによるスポットライト演出、毎日1作品との出会い（ガチャ）、作品クイズなど、美術館体験をデジタルで再現。LINEボットが毎晩おすすめ作品を届ける。美術館さんぽ・画家さんぽ・特集さんぽとシリーズ展開中。",
+    stats: ["Flutter Web + LINE Bot", "2つの美術館API連携", "GPUシェーダー演出"],
+    tags: ["Flutter", "Dart", "LINE Messaging API", "Vercel", "Met Museum API", "AIC API", "GLSL Shader", "PWA"],
+    detail: {
+      overview:
+        "メトロポリタン美術館・シカゴ美術館のパブリックAPIを活用し、数十万点のコレクションをスマホで鑑賞できるWebアプリシリーズ。Flutter Webでクロスプラットフォーム対応し、GPUフラグメントシェーダーでスポットライトの光演出を実現。LINEボット（impressionist-bot）が毎晩21時におすすめ作品をプッシュ通知し、作家名検索にも対応。美術館さんぽ・印象派さんぽを公開済みで、画家さんぽ・特集さんぽへのシリーズ展開を予定。",
+      challenges: [
+        "GPUフラグメントシェーダー（GLSL）によるリアルタイム光シミュレーションの実装",
+        "2つの異なる美術館API（Met Museum / Art Institute of Chicago）の統一的なデータモデル設計",
+        "Flutter WebのPWA対応とVercelデプロイの構成（ランディングページ + Flutterアプリの共存）",
+        "LINEボットの日次Cronによる作品プッシュ通知と、Webhookによる作家名検索の双方向対応",
+        "美術館APIの画像URL仕様の違い（IIIF対応 / 直リンク）への対応",
+      ],
+      approach: [
+        "Flutter + カスタムGLSLシェーダー（lighting.frag）でスポットライトの光と影をリアルタイム描画",
+        "AppConfigベースの設計で美術館ごとの差異を吸収し、同一コードベースからデュアルビルド",
+        "Vercel Cronで毎日21時にLINEプッシュ通知。作品画像はプロキシAPI経由で配信",
+        "SharedPreferencesでお気に入り・閲覧履歴をローカル管理。サーバーレスでDB不要",
+        "ランディングページ（HTML）+ Flutter Webアプリ（/app/）の2層構成でSEOと操作性を両立",
+      ],
+      results: [
+        "メトロポリタンさんぽ・印象派さんぽの2アプリを公開",
+        "LINEボットで毎晩おすすめ作品を自動配信",
+        "GPUシェーダーによる美術館の光演出をブラウザで実現",
+        "同一コードベースから複数美術館向けアプリをビルド可能な設計",
+        "PWA対応でホーム画面からアプリとして利用可能",
+      ],
+      techDetail:
+        "Flutter (Dart) + Material 3 + カスタムGLSLフラグメントシェーダー。API: Metropolitan Museum of Art API / Art Institute of Chicago API。LINEボット: Next.js + @line/bot-sdk + Vercel Cron。デプロイ: Vercel（Web）。データ: SharedPreferences（ローカル）。PWA対応。",
+    },
+  },
+  {
     slug: "estimate-ai",
     category: "flagship",
     title: "AI見積もりアシスタント",
