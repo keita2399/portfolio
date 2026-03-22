@@ -91,14 +91,12 @@ const projectList = [
 ];
 
 const portfolio = [
-  { name: "BtoBマッチングプラットフォーム", desc: "建設現場向けSaaS。約30画面・40API・24テーブル", url: "NDA" },
+  { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", url: "NDA" },
+  { name: "DX提案アシスタント", desc: "業務フロー分析→ボトルネック可視化→システム化提案→見積もり。一気通貫の営業支援ツール", url: "NDA" },
+  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期", url: "NDA" },
+  { name: "レガシーコード変換", desc: "10言語・41万行→2.7万行（平均85%削減）", url: "/works/legacy-conversions" },
   { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", url: "https://contract-checker-vert.vercel.app" },
-  { name: "AIレシートスキャナー", desc: "レシートOCR→勘定科目自動判定", url: "https://receipt-scanner-iota.vercel.app" },
-  { name: "AI書類解析アプリ", desc: "Gemini Visionで書類を構造化データに変換", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
-  { name: "移動時間計算アプリ", desc: "Google Maps API 4移動手段対応", url: "https://travel-time-app-keita2399s-projects.vercel.app" },
-  { name: "LINE通知デモ", desc: "LINE Messaging API 3種メッセージ送信", url: "https://line-notify-app-keita2399s-projects.vercel.app" },
   { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・分析", url: "https://gstate-gk.github.io/legacy-code-museum/" },
-  { name: "PL/I → Web変換（Habitat 1986）", desc: "世界初のMMOをブラウザで動作", url: "https://habitat-1986.onrender.com" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
