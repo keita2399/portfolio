@@ -96,3 +96,16 @@ body {
 .skill-bar {
   transition: width 1.2s cubic-bezier(.4,0,.2,1);
 }
+
+/* PDF/Print styles */
+@media print {
+  body { background: #fff !important; }
+  nav, .chatbot-trigger, .scroll-indicator { display: none !important; }
+  .fade-in { opacity: 1 !important; transform: none !important; }
+  .section-inner, .section-inner-narrow { padding: 20px 0 !important; }
+  a { color: inherit !important; text-decoration: none !important; }
+  /* Page breaks */
+  section { break-inside: avoid; }
+  h2 { break-after: avoid; }
+  tr { break-inside: avoid; }
+}

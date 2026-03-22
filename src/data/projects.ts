@@ -1,3 +1,5 @@
+export type ProjectCategory = "flagship" | "demo";
+
 export type Project = {
   slug: string;
   title: string;
@@ -7,6 +9,7 @@ export type Project = {
   description: string;
   stats: string[];
   tags: string[];
+  category?: ProjectCategory;
   externalUrl?: string;
   thumbnail?: string;
   screenshots?: { src: string; caption: string }[];
@@ -29,9 +32,10 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  // === 本番稼働・モダンWeb・AIアプリ ===
+  // === 主要実績（flagship） ===
   {
     slug: "btob-matching",
+    category: "flagship",
     title: "業務系マッチングWebアプリ",
     badge: "本番稼働中",
     badgeColor: "#16a34a",
@@ -83,6 +87,7 @@ export const projects: Project[] = [
   },
   {
     slug: "estimate-ai",
+    category: "flagship",
     title: "AI見積もりアシスタント",
     badge: "社内ツール",
     badgeColor: "#2563eb",
@@ -120,9 +125,10 @@ export const projects: Project[] = [
       techDetail: "Next.js + TypeScript + Tailwind CSS。Gemini 2.5 Flash / Claude Haiku 4.5 のデュアルAI構成。AbortControllerによるキャンセル機能、stateキャッシュによるステップ間自由移動。",
     },
   },
-  // === デモあり（動くものが先） ===
+  // === 技術デモ ===
   {
     slug: "portfolio-chatbot",
+    category: "demo",
     title: "AIチャットボット（このサイト）",
     badge: "このサイトで稼働中",
     badgeColor: "#c8860a",
@@ -157,6 +163,7 @@ export const projects: Project[] = [
   },
   {
     slug: "contract-checker",
+    category: "demo",
     title: "契約書リスクチェッカー",
     badge: "デモ公開中",
     badgeColor: "#10b981",
@@ -193,6 +200,7 @@ export const projects: Project[] = [
   },
   {
     slug: "receipt-scanner",
+    category: "demo",
     title: "AI レシートスキャナー",
     badge: "デモ公開中",
     badgeColor: "#f59e0b",
@@ -229,6 +237,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-document-checker",
+    category: "demo",
     title: "AI 書類解析アプリ",
     badge: "デモ公開中",
     badgeColor: "#6366f1",
@@ -286,6 +295,7 @@ export const projects: Project[] = [
   },
   {
     slug: "travel-time-app",
+    category: "demo",
     title: "移動時間計算アプリ",
     badge: "デモ公開中",
     badgeColor: "#0ea5e9",
@@ -344,6 +354,7 @@ export const projects: Project[] = [
   },
   {
     slug: "line-notify-app",
+    category: "demo",
     title: "LINE 通知デモアプリ",
     badge: "デモ公開中",
     badgeColor: "#06c755",
@@ -403,6 +414,7 @@ export const projects: Project[] = [
   },
   {
     slug: "line-claude-sync",
+    category: "flagship",
     title: "LINE Claude Sync",
     badge: "デモ公開中",
     badgeColor: "#06c755",
@@ -467,6 +479,7 @@ export const projects: Project[] = [
   // === レガシーコード変換（サマリー） ===
   {
     slug: "legacy-conversions",
+    category: "flagship",
     title: "レガシーコード変換プロジェクト",
     badge: "10言語対応",
     badgeColor: "#999",
@@ -856,6 +869,14 @@ export const legacyProjects: Project[] = [
 
 export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug) || legacyProjects.find((p) => p.slug === slug);
+}
+
+export function getFlagshipProjects(): Project[] {
+  return projects.filter((p) => p.category === "flagship");
+}
+
+export function getDemoProjects(): Project[] {
+  return projects.filter((p) => p.category === "demo");
 }
 
 export function getAllTags(): string[] {

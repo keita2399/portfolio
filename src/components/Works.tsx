@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import FadeIn from "./FadeIn";
-import { projects, getAllTags, type Project } from "@/data/projects";
+import { projects, getFlagshipProjects, getDemoProjects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
   const router = useRouter();
@@ -126,12 +126,9 @@ function WorkCard({ project }: { project: Project }) {
 }
 
 export default function Works() {
-  const allTags = useMemo(() => getAllTags(), []);
-  const [activeTag, setActiveTag] = useState<string | null>(null);
-
-  const filtered = activeTag
-    ? projects.filter((p) => p.tags.includes(activeTag))
-    : projects;
+  const flagshipProjects = useMemo(() => getFlagshipProjects(), []);
+  const demoProjects = useMemo(() => getDemoProjects(), []);
+  const [showDemos, setShowDemos] = useState(false);
 
   return (
     <section id="works" className="section-inner">
@@ -173,50 +170,62 @@ export default function Works() {
         </div>
       </FadeIn>
 
-      {/* Tag filter */}
+      {/* 主要実績 */}
       <FadeIn>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
-          <button
-            onClick={() => setActiveTag(null)}
-            style={{
-              fontSize: 11, padding: "5px 14px", borderRadius: 2, cursor: "pointer",
-              letterSpacing: 0.5, transition: "all 0.2s",
-              background: activeTag === null ? "var(--accent)" : "transparent",
-              color: activeTag === null ? "#fff" : "var(--text-muted)",
-              border: activeTag === null ? "1px solid var(--accent)" : "1px solid #ddd",
-            }}
-          >
-            すべて
-          </button>
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-              style={{
-                fontSize: 11, padding: "5px 14px", borderRadius: 2, cursor: "pointer",
-                letterSpacing: 0.5, transition: "all 0.2s",
-                background: activeTag === tag ? "var(--accent)" : "transparent",
-                color: activeTag === tag ? "#fff" : "var(--text-muted)",
-                border: activeTag === tag ? "1px solid var(--accent)" : "1px solid #ddd",
-              }}
-            >
-              {tag}
-            </button>
-          ))}
+        <div style={{ marginBottom: 16 }}>
+          <h3 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 6 }}>
+            主要実績
+          </h3>
+          <p className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>
+            本番稼働・業務利用された案件を中心に、企画から運用まで一貫して担当したプロジェクト
+          </p>
         </div>
       </FadeIn>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20 }}>
-        {filtered.map((p) => (
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20, marginBottom: 48 }}>
+        {flagshipProjects.map((p) => (
           <WorkCard key={p.title} project={p} />
         ))}
       </div>
 
-      {filtered.length === 0 && (
-        <div style={{ textAlign: "center", padding: 60, color: "var(--text-muted)", fontSize: 14 }}>
-          該当するプロジェクトがありません
+      {/* 技術デモ（折りたたみ） */}
+      <FadeIn>
+        <div style={{ borderTop: "1px solid var(--border)", paddingTop: 32 }}>
+          <button
+            onClick={() => setShowDemos(!showDemos)}
+            style={{
+              display: "flex", alignItems: "center", gap: 12,
+              background: "none", border: "1px solid var(--border)", borderRadius: 4,
+              padding: "12px 24px", cursor: "pointer", width: "100%",
+              justifyContent: "space-between",
+              transition: "all 0.2s",
+            }}
+          >
+            <div style={{ textAlign: "left" }}>
+              <div style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a", marginBottom: 4 }}>
+                技術デモ・実験的プロジェクト
+              </div>
+              <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>
+                AI活用・API連携などの技術検証として制作したデモアプリ（{demoProjects.length}件）
+              </div>
+            </div>
+            <div style={{
+              fontSize: 18, color: "var(--accent)", transition: "transform 0.2s",
+              transform: showDemos ? "rotate(180deg)" : "rotate(0deg)",
+            }}>
+              ▼
+            </div>
+          </button>
+
+          {showDemos && (
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20, marginTop: 24 }}>
+              {demoProjects.map((p) => (
+                <WorkCard key={p.title} project={p} />
+              ))}
+            </div>
+          )}
         </div>
-      )}
+      </FadeIn>
     </section>
   );
 }

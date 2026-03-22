@@ -37,13 +37,26 @@ export default function ContactForm() {
       <div style={{ maxWidth: 560, margin: "0 auto" }}>
         <FadeIn>
           <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
-            // 04 — CONTACT
+            // 05 — CONTACT
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
-            ご<span style={{ color: "var(--accent)" }}>連絡</span>はこちら
+            ご<span style={{ color: "var(--accent)" }}>連絡</span>
           </h2>
-          <div className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 48 }}>
-            お仕事のご依頼・ご相談はお気軽にどうぞ
+          <div className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 24 }}>
+            案件のご依頼・お問い合わせはこちらからお送りください
+          </div>
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            padding: "12px 16px", marginBottom: 48,
+            border: "1px solid var(--border)", borderRadius: 2, background: "#fff",
+          }}>
+            <span style={{ fontSize: 11, color: "var(--text-muted)", flexShrink: 0 }}>MAIL</span>
+            <a
+              href="mailto:keita2399@gmail.com"
+              style={{ fontSize: 13, color: "var(--text)", textDecoration: "none", letterSpacing: 0.5 }}
+            >
+              keita2399@gmail.com
+            </a>
           </div>
         </FadeIn>
 
@@ -51,7 +64,7 @@ export default function ContactForm() {
           <div style={{ padding: 40, textAlign: "center", border: "1px solid var(--accent)", borderRadius: 2, background: "#fff" }}>
             <div style={{ fontSize: 24, marginBottom: 12, color: "var(--accent)" }}>✓</div>
             <div style={{ color: "var(--accent)", fontSize: 14, letterSpacing: 2 }}>送信しました</div>
-            <div className="font-serif-jp" style={{ color: "var(--text-muted)", fontSize: 12, marginTop: 8 }}>近日中にご返信いたします</div>
+            <div className="font-serif-jp" style={{ color: "var(--text-muted)", fontSize: 12, marginTop: 8 }}>内容を確認のうえ、ご連絡いたします</div>
           </div>
         )}
 
@@ -91,7 +104,7 @@ export default function ContactForm() {
                   className="input-field"
                   name="message"
                   required
-                  placeholder="お仕事のご依頼・ご相談内容をお書きください"
+                  placeholder="ご依頼内容・案件概要をお書きください"
                   rows={5}
                   style={{ ...inputStyle, resize: "vertical" as const }}
                 />
