@@ -26,14 +26,18 @@ export default function Hero() {
 
       <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <FadeIn>
-          <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: 4, marginBottom: 24, opacity: 0.8 }}>
+          <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: 4, marginBottom: 16, opacity: 0.8 }}>
             // KEITA MATSUI
+          </div>
+          <div style={{ fontSize: "clamp(28px, 6vw, 48px)", fontWeight: 700, lineHeight: 1.1, marginBottom: 20 }}>
+            <span style={{ color: "#999" }}>松井</span>{" "}
+            <span style={{ color: "var(--accent)" }}>慶太</span>
           </div>
         </FadeIn>
 
         <FadeIn>
-          <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20 }}>
-            <span style={{ color: "var(--text)" }}>やりたいことを伝えるだけで、</span>
+          <h1 style={{ fontSize: "clamp(18px, 4vw, 32px)", fontWeight: 600, lineHeight: 1.4, marginBottom: 20, color: "var(--text)" }}>
+            やりたいことを伝えるだけで、
             <br />
             <span style={{ color: "var(--accent)" }}>動くシステムが手に入る</span>
           </h1>
