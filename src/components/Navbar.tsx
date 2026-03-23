@@ -42,6 +42,18 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
+        <a
+          href="https://zenn.dev/keita2399"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-link"
+          style={{
+            color: "var(--text-muted)", fontSize: 12, letterSpacing: 1,
+            textDecoration: "none", padding: 4, cursor: "pointer",
+          }}
+        >
+          記事
+        </a>
         <Link
           href="/resume"
           className="cta-primary"
