@@ -21,12 +21,9 @@ export default function Navbar() {
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
       background: "rgba(250,249,246,0.92)", backdropFilter: "blur(12px)",
       borderBottom: "1px solid var(--border)",
-      display: "flex", justifyContent: "space-between", alignItems: "center",
+      display: "flex", justifyContent: "center", alignItems: "center",
       padding: "0 32px", height: 56,
     }}>
-      <span style={{ color: "var(--accent)", fontSize: 15, fontWeight: 700, letterSpacing: 3 }}>
-        KM_
-      </span>
       <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
         {links.map((link) => (
           <a
