@@ -27,7 +27,7 @@ export default function Navbar() {
       <span style={{ color: "var(--accent)", fontSize: 15, fontWeight: 700, letterSpacing: 3 }}>
         KM_
       </span>
-      <div style={{ display: "flex", gap: 28 }}>
+      <div style={{ display: "flex", gap: 28, alignItems: "center" }}>
         {links.map((link) => (
           <a
             key={link.href}
@@ -35,7 +35,7 @@ export default function Navbar() {
             onClick={(e) => scrollTo(e, link.href)}
             className="nav-link"
             style={{
-              color: "var(--text-muted)", fontSize: 12, letterSpacing: 1,
+              color: "var(--text-light)", fontSize: 12, letterSpacing: 1,
               textDecoration: "none", padding: 4, cursor: "pointer",
             }}
           >
@@ -48,11 +48,22 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="nav-link"
           style={{
-            color: "var(--text-muted)", fontSize: 12, letterSpacing: 1,
+            color: "var(--text-light)", fontSize: 12, letterSpacing: 1,
             textDecoration: "none", padding: 4, cursor: "pointer",
+            display: "inline-flex", alignItems: "center", gap: 5,
           }}
         >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
           記事
+          <span style={{
+            fontSize: 9, background: "var(--accent)", color: "#fff",
+            padding: "1px 6px", borderRadius: 8, fontWeight: 600, lineHeight: 1.4,
+          }}>
+            Zenn
+          </span>
         </a>
         <Link
           href="/resume"
@@ -61,8 +72,15 @@ export default function Navbar() {
             color: "#fff", fontSize: 11, letterSpacing: 1, fontWeight: 600,
             textDecoration: "none", padding: "5px 14px", cursor: "pointer",
             background: "var(--accent)", borderRadius: 3,
+            display: "inline-flex", alignItems: "center", gap: 5,
           }}
         >
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
           経歴書
         </Link>
       </div>

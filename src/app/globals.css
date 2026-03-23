@@ -88,9 +88,23 @@ body {
   border-color: var(--accent) !important;
 }
 
-/* Nav link */
-.nav-link { transition: color 0.2s; }
+/* Nav link with sliding underline */
+.nav-link {
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
 .nav-link:hover { color: var(--accent) !important; }
+.nav-link:hover::after { width: 100%; }
 
 /* Skill bar animation */
 .skill-bar {
