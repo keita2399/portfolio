@@ -524,13 +524,13 @@ export const projects: Project[] = [
     slug: "legacy-conversions",
     category: "flagship",
     title: "レガシーコード変換プロジェクト",
-    badge: "10言語対応",
+    badge: "13言語対応",
     badgeColor: "#999",
     borderColor: "#999",
     description:
-      "「仕様書がない」「読める人がいない」——そんなレガシーシステムを、ソースコードだけを頼りにモダンWebアプリに変換。COBOL・VB6・RPG等10言語、合計41万行の実績。40年の業務知識があるからこそ、コードの裏にある業務を読み解ける。",
-    stats: ["10言語対応", "41万行 → 2.7万行", "平均85%削減"],
-    tags: ["COBOL", "PL/I", "RPG", "VB6", "MUMPS", "Fortran", "C", "Rust", "FastAPI", "React", "Claude Code"],
+      "「仕様書がない」「読める人がいない」——そんなレガシーシステムを、ソースコードだけを頼りにモダンWebアプリに変換。COBOL・VB6・RPG・QBasic・Ada・MAD-SLIP等13言語、合計44万行超の実績。さらにコード鑑定書22本を制作し、歴史的ソフトウェアの技術考古学を展開。40年の業務知識があるからこそ、コードの裏にある業務を読み解ける。",
+    stats: ["13言語対応", "44万行 → 3万行", "鑑定書22本"],
+    tags: ["COBOL", "PL/I", "RPG", "VB6", "MUMPS", "Fortran", "C", "Rust", "QBasic", "Ada", "MAD-SLIP", "FastAPI", "React", "Claude Code"],
     externalUrl: "/works/legacy-conversions",
     detail: {
       overview: "レガシーコード変換プロジェクトの一覧ページへ",
@@ -547,14 +547,14 @@ export const legacyProjects: Project[] = [
   {
     slug: "legacy-code-archive",
     title: "Legacy Code Museum & コード鑑定書",
-    badge: "383K件収集",
+    badge: "鑑定書22本",
     badgeColor: "#d4a574",
     borderColor: "#d4a574",
     externalUrl: "https://gstate-gk.github.io/legacy-code-museum/",
     thumbnail: "/thumbnails/legacy-code-museum.svg",
     description:
-      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書シリーズ（BRL-CAD、QEMU、NASA NASTRAN等）を制作。",
-    stats: ["383,418コメント収集", "鑑定書6本制作"],
+      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書22本（ELIZA、CP/M、Mosaic、QEMU、Smalltalk-80、SQLite、NASA NASTRAN等）を制作。1960年代のチャットボットから2000年代のメディアプレイヤーまで、歴史的ソフトウェアの技術考古学を展開。",
+    stats: ["383,418コメント収集", "鑑定書22本制作"],
     tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
     detail: {
       overview:
@@ -573,9 +573,10 @@ export const legacyProjects: Project[] = [
       ],
       results: [
         "12リポジトリ・8言語から383,418件のコメントを収集",
-        "鑑定書6本のドラフトを1日で制作（BRL-CAD, DSPython, QEMU, Whitaker's WORDS, NASA NASTRAN, DikuMUD）",
+        "コード鑑定書22本を制作（ELIZA, CP/M, Mosaic, Minix, Mocha, QEMU, Smalltalk-80, SQLite, NASA NASTRAN, BRL-CAD等）",
         "Legacy Code Museum をGitHub Pagesにデプロイ",
         "コード考古学の手法とパイプラインを確立",
+        "変換実装4件（Oregon Trail, Whitaker's WORDS, Mako VM, ELIZA）を追加制作",
       ],
       techDetail: "Python（収集パイプライン）+ Next.js + TypeScript + Tailwind CSS（Museum）。GitHub Actions で自動デプロイ。データは JSON 形式で管理。",
     },
@@ -906,6 +907,142 @@ export const legacyProjects: Project[] = [
         "コード量22%削減（科学計算は圧縮率が低い傾向）",
       ],
       techDetail: "FastAPI + React + NumPy + Plotly。球面調和関数の計算精度は元Fortranと10^-12以内の一致を確認。",
+    },
+  },
+  {
+    slug: "oregon-trail",
+    title: "QBasic → React 変換（Oregon Trail）",
+    badge: "1971年作",
+    badgeColor: "#8b6914",
+    borderColor: "#8b6914",
+    description:
+      "1971年にミネソタの教師が生徒のために書いた教育ゲーム「The Oregon Trail」。QBasic 685行（GOTO 105個、変数名は1-2文字）をReact+TypeScript 1,519行に変換。ブラウザ上でプレイ可能なWebアプリとして再実装。",
+    stats: ["685行 → 1,519行", "GOTO 105個を構造化"],
+    tags: ["QBasic", "React", "TypeScript", "Claude Code"],
+    detail: {
+      overview:
+        "1971年にDon Rawitschが8年生の歴史授業のために書いた教育ゲーム「The Oregon Trail」。GOTO文105個、変数名が1-2文字（T9, F2等）という典型的な初期BASICコードを、React+TypeScriptのモダンWebアプリに変換。ゲームの雰囲気（葬式のブラックユーモア等）を忠実に再現。",
+      challenges: [
+        "GOTO文105個によるスパゲッティコードの構造化",
+        "1-2文字の変数名32個（T9, F2, S4等）の意味解読",
+        "BASICのTAB関数によるテキスト整形のCSS再現",
+        "ランダムイベントの確率バランスの忠実な再現",
+      ],
+      approach: [
+        "GOTO/GOSUBのジャンプ先を分析し、状態遷移図を作成",
+        "変数名を文脈から推定し意味のある名前に置換（T9→totalMileage等）",
+        "ゲームフェーズをReactコンポーネント（買い物→行動選択→イベント→結果）に分割",
+        "元のランダム確率テーブルをそのまま移植し、ゲームバランスを維持",
+      ],
+      results: [
+        "GOTO 105個を完全に構造化（状態管理 + コンポーネント分割）",
+        "1971年のゲーム体験をブラウザで完全に再現",
+        "変数名・ロジックの意味を解読しドキュメント化",
+        "コード鑑定書（#014）も同時制作",
+      ],
+      techDetail: "React + TypeScript + Tailwind CSS。QBasicの制御フローをuseState + イベントハンドラに変換。元コードの確率テーブルを忠実に移植。",
+    },
+  },
+  {
+    slug: "whitakers-words",
+    title: "Ada → React 変換（Whitaker's WORDS）",
+    badge: "98%削減",
+    badgeColor: "#2d8f4e",
+    borderColor: "#2d8f4e",
+    description:
+      "米空軍大佐William Whitakerが13年間かけてAdaで書いたラテン語辞書「WORDS」。Ada 27,670行をReact+TypeScript 547行の辞書検索Webアプリに変換。品詞別色分け表示でラテン語学習を支援。",
+    stats: ["27,670行 → 547行", "ラテン語辞書検索"],
+    tags: ["Ada", "React", "TypeScript", "Claude Code"],
+    detail: {
+      overview:
+        "米空軍大佐（退役）William Whitakerが1993年から13年間、個人プロジェクトとしてAdaで開発したラテン語辞書プログラム。語形変化の解析、品詞判定、英訳を行う本格的な自然言語処理システムを、ブラウザで使えるReactアプリに変換。",
+      challenges: [
+        "Ada固有の型システム（レコード型、列挙型、配列制約）の変換",
+        "ラテン語の語形変化テーブル（格変化・活用）のデータモデル設計",
+        "辞書データ（約39,000エントリ）のJSON変換と検索最適化",
+        "品詞判定ロジックの正確な移植",
+      ],
+      approach: [
+        "Ada列挙型をTypeScript union型に変換",
+        "語形変化テーブルをJSON辞書として構造化",
+        "前方一致＋部分一致のハイブリッド検索を実装",
+        "品詞別色分け（名詞:青、動詞:赤、形容詞:緑等）で視覚的に把握しやすいUIを設計",
+      ],
+      results: [
+        "コード量98%削減（27,670行 → 547行）",
+        "ブラウザ上でラテン語辞書検索が可能",
+        "品詞別色分け表示で学習を支援",
+        "コード鑑定書（#005）も制作",
+      ],
+      techDetail: "React + TypeScript。Ada の DICTLINE.GEN（39,000エントリ）をJSONに変換し、クライアントサイド検索を実装。",
+    },
+  },
+  {
+    slug: "mako-vm",
+    title: "Java/Forth → TypeScript 変換（Mako VM）",
+    badge: "46%削減",
+    badgeColor: "#6366f1",
+    borderColor: "#6366f1",
+    description:
+      "John Earnestが設計した仮想ゲームコンソール「Mako」。Java 1,965行のVM実装をTypeScript+Canvas 1,054行に変換。Forthのデュアルスタックアーキテクチャをブラウザ上で再現し、ROMファイルを読み込んで実行可能。",
+    stats: ["1,965行 → 1,054行", "仮想ゲームコンソール"],
+    tags: ["Java", "Forth", "TypeScript", "Canvas 2D", "Claude Code"],
+    detail: {
+      overview:
+        "スタックベースの仮想マシン「Mako」をブラウザで動作するTypeScriptアプリに変換。Forth言語で書かれたゲームのROMファイルを読み込み、Canvas 2Dで描画。デュアルスタック（データスタック＋リターンスタック）アーキテクチャを忠実に再現。",
+      challenges: [
+        "Forthのデュアルスタック（データスタック＋リターンスタック）の実装",
+        "VM命令セット（30命令）の正確な移植",
+        "タイルベースのグラフィック描画（Canvas 2D）",
+        "ROMバイナリフォーマットのパース",
+      ],
+      approach: [
+        "JavaのVM実行ループをTypeScript classに変換",
+        "Canvas 2DでMakoのタイルグラフィックスを描画",
+        "requestAnimationFrameでゲームループを実装",
+        "File APIでROMファイルのアップロード・実行に対応",
+      ],
+      results: [
+        "コード量46%削減（1,965行 → 1,054行）",
+        "ブラウザ上でMako ROMを実行可能",
+        "テストROMで描画・入力・サウンドを確認",
+        "コード鑑定書（#017）も制作",
+      ],
+      techDetail: "TypeScript + Canvas 2D。Forthのスタックマシンアーキテクチャを忠実に再現。ROMバイナリをArrayBufferで読み込み実行。",
+    },
+  },
+  {
+    slug: "eliza-chatbot",
+    title: "MAD-SLIP → TypeScript 変換（ELIZA）",
+    badge: "1966年作",
+    badgeColor: "#e55b3c",
+    borderColor: "#e55b3c",
+    description:
+      "1966年にMITのJoseph Weizenbaumが開発した世界初のチャットボット「ELIZA」。MAD-SLIP約2,600行をTypeScript+React 196行に変換。ChatGPT風のチャットUIで、パターンマッチング型の対話を体験可能。",
+    stats: ["~2,600行 → 196行", "世界初のチャットボット"],
+    tags: ["MAD-SLIP", "React", "TypeScript", "Claude Code"],
+    detail: {
+      overview:
+        "1966年にMITのJoseph Weizenbaumが開発した世界初のチャットボット「ELIZA」。パターンマッチングと変換ルールによるロジャーズ派心理療法シミュレーション「DOCTOR」スクリプトを、モダンなチャットUIで再現。秘書が「部屋から出てください」と言った逸話（ELIZA効果）で知られる歴史的プログラム。",
+      challenges: [
+        "MAD-SLIP（1960年代のMIT独自言語）の構文解読",
+        "SLIPリスト処理構造の現代的データ構造への変換",
+        "パターンマッチングと変換ルールの忠実な再現",
+        "DOCTORスクリプトのキーワード優先度・分解ルールの正確な移植",
+      ],
+      approach: [
+        "MAD-SLIPのリスト処理をTypeScript配列・Map操作に変換",
+        "パターンマッチングエンジンを正規表現ベースで再実装",
+        "DOCTORスクリプト（キーワード→分解→再組立）をJSONルールとして構造化",
+        "ChatGPT風のチャットUIでレトロな対話体験をモダンに演出",
+      ],
+      results: [
+        "コード量92%削減（~2,600行 → 196行）",
+        "1966年のELIZAの対話パターンをブラウザで再現",
+        "ChatGPT風UIで歴史的AIとの対話を体験可能",
+        "コード鑑定書（#019）も制作",
+      ],
+      techDetail: "React + TypeScript。パターンマッチングエンジンを正規表現で再実装。DOCTORスクリプトのルールセットをJSON構造化。",
     },
   },
 ];
