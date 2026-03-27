@@ -1,6 +1,7 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import SectionCTA from "./SectionCTA";
 
 const serviceTypes = [
   {
@@ -98,6 +99,8 @@ export default function Services() {
           </div>
         </FadeIn>
       </div>
+
+      <SectionCTA />
     </section>
   );
 }

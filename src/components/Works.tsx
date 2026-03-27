@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import FadeIn from "./FadeIn";
+import SectionCTA from "./SectionCTA";
 import { projects, getFlagshipProjects, getDemoProjects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
@@ -157,7 +158,7 @@ export default function Works() {
             {[
               { value: "1人", label: "SaaS構築", sub: "企画〜本番運用" },
               { value: "40年", label: "業務システム", sub: "金融・建設・B2B" },
-              { value: "41万行", label: "レガシー変換", sub: "10言語対応" },
+              { value: "44万行超", label: "レガシー変換", sub: "13言語対応" },
               { value: "AI", label: "協働開発", sub: "設計〜運用を一貫" },
             ].map((s) => (
               <div key={s.label} style={{ textAlign: "center" }}>
@@ -203,7 +204,7 @@ export default function Works() {
           >
             <div style={{ textAlign: "left" }}>
               <div style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a", marginBottom: 4 }}>
-                技術デモ・実験的プロジェクト
+                技術検証・個人開発プロジェクト
               </div>
               <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>
                 AI活用・API連携などの技術検証として制作したデモアプリ（{demoProjects.length}件）
@@ -226,6 +227,8 @@ export default function Works() {
           )}
         </div>
       </FadeIn>
+
+      <SectionCTA />
     </section>
   );
 }

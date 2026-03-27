@@ -1,15 +1,16 @@
 "use client";
 
 import FadeIn from "./FadeIn";
+import SectionCTA from "./SectionCTA";
 
 const skills = [
-  { name: "AI活用 (Claude Code)", pct: 95, color: "#2d8f4e", level: "主力ツール" },
-  { name: "TypeScript", pct: 85, color: "#c8860a", level: "業務級" },
-  { name: "React / Next.js", pct: 85, color: "#c8860a", level: "業務級" },
-  { name: "Node.js / Prisma", pct: 80, color: "#c8860a", level: "業務級" },
-  { name: "Python / FastAPI", pct: 70, color: "#c8860a", level: "業務級" },
-  { name: "Java / Spring Boot", pct: 85, color: "#4a90d9", level: "業務級" },
-  { name: "PostgreSQL", pct: 80, color: "#4a90d9", level: "業務級" },
+  { name: "AI活用 (Claude Code)", pct: 95, color: "#2d8f4e", level: "主力" },
+  { name: "TypeScript", pct: 85, color: "#c8860a", level: "主力" },
+  { name: "React / Next.js", pct: 85, color: "#c8860a", level: "主力" },
+  { name: "Node.js / Prisma", pct: 80, color: "#c8860a", level: "主力" },
+  { name: "Java / Spring Boot", pct: 85, color: "#4a90d9", level: "実務経験" },
+  { name: "PostgreSQL", pct: 80, color: "#4a90d9", level: "実務経験" },
+  { name: "Python / FastAPI", pct: 70, color: "#4a90d9", level: "実務経験" },
 ];
 
 export default function Skills() {
@@ -52,7 +53,7 @@ export default function Skills() {
           }}>
             <div style={{ fontSize: 11, color: "#999", letterSpacing: 1, flexShrink: 0, fontWeight: 600 }}>LEGACY</div>
             <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>
-              COBOL / PL/I / RPG / VB6 / Fortran — レガシーシステム移行案件で、既存コードの読解・仕様理解に直接活かせる知見（10言語・41万行の変換実績）
+              COBOL / PL/I / RPG / VB6 / Fortran — レガシーシステム移行案件で、既存コードの読解・仕様理解に直接活かせる知見（13言語・44万行超の変換実績）
             </div>
           </div>
         </FadeIn>
@@ -65,6 +66,8 @@ export default function Skills() {
             </div>
           </div>
         </FadeIn>
+
+        <SectionCTA />
       </div>
     </section>
   );

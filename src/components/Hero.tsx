@@ -45,11 +45,9 @@ export default function Hero() {
 
         <FadeIn>
           <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 15px)", color: "var(--text-light)", marginBottom: 32, lineHeight: 1.9, maxWidth: 560, fontWeight: 300 }}>
-            業務の課題を理解し、企画から設計・実装・運用まで一貫して対応。
+            40年の業務システム経験 × AI協働開発。
             <br />
-            40年の業務システム経験 × AI協働開発で、
-            <br />
-            一人でチーム規模の成果を出します。
+            企画から運用まで、一人でチーム規模の成果を出します。
           </div>
         </FadeIn>
 
@@ -66,25 +64,13 @@ export default function Hero() {
         <FadeIn>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <a
-              href="#process"
-              onClick={(e) => scrollTo(e, "#process")}
+              href="#works"
+              onClick={(e) => scrollTo(e, "#works")}
               className="cta-primary"
               style={{
                 padding: "12px 28px", background: "var(--accent)", color: "#fff",
                 border: "none", borderRadius: 2, fontSize: 12, letterSpacing: 2,
                 cursor: "pointer", fontWeight: 700, textDecoration: "none",
-              }}
-            >
-              進め方を見る
-            </a>
-            <a
-              href="#works"
-              onClick={(e) => scrollTo(e, "#works")}
-              className="cta-secondary"
-              style={{
-                padding: "12px 28px", background: "transparent", color: "var(--text)",
-                border: "1px solid #ccc", borderRadius: 2, fontSize: 12, letterSpacing: 2,
-                cursor: "pointer", textDecoration: "none",
               }}
             >
               実績を見る
