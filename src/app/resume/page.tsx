@@ -93,10 +93,11 @@ const projectList = [
 
 const portfolio = [
   { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", url: "NDA" },
-  { name: "DX提案アシスタント", desc: "業務フロー分析→ボトルネック可視化→システム化提案→見積もり。一気通貫の営業支援ツール", url: "非公開" },
+  { name: "DX提案アシスタント", desc: "業務フロー分析→深掘り質問→要件定義書→見積もり。6段階AI分析パイプライン", url: "非公開" },
+  { name: "Excel → Webアプリ変換", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBAマクロ対応", url: "非公開" },
   { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", url: "個人用" },
   { name: "アートさんぽシリーズ", desc: "Flutter製。MET・AIC等6美術館APIから作品取得、GLSL Shader演出、PWA対応", url: "https://sanpo-met.vercel.app" },
-  { name: "レガシーコード変換 + 鑑定書", desc: "13言語・44万行→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
+  { name: "レガシーコード変換 + 鑑定書", desc: "13言語・44万行超→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
   { name: "AI Limits Lab", desc: "AIの限界を実証実験で記録。Claude vs Figma デザイン対決など", url: "https://github.com/gstate-gk/ai-limits-lab" },
   { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", url: "https://contract-checker-vert.vercel.app" },
   { name: "AIレシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", url: "https://receipt-scanner-iota.vercel.app" },
