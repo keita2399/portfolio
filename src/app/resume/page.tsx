@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 const skills = [
   { category: "主軸技術", detail: "TypeScript, React, Next.js (App Router), Node.js, Prisma, Tailwind CSS" },
-  { category: "対応可能", detail: "Python, Java（Spring Boot）, JavaScript, jQuery, C#.NET, SQL" },
+  { category: "対応可能", detail: "Python, Flutter/Dart, Java（Spring Boot）, JavaScript, jQuery, C#.NET, SQL" },
   { category: "DB・インフラ", detail: "PostgreSQL（Neon / Aurora RDS）, Oracle, MySQL / Vercel, AWS, Azure" },
-  { category: "外部サービス連携", detail: "Google Maps API, LINE Messaging API, Gemini AI, 決済サービス（ZEUS）" },
+  { category: "外部サービス連携", detail: "Google Maps API, LINE Messaging API, Gemini AI, Claude API, 決済サービス（ZEUS）, 美術館API（MET/AIC等）" },
   { category: "AI開発ツール", detail: "Claude Code（主力）, Claude API, GitHub Copilot" },
   { category: "開発手法", detail: "アジャイル（スクラム）、ウォーターフォール、全工程対応（要件定義〜運用）" },
   { category: "レガシー言語", detail: "COBOL, PL/I, RPG, VB6, MUMPS, Fortran, QBasic, Ada, MAD-SLIP" },
@@ -93,12 +93,15 @@ const projectList = [
 
 const portfolio = [
   { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", url: "NDA" },
-  { name: "DX提案アシスタント", desc: "業務フロー分析→ボトルネック可視化→システム化提案→見積もり。一気通貫の営業支援ツール", url: "NDA" },
-  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期", url: "NDA" },
-  { name: "レガシーコード変換", desc: "13言語・44万行→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
+  { name: "DX提案アシスタント", desc: "業務フロー分析→ボトルネック可視化→システム化提案→見積もり。一気通貫の営業支援ツール", url: "非公開" },
+  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", url: "個人用" },
+  { name: "アートさんぽシリーズ", desc: "Flutter製。MET・AIC等6美術館APIから作品取得、GLSL Shader演出、PWA対応", url: "https://sanpo-met.vercel.app" },
+  { name: "レガシーコード変換 + 鑑定書", desc: "13言語・44万行→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
   { name: "AI Limits Lab", desc: "AIの限界を実証実験で記録。Claude vs Figma デザイン対決など", url: "https://github.com/gstate-gk/ai-limits-lab" },
   { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", url: "https://contract-checker-vert.vercel.app" },
-  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・分析 + コード鑑定書38本", url: "https://gstate-gk.github.io/legacy-code-museum/" },
+  { name: "AIレシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", url: "https://receipt-scanner-iota.vercel.app" },
+  { name: "AI書類解析アプリ", desc: "書類画像をアップロード→種別判定・項目抽出・信頼度表示", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
+  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
@@ -292,13 +295,13 @@ export default function ResumePage() {
                 <div style={{ fontSize: 13, fontWeight: 600 }}>{p.name}</div>
                 <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>{p.desc}</div>
               </div>
-              {p.url !== "NDA" ? (
+              {!["NDA", "非公開", "個人用"].includes(p.url) ? (
                 <a href={p.url} target="_blank" rel="noopener noreferrer"
                   style={{ fontSize: 10, color: "#10b981", fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 12 }}>
                   DEMO ↗
                 </a>
               ) : (
-                <span style={{ fontSize: 10, color: "var(--text-muted)", flexShrink: 0, marginLeft: 12 }}>NDA</span>
+                <span style={{ fontSize: 10, color: "var(--text-muted)", flexShrink: 0, marginLeft: 12 }}>{p.url}</span>
               )}
             </div>
           ))}
