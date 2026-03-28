@@ -145,8 +145,8 @@ export const projects: Project[] = [
       "「業務の困りごとを話すだけ」で、業務フロー図の自動生成・ボトルネック分析・システム化提案・見積もりまでを一気通貫で支援。発注者との初回打ち合わせで「その場で提案書の原型」が出せる営業ツール。",
     stats: ["業務フロー自動生成", "現状分析→システム化提案→見積もり"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用"],
-    detail: {
     updatedAt: "2026-03",
+    detail: {
       overview:
         "業務のDX化を支援する2つのツールを統合したアシスタント。【DX提案】業務の課題をテキストで入力 → AIが業務フロー図を自動生成 → 工程ごとのボトルネック・リスクを分析 → 現状と改善案を対比してシステム化を提案。【見積もり】提案内容をそのまま引き継ぎ、画面設計 → 技術スタック比較 → 機能別工数・金額の見積もりまでを自動生成。エクセル出力で営業資料としてそのまま使える。",
       challenges: [
@@ -184,8 +184,8 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    detail: {
     updatedAt: "2026-03",
+    detail: {
       overview:
         "ポートフォリオサイトの訪問者が、スキル・実績・受けたい案件について自由に質問できるAIチャットボット。業務経歴書の全情報（40年分のプロジェクト履歴、スキル、業務知識等）をprofile.mdとしてGemini AIに渡し、RAG的にナレッジベースとして活用。プロフィールにない情報は「お問い合わせください」と正直に回答する設計。",
       challenges: [
@@ -222,8 +222,8 @@ export const projects: Project[] = [
       "契約書をアップロードするだけで、AIが条項ごとにリスクを判定。自動更新・違約金・損害賠償上限なし・知的財産権の全譲渡・競業避止など、フリーランスが見落としがちな不利条項を検出し、具体的な修正案を提示。",
     stats: ["Gemini Vision API", "条項別リスク判定"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
+    updatedAt: "2026-03",
     detail: {
-    updatedAt: "2026-02",
       overview:
         "契約書の画像をアップロードすると、Gemini 2.5 Flash が全条項を読み取り、フリーランス・個人事業主にとって不利な条項をHIGH/MEDIUM/LOW/SAFEの4段階で判定。条項ごとに問題点と具体的な修正案を提示し、欠落している条項（損害賠償上限、解除条件等）も検出する。",
       challenges: [
@@ -260,8 +260,8 @@ export const projects: Project[] = [
       "レシートを撮影するだけで、AIが店舗名・商品・金額・税率を読み取り、勘定科目を自動判定。項目ごとの信頼度スコア表示、合計金額の自動検証、軽減税率（8%）と標準税率（10%）の区別に対応。確定申告の経費入力を効率化。",
     stats: ["Gemini Vision API", "勘定科目自動判定"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
+    updatedAt: "2026-03",
     detail: {
-    updatedAt: "2026-02",
       overview:
         "レシート画像をアップロードまたはスマホカメラで撮影すると、Gemini 2.5 Flash（Vision API）が内容を読み取り、店舗名・日付・商品明細・税率・合計金額を構造化データとして抽出。さらに確定申告の勘定科目（会議費・消耗品費・旅費交通費等）を自動判定する。",
       challenges: [
@@ -298,8 +298,8 @@ export const projects: Project[] = [
       "Gemini Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
     stats: ["Gemini Vision API", "画像→構造化データ"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
-    detail: {
     updatedAt: "2026-03",
+    detail: {
       overview:
         "書類画像をアップロードすると、Gemini Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
       challenges: [
@@ -357,8 +357,8 @@ export const projects: Project[] = [
       "Google Maps APIを活用した移動時間・距離計算アプリ。住所入力のオートコンプリート、地図クリックでの地点選択、車・電車・徒歩・自転車の4つの移動手段に対応。ルートも地図上に表示。",
     stats: ["Google Maps API", "4移動手段対応"],
     tags: ["Next.js", "TypeScript", "Google Maps API", "Tailwind CSS"],
+    updatedAt: "2026-03",
     detail: {
-    updatedAt: "2026-02",
       overview:
         "出発地と目的地を入力すると、Google Maps Directions APIでルート検索を行い、移動時間・距離・ルートを地図上に表示するWebアプリケーション。",
       challenges: [
@@ -417,8 +417,8 @@ export const projects: Project[] = [
       "LINE Messaging APIを使ったプッシュ通知デモアプリ。テキスト・画像・スタンプの3種類のメッセージをBotからLINEユーザーに送信可能。Webhookによるメッセージ受信にも対応。",
     stats: ["LINE Messaging API", "3種メッセージ対応"],
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Tailwind CSS"],
+    updatedAt: "2026-03",
     detail: {
-    updatedAt: "2026-02",
       overview:
         "LINE Messaging APIを活用し、Webアプリからワンクリックでテキスト・画像・スタンプをLINEに送信できるデモアプリケーション。送信履歴の管理やWebhookでのメッセージ受信にも対応。",
       challenges: [
@@ -478,8 +478,8 @@ export const projects: Project[] = [
       "移動中にスマホで思いついたアイデアを、LINEでAIに伝えるだけでPCの開発環境に自動で共有。「いつでもどこでも開発を止めない」ワークフローを実現した、自分のために作ったツール。",
     stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
-    detail: {
     updatedAt: "2026-03",
+    detail: {
       overview:
         "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
       challenges: [
@@ -568,8 +568,8 @@ export const legacyProjects: Project[] = [
       "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書38本（ELIZA、CP/M、Mosaic、QEMU、Smalltalk-80、SQLite、NASA NASTRAN等）を制作。1960年代のチャットボットから2000年代のメディアプレイヤーまで、歴史的ソフトウェアの技術考古学を展開。",
     stats: ["383,418コメント収集", "鑑定書38本制作"],
     tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
-    detail: {
     updatedAt: "2026-03",
+    detail: {
       overview:
         "90年代以前のレガシーコードを系統的に収集・分析するプロジェクト。12リポジトリから383,418件のコメントを抽出し、感情分析（frustration, humor等8感情）とタグ検出（TODO/FIXME/HACK等）を自動実行。成果物としてインタラクティブWebアプリとコード鑑定書シリーズを制作。",
       challenges: [
@@ -606,9 +606,9 @@ export const legacyProjects: Project[] = [
       "1986年にLucasfilm Games Divisionが開発した世界初のグラフィカルMMO「Habitat」。PL/I（Stratus VOS）26,218行をPython+React 4,622行に変換。108種類のオブジェクトクラスを全実装し、ブラウザ上で動作するデモを公開。",
     stats: ["26,218行 → 4,622行", "108クラス全実装"],
     tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
+    updatedAt: "2026-03",
     detail: {
       overview:
-    updatedAt: "2026-03",
         "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
       challenges: [
         "PL/IのBASED構造体＋ENTRY変数による事実上のvtable（仮想関数テーブル）の解読",
@@ -642,10 +642,10 @@ export const legacyProjects: Project[] = [
       '日本製ローグライクRPG「Hengband」のC言語33万行をRust 1万行に変換。ソースコード読解のみで完全動作するゲームを2日間で再実装。rustcコンパイラのICEバグも発見。',
     stats: ["330,000行 → 10,300行", "2日間で完了"],
     tags: ["C言語", "Rust", "crossterm", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "1990年代に開発された日本製ローグライクRPG「Hengband」は、C言語で書かれた33万行の巨大コードベース。これをRust言語に完全変換し、約1万行で同等の機能を持つゲームを再実装しました。",
-    updatedAt: "2026-03",
       challenges: [
         "33万行のC言語コード（ドキュメントなし）の全体構造把握",
         "C言語のポインタ操作・グローバル変数をRustの所有権モデルに適合させる設計",
@@ -692,11 +692,11 @@ export const legacyProjects: Project[] = [
       "AWS公開のメインフレーム・クレジットカード管理システム。COBOL 31プログラム+BMS 17画面+VSAM 10ファイルをFastAPI+Reactに全変換。CICS画面遷移もSPA化。",
     stats: ["30,451行 → 2,250行", "119ファイル → 22"],
     tags: ["COBOL", "CICS/BMS", "FastAPI", "React"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "AWSが公開しているメインフレーム・デモアプリケーション「CardDemo」（クレジットカード管理システム）を、モダンWebアプリケーションに完全変換したプロジェクト。",
       challenges: [
-    updatedAt: "2026-03",
         "COBOL 31プログラム＋BMS 17画面＋VSAM 10ファイルの複雑な依存関係の解析",
         "CICS画面遷移（SEND MAP/RECEIVE MAP）のSPA化",
         "VSAMファイル（KSDS/ESDS）のリレーショナルDB設計への変換",
@@ -728,12 +728,12 @@ export const legacyProjects: Project[] = [
       '小売店向けPOSシステム。3,150行の「神フォーム」を6コンポーネントに分割。SQLインジェクション40箇所超を修正、Access MDBをSQLiteに正規化移行。',
     stats: ["12,500行 → 1,414行", "脆弱性40箇所修正"],
     tags: ["VB6", "ActiveX", "FastAPI", "React"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "小売店向けPOSシステム（VB6 + Access MDB）をモダンWebアプリに変換。セキュリティ脆弱性の修正とアーキテクチャの近代化を同時に実現。",
       challenges: [
         "3,150行の「神フォーム」（1つのフォームに全機能が集約）の分解",
-    updatedAt: "2026-03",
         "40箇所以上のSQLインジェクション脆弱性",
         "Access MDBの非正規化テーブル設計",
         "ActiveXコントロール依存の帳票印刷機能",
@@ -764,13 +764,13 @@ export const legacyProjects: Project[] = [
       "IBM i（AS/400）の顧客マスタ保守アプリ。5250緑画面のサブファイルをReactテーブルに変換、DB2 for iからSQLiteへ移行。ソース読解のみ、約15分で実装完了。",
     stats: ["2,286行 → 650行", "約15分で完了"],
     tags: ["ILE RPG", "5250画面", "FastAPI", "React"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "IBM i（AS/400）上で動作する顧客マスタ保守アプリケーション。ILE RPGで書かれた5250緑画面アプリをWebアプリに変換。",
       challenges: [
         "5250画面のサブファイル（ページング付きリスト表示）のWeb再現",
         "RPG固有のインジケータ（*INxx）ベースの制御フロー",
-    updatedAt: "2026-03",
         "DB2 for iのDDS定義からのスキーマ変換",
         "固定長レコードのデータ型マッピング",
       ],
@@ -800,6 +800,7 @@ export const legacyProjects: Project[] = [
       "英国製実務会計システム ACAS-GL（273ファイル、10万行）。GnuCOBOL 3.2をソースビルドし、仕様書不在の状態からビルド・動作確認環境を構築。修正はわずか3箇所。",
     stats: ["100,000行 / 273ファイル", "ビルド成功"],
     tags: ["COBOL", "GnuCOBOL", "Berkeley DB", "WSL2"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "英国で実務使用されていた会計システム ACAS-GL（General Ledger）。仕様書が存在しない状態から、ソースコードのみでビルド・動作確認環境を構築した分析プロジェクト。",
@@ -807,7 +808,6 @@ export const legacyProjects: Project[] = [
         "10万行・273ファイルの巨大COBOLコードベースの構造把握",
         "仕様書・ドキュメント一切なし",
         "GnuCOBOL 3.2のソースビルドが必要（パッケージマネージャ版では不足）",
-    updatedAt: "2026-03",
         "Berkeley DB（ISAM代替）との連携設定",
       ],
       approach: [
@@ -836,6 +836,7 @@ export const legacyProjects: Project[] = [
       "日本製ローグライクRPG「Hengband」のC+Lua 33万行をPython+React 4,245行に変換。ブラウザ上でプレイ可能なWebアプリとして再実装。Lua 5.0バインディング3万行を含むレガシーコードの完全現代化。",
     stats: ["330,000行 → 4,245行", "ブラウザで動作"],
     tags: ["C言語", "Lua", "FastAPI", "React", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "C言語33万行+Lua 5.0スクリプティングで構成された日本製ローグライクRPGを、Python+Reactのモダンなフルスタック構成に変換。ブラウザ上でターミナルUIを再現。",
@@ -844,7 +845,6 @@ export const legacyProjects: Project[] = [
         "tolua自動生成コードの解読",
         "ターミナルベースのゲームUIをWebで再現",
         "EUC-JP→UTF-8の文字コード変換",
-    updatedAt: "2026-03",
       ],
       approach: [
         "ソースコード静的解析で主要モジュールを特定",
@@ -871,6 +871,7 @@ export const legacyProjects: Project[] = [
       "米国退役軍人省の医療情報システム VistA の Problem List モジュール。MUMPS（M言語）7,677行をPython+React 1,650行に変換。グローバル変数ベースの階層型DBをSQLiteに移行。",
     stats: ["7,677行 → 1,650行", "MUMPS → Python"],
     tags: ["MUMPS", "VistA", "FastAPI", "React"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "米国退役軍人省（VA）の電子健康記録システムVistAのProblem List（問題リスト）モジュールを、MUMPS言語からPython+Reactに変換。",
@@ -880,7 +881,6 @@ export const legacyProjects: Project[] = [
         "FileMan（VistA独自のデータ辞書）の解読",
         "医療用語コード体系（ICD/SNOMED CT）への対応",
       ],
-    updatedAt: "2026-03",
       approach: [
         "MUMPSのグローバル変数パターンをSQLiteテーブルに変換",
         "FileManデータ辞書からスキーマを自動生成",
@@ -906,6 +906,7 @@ export const legacyProjects: Project[] = [
       "NASAの土星磁場モデル（Fortran 77）をPython+React+Plotlyに変換。科学計算の精度を維持しつつ、3Dインタラクティブ可視化をブラウザで実現。",
     stats: ["2,334行 → 1,808行", "3D可視化対応"],
     tags: ["Fortran", "Python", "React", "Plotly"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "1980年代にNASAが開発した土星の磁場モデルをFortran 77からPython+Reactに変換。球面調和関数による磁場計算を維持しつつ、Plotlyで3Dインタラクティブ可視化を追加。",
@@ -916,7 +917,6 @@ export const legacyProjects: Project[] = [
         "COMMONブロックの変換",
       ],
       approach: [
-    updatedAt: "2026-03",
         "Fortran→NumPy配列への変換パターンを確立",
         "COMMONブロックをPythonクラスに変換",
         "Plotlyで磁力線・ベクトル場の3D描画を実装",
@@ -941,6 +941,7 @@ export const legacyProjects: Project[] = [
       "1971年にミネソタの教師が生徒のために書いた教育ゲーム「The Oregon Trail」。QBasic 685行（GOTO 105個、変数名は1-2文字）をReact+TypeScript 1,519行に変換。ブラウザ上でプレイ可能なWebアプリとして再実装。",
     stats: ["685行 → 1,519行", "GOTO 105個を構造化"],
     tags: ["QBasic", "React", "TypeScript", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "1971年にDon Rawitschが8年生の歴史授業のために書いた教育ゲーム「The Oregon Trail」。GOTO文105個、変数名が1-2文字（T9, F2等）という典型的な初期BASICコードを、React+TypeScriptのモダンWebアプリに変換。ゲームの雰囲気（葬式のブラックユーモア等）を忠実に再現。",
@@ -952,7 +953,6 @@ export const legacyProjects: Project[] = [
       ],
       approach: [
         "GOTO/GOSUBのジャンプ先を分析し、状態遷移図を作成",
-    updatedAt: "2026-03",
         "変数名を文脈から推定し意味のある名前に置換（T9→totalMileage等）",
         "ゲームフェーズをReactコンポーネント（買い物→行動選択→イベント→結果）に分割",
         "元のランダム確率テーブルをそのまま移植し、ゲームバランスを維持",
@@ -976,6 +976,7 @@ export const legacyProjects: Project[] = [
       "米空軍大佐William Whitakerが13年間かけてAdaで書いたラテン語辞書「WORDS」。Ada 27,670行をReact+TypeScript 547行の辞書検索Webアプリに変換。品詞別色分け表示でラテン語学習を支援。",
     stats: ["27,670行 → 547行", "ラテン語辞書検索"],
     tags: ["Ada", "React", "TypeScript", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "米空軍大佐（退役）William Whitakerが1993年から13年間、個人プロジェクトとしてAdaで開発したラテン語辞書プログラム。語形変化の解析、品詞判定、英訳を行う本格的な自然言語処理システムを、ブラウザで使えるReactアプリに変換。",
@@ -988,7 +989,6 @@ export const legacyProjects: Project[] = [
       approach: [
         "Ada列挙型をTypeScript union型に変換",
         "語形変化テーブルをJSON辞書として構造化",
-    updatedAt: "2026-03",
         "前方一致＋部分一致のハイブリッド検索を実装",
         "品詞別色分け（名詞:青、動詞:赤、形容詞:緑等）で視覚的に把握しやすいUIを設計",
       ],
@@ -1011,6 +1011,7 @@ export const legacyProjects: Project[] = [
       "John Earnestが設計した仮想ゲームコンソール「Mako」。Java 1,965行のVM実装をTypeScript+Canvas 1,054行に変換。Forthのデュアルスタックアーキテクチャをブラウザ上で再現し、ROMファイルを読み込んで実行可能。",
     stats: ["1,965行 → 1,054行", "仮想ゲームコンソール"],
     tags: ["Java", "Forth", "TypeScript", "Canvas 2D", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "スタックベースの仮想マシン「Mako」をブラウザで動作するTypeScriptアプリに変換。Forth言語で書かれたゲームのROMファイルを読み込み、Canvas 2Dで描画。デュアルスタック（データスタック＋リターンスタック）アーキテクチャを忠実に再現。",
@@ -1024,7 +1025,6 @@ export const legacyProjects: Project[] = [
         "JavaのVM実行ループをTypeScript classに変換",
         "Canvas 2DでMakoのタイルグラフィックスを描画",
         "requestAnimationFrameでゲームループを実装",
-    updatedAt: "2026-03",
         "File APIでROMファイルのアップロード・実行に対応",
       ],
       results: [
@@ -1046,6 +1046,7 @@ export const legacyProjects: Project[] = [
       "1966年にMITのJoseph Weizenbaumが開発した世界初のチャットボット「ELIZA」。MAD-SLIP約2,600行をTypeScript+React 196行に変換。ChatGPT風のチャットUIで、パターンマッチング型の対話を体験可能。",
     stats: ["~2,600行 → 196行", "世界初のチャットボット"],
     tags: ["MAD-SLIP", "React", "TypeScript", "Claude Code"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "1966年にMITのJoseph Weizenbaumが開発した世界初のチャットボット「ELIZA」。パターンマッチングと変換ルールによるロジャーズ派心理療法シミュレーション「DOCTOR」スクリプトを、モダンなチャットUIで再現。秘書が「部屋から出てください」と言った逸話（ELIZA効果）で知られる歴史的プログラム。",
@@ -1060,7 +1061,6 @@ export const legacyProjects: Project[] = [
         "パターンマッチングエンジンを正規表現ベースで再実装",
         "DOCTORスクリプト（キーワード→分解→再組立）をJSONルールとして構造化",
         "ChatGPT風のチャットUIでレトロな対話体験をモダンに演出",
-    updatedAt: "2026-03",
       ],
       results: [
         "コード量92%削減（~2,600行 → 196行）",
