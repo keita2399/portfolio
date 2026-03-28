@@ -86,6 +86,12 @@ function WorkCard({ project }: { project: Project }) {
             </div>
           </div>
 
+          {project.updatedAt && (
+            <div style={{ fontSize: 10, color: "var(--text-faint)", marginBottom: 12 }}>
+              更新: {project.updatedAt}
+            </div>
+          )}
+
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {project.tags.map((tag) => (
               <span

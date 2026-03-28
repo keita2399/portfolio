@@ -9,6 +9,7 @@ export type Project = {
   description: string;
   stats: string[];
   tags: string[];
+  updatedAt?: string;
   category?: ProjectCategory;
   externalUrl?: string;
   thumbnail?: string;
@@ -44,6 +45,7 @@ export const projects: Project[] = [
       "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、当初見積もり136人日を超える規模のシステムを3ヶ月・一人で構築。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
     stats: ["32画面", "67 APIエンドポイント", "19モデル"],
     tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer"],
+    updatedAt: "2026-03",
     thumbnail: "/thumbnails/btob-matching-arch.svg",
     detail: {
       overview:
@@ -96,6 +98,7 @@ export const projects: Project[] = [
       "世界の美術館・博物館のコレクションをスマホで気軽に楽しめるFlutter Webアプリシリーズ。GPUシェーダーによるスポットライト演出、毎日1作品との出会い（ガチャ）、作品クイズなど、アート体験をデジタルで再現。LINEボットが毎朝おすすめ作品を届ける。美術館さんぽ・画家さんぽ・特集さんぽの3カテゴリで6アプリを展開中。",
     stats: ["Flutter Web + LINE Bot", "4つの美術館API + Wikidata連携", "6アプリ展開中"],
     tags: ["Flutter", "Dart", "LINE Messaging API", "Vercel", "Met Museum API", "AIC API", "Cleveland API", "Smithsonian API", "Wikidata SPARQL", "GLSL Shader", "PWA"],
+    updatedAt: "2026-03",
     detail: {
       overview:
         "メトロポリタン美術館・シカゴ美術館・クリーブランド美術館・スミソニアン博物館のパブリックAPIとWikidata SPARQLを活用し、数十万点のコレクションをスマホで鑑賞できるWebアプリシリーズ。Flutter Webでクロスプラットフォーム対応し、GPUフラグメントシェーダーでスポットライトの光演出を実現。LINEボットが毎朝6時に6作品のカルーセルをプッシュ配信し、作家名検索にも対応。美術館さんぽ3種・画家さんぽ2種・特集さんぽ1種の計6アプリを公開中。",
@@ -143,6 +146,7 @@ export const projects: Project[] = [
     stats: ["業務フロー自動生成", "現状分析→システム化提案→見積もり"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用"],
     detail: {
+    updatedAt: "2026-03",
       overview:
         "業務のDX化を支援する2つのツールを統合したアシスタント。【DX提案】業務の課題をテキストで入力 → AIが業務フロー図を自動生成 → 工程ごとのボトルネック・リスクを分析 → 現状と改善案を対比してシステム化を提案。【見積もり】提案内容をそのまま引き継ぎ、画面設計 → 技術スタック比較 → 機能別工数・金額の見積もりまでを自動生成。エクセル出力で営業資料としてそのまま使える。",
       challenges: [
@@ -181,6 +185,7 @@ export const projects: Project[] = [
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
     detail: {
+    updatedAt: "2026-03",
       overview:
         "ポートフォリオサイトの訪問者が、スキル・実績・受けたい案件について自由に質問できるAIチャットボット。業務経歴書の全情報（40年分のプロジェクト履歴、スキル、業務知識等）をprofile.mdとしてGemini AIに渡し、RAG的にナレッジベースとして活用。プロフィールにない情報は「お問い合わせください」と正直に回答する設計。",
       challenges: [
@@ -218,6 +223,7 @@ export const projects: Project[] = [
     stats: ["Gemini Vision API", "条項別リスク判定"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
     detail: {
+    updatedAt: "2026-02",
       overview:
         "契約書の画像をアップロードすると、Gemini 2.5 Flash が全条項を読み取り、フリーランス・個人事業主にとって不利な条項をHIGH/MEDIUM/LOW/SAFEの4段階で判定。条項ごとに問題点と具体的な修正案を提示し、欠落している条項（損害賠償上限、解除条件等）も検出する。",
       challenges: [
@@ -255,6 +261,7 @@ export const projects: Project[] = [
     stats: ["Gemini Vision API", "勘定科目自動判定"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
     detail: {
+    updatedAt: "2026-02",
       overview:
         "レシート画像をアップロードまたはスマホカメラで撮影すると、Gemini 2.5 Flash（Vision API）が内容を読み取り、店舗名・日付・商品明細・税率・合計金額を構造化データとして抽出。さらに確定申告の勘定科目（会議費・消耗品費・旅費交通費等）を自動判定する。",
       challenges: [
@@ -292,6 +299,7 @@ export const projects: Project[] = [
     stats: ["Gemini Vision API", "画像→構造化データ"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
     detail: {
+    updatedAt: "2026-03",
       overview:
         "書類画像をアップロードすると、Gemini Vision APIが書類の種類を自動判別し、記載内容を構造化データとして抽出するWebアプリケーション。建設業許可証などの業務書類確認を想定。",
       challenges: [
@@ -350,6 +358,7 @@ export const projects: Project[] = [
     stats: ["Google Maps API", "4移動手段対応"],
     tags: ["Next.js", "TypeScript", "Google Maps API", "Tailwind CSS"],
     detail: {
+    updatedAt: "2026-02",
       overview:
         "出発地と目的地を入力すると、Google Maps Directions APIでルート検索を行い、移動時間・距離・ルートを地図上に表示するWebアプリケーション。",
       challenges: [
@@ -409,6 +418,7 @@ export const projects: Project[] = [
     stats: ["LINE Messaging API", "3種メッセージ対応"],
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Tailwind CSS"],
     detail: {
+    updatedAt: "2026-02",
       overview:
         "LINE Messaging APIを活用し、Webアプリからワンクリックでテキスト・画像・スタンプをLINEに送信できるデモアプリケーション。送信履歴の管理やWebhookでのメッセージ受信にも対応。",
       challenges: [
@@ -469,6 +479,7 @@ export const projects: Project[] = [
     stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
     detail: {
+    updatedAt: "2026-03",
       overview:
         "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
       challenges: [
@@ -528,9 +539,10 @@ export const projects: Project[] = [
     badgeColor: "#999",
     borderColor: "#999",
     description:
-      "「仕様書がない」「読める人がいない」——そんなレガシーシステムを、ソースコードだけを頼りにモダンWebアプリに変換。COBOL・VB6・RPG・QBasic・Ada・MAD-SLIP等13言語、合計44万行超の実績。さらにコード鑑定書22本を制作し、歴史的ソフトウェアの技術考古学を展開。40年の業務知識があるからこそ、コードの裏にある業務を読み解ける。",
-    stats: ["13言語対応", "44万行 → 3万行", "鑑定書22本"],
+      "「仕様書がない」「読める人がいない」——そんなレガシーシステムを、ソースコードだけを頼りにモダンWebアプリに変換。COBOL・VB6・RPG・QBasic・Ada・MAD-SLIP等13言語、合計44万行超の実績。さらにコード鑑定書38本を制作し、歴史的ソフトウェアの技術考古学を展開。40年の業務知識があるからこそ、コードの裏にある業務を読み解ける。",
+    stats: ["13言語対応", "44万行 → 3万行", "鑑定書38本"],
     tags: ["COBOL", "PL/I", "RPG", "VB6", "MUMPS", "Fortran", "C", "Rust", "QBasic", "Ada", "MAD-SLIP", "FastAPI", "React", "Claude Code"],
+    updatedAt: "2026-03",
     externalUrl: "/works/legacy-conversions",
     detail: {
       overview: "レガシーコード変換プロジェクトの一覧ページへ",
@@ -547,16 +559,17 @@ export const legacyProjects: Project[] = [
   {
     slug: "legacy-code-archive",
     title: "Legacy Code Museum & コード鑑定書",
-    badge: "鑑定書22本",
+    badge: "鑑定書38本",
     badgeColor: "#d4a574",
     borderColor: "#d4a574",
     externalUrl: "https://gstate-gk.github.io/legacy-code-museum/",
     thumbnail: "/thumbnails/legacy-code-museum.svg",
     description:
-      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書22本（ELIZA、CP/M、Mosaic、QEMU、Smalltalk-80、SQLite、NASA NASTRAN等）を制作。1960年代のチャットボットから2000年代のメディアプレイヤーまで、歴史的ソフトウェアの技術考古学を展開。",
-    stats: ["383,418コメント収集", "鑑定書22本制作"],
+      "12リポジトリ・8言語から383,418件のコメントを収集し、感情分析・タグ検出パイプラインを構築。インタラクティブWebアプリ「Legacy Code Museum」と、コード鑑定書38本（ELIZA、CP/M、Mosaic、QEMU、Smalltalk-80、SQLite、NASA NASTRAN等）を制作。1960年代のチャットボットから2000年代のメディアプレイヤーまで、歴史的ソフトウェアの技術考古学を展開。",
+    stats: ["383,418コメント収集", "鑑定書38本制作"],
     tags: ["Python", "Next.js", "TypeScript", "AI活用", "データ分析"],
     detail: {
+    updatedAt: "2026-03",
       overview:
         "90年代以前のレガシーコードを系統的に収集・分析するプロジェクト。12リポジトリから383,418件のコメントを抽出し、感情分析（frustration, humor等8感情）とタグ検出（TODO/FIXME/HACK等）を自動実行。成果物としてインタラクティブWebアプリとコード鑑定書シリーズを制作。",
       challenges: [
@@ -573,7 +586,7 @@ export const legacyProjects: Project[] = [
       ],
       results: [
         "12リポジトリ・8言語から383,418件のコメントを収集",
-        "コード鑑定書22本を制作（ELIZA, CP/M, Mosaic, Minix, Mocha, QEMU, Smalltalk-80, SQLite, NASA NASTRAN, BRL-CAD等）",
+        "コード鑑定書38本を制作（ELIZA, CP/M, Mosaic, Minix, Mocha, QEMU, Smalltalk-80, SQLite, NASA NASTRAN, BRL-CAD等）",
         "Legacy Code Museum をGitHub Pagesにデプロイ",
         "コード考古学の手法とパイプラインを確立",
         "変換実装4件（Oregon Trail, Whitaker's WORDS, Mako VM, ELIZA）を追加制作",
@@ -595,6 +608,7 @@ export const legacyProjects: Project[] = [
     tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
     detail: {
       overview:
+    updatedAt: "2026-03",
         "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
       challenges: [
         "PL/IのBASED構造体＋ENTRY変数による事実上のvtable（仮想関数テーブル）の解読",
@@ -631,6 +645,7 @@ export const legacyProjects: Project[] = [
     detail: {
       overview:
         "1990年代に開発された日本製ローグライクRPG「Hengband」は、C言語で書かれた33万行の巨大コードベース。これをRust言語に完全変換し、約1万行で同等の機能を持つゲームを再実装しました。",
+    updatedAt: "2026-03",
       challenges: [
         "33万行のC言語コード（ドキュメントなし）の全体構造把握",
         "C言語のポインタ操作・グローバル変数をRustの所有権モデルに適合させる設計",
@@ -681,6 +696,7 @@ export const legacyProjects: Project[] = [
       overview:
         "AWSが公開しているメインフレーム・デモアプリケーション「CardDemo」（クレジットカード管理システム）を、モダンWebアプリケーションに完全変換したプロジェクト。",
       challenges: [
+    updatedAt: "2026-03",
         "COBOL 31プログラム＋BMS 17画面＋VSAM 10ファイルの複雑な依存関係の解析",
         "CICS画面遷移（SEND MAP/RECEIVE MAP）のSPA化",
         "VSAMファイル（KSDS/ESDS）のリレーショナルDB設計への変換",
@@ -717,6 +733,7 @@ export const legacyProjects: Project[] = [
         "小売店向けPOSシステム（VB6 + Access MDB）をモダンWebアプリに変換。セキュリティ脆弱性の修正とアーキテクチャの近代化を同時に実現。",
       challenges: [
         "3,150行の「神フォーム」（1つのフォームに全機能が集約）の分解",
+    updatedAt: "2026-03",
         "40箇所以上のSQLインジェクション脆弱性",
         "Access MDBの非正規化テーブル設計",
         "ActiveXコントロール依存の帳票印刷機能",
@@ -753,6 +770,7 @@ export const legacyProjects: Project[] = [
       challenges: [
         "5250画面のサブファイル（ページング付きリスト表示）のWeb再現",
         "RPG固有のインジケータ（*INxx）ベースの制御フロー",
+    updatedAt: "2026-03",
         "DB2 for iのDDS定義からのスキーマ変換",
         "固定長レコードのデータ型マッピング",
       ],
@@ -789,6 +807,7 @@ export const legacyProjects: Project[] = [
         "10万行・273ファイルの巨大COBOLコードベースの構造把握",
         "仕様書・ドキュメント一切なし",
         "GnuCOBOL 3.2のソースビルドが必要（パッケージマネージャ版では不足）",
+    updatedAt: "2026-03",
         "Berkeley DB（ISAM代替）との連携設定",
       ],
       approach: [
@@ -825,6 +844,7 @@ export const legacyProjects: Project[] = [
         "tolua自動生成コードの解読",
         "ターミナルベースのゲームUIをWebで再現",
         "EUC-JP→UTF-8の文字コード変換",
+    updatedAt: "2026-03",
       ],
       approach: [
         "ソースコード静的解析で主要モジュールを特定",
@@ -860,6 +880,7 @@ export const legacyProjects: Project[] = [
         "FileMan（VistA独自のデータ辞書）の解読",
         "医療用語コード体系（ICD/SNOMED CT）への対応",
       ],
+    updatedAt: "2026-03",
       approach: [
         "MUMPSのグローバル変数パターンをSQLiteテーブルに変換",
         "FileManデータ辞書からスキーマを自動生成",
@@ -895,6 +916,7 @@ export const legacyProjects: Project[] = [
         "COMMONブロックの変換",
       ],
       approach: [
+    updatedAt: "2026-03",
         "Fortran→NumPy配列への変換パターンを確立",
         "COMMONブロックをPythonクラスに変換",
         "Plotlyで磁力線・ベクトル場の3D描画を実装",
@@ -930,6 +952,7 @@ export const legacyProjects: Project[] = [
       ],
       approach: [
         "GOTO/GOSUBのジャンプ先を分析し、状態遷移図を作成",
+    updatedAt: "2026-03",
         "変数名を文脈から推定し意味のある名前に置換（T9→totalMileage等）",
         "ゲームフェーズをReactコンポーネント（買い物→行動選択→イベント→結果）に分割",
         "元のランダム確率テーブルをそのまま移植し、ゲームバランスを維持",
@@ -965,6 +988,7 @@ export const legacyProjects: Project[] = [
       approach: [
         "Ada列挙型をTypeScript union型に変換",
         "語形変化テーブルをJSON辞書として構造化",
+    updatedAt: "2026-03",
         "前方一致＋部分一致のハイブリッド検索を実装",
         "品詞別色分け（名詞:青、動詞:赤、形容詞:緑等）で視覚的に把握しやすいUIを設計",
       ],
@@ -1000,6 +1024,7 @@ export const legacyProjects: Project[] = [
         "JavaのVM実行ループをTypeScript classに変換",
         "Canvas 2DでMakoのタイルグラフィックスを描画",
         "requestAnimationFrameでゲームループを実装",
+    updatedAt: "2026-03",
         "File APIでROMファイルのアップロード・実行に対応",
       ],
       results: [
@@ -1035,6 +1060,7 @@ export const legacyProjects: Project[] = [
         "パターンマッチングエンジンを正規表現ベースで再実装",
         "DOCTORスクリプト（キーワード→分解→再組立）をJSONルールとして構造化",
         "ChatGPT風のチャットUIでレトロな対話体験をモダンに演出",
+    updatedAt: "2026-03",
       ],
       results: [
         "コード量92%削減（~2,600行 → 196行）",
