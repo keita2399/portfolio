@@ -11,8 +11,9 @@ const skills = [
   { category: "対応可能", detail: "Python, Java（Spring Boot）, JavaScript, jQuery, C#.NET, SQL" },
   { category: "DB・インフラ", detail: "PostgreSQL（Neon / Aurora RDS）, Oracle, MySQL / Vercel, AWS, Azure" },
   { category: "外部サービス連携", detail: "Google Maps API, LINE Messaging API, Gemini AI, 決済サービス（ZEUS）" },
-  { category: "AI開発ツール", detail: "Claude Code（主力）, GitHub Copilot" },
+  { category: "AI開発ツール", detail: "Claude Code（主力）, Claude API, GitHub Copilot" },
   { category: "開発手法", detail: "アジャイル（スクラム）、ウォーターフォール、全工程対応（要件定義〜運用）" },
+  { category: "レガシー言語", detail: "COBOL, PL/I, RPG, VB6, MUMPS, Fortran, QBasic, Ada, MAD-SLIP" },
   { category: "業務知識", detail: "金融（生命保険・変額保険）、建設、B2B取引DX、ECサイト" },
 ];
 
@@ -41,15 +42,15 @@ const careerHighlights = [
     ],
   },
   {
-    title: "レガシーコード近代化（言語変換）PoC・技術記事制作",
-    meta: "IT ｜ 設計・開発・記事執筆（1人請負） ｜ 1ヶ月（2026/03）",
-    desc: "COBOL・RPG・VB6等のレガシー業務アプリケーション5件を対象に、ソースコード読解のみによるモダンWebアプリ（Python + React）への変換PoCを実施。",
-    tech: "Python 3.11, FastAPI, React, Vite, SQLite, Claude Code",
+    title: "レガシーコード近代化・コード鑑定書シリーズ",
+    meta: "IT ｜ 設計・開発・記事執筆（1人請負） ｜ 2026/03〜継続中",
+    desc: "COBOL・PL/I・RPG・VB6・MUMPS・Fortran・QBasic・Ada・MAD-SLIP等13言語のレガシーコードをモダンWebアプリに変換。さらに歴史的ソフトウェア38件の「コード鑑定書」を制作し、技術考古学シリーズとして展開。",
+    tech: "Python 3.11, FastAPI, React, Vite, SQLite, Rust, Claude Code",
     bullets: [
-      "3270/5250端末・VB6フォーム → React SPA への UI全面移行を5件実施",
-      "SQLインジェクション40箇所以上をパラメタライズドクエリに改修",
-      "VSAM/MDBデータのSQLite移行スクリプト、COBOL符号付き数値パーサーを独自実装",
-      "変換パターンを体系化した技術記事6本を執筆・公開",
+      "13言語・合計44万行超のレガシーコードを平均85%削減してモダンWeb化",
+      "コード鑑定書38本制作（ELIZA, CP/M, Smalltalk-80, SQLite, TeX, Multics, Rogue等）",
+      "Legacy Code Museum（Webアプリ）で383,418件のコードコメントを収集・感情分析",
+      "変換・鑑定パターンを体系化した技術記事48本を執筆",
     ],
   },
   {
@@ -67,7 +68,7 @@ const careerHighlights = [
 ];
 
 const projectList = [
-  { no: 1, industry: "IT", system: "レガシーコード近代化", role: "設計・開発", period: "26/03（1）", tech: "Python, FastAPI, React, SQLite, Claude Code" },
+  { no: 1, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
   { no: 2, industry: "建設", system: "マッチングプラットフォーム", role: "フルスタック", period: "26/01-26/03（3）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE, Gemini AI" },
   { no: 3, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
   { no: 4, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
@@ -94,9 +95,10 @@ const portfolio = [
   { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", url: "NDA" },
   { name: "DX提案アシスタント", desc: "業務フロー分析→ボトルネック可視化→システム化提案→見積もり。一気通貫の営業支援ツール", url: "NDA" },
   { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期", url: "NDA" },
-  { name: "レガシーコード変換", desc: "10言語・41万行→2.7万行（平均85%削減）", url: "/works/legacy-conversions" },
+  { name: "レガシーコード変換", desc: "13言語・44万行→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
+  { name: "AI Limits Lab", desc: "AIの限界を実証実験で記録。Claude vs Figma デザイン対決など", url: "https://github.com/gstate-gk/ai-limits-lab" },
   { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", url: "https://contract-checker-vert.vercel.app" },
-  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・分析", url: "https://gstate-gk.github.io/legacy-code-museum/" },
+  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・分析 + コード鑑定書38本", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
@@ -123,7 +125,7 @@ export default function ResumePage() {
           業務<span style={{ color: "var(--accent)" }}>経歴書</span>
         </h1>
         <p style={{ fontSize: 13, color: "var(--text-light)", marginBottom: 12 }}>
-          更新日: 2026年3月18日
+          更新日: 2026年3月28日
         </p>
 
         {/* Download button */}
