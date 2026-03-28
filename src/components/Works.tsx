@@ -86,12 +86,6 @@ function WorkCard({ project }: { project: Project }) {
             </div>
           </div>
 
-          {project.updatedAt && (
-            <div style={{ fontSize: 10, color: "var(--text-faint)", marginBottom: 12 }}>
-              更新: {project.updatedAt}
-            </div>
-          )}
-
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {project.tags.map((tag) => (
               <span
@@ -107,22 +101,29 @@ function WorkCard({ project }: { project: Project }) {
             ))}
           </div>
 
-          <div style={{ marginTop: 16, fontSize: 11, color: project.badgeColor, letterSpacing: 1, display: "flex", alignItems: "center", gap: 12 }}>
-            {project.externalUrl ? (
-              <>
-                <span>デモを試す ↗</span>
-                <span style={{ color: "var(--border)" }}>|</span>
-                <span
-                  role="link"
-                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/works/${project.slug}`); }}
-                  className="nav-link"
-                  style={{ cursor: "pointer" }}
-                >
-                  詳細を見る →
-                </span>
-              </>
-            ) : (
-              "詳細を見る →"
+          <div style={{ marginTop: 16, fontSize: 11, letterSpacing: 1, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ color: project.badgeColor, display: "flex", alignItems: "center", gap: 12 }}>
+              {project.externalUrl ? (
+                <>
+                  <span>デモを試す ↗</span>
+                  <span style={{ color: "var(--border)" }}>|</span>
+                  <span
+                    role="link"
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push(`/works/${project.slug}`); }}
+                    className="nav-link"
+                    style={{ cursor: "pointer" }}
+                  >
+                    詳細を見る →
+                  </span>
+                </>
+              ) : (
+                "詳細を見る →"
+              )}
+            </div>
+            {project.updatedAt && (
+              <div style={{ color: "var(--text-faint)", fontSize: 10 }}>
+                更新 {project.updatedAt}
+              </div>
             )}
           </div>
           </div>
