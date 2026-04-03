@@ -1,4 +1,4 @@
-export type ProjectCategory = "flagship" | "demo";
+export type ProjectCategory = "flagship" | "demo" | "personal";
 
 export type Project = {
   slug: string;
@@ -132,61 +132,61 @@ export const projects: Project[] = [
   {
     slug: "estimate-ai",
     category: "flagship",
-    title: "DX提案アシスタント",
+    title: "AI開発アシスタント",
     badge: "社内ツール",
     badgeColor: "#2563eb",
     borderColor: "#2563eb",
     thumbnail: "/thumbnails/dx-proposal-flow.png",
     screenshots: [
-      { src: "/thumbnails/dx-proposal-flow.png", caption: "Step 1: 業務内容を入力するだけで業務フロー図を自動生成" },
-      { src: "/thumbnails/dx-proposal-analysis.png", caption: "Step 2: 工程ごとのボトルネック・リスクを可視化（現状分析）" },
-      { src: "/thumbnails/dx-proposal-suggest.png", caption: "Step 3: 現状→提案の対比でシステム化を提案（優先度・期待効果付き）" },
-      { src: "/thumbnails/dx-proposal-summary.png", caption: "Step 4: 総合提案 → そのまま見積もりへ連携" },
+      { src: "/thumbnails/dx-proposal-flow.png", caption: "DX提案: 業務内容を入力するだけで業務フロー図を自動生成" },
+      { src: "/thumbnails/dx-proposal-analysis.png", caption: "DX提案: 工程ごとのボトルネック・リスクを可視化" },
+      { src: "/thumbnails/dx-proposal-suggest.png", caption: "DX提案: システム化提案（優先度・期待効果付き）" },
+      { src: "/thumbnails/dx-proposal-summary.png", caption: "AI見積もり: 一般版とリベルタ版の工数比較" },
     ],
     description:
-      "業務の困りごとを話すだけで、業務フロー図・ボトルネック分析・システム化提案・深掘り質問・要件定義書・見積もりまでを一気通貫で支援。発注者との初回打ち合わせで「その場で提案書の原型」が出せる営業ツール。",
-    stats: ["6段階AI分析パイプライン", "要件定義書・DX提案書Excel出力", "ストリーミング対応"],
+      "DX提案・Excel変換・AI見積もりの3つの機能を統合。業務分析から見積もり、製造資料の生成までを一気通貫で支援。発注者との初回打ち合わせで「その場で提案書と見積もり」が出せる営業ツール。",
+    stats: ["DX提案 + Excel変換 + AI見積もり", "一般版/リベルタ版の2モード見積もり", "製造資料自動生成"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用", "SSE"],
-    updatedAt: "2026-03-28",
+    updatedAt: "2026-04-03",
     githubRepo: "keita2399/estimate-ai",
     detail: {
       overview:
-        "業務のDX化を支援する統合アシスタント。【DX提案】業務の課題をテキストで入力 → AIが業務フロー図を自動生成 → ボトルネック分析 → システム化提案 → 深掘り質問で要件を詰める → 要件定義書（機能要件・非機能要件）を自動生成。【見積もり】提案内容をそのまま引き継ぎ、画面設計 → 技術スタック比較 → 機能別工数・金額の見積もりまでを自動生成。すべてのAPI呼び出しをストリーミング対応し、長時間処理も安定動作。",
+        "業務のDX化を支援する統合アシスタント。【DX提案】業務フロー図の自動生成 → ボトルネック分析 → システム化提案 → 要件定義書生成。【Excel変換】ExcelのWebアプリ化/GAS化提案 + プロトタイプ生成。VBA/ActiveX対応。【AI見積もり】画面設計 → 技術スタック比較 → 一般版/リベルタ版の2モード工数見積もり → 製造資料（DB設計・API設計・実装順序）の自動生成。",
       challenges: [
         "曖昧な業務記述から正確なフロー図を生成するプロンプト設計",
-        "AIが要件の曖昧さを検出し、適切な深掘り質問を自動生成する仕組み",
-        "機能要件・非機能要件（セキュリティ/可用性/性能/運用/移行）の自動推定",
-        "Vercel Hobbyプランの60秒制限をSSEストリーミングで回避",
-        "Gemini API無料枠の制限対策（複数キー + Claude ストリーミングフォールバック）",
+        "一般的な開発会社とAI活用開発の2モード見積もりの係数設計",
+        "VBA/ActiveXを含むExcelの構造解析とGAS/Web化の判定ロジック",
+        "Vercel Hobbyプランの60秒制限 + Render無料プランのスリープ対策",
+        "Gemini API無料枠の制限対策（複数キー + Claude フォールバック）",
       ],
       approach: [
-        "業務記述→フロー図→現状分析→システム化提案→深掘り質問→要件定義の6段階AIパイプライン",
-        "各工程のボトルネックを担当者・ツール・リスクの3軸で構造化分析",
-        "深掘り質問への回答を反映した再分析で要件精度を段階的に向上",
-        "要件定義書Excel出力（概要/業務フロー/機能要件/非機能要件の4シート構成）",
-        "見積もり側では画面設計→技術スタック比較→機能別工数算出→エクセル出力",
+        "DX提案: 6段階AIパイプライン（フロー図→現状分析→提案→質問→要件定義→総合提案）",
+        "Excel変換: VBA/ActiveX検出 → Web化 vs GAS化の適性判定 → プロトタイプ自動生成",
+        "見積もり: 一般版（100%）とリベルタ版（50-60%）を並行生成・タブ切替表示",
+        "製造資料: 画面設計+技術スタックからDB設計・API設計・実装順序をMarkdown出力",
+        "Renderリトライ・起動待ち処理でスリープ対策、タイムアウト階層設計",
       ],
       results: [
-        "業務の課題を話すだけで、5分でDX提案書・要件定義書の原型が完成",
-        "フロー図・ボトルネック分析・深掘り質問・要件定義・見積もりまで一気通貫",
-        "DX提案書・要件定義書・概算見積書の3種類のExcel出力に対応",
-        "ストリーミング対応で長文要件でもタイムアウトなく安定動作",
+        "業務分析から見積もり・製造資料まで一気通貫で5分で完成",
+        "DX提案書・要件定義書・概算見積書・製造資料の4種類の出力に対応",
+        "一般版/リベルタ版の比較で「AI活用の価値」を可視化",
+        "Excel変換ではVBA/ActiveXの検出・Web化/GAS化の自動判定",
       ],
-      techDetail: "Next.js + TypeScript + Tailwind CSS。Gemini 2.5 Flash / Claude Haiku 4.5 のデュアルAI構成（SSEストリーミング）。フロー図はMermaid記法で生成しSVGレンダリング。ExcelJSによるプロフェッショナルな帳票出力。Server-Sent Eventsによるリアルタイム進捗表示。",
+      techDetail: "Next.js + TypeScript + Tailwind CSS。Gemini 2.5 Flash / Claude Haiku 4.5 のデュアルAI構成（SSEストリーミング）。フロー図はMermaid記法で生成しSVGレンダリング。ExcelJSによる帳票出力。バックエンドはExpress.js（Render）でAI API呼び出しを集約。",
     },
   },
   {
     slug: "excel-to-web",
     category: "flagship",
-    title: "Excel → Webアプリ変換",
+    title: "Excel → Web/GAS化",
     badge: "デモ公開中",
     badgeColor: "#059669",
     borderColor: "#059669",
     thumbnail: "/thumbnails/dx-proposal-flow.png",
     screenshots: [],
     description:
-      "Excelファイルをアップロードするだけで、AIがシート構造・数式・VBAマクロを読み解き、Webアプリ化の提案と動作するプロトタイプを自動生成。そのまま見積もりにも連携可能。",
-    stats: ["Excel構造自動分析", "Webプロトタイプ自動生成", "VBAマクロ対応"],
+      "Excelファイルをアップロードするだけで、AIがシート構造・数式・VBAマクロを読み解き、Webアプリ化またはGAS化の提案と動作するプロトタイプを自動生成。VBA・ActiveXにも対応。",
+    stats: ["Excel構造自動分析", "Web/GASプロトタイプ自動生成", "VBA/ActiveX対応"],
     tags: ["Next.js", "TypeScript", "SheetJS", "Gemini API", "CFB", "AI活用"],
     detail: {
       overview:
@@ -514,7 +514,7 @@ export const projects: Project[] = [
   },
   {
     slug: "line-claude-sync",
-    category: "flagship",
+    category: "personal",
     title: "LINE Claude Sync",
     badge: "デモ公開中",
     badgeColor: "#06c755",
@@ -1146,6 +1146,10 @@ export function getFlagshipProjects(): Project[] {
 
 export function getDemoProjects(): Project[] {
   return projects.filter((p) => p.category === "demo");
+}
+
+export function getPersonalProjects(): Project[] {
+  return projects.filter((p) => p.category === "personal");
 }
 
 export function getAllTags(): string[] {

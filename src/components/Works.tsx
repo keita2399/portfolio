@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import FadeIn from "./FadeIn";
 import SectionCTA from "./SectionCTA";
-import { projects, getFlagshipProjects, getDemoProjects, getAllTags, type Project } from "@/data/projects";
+import { projects, getFlagshipProjects, getDemoProjects, getPersonalProjects, getAllTags, type Project } from "@/data/projects";
 
 function WorkCard({ project }: { project: Project }) {
   const router = useRouter();
@@ -136,6 +136,7 @@ function WorkCard({ project }: { project: Project }) {
 export default function Works() {
   const flagshipProjects = useMemo(() => getFlagshipProjects(), []);
   const demoProjects = useMemo(() => getDemoProjects(), []);
+  const personalProjects = useMemo(() => getPersonalProjects(), []);
   const [showDemos, setShowDemos] = useState(false);
 
   return (
@@ -214,7 +215,7 @@ export default function Works() {
                 技術検証・個人開発プロジェクト
               </div>
               <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>
-                AI活用・API連携などの技術検証として制作したデモアプリ（{demoProjects.length}件）
+                AI活用・API連携などの技術検証・個人開発プロジェクト（{demoProjects.length + personalProjects.length}件）
               </div>
             </div>
             <div style={{
@@ -227,7 +228,7 @@ export default function Works() {
 
           {showDemos && (
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 20, marginTop: 24 }}>
-              {demoProjects.map((p) => (
+              {[...personalProjects, ...demoProjects].map((p) => (
                 <WorkCard key={p.title} project={p} />
               ))}
             </div>
