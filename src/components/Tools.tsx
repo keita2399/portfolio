@@ -1,56 +1,326 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import FadeIn from "./FadeIn";
 
+// --- モックスクリーン定義 ---
+type MockScreen = { title: string; content: React.ReactNode };
+
+function ToolSlideshow({ screens, color }: { screens: MockScreen[]; color: string }) {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => setIdx(i => (i + 1) % screens.length), 4000);
+    return () => clearInterval(timer);
+  }, [screens.length]);
+
+  return (
+    <div style={{ position: "relative", height: "100%", overflow: "hidden", background: "#fafaf7" }}>
+      <div style={{ padding: "16px 20px", height: "calc(100% - 28px)", display: "flex", flexDirection: "column" }}>
+        <div style={{ fontSize: 10, color, fontWeight: 700, marginBottom: 8, letterSpacing: 1 }}>
+          {screens[idx].title}
+        </div>
+        <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {screens[idx].content}
+        </div>
+      </div>
+      {/* ドットインジケーター */}
+      <div style={{ position: "absolute", bottom: 8, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 6 }}>
+        {screens.map((_, i) => (
+          <button key={i} onClick={() => setIdx(i)} style={{
+            width: 6, height: 6, borderRadius: "50%", border: "none", cursor: "pointer",
+            background: i === idx ? color : "#d1d5db", transition: "background 0.3s",
+          }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ヘルパー
+const Box = ({ bg, border, children, style }: { bg: string; border: string; children: React.ReactNode; style?: React.CSSProperties }) => (
+  <div style={{ background: bg, border: `1px solid ${border}`, borderRadius: 4, padding: "6px 10px", fontSize: 9, ...style }}>{children}</div>
+);
+const Tag = ({ color, children }: { color: string; children: React.ReactNode }) => (
+  <span style={{ fontSize: 8, color, background: `${color}15`, border: `1px solid ${color}30`, borderRadius: 3, padding: "1px 6px" }}>{children}</span>
+);
+const Bar = ({ w, color }: { w: string; color: string }) => (
+  <div style={{ height: 6, borderRadius: 3, background: "#eee", width: "100%" }}>
+    <div style={{ height: 6, borderRadius: 3, background: color, width: w, transition: "width 1s" }} />
+  </div>
+);
+
+// --- 各ツールのモック ---
+function flowScreens(): MockScreen[] {
+  return [
+    { title: "STEP 1 — 業務内容を入力", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 6, padding: 12 }}>
+          <div style={{ fontSize: 9, color: "#999", marginBottom: 6 }}>業務の流れを入力してください</div>
+          <div style={{ fontSize: 8, color: "#666", lineHeight: 1.6 }}>各店舗の店長が在庫を確認し、不足分を本部にFAXで発注...</div>
+          <div style={{ marginTop: 8, background: "#2563EB", color: "#fff", borderRadius: 4, padding: "4px 0", fontSize: 9, textAlign: "center" }}>分析する</div>
+        </div>
+      </div>
+    )},
+    { title: "STEP 2 — フロー図を自動生成", content: (
+      <div style={{ width: "100%", maxWidth: 240 }}>
+        {["在庫確認", "発注リスト作成", "FAX送信", "検品・照合"].map((s, i) => (
+          <div key={i}>
+            <div style={{ background: "#DBEAFE", border: "1px solid #93C5FD", borderRadius: 4, padding: "4px 8px", fontSize: 8, textAlign: "center", color: "#1E3A5F", fontWeight: 600 }}>{s}</div>
+            {i < 3 && <div style={{ textAlign: "center", color: "#9CA3AF", fontSize: 10 }}>↓</div>}
+          </div>
+        ))}
+      </div>
+    )},
+    { title: "STEP 3 — システム化提案", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 6 }}>
+        {[["発注のデジタル化", "高"], ["在庫のリアルタイム管理", "中"], ["納品書の電子化", "中"]].map(([name, pri], i) => (
+          <Box key={i} bg="#fff" border="#e5e7eb">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span style={{ fontWeight: 600, color: "#1a1a1a" }}>{name}</span>
+              <Tag color={pri === "高" ? "#DC2626" : "#D97706"}>{pri}</Tag>
+            </div>
+          </Box>
+        ))}
+      </div>
+    )},
+  ];
+}
+
+function excelScreens(): MockScreen[] {
+  return [
+    { title: "STEP 1 — Excelをアップロード", content: (
+      <div style={{ width: "100%", maxWidth: 240, border: "2px dashed #059669", borderRadius: 8, padding: 20, textAlign: "center", background: "#ECFDF5" }}>
+        <div style={{ fontSize: 24, marginBottom: 4 }}>📊</div>
+        <div style={{ fontSize: 9, color: "#059669", fontWeight: 600 }}>Excel / .xlsm をドロップ</div>
+        <div style={{ fontSize: 8, color: "#999", marginTop: 4 }}>VBA・ActiveX対応</div>
+      </div>
+    )},
+    { title: "STEP 2 — Web化 vs GAS化を比較", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", gap: 8 }}>
+        {[["Webアプリ化", "★★★★★", "#2563EB"], ["GAS化", "★★★★☆", "#059669"]].map(([name, rating, color], i) => (
+          <Box key={i} bg="#fff" border="#e5e7eb" style={{ flex: 1, textAlign: "center" }}>
+            <div style={{ fontWeight: 700, color: color as string, marginBottom: 4 }}>{name}</div>
+            <div style={{ fontSize: 8, color: "#D97706" }}>{rating}</div>
+          </Box>
+        ))}
+      </div>
+    )},
+    { title: "STEP 3 — プロトタイプ生成", content: (
+      <div style={{ width: "100%", maxWidth: 260, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 6, overflow: "hidden" }}>
+        <div style={{ background: "#059669", color: "#fff", padding: "4px 10px", fontSize: 8 }}>プロトタイプ プレビュー</div>
+        <div style={{ padding: 10 }}>
+          {["店舗一覧", "在庫管理", "発注履歴"].map((s, i) => (
+            <div key={i} style={{ background: "#f3f4f6", borderRadius: 3, padding: "3px 8px", fontSize: 8, marginBottom: 3, color: "#374151" }}>{s}</div>
+          ))}
+        </div>
+      </div>
+    )},
+  ];
+}
+
+function estimateScreens(): MockScreen[] {
+  return [
+    { title: "STEP 1 — 要件を入力", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 6, padding: 12 }}>
+          <div style={{ fontSize: 9, color: "#999", marginBottom: 6 }}>どんなアプリを作りたいですか？</div>
+          <div style={{ fontSize: 8, color: "#666", lineHeight: 1.6 }}>食材の発注をスマホから...</div>
+          <div style={{ marginTop: 8, background: "#4F46E5", color: "#fff", borderRadius: 4, padding: "4px 0", fontSize: 9, textAlign: "center" }}>画面設計へ</div>
+        </div>
+      </div>
+    )},
+    { title: "STEP 2 — 画面を自動設計", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+        {["ログイン", "ダッシュボード", "発注画面", "在庫一覧"].map((s, i) => (
+          <Box key={i} bg="#EEF2FF" border="#C7D2FE" style={{ textAlign: "center" }}>
+            <div style={{ fontSize: 14, marginBottom: 2 }}>📱</div>
+            <div style={{ fontWeight: 600, color: "#4F46E5" }}>{s}</div>
+          </Box>
+        ))}
+      </div>
+    )},
+    { title: "STEP 3 — 見積もりを自動生成", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#EEF2FF" border="#C7D2FE" style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ fontSize: 8, color: "#4F46E5" }}>概算費用</div>
+          <div style={{ fontSize: 16, fontWeight: 800, color: "#4F46E5" }}>¥240万〜¥472万</div>
+          <div style={{ fontSize: 8, color: "#666" }}>38〜74日</div>
+        </Box>
+        {[["ユーザー認証", "¥3〜6万"], ["発注機能", "¥19〜32万"]].map(([name, cost], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #f3f4f6" }}>
+            <span style={{ color: "#374151" }}>{name}</span><span style={{ color: "#4F46E5", fontWeight: 600 }}>{cost}</span>
+          </div>
+        ))}
+      </div>
+    )},
+  ];
+}
+
+function documentScreens(): MockScreen[] {
+  return [
+    { title: "書類をアップロード", content: (
+      <div style={{ width: "100%", maxWidth: 240, border: "2px dashed #4F46E5", borderRadius: 8, padding: 20, textAlign: "center", background: "#EEF2FF" }}>
+        <div style={{ fontSize: 24, marginBottom: 4 }}>📄</div>
+        <div style={{ fontSize: 9, color: "#4F46E5", fontWeight: 600 }}>書類の画像をドロップ</div>
+      </div>
+    )},
+    { title: "AIが自動分析", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#fff" border="#e5e7eb" style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ fontSize: 8, color: "#999" }}>信頼度</div>
+          <div style={{ fontSize: 20, fontWeight: 800, color: "#22C55E" }}>94%</div>
+          <div style={{ fontSize: 9, fontWeight: 600, color: "#1a1a1a" }}>運転免許証</div>
+        </Box>
+        {[["氏名", "松井 慶太"], ["生年月日", "1967/xx/xx"]].map(([k, v], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #f3f4f6" }}>
+            <span style={{ color: "#999" }}>{k}</span><span style={{ color: "#1a1a1a", fontWeight: 600 }}>{v}</span>
+          </div>
+        ))}
+      </div>
+    )},
+  ];
+}
+
+function contractScreens(): MockScreen[] {
+  return [
+    { title: "契約書をアップロード", content: (
+      <div style={{ width: "100%", maxWidth: 240, border: "2px dashed #DC2626", borderRadius: 8, padding: 20, textAlign: "center", background: "#FEF2F2" }}>
+        <div style={{ fontSize: 24, marginBottom: 4 }}>📋</div>
+        <div style={{ fontSize: 9, color: "#DC2626", fontWeight: 600 }}>PDF / 画像をドロップ</div>
+      </div>
+    )},
+    { title: "リスクを自動検出", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+          <div style={{ fontSize: 9, color: "#999" }}>リスクスコア</div>
+          <Bar w="65%" color="#DC2626" />
+          <div style={{ fontSize: 10, fontWeight: 700, color: "#DC2626" }}>65%</div>
+        </div>
+        {[["第5条 損害賠償", "HIGH", "#DC2626"], ["第8条 契約期間", "MEDIUM", "#D97706"], ["第3条 支払条件", "LOW", "#2563EB"]].map(([clause, level, color], i) => (
+          <Box key={i} bg={`${color}10`} border={`${color}30`} style={{ marginBottom: 4 }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span style={{ color: "#1a1a1a", fontWeight: 600 }}>{clause}</span>
+              <Tag color={color as string}>{level}</Tag>
+            </div>
+          </Box>
+        ))}
+      </div>
+    )},
+  ];
+}
+
+function receiptScreens(): MockScreen[] {
+  return [
+    { title: "レシートを撮影", content: (
+      <div style={{ width: "100%", maxWidth: 240, border: "2px dashed #D97706", borderRadius: 8, padding: 20, textAlign: "center", background: "#FFFBEB" }}>
+        <div style={{ fontSize: 24, marginBottom: 4 }}>📸</div>
+        <div style={{ fontSize: 9, color: "#D97706", fontWeight: 600 }}>レシート画像をドロップ</div>
+      </div>
+    )},
+    { title: "自動でデータ化", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#fff" border="#e5e7eb" style={{ marginBottom: 8 }}>
+          <div style={{ fontWeight: 700, color: "#1a1a1a", fontSize: 10 }}>セブンイレブン 甲府店</div>
+          <div style={{ fontSize: 8, color: "#999" }}>2026/04/03 12:34</div>
+        </Box>
+        {[["おにぎり 鮭", "¥160", "8%"], ["コーヒー", "¥150", "8%"], ["電池", "¥330", "10%"]].map(([item, price, tax], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #f3f4f6" }}>
+            <span style={{ color: "#374151" }}>{item}</span>
+            <span><span style={{ color: "#1a1a1a", fontWeight: 600 }}>{price}</span> <span style={{ color: "#999" }}>{tax}</span></span>
+          </div>
+        ))}
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, fontWeight: 700, marginTop: 6, color: "#D97706" }}>
+          <span>合計</span><span>¥640</span>
+        </div>
+      </div>
+    )},
+  ];
+}
+
+function lineScreens(): MockScreen[] {
+  return [
+    { title: "LINEで質問", content: (
+      <div style={{ width: "100%", maxWidth: 240, background: "#7BBBD2", borderRadius: 8, padding: 12 }}>
+        {[
+          { from: "user", text: "Next.jsでAPIルートのタイムアウトを設定するには？" },
+          { from: "ai", text: "export const maxDuration = 60; をroute.tsに追加してください。" },
+        ].map((m, i) => (
+          <div key={i} style={{ display: "flex", justifyContent: m.from === "user" ? "flex-end" : "flex-start", marginBottom: 6 }}>
+            <div style={{
+              background: m.from === "user" ? "#8CE67E" : "#fff",
+              borderRadius: 8, padding: "6px 10px", fontSize: 8, maxWidth: "80%",
+              color: "#1a1a1a", lineHeight: 1.5,
+            }}>{m.text}</div>
+          </div>
+        ))}
+      </div>
+    )},
+    { title: "デスクトップと同期", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", gap: 8 }}>
+        <Box bg="#fff" border="#e5e7eb" style={{ flex: 1, textAlign: "center" }}>
+          <div style={{ fontSize: 14, marginBottom: 2 }}>📱</div>
+          <div style={{ fontWeight: 600, color: "#06B6D4", fontSize: 8 }}>LINE</div>
+        </Box>
+        <div style={{ display: "flex", alignItems: "center", fontSize: 12, color: "#06B6D4" }}>⇄</div>
+        <Box bg="#fff" border="#e5e7eb" style={{ flex: 1, textAlign: "center" }}>
+          <div style={{ fontSize: 14, marginBottom: 2 }}>💻</div>
+          <div style={{ fontWeight: 600, color: "#06B6D4", fontSize: 8 }}>Claude Code</div>
+        </Box>
+      </div>
+    )},
+  ];
+}
+
+// --- ツール定義 ---
 const tools = [
   {
     title: "DX提案アシスタント",
     desc: "業務の流れを言葉で説明するだけで、AIが業務フロー図を自動生成し、ボトルネックを分析、システム化の提案書を作成します。",
     tags: ["業務フロー図", "ボトルネック分析", "システム化提案", "要件定義書"],
     color: "#2563EB",
-    videoPlaceholder: "DX提案アシスタントのデモ動画",
+    screens: flowScreens(),
   },
   {
     title: "Excel→Web/GAS化",
     desc: "Excelファイルをアップロードするだけで、Webアプリ化またはGAS化の提案を自動生成します。VBA・ActiveXにも対応し、動くプロトタイプも出力します。",
     tags: ["Webアプリ化", "GAS化", "VBA/ActiveX対応", "プロトタイプ生成"],
     color: "#059669",
-    videoPlaceholder: "Excel→Web/GAS化のデモ動画",
+    screens: excelScreens(),
   },
   {
     title: "AI見積もりアシスタント",
     desc: "作りたいアプリを説明するだけで、画面設計・技術選定・工数見積もりを自動生成。一般的な開発会社の見積もりとAI活用開発の見積もりを比較できます。",
     tags: ["画面設計", "技術選定", "工数見積", "製造資料生成"],
     color: "#4F46E5",
-    videoPlaceholder: "AI見積もりアシスタントのデモ動画",
+    screens: estimateScreens(),
   },
   {
     title: "AI書類分析ツール",
     desc: "書類の画像をアップロードすると、AIが文書の種類を判別し、記載内容を自動で読み取り・構造化します。",
     tags: ["書類判別", "OCR", "Gemini Vision", "データ抽出"],
     color: "#D97706",
-    videoPlaceholder: "AI書類分析ツールのデモ動画",
+    screens: documentScreens(),
   },
   {
     title: "AI契約書チェッカー",
     desc: "契約書をアップロードすると、AIがリスク条項の検出、不利な条件の指摘、修正案の提示を行います。",
     tags: ["リスク検出", "条項分析", "修正案提示", "PDF対応"],
     color: "#DC2626",
-    videoPlaceholder: "AI契約書チェッカーのデモ動画",
+    screens: contractScreens(),
   },
   {
     title: "AIレシートスキャナー",
     desc: "レシートを撮影するだけで、店名・日付・金額・品目を自動で読み取り、データ化します。",
     tags: ["レシート読取", "自動分類", "金額抽出", "経費管理"],
     color: "#7C3AED",
-    videoPlaceholder: "AIレシートスキャナーのデモ動画",
+    screens: receiptScreens(),
   },
   {
     title: "LINE×Claude連携ボット",
     desc: "LINEでの会話をClaude AIが応答。モバイルとデスクトップで会話履歴を同期し、どこからでもAIアシスタントを利用できます。",
     tags: ["LINE連携", "Claude AI", "会話同期", "モバイル対応"],
     color: "#06B6D4",
-    videoPlaceholder: "LINE×Claude連携ボットのデモ動画",
+    screens: lineScreens(),
   },
 ];
 
@@ -79,44 +349,25 @@ export default function Tools() {
               }}>
                 {/* ヘッダー */}
                 <div style={{
-                  padding: "20px 28px",
+                  padding: "16px 28px",
                   borderBottom: "1px solid var(--border)",
                   display: "flex", alignItems: "center", gap: 16,
                 }}>
-                  <div style={{
-                    width: 8, height: 8, borderRadius: "50%",
-                    background: tool.color, flexShrink: 0,
-                  }} />
-                  <div style={{ fontSize: 16, fontWeight: 700, color: "#1a1a1a" }}>
-                    {tool.title}
-                  </div>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: tool.color, flexShrink: 0 }} />
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{tool.title}</div>
                 </div>
 
                 {/* コンテンツ */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 0 }}>
-                  {/* 左: 動画プレースホルダー */}
-                  <div style={{
-                    aspectRatio: "16/10",
-                    background: "#f5f5f0",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    borderRight: "1px solid var(--border)",
-                    padding: 24,
-                  }}>
-                    <div style={{ textAlign: "center" }}>
-                      <div style={{ fontSize: 32, marginBottom: 8, opacity: 0.3 }}>▶</div>
-                      <div style={{ fontSize: 11, color: "var(--text-faint)" }}>
-                        {tool.videoPlaceholder}
-                      </div>
-                      <div style={{ fontSize: 10, color: "var(--text-faint)", marginTop: 4 }}>
-                        準備中
-                      </div>
-                    </div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 220 }}>
+                  {/* 左: スライドショー */}
+                  <div style={{ borderRight: "1px solid var(--border)" }}>
+                    <ToolSlideshow screens={tool.screens} color={tool.color} />
                   </div>
 
                   {/* 右: 説明 */}
-                  <div style={{ padding: "24px 28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  <div style={{ padding: "20px 28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
                     <div>
-                      <div className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 16 }}>
+                      <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 14 }}>
                         {tool.desc}
                       </div>
                       <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -126,13 +377,11 @@ export default function Tools() {
                             background: `${tool.color}10`,
                             border: `1px solid ${tool.color}30`,
                             borderRadius: 3, padding: "2px 8px",
-                          }}>
-                            {tag}
-                          </span>
+                          }}>{tag}</span>
                         ))}
                       </div>
                     </div>
-                    <div style={{ marginTop: 16, fontSize: 11, color: "var(--text-faint)" }}>
+                    <div style={{ marginTop: 14, fontSize: 11, color: "var(--text-faint)" }}>
                       デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
                     </div>
                   </div>

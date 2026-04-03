@@ -6,7 +6,7 @@ const links = [
   { href: "#process", label: "進め方" },
   { href: "#timeline", label: "キャリア" },
   { href: "#works", label: "実績" },
-  // { href: "#tools", label: "AIツール" },
+  { href: "#tools", label: "AIツール" },
   { href: "#services", label: "対応案件" },
   { href: "#contact", label: "連絡" },
 ];

@@ -19,7 +19,7 @@ export default function Home() {
       <Timeline />
       <Skills />
       <Works />
-      {/* <Tools /> */}
+      <Tools />
       <Services />
       <ContactForm />
       <Footer />
