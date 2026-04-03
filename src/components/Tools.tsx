@@ -24,6 +24,34 @@ const tools = [
     color: "#4F46E5",
     videoPlaceholder: "AI見積もりアシスタントのデモ動画",
   },
+  {
+    title: "AI書類分析ツール",
+    desc: "書類の画像をアップロードすると、AIが文書の種類を判別し、記載内容を自動で読み取り・構造化します。",
+    tags: ["書類判別", "OCR", "Gemini Vision", "データ抽出"],
+    color: "#D97706",
+    videoPlaceholder: "AI書類分析ツールのデモ動画",
+  },
+  {
+    title: "AI契約書チェッカー",
+    desc: "契約書をアップロードすると、AIがリスク条項の検出、不利な条件の指摘、修正案の提示を行います。",
+    tags: ["リスク検出", "条項分析", "修正案提示", "PDF対応"],
+    color: "#DC2626",
+    videoPlaceholder: "AI契約書チェッカーのデモ動画",
+  },
+  {
+    title: "AIレシートスキャナー",
+    desc: "レシートを撮影するだけで、店名・日付・金額・品目を自動で読み取り、データ化します。",
+    tags: ["レシート読取", "自動分類", "金額抽出", "経費管理"],
+    color: "#7C3AED",
+    videoPlaceholder: "AIレシートスキャナーのデモ動画",
+  },
+  {
+    title: "LINE×Claude連携ボット",
+    desc: "LINEでの会話をClaude AIが応答。モバイルとデスクトップで会話履歴を同期し、どこからでもAIアシスタントを利用できます。",
+    tags: ["LINE連携", "Claude AI", "会話同期", "モバイル対応"],
+    color: "#06B6D4",
+    videoPlaceholder: "LINE×Claude連携ボットのデモ動画",
+  },
 ];
 
 export default function Tools() {
