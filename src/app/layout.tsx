@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Noto_Serif_JP } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["300", "400", "600", "700"],
@@ -35,7 +36,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" className={`${ibmPlexMono.variable} ${notoSerifJP.variable}`}>
-      <body>{children}</body>
+      <body>
+        <GoogleAnalytics />
+        {children}
+      </body>
     </html>
   );
 }
