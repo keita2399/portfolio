@@ -271,6 +271,42 @@ function lineScreens(): MockScreen[] {
   ];
 }
 
+function chatbotScreens(): MockScreen[] {
+  return [
+    { title: "ポートフォリオに質問", content: (
+      <div style={{ width: "100%", maxWidth: 260, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, padding: 12 }}>
+        {[
+          { from: "ai", text: "こんにちは！松井慶太のポートフォリオへようこそ。何でもお聞きください。" },
+          { from: "user", text: "得意な技術は？" },
+          { from: "ai", text: "Next.js・TypeScript・AI活用開発が得意です。40年の業務システム経験があります。" },
+        ].map((m, i) => (
+          <div key={i} style={{ display: "flex", justifyContent: m.from === "user" ? "flex-end" : "flex-start", marginBottom: 6 }}>
+            <div style={{
+              background: m.from === "user" ? "#c8860a" : "#f5f5f0",
+              color: m.from === "user" ? "#fff" : "#1a1a1a",
+              borderRadius: 8, padding: "5px 10px", fontSize: 8, maxWidth: "80%", lineHeight: 1.5,
+            }}>{m.text}</div>
+          </div>
+        ))}
+      </div>
+    )},
+    { title: "経歴・スキルをAIが回答", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#fff" border="#e5e7eb" style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ fontSize: 20, marginBottom: 4 }}>🤖</div>
+          <div style={{ fontSize: 9, fontWeight: 700, color: "#1a1a1a" }}>AIチャットボット</div>
+          <div style={{ fontSize: 8, color: "#999", marginTop: 2 }}>ポートフォリオの内容をAIが回答</div>
+        </Box>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 4, justifyContent: "center" }}>
+          {["経歴", "スキル", "実績", "対応案件"].map((t, i) => (
+            <span key={i} style={{ fontSize: 8, background: "#f5f5f0", border: "1px solid #e5e7eb", borderRadius: 3, padding: "2px 8px", color: "#666" }}>{t}</span>
+          ))}
+        </div>
+      </div>
+    )},
+  ];
+}
+
 // --- ツール定義 ---
 const tools = [
   {
@@ -321,6 +357,13 @@ const tools = [
     tags: ["LINE連携", "Claude AI", "会話同期", "モバイル対応"],
     color: "#06B6D4",
     screens: lineScreens(),
+  },
+  {
+    title: "AIチャットボット",
+    desc: "ポートフォリオサイトに組み込んだAIチャットボット。経歴・スキル・実績について、訪問者の質問にAIがリアルタイムで回答します。",
+    tags: ["チャットUI", "Gemini AI", "ポートフォリオ連携", "リアルタイム応答"],
+    color: "#c8860a",
+    screens: chatbotScreens(),
   },
 ];
 
