@@ -315,6 +315,7 @@ const tools = [
     tags: ["業務フロー図", "ボトルネック分析", "システム化提案", "要件定義書"],
     color: "#2563EB",
     screens: flowScreens(),
+    detailLink: "/works/estimate-ai",
   },
   {
     title: "Excel→Web/GAS化",
@@ -322,6 +323,7 @@ const tools = [
     tags: ["Webアプリ化", "GAS化", "VBA/ActiveX対応", "プロトタイプ生成"],
     color: "#059669",
     screens: excelScreens(),
+    detailLink: "/works/excel-to-web",
   },
   {
     title: "AI見積もりアシスタント",
@@ -424,8 +426,15 @@ export default function Tools() {
                         ))}
                       </div>
                     </div>
-                    <div style={{ marginTop: 14, fontSize: 11, color: "var(--text-faint)" }}>
-                      デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
+                    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span style={{ fontSize: 11, color: "var(--text-faint)" }}>
+                        デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
+                      </span>
+                      {tool.detailLink && (
+                        <a href={tool.detailLink} style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}>
+                          詳細を見る →
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>

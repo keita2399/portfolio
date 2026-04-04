@@ -131,7 +131,7 @@ export const projects: Project[] = [
   },
   {
     slug: "estimate-ai",
-    category: "flagship",
+    category: "personal",
     title: "AI開発アシスタント",
     badge: "社内ツール",
     badgeColor: "#2563eb",
@@ -177,7 +177,7 @@ export const projects: Project[] = [
   },
   {
     slug: "excel-to-web",
-    category: "flagship",
+    category: "personal",
     title: "Excel → Web/GAS化",
     badge: "デモ公開中",
     badgeColor: "#059669",
