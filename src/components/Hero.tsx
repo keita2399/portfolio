@@ -62,7 +62,7 @@ export default function Hero() {
         </FadeIn>
 
         <FadeIn>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28 }}>
             <a
               href="#works"
               onClick={(e) => scrollTo(e, "#works")}
@@ -75,6 +75,32 @@ export default function Hero() {
             >
               実績を見る
             </a>
+            <a
+              href="#contact"
+              onClick={(e) => scrollTo(e, "#contact")}
+              style={{
+                padding: "12px 28px", background: "transparent", color: "var(--accent)",
+                border: "1px solid var(--accent)", borderRadius: 2, fontSize: 12, letterSpacing: 2,
+                cursor: "pointer", fontWeight: 700, textDecoration: "none",
+              }}
+            >
+              相談する →
+            </a>
+          </div>
+        </FadeIn>
+
+        <FadeIn>
+          <div style={{ display: "flex", gap: 24, flexWrap: "wrap", marginBottom: 8 }}>
+            {[
+              { num: "3ヶ月", label: "一人で136人日規模を納品" },
+              { num: "44万行", label: "13言語のレガシー変換実績" },
+              { num: "40年", label: "業務システム開発経験" },
+            ].map(({ num, label }) => (
+              <div key={label} style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <div style={{ fontSize: "clamp(18px, 3vw, 26px)", fontWeight: 800, color: "var(--accent)", letterSpacing: 1 }}>{num}</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", letterSpacing: 0.5 }}>{label}</div>
+              </div>
+            ))}
           </div>
         </FadeIn>
 

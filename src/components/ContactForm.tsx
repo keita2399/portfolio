@@ -45,6 +45,33 @@ export default function ContactForm() {
           <div className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 24 }}>
             案件のご依頼・お問い合わせはこちらからお送りください
           </div>
+
+          {/* まず話す CTA */}
+          <div style={{
+            padding: "20px 24px", marginBottom: 24,
+            border: "1px solid var(--accent)", borderRadius: 2, background: "#fffdf5",
+          }}>
+            <div style={{ fontSize: 11, color: "var(--accent)", letterSpacing: 2, marginBottom: 6 }}>FIRST STEP</div>
+            <div className="font-serif-jp" style={{ fontSize: 14, fontWeight: 700, color: "#1a1a1a", marginBottom: 4 }}>
+              まずは30分、気軽にお話しください
+            </div>
+            <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 14, lineHeight: 1.7 }}>
+              「こんなことできますか？」「どのくらいかかりますか？」<br />
+              ざっくりした相談から大歓迎です。
+            </div>
+            <a
+              href="mailto:keita2399@gmail.com?subject=30分相談のご希望&body=お名前：%0Aご相談内容：%0Aご都合のよい日時："
+              style={{
+                display: "inline-block", padding: "10px 24px",
+                background: "var(--accent)", color: "#fff",
+                borderRadius: 2, fontSize: 12, letterSpacing: 2,
+                fontWeight: 700, textDecoration: "none",
+              }}
+            >
+              相談をリクエストする →
+            </a>
+          </div>
+
           <div style={{
             display: "flex", alignItems: "center", gap: 12,
             padding: "12px 16px", marginBottom: 48,

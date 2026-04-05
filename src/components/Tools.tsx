@@ -315,6 +315,7 @@ const tools = [
     tags: ["業務フロー図", "ボトルネック分析", "システム化提案", "要件定義書"],
     color: "#2563EB",
     screens: flowScreens(),
+    demoUrl: "https://estimate-ai-xi.vercel.app/flow",
     detailLink: "/works/estimate-ai",
   },
   {
@@ -323,6 +324,7 @@ const tools = [
     tags: ["Webアプリ化", "GAS化", "VBA/ActiveX対応", "プロトタイプ生成"],
     color: "#059669",
     screens: excelScreens(),
+    demoUrl: "https://estimate-ai-xi.vercel.app/excel",
     detailLink: "/works/excel-to-web",
   },
   {
@@ -331,6 +333,8 @@ const tools = [
     tags: ["画面設計", "技術選定", "工数見積", "製造資料生成"],
     color: "#4F46E5",
     screens: estimateScreens(),
+    demoUrl: "https://estimate-ai-xi.vercel.app/estimate",
+    detailLink: "/works/ai-estimate",
   },
   {
     title: "AI書類分析ツール",
@@ -338,6 +342,8 @@ const tools = [
     tags: ["書類判別", "OCR", "Gemini Vision", "データ抽出"],
     color: "#D97706",
     screens: documentScreens(),
+    demoUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
+    detailLink: "/works/ai-document-checker",
   },
   {
     title: "AI契約書チェッカー",
@@ -345,6 +351,8 @@ const tools = [
     tags: ["リスク検出", "条項分析", "修正案提示", "PDF対応"],
     color: "#DC2626",
     screens: contractScreens(),
+    demoUrl: "https://contract-checker-vert.vercel.app",
+    detailLink: "/works/contract-checker",
   },
   {
     title: "AIレシートスキャナー",
@@ -352,6 +360,8 @@ const tools = [
     tags: ["レシート読取", "自動分類", "金額抽出", "経費管理"],
     color: "#7C3AED",
     screens: receiptScreens(),
+    demoUrl: "https://receipt-scanner-iota.vercel.app",
+    detailLink: "/works/receipt-scanner",
   },
   {
     title: "LINE×Claude連携ボット",
@@ -359,6 +369,8 @@ const tools = [
     tags: ["LINE連携", "Claude AI", "会話同期", "モバイル対応"],
     color: "#06B6D4",
     screens: lineScreens(),
+    demoUrl: "/demo/chat",
+    detailLink: "/works/line-claude-sync",
   },
   {
     title: "AIチャットボット",
@@ -366,6 +378,8 @@ const tools = [
     tags: ["チャットUI", "Gemini AI", "ポートフォリオ連携", "リアルタイム応答"],
     color: "#c8860a",
     screens: chatbotScreens(),
+    demoNote: "右下の 💬 ボタンから今すぐ試せます",
+    detailLink: "/works/portfolio-chatbot",
   },
 ];
 
@@ -427,9 +441,26 @@ export default function Tools() {
                       </div>
                     </div>
                     <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontSize: 11, color: "var(--text-faint)" }}>
-                        デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
-                      </span>
+                      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                        {tool.demoNote ? (
+                          <span style={{ fontSize: 11, color: tool.color, fontWeight: 600 }}>
+                            {tool.demoNote}
+                          </span>
+                        ) : tool.demoUrl ? (
+                          <a
+                            href={tool.demoUrl}
+                            target={tool.demoUrl.startsWith("http") ? "_blank" : undefined}
+                            rel={tool.demoUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                            style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}
+                          >
+                            デモを試す ↗
+                          </a>
+                        ) : (
+                          <span style={{ fontSize: 11, color: "var(--text-faint)" }}>
+                            デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
+                          </span>
+                        )}
+                      </div>
                       {tool.detailLink && (
                         <a href={tool.detailLink} style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}>
                           詳細を見る →
