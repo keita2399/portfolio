@@ -60,7 +60,9 @@ export default function ContactForm() {
               ざっくりした相談から大歓迎です。
             </div>
             <a
-              href="mailto:keita2399@gmail.com?subject=30分相談のご希望&body=お名前：%0Aご相談内容：%0Aご都合のよい日時："
+              href="https://calendar.app.google/S7jaFLrqfjLzBAQo8"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "inline-block", padding: "10px 24px",
                 background: "var(--accent)", color: "#fff",
@@ -68,7 +70,7 @@ export default function ContactForm() {
                 fontWeight: 700, textDecoration: "none",
               }}
             >
-              相談をリクエストする →
+              空き時間を確認して予約する →
             </a>
           </div>
 
