@@ -92,17 +92,19 @@ const projectList = [
 ];
 
 const portfolio = [
-  { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", tech: "Next.js, TypeScript, PostgreSQL, Prisma, Claude API", url: "NDA" },
-  { name: "DX提案アシスタント", desc: "業務フロー分析→深掘り質問→要件定義書→見積もり。6段階AI分析パイプライン", tech: "Next.js, TypeScript, Claude API", url: "非公開" },
-  { name: "Excel → Webアプリ変換", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBAマクロ対応", tech: "Next.js, TypeScript, Claude API, xlsx", url: "非公開" },
-  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", tech: "Node.js, LINE Messaging API, Claude API", url: "個人用" },
+  { name: "BtoB業種特化マッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", tech: "Next.js, TypeScript, Prisma, PostgreSQL, LINE API, Gemini API, Claude API", url: "NDA" },
+  { name: "AI開発アシスタント", desc: "業務フロー分析→深掘り質問→要件定義書→見積もり。6段階AI分析パイプライン", tech: "Next.js, TypeScript, Gemini API, Claude API", url: "社内ツール" },
+  { name: "Excel → Web/GAS化", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBAマクロ対応", tech: "Next.js, TypeScript, SheetJS, Gemini API", url: "非公開" },
+  { name: "AIチャットボット（このサイト）", desc: "ポートフォリオ内AIアシスタント。業務経歴書全情報をナレッジベース化し質問に回答", tech: "Next.js, TypeScript, Gemini API", url: "このサイトで稼働中" },
+  { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", tech: "Next.js, TypeScript, Gemini API", url: "https://contract-checker-vert.vercel.app" },
+  { name: "AI レシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", tech: "Next.js, TypeScript, Gemini API", url: "https://receipt-scanner-iota.vercel.app" },
+  { name: "AI 書類解析アプリ", desc: "書類画像をアップロード→種別判定・項目抽出・信頼度表示", tech: "Next.js, TypeScript, Gemini API", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
+  { name: "移動時間計算アプリ", desc: "Google Maps APIで4移動手段の所要時間・ルートを比較表示", tech: "Next.js, TypeScript, Google Maps API", url: "https://travel-time-app-keita2399s-projects.vercel.app" },
+  { name: "LINE 通知デモアプリ", desc: "LINE Messaging APIでテキスト・画像・スタンプの3種メッセージをBot送信", tech: "Next.js, TypeScript, LINE Messaging API", url: "https://line-notify-app-keita2399s-projects.vercel.app" },
+  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", tech: "Next.js, TypeScript, LINE API, Gemini API, Claude API, GitHub Gist", url: "/demo/chat" },
   { name: "アートさんぽシリーズ", desc: "4美術館API+Wikidata SPARQL で作品取得、GLSL Shader・Three.js 3Dオランジュリー、7アプリ展開", tech: "Flutter, Dart, Three.js, GLSL, Vercel", url: "https://sanpo-monet.vercel.app" },
-  { name: "レガシーコード変換 + 鑑定書", desc: "13言語・44万行超→3万行（平均85%削減）+ コード鑑定書38本", tech: "Claude API, Python, Node.js", url: "/works/legacy-conversions" },
-  { name: "AI Limits Lab", desc: "AIの限界を実証実験で記録。Claude vs Figma デザイン対決など", tech: "Claude API, Next.js", url: "https://github.com/gstate-gk/ai-limits-lab" },
-  { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", tech: "Next.js, TypeScript, Claude API", url: "https://contract-checker-vert.vercel.app" },
-  { name: "AIレシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", tech: "Chrome拡張, Gemini API, eSCL", url: "https://receipt-scanner-iota.vercel.app" },
-  { name: "AI書類解析アプリ", desc: "書類画像をアップロード→種別判定・項目抽出・信頼度表示", tech: "Next.js, TypeScript, Claude API", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
-  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示", tech: "Next.js, D3.js, Python", url: "https://gstate-gk.github.io/legacy-code-museum/" },
+  { name: "レガシーコード変換プロジェクト", desc: "13言語・44万行超→3万行（平均85%削減）コード変換", tech: "COBOL, PL/I, RPG, VB6, FastAPI, React, Claude Code", url: "/works/legacy-conversions" },
+  { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js, AI活用", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
@@ -297,7 +299,7 @@ export default function ResumePage() {
                 <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>{p.desc}</div>
                 <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2 }}>{p.tech}</div>
               </div>
-              {!["NDA", "非公開", "個人用"].includes(p.url) ? (
+              {!["NDA", "非公開", "社内ツール", "このサイトで稼働中"].includes(p.url) ? (
                 <a href={p.url} target="_blank" rel="noopener noreferrer"
                   style={{ fontSize: 10, color: "#10b981", fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 12 }}>
                   DEMO ↗
