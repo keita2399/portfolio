@@ -50,21 +50,12 @@ export const metadata: Metadata = {
     title: "松井 慶太 — ITエンジニア ポートフォリオ",
     description:
       "40年の経験を持つITエンジニア。COBOL/PL/I → TypeScript/Next.js のレガシー現代化 & AIアプリ開発。",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "松井 慶太 ポートフォリオ",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "松井 慶太 — ITエンジニア ポートフォリオ",
     description:
       "40年の経験を持つITエンジニア。COBOL/PL/I → TypeScript/Next.js のレガシー現代化 & AIアプリ開発。",
-    images: ["/og-image.png"],
   },
   alternates: {
     canonical: BASE_URL,
