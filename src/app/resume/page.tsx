@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import ResumeExcelDownload from "@/components/ResumeExcelDownload";
 
 export const metadata: Metadata = {
   title: "業務経歴書 — 松井 慶太",
@@ -135,26 +136,29 @@ export default function ResumePage() {
           更新日: 2026年3月28日
         </p>
 
-        {/* Download button */}
-        <a
-          href="/業務経歴書_松井慶太.pdf"
-          download
-          style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            padding: "10px 20px", fontSize: 13, fontWeight: 600,
-            background: "var(--accent)", color: "#fff",
-            borderRadius: 4, textDecoration: "none",
-            transition: "opacity 0.2s",
-          }}
-          onMouseOver={undefined}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-          PDF ダウンロード
-        </a>
+        {/* Download buttons */}
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <a
+            href="/業務経歴書_松井慶太.pdf"
+            download
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "10px 20px", fontSize: 13, fontWeight: 600,
+              background: "var(--accent)", color: "#fff",
+              borderRadius: 4, textDecoration: "none",
+              transition: "opacity 0.2s",
+            }}
+            onMouseOver={undefined}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            PDF ダウンロード
+          </a>
+          <ResumeExcelDownload projectList={projectList} skills={skills} portfolio={portfolio} />
+        </div>
       </div>
 
       {/* Profile hero — Web: dark / Print(PDF): white */}
