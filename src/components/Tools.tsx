@@ -372,7 +372,7 @@ const tools = [
   },
   {
     title: "AI 経費仕分けツール",
-    desc: "ネットワークスキャナー・カメラ・ファイルの3経路でレシートを取り込み、Gemini OCRで明細を構造化。仕事/家庭/按分の仕分け・勘定科目設定・Google Drive保存・期間指定CSVで確定申告に直結。",
+    desc: "Gemini 2.5 Flashのマルチモーダル機能は「文字を読む」だけでなく「文脈を理解して構造化」する。30品目超のスーパーレシートも軽減税率・勘定科目まで一発判定。スキャナー連携からGoogle Drive保存・確定申告CSVまで一貫対応。",
     tags: ["スキャナー連携", "勘定科目自動判定", "Google Drive保存", "確定申告CSV"],
     color: "#D97706",
     screens: receiptScreens(),

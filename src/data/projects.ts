@@ -303,14 +303,14 @@ export const projects: Project[] = [
     externalUrl: "https://receipt-scanner-iota.vercel.app",
     thumbnail: "/thumbnails/receipt-scanner.svg",
     description:
-      "ネットワークスキャナー・カメラ・ファイルの3経路でレシートを取り込み、Gemini OCRで明細を構造化。仕事/家庭/按分の仕分け・勘定科目設定・Google Drive保存・期間指定CSV出力まで、確定申告に必要な経費管理を一貫して実現。",
-    stats: ["Chrome拡張+Native Messaging", "Google Drive連携"],
+      "ネットワークスキャナー・カメラ・ファイルの3経路でレシートを取り込み、Gemini 2.5 Flashのマルチモーダル機能が単なる文字起こしではなく「文脈を理解して構造化」。30品目超のスーパーレシートも一発で店舗名・税率・勘定科目まで判定。仕分け・Google Drive保存・期間指定CSVで確定申告に直結。",
+    stats: ["Gemini 2.5 Flash マルチモーダル", "Chrome拡張+Native Messaging"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Chrome拡張", "Google Drive API", "eSCL"],
     updatedAt: "2026-04-07",
     githubRepo: "keita2399/receipt-scanner",
     detail: {
       overview:
-        "ネットワークスキャナー（eSCLプロトコル）・スマホカメラ・ファイルアップロードの3経路でレシートを取り込み、Gemini 2.5 Flash が店舗名・日付・商品明細・税率・合計金額を構造化抽出。品目ごとに仕事/家庭/按分を仕分けし、勘定科目を設定。Google Driveに月別JSONで保存し、期間指定でCSV出力して確定申告に使う。",
+        "ネットワークスキャナー（eSCLプロトコル）・スマホカメラ・ファイルアップロードの3経路でレシートを取り込み、Gemini 2.5 Flashのマルチモーダル機能で解析する。従来のOCRが「文字を読む」だけなのに対し、Geminiは画像全体の文脈を理解して構造化するため、手書きメモ・デザイン文字のロゴ・軽減税率の※マーク・30品目超のスーパーレシートも高精度で処理できる。読み取った明細を仕事/家庭/按分で仕分けし、勘定科目を設定。Google Driveに月別JSONで保存し、期間指定でCSV出力して確定申告に使う。",
       challenges: [
         "Vercel 60秒制限を回避するためGemini Streaming API（SSE）を採用",
         "Chrome拡張のNative Messaging 1MB制限を回避するため、host.exeがVercelへ直接POST",
