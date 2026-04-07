@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import ResumeExcelDownload from "@/components/ResumeExcelDownload";
 
 export const metadata: Metadata = {
   title: "業務経歴書 — 松井 慶太",
@@ -92,17 +93,20 @@ const projectList = [
 ];
 
 const portfolio = [
-  { name: "建設業向けマッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", url: "NDA" },
-  { name: "DX提案アシスタント", desc: "業務フロー分析→深掘り質問→要件定義書→見積もり。6段階AI分析パイプライン", url: "非公開" },
-  { name: "Excel → Webアプリ変換", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBAマクロ対応", url: "非公開" },
-  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", url: "個人用" },
-  { name: "アートさんぽシリーズ", desc: "Flutter製。MET・AIC等6美術館APIから作品取得、GLSL Shader演出、PWA対応", url: "https://sanpo-met.vercel.app" },
-  { name: "レガシーコード変換 + 鑑定書", desc: "13言語・44万行超→3万行（平均85%削減）+ コード鑑定書38本", url: "/works/legacy-conversions" },
-  { name: "AI Limits Lab", desc: "AIの限界を実証実験で記録。Claude vs Figma デザイン対決など", url: "https://github.com/gstate-gk/ai-limits-lab" },
-  { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", url: "https://contract-checker-vert.vercel.app" },
-  { name: "AIレシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", url: "https://receipt-scanner-iota.vercel.app" },
-  { name: "AI書類解析アプリ", desc: "書類画像をアップロード→種別判定・項目抽出・信頼度表示", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
-  { name: "Legacy Code Museum", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示", url: "https://gstate-gk.github.io/legacy-code-museum/" },
+  { name: "BtoB業種特化マッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", tech: "Next.js, TypeScript, Prisma, PostgreSQL, LINE API, Gemini API, Claude API", url: "NDA" },
+  { name: "DX提案アシスタント", desc: "業務の流れを言葉で説明するだけでAIが業務フロー図・ボトルネック分析・要件定義書を自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API, SSE", url: "https://estimate-ai-xi.vercel.app/flow" },
+  { name: "Excel→Web/GAS化", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBA・ActiveX対応", tech: "Next.js, TypeScript, SheetJS, Gemini API, CFB", url: "https://estimate-ai-xi.vercel.app/excel" },
+  { name: "AI見積もりアシスタント", desc: "作りたいアプリを説明するだけで画面設計・技術選定・工数見積もりを自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API", url: "https://estimate-ai-xi.vercel.app/estimate" },
+  { name: "AI書類分析ツール", desc: "書類画像をアップロード→文書種別判定・記載内容の自動読み取り・構造化", tech: "Next.js, TypeScript, Gemini API", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
+  { name: "AI契約書チェッカー", desc: "契約書をアップロードするとAIがリスク条項の検出・不利な条件の指摘・修正案を提示", tech: "Next.js, TypeScript, Gemini API", url: "https://contract-checker-vert.vercel.app" },
+  { name: "AIレシートスキャナー", desc: "レシートを撮影するだけで店名・日付・金額・品目を自動データ化", tech: "Next.js, TypeScript, Gemini API", url: "https://receipt-scanner-iota.vercel.app" },
+  { name: "LINE×Claude連携ボット", desc: "LINEでの会話をClaude AIが応答。モバイルとデスクトップで会話履歴を同期", tech: "Next.js, TypeScript, LINE Messaging API, Claude API, GitHub Gist", url: "/demo/chat" },
+  { name: "AIチャットボット", desc: "ポートフォリオ内AIアシスタント。業務経歴書全情報をナレッジベース化し訪問者の質問に回答", tech: "Next.js, TypeScript, Gemini API", url: "このサイトで稼働中" },
+  { name: "移動時間計算アプリ", desc: "Google Maps APIで4移動手段の所要時間・ルートを比較表示", tech: "Next.js, TypeScript, Google Maps API", url: "https://travel-time-app-keita2399s-projects.vercel.app" },
+  { name: "LINE 通知デモアプリ", desc: "LINE Messaging APIでテキスト・画像・スタンプの3種メッセージをBot送信", tech: "Next.js, TypeScript, LINE Messaging API", url: "https://line-notify-app-keita2399s-projects.vercel.app" },
+  { name: "アートさんぽシリーズ", desc: "4美術館API+Wikidata SPARQL で作品取得、GLSL Shader・Three.js 3Dオランジュリー、7アプリ展開", tech: "Flutter, Dart, Three.js, GLSL, Vercel", url: "https://sanpo-monet.vercel.app" },
+  { name: "レガシーコード変換プロジェクト", desc: "13言語・44万行超→3万行（平均85%削減）コード変換", tech: "COBOL, PL/I, RPG, VB6, FastAPI, React, Claude Code", url: "/works/legacy-conversions" },
+  { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
@@ -132,26 +136,29 @@ export default function ResumePage() {
           更新日: 2026年3月28日
         </p>
 
-        {/* Download button */}
-        <a
-          href="/業務経歴書_松井慶太.pdf"
-          download
-          style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            padding: "10px 20px", fontSize: 13, fontWeight: 600,
-            background: "var(--accent)", color: "#fff",
-            borderRadius: 4, textDecoration: "none",
-            transition: "opacity 0.2s",
-          }}
-          onMouseOver={undefined}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-          PDF ダウンロード
-        </a>
+        {/* Download buttons */}
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <a
+            href="/業務経歴書_松井慶太.pdf"
+            download
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              padding: "10px 20px", fontSize: 13, fontWeight: 600,
+              background: "var(--accent)", color: "#fff",
+              borderRadius: 4, textDecoration: "none",
+              transition: "opacity 0.2s",
+            }}
+            onMouseOver={undefined}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            PDF ダウンロード
+          </a>
+          <ResumeExcelDownload projectList={projectList} skills={skills} portfolio={portfolio} />
+        </div>
       </div>
 
       {/* Profile hero — Web: dark / Print(PDF): white */}
@@ -295,8 +302,9 @@ export default function ResumePage() {
               <div>
                 <div style={{ fontSize: 13, fontWeight: 600 }}>{p.name}</div>
                 <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>{p.desc}</div>
+                <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2 }}>{p.tech}</div>
               </div>
-              {!["NDA", "非公開", "個人用"].includes(p.url) ? (
+              {!["NDA", "非公開", "社内ツール", "このサイトで稼働中"].includes(p.url) ? (
                 <a href={p.url} target="_blank" rel="noopener noreferrer"
                   style={{ fontSize: 10, color: "#10b981", fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 12 }}>
                   DEMO ↗
