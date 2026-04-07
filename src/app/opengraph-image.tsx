@@ -91,13 +91,13 @@ export default function OgImage() {
               lineHeight: "1.5",
             }}
           >
-            レガシーからクラウドへ。40年の経験。
+            TypeScript・Next.js・AIでモダンWebを開発。
           </div>
         </div>
 
         {/* 下部：タグ */}
         <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-          {["COBOL / PL/I", "TypeScript / Next.js", "AI開発", "DX推進"].map((tag) => (
+          {["TypeScript / Next.js", "React", "AI開発", "DX推進"].map((tag) => (
             <div
               key={tag}
               style={{

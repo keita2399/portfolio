@@ -8,7 +8,7 @@ export function JsonLd() {
     alternateName: "Keita Matsui",
     jobTitle: "ITエンジニア",
     description:
-      "COBOL・PL/I などのレガシーシステムを TypeScript・Next.js・クラウドへ移行するレガシー現代化を専門とする40年の経験を持つITエンジニア。AI活用によるDX推進を支援する。",
+      "TypeScript・Next.js・AIを軸にモダンWebアプリを開発するITエンジニア。40年の経験をベースにAI活用DXアプリや業務システムを設計・開発する。",
     url: BASE_URL,
     sameAs: ["https://zenn.dev/keita2399"],
     knowsAbout: [
@@ -50,7 +50,7 @@ export function JsonLd() {
         name: "松井慶太はどんな仕事を専門としていますか？",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "COBOL・PL/Iなどのレガシーシステムを TypeScript・Next.js・クラウドへ移行するレガシー現代化を専門としています。また、AIを活用したDXアプリの開発も得意としており、Claude API・Gemini API を使った実用アプリを複数リリースしています。",
+          text: "TypeScript・Next.js・React を軸としたモダンWebアプリの設計・開発を専門としています。AIを活用したDXアプリや業務システムの開発が得意で、Claude API・Gemini API を使った実用アプリを複数リリースしています。40年の経験を持ち、レガシーシステムの現代化実績もあります。",
         },
       },
       {

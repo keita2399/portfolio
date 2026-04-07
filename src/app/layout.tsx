@@ -27,16 +27,16 @@ export const metadata: Metadata = {
     template: "%s — 松井 慶太",
   },
   description:
-    "レガシーからクラウドへ。40年の経験を持つITエンジニア松井慶太のポートフォリオ。COBOL/PL/I → TypeScript/Next.js のレガシー現代化を専門とし、AIを活用したDX推進を支援します。",
+    "TypeScript・Next.js・AIを軸にモダンWebアプリを開発するITエンジニア松井慶太のポートフォリオ。40年の経験をベースに、AIを活用したDXアプリや業務システムを設計・開発します。",
   keywords: [
     "松井慶太",
     "ITエンジニア",
-    "レガシー変換",
-    "COBOL",
+    "モダンWeb開発",
     "TypeScript",
     "Next.js",
-    "DX推進",
+    "React",
     "AIアプリ開発",
+    "DX推進",
     "ポートフォリオ",
     "フリーランスエンジニア",
   ],
@@ -49,13 +49,13 @@ export const metadata: Metadata = {
     siteName: "松井 慶太 ポートフォリオ",
     title: "松井 慶太 — ITエンジニア ポートフォリオ",
     description:
-      "40年の経験を持つITエンジニア。COBOL/PL/I → TypeScript/Next.js のレガシー現代化 & AIアプリ開発。",
+      "TypeScript・Next.js・AIを軸にモダンWebアプリを開発するITエンジニア。40年の経験をベースにDXアプリ・業務システムを設計・開発。",
   },
   twitter: {
     card: "summary_large_image",
     title: "松井 慶太 — ITエンジニア ポートフォリオ",
     description:
-      "40年の経験を持つITエンジニア。COBOL/PL/I → TypeScript/Next.js のレガシー現代化 & AIアプリ開発。",
+      "TypeScript・Next.js・AIを軸にモダンWebアプリを開発するITエンジニア。40年の経験をベースにDXアプリ・業務システムを設計・開発。",
   },
   alternates: {
     canonical: BASE_URL,
