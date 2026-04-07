@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、当初見積もり136人日を超える規模のシステムを3ヶ月・一人で構築。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
     stats: ["32画面", "67 APIエンドポイント", "19モデル"],
-    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer"],
+    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer", "Python"],
     updatedAt: "2026-03",
     thumbnail: "/thumbnails/btob-matching-arch.svg",
     detail: {
@@ -74,6 +74,7 @@ export const projects: Project[] = [
         "Gemini 2.5 FlashでAI判定機能を実装。管理者の審査業務をAIが支援し、判定理由を構造化出力",
         "PWA（manifest.json + Service Worker）でモバイルアプリ化。ホーム画面追加でスタンドアロン起動に対応",
         "Vercel Cronによる日次バッチで、各種期限を自動通知（メール＋LINE）",
+        "Pythonスクリプト（psycopg2）で開発・運用補助ツールを整備。ダミーデータ投入・DBエクスポート・Prismaスキーマからの定義書自動生成・メールテンプレートのCSVインポートなどを自動化",
       ],
       results: [
         "32画面・67APIエンドポイント・19モデルの業務システムを一人で構築",
@@ -82,9 +83,10 @@ export const projects: Project[] = [
         "Vercel＋Neonのサーバーレス構成でインフラ管理コストを最小化",
         "LINE連携・AI判定・チャット・PWAなど、リリース後に4つの主要機能を追加",
         "管理者向けダッシュボード・メールテンプレート管理・AI使用量管理・利用料設定など運用機能も充実",
+        "Pythonによる運用補助スクリプト群を整備し、DB管理・スキーマ定義書生成・データインポートを自動化",
       ],
       techDetail:
-        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。地図: Google Maps JavaScript API。通知: LINE Messaging API (Webhook + Push)。AI: Gemini 2.5 Flash (構造化出力)。PWA: manifest.json + Service Worker。ホスティング: Vercel + Vercel Blob + Vercel Cron。日付: dayjs (UTC/JST変換)。",
+        "Next.js 14 (App Router) + React 18 + TypeScript + Tailwind CSS。DB: Prisma 6 + PostgreSQL (Neon)。認証: Cookie (httpOnly) + HMAC-SHA256署名。決済: 外部決済サービス (Webhook)。メール: nodemailer。地図: Google Maps JavaScript API。通知: LINE Messaging API (Webhook + Push)。AI: Gemini 2.5 Flash (構造化出力)。PWA: manifest.json + Service Worker。ホスティング: Vercel + Vercel Blob + Vercel Cron。日付: dayjs (UTC/JST変換)。運用ツール: Python（psycopg2）によるDBダミーデータ投入・テーブルエクスポート・スキーマ定義書自動生成・メールテンプレートインポートなど開発・運用補助スクリプト群。",
     },
   },
   {
