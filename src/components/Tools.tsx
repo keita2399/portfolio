@@ -211,27 +211,43 @@ function contractScreens(): MockScreen[] {
 
 function receiptScreens(): MockScreen[] {
   return [
-    { title: "レシートを撮影", content: (
-      <div style={{ width: "100%", maxWidth: 240, border: "2px dashed #D97706", borderRadius: 8, padding: 20, textAlign: "center", background: "#FFFBEB" }}>
-        <div style={{ fontSize: 24, marginBottom: 4 }}>📸</div>
-        <div style={{ fontSize: 9, color: "#D97706", fontWeight: 600 }}>レシート画像をドロップ</div>
+    { title: "STEP 1 — スキャナー / カメラ / ファイルで取込", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 6 }}>
+        {[["🖨️", "ネットワークスキャナー", "#D97706"], ["📷", "スマホカメラ", "#059669"], ["🗂️", "ファイルアップロード", "#4F46E5"]].map(([icon, label, color], i) => (
+          <Box key={i} bg="#fff" border="#e5e7eb">
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 14 }}>{icon}</span>
+              <span style={{ fontSize: 9, fontWeight: 600, color: color as string }}>{label}</span>
+            </div>
+          </Box>
+        ))}
       </div>
     )},
-    { title: "自動でデータ化", content: (
+    { title: "STEP 2 — Gemini OCRで明細を構造化", content: (
       <div style={{ width: "100%", maxWidth: 260 }}>
         <Box bg="#fff" border="#e5e7eb" style={{ marginBottom: 8 }}>
-          <div style={{ fontWeight: 700, color: "#1a1a1a", fontSize: 10 }}>セブンイレブン 甲府店</div>
-          <div style={{ fontSize: 8, color: "#999" }}>2026/04/03 12:34</div>
+          <div style={{ fontWeight: 700, color: "#1a1a1a", fontSize: 10 }}>コスモス 下吉田東店</div>
+          <div style={{ fontSize: 8, color: "#999" }}>2026-04-01　合計 ¥12,343</div>
         </Box>
-        {[["おにぎり 鮭", "¥160", "8%"], ["コーヒー", "¥150", "8%"], ["電池", "¥330", "10%"]].map(([item, price, tax], i) => (
+        {[["ピュアセレクト マヨネー", "¥238", "8%"], ["ホープス 薄力粉", "¥1,106", "8%"], ["プレミアム消臭アロマン", "¥796", "10%"]].map(([item, price, tax], i) => (
           <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #f3f4f6" }}>
-            <span style={{ color: "#374151" }}>{item}</span>
+            <span style={{ color: "#374151", maxWidth: 130, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item}</span>
             <span><span style={{ color: "#1a1a1a", fontWeight: 600 }}>{price}</span> <span style={{ color: "#999" }}>{tax}</span></span>
           </div>
         ))}
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, fontWeight: 700, marginTop: 6, color: "#D97706" }}>
-          <span>合計</span><span>¥640</span>
-        </div>
+      </div>
+    )},
+    { title: "STEP 3 — 仕分け・勘定科目・Drive保存", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        {[["おにぎり 鮭", "仕事", "#2563EB"], ["電池", "家庭", "#6B7280"], ["コーヒー", "按分50%", "#D97706"]].map(([item, cls, color], i) => (
+          <Box key={i} bg="#fff" border="#e5e7eb" style={{ marginBottom: 4, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 9, color: "#374151" }}>{item}</span>
+            <Tag color={color as string}>{cls}</Tag>
+          </Box>
+        ))}
+        <Box bg="#FFFBEB" border="#D97706" style={{ marginTop: 8, textAlign: "center" }}>
+          <span style={{ fontSize: 9, color: "#D97706", fontWeight: 700 }}>📥 Google Drive に保存済み</span>
+        </Box>
       </div>
     )},
   ];
@@ -355,10 +371,10 @@ const tools = [
     detailLink: "/works/contract-checker",
   },
   {
-    title: "AIレシートスキャナー",
-    desc: "レシートを撮影するだけで、店名・日付・金額・品目を自動で読み取り、データ化します。",
-    tags: ["レシート読取", "自動分類", "金額抽出", "経費管理"],
-    color: "#7C3AED",
+    title: "AI 経費仕分けツール",
+    desc: "ネットワークスキャナー・カメラ・ファイルの3経路でレシートを取り込み、Gemini OCRで明細を構造化。仕事/家庭/按分の仕分け・勘定科目設定・Google Drive保存・期間指定CSVで確定申告に直結。",
+    tags: ["スキャナー連携", "勘定科目自動判定", "Google Drive保存", "確定申告CSV"],
+    color: "#D97706",
     screens: receiptScreens(),
     demoUrl: "https://receipt-scanner-iota.vercel.app",
     detailLink: "/works/receipt-scanner",
