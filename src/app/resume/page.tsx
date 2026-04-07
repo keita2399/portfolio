@@ -93,18 +93,19 @@ const projectList = [
 
 const portfolio = [
   { name: "BtoB業種特化マッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", tech: "Next.js, TypeScript, Prisma, PostgreSQL, LINE API, Gemini API, Claude API", url: "NDA" },
-  { name: "AI開発アシスタント", desc: "業務フロー分析→深掘り質問→要件定義書→見積もり。6段階AI分析パイプライン", tech: "Next.js, TypeScript, Gemini API, Claude API", url: "社内ツール" },
-  { name: "Excel → Web/GAS化", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBAマクロ対応", tech: "Next.js, TypeScript, SheetJS, Gemini API", url: "非公開" },
-  { name: "AIチャットボット（このサイト）", desc: "ポートフォリオ内AIアシスタント。業務経歴書全情報をナレッジベース化し質問に回答", tech: "Next.js, TypeScript, Gemini API", url: "このサイトで稼働中" },
-  { name: "契約書リスクチェッカー", desc: "AIが条項ごとにリスク判定・修正案提示", tech: "Next.js, TypeScript, Gemini API", url: "https://contract-checker-vert.vercel.app" },
-  { name: "AI レシートスキャナー", desc: "レシート画像をAIが解析、品目・金額・税率を自動抽出", tech: "Next.js, TypeScript, Gemini API", url: "https://receipt-scanner-iota.vercel.app" },
-  { name: "AI 書類解析アプリ", desc: "書類画像をアップロード→種別判定・項目抽出・信頼度表示", tech: "Next.js, TypeScript, Gemini API", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
+  { name: "DX提案アシスタント", desc: "業務の流れを言葉で説明するだけでAIが業務フロー図・ボトルネック分析・要件定義書を自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API, SSE", url: "https://estimate-ai-xi.vercel.app/flow" },
+  { name: "Excel→Web/GAS化", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBA・ActiveX対応", tech: "Next.js, TypeScript, SheetJS, Gemini API, CFB", url: "https://estimate-ai-xi.vercel.app/excel" },
+  { name: "AI見積もりアシスタント", desc: "作りたいアプリを説明するだけで画面設計・技術選定・工数見積もりを自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API", url: "https://estimate-ai-xi.vercel.app/estimate" },
+  { name: "AI書類分析ツール", desc: "書類画像をアップロード→文書種別判定・記載内容の自動読み取り・構造化", tech: "Next.js, TypeScript, Gemini API", url: "https://ai-document-checker-keita2399s-projects.vercel.app" },
+  { name: "AI契約書チェッカー", desc: "契約書をアップロードするとAIがリスク条項の検出・不利な条件の指摘・修正案を提示", tech: "Next.js, TypeScript, Gemini API", url: "https://contract-checker-vert.vercel.app" },
+  { name: "AIレシートスキャナー", desc: "レシートを撮影するだけで店名・日付・金額・品目を自動データ化", tech: "Next.js, TypeScript, Gemini API", url: "https://receipt-scanner-iota.vercel.app" },
+  { name: "LINE×Claude連携ボット", desc: "LINEでの会話をClaude AIが応答。モバイルとデスクトップで会話履歴を同期", tech: "Next.js, TypeScript, LINE Messaging API, Claude API, GitHub Gist", url: "/demo/chat" },
+  { name: "AIチャットボット", desc: "ポートフォリオ内AIアシスタント。業務経歴書全情報をナレッジベース化し訪問者の質問に回答", tech: "Next.js, TypeScript, Gemini API", url: "このサイトで稼働中" },
   { name: "移動時間計算アプリ", desc: "Google Maps APIで4移動手段の所要時間・ルートを比較表示", tech: "Next.js, TypeScript, Google Maps API", url: "https://travel-time-app-keita2399s-projects.vercel.app" },
   { name: "LINE 通知デモアプリ", desc: "LINE Messaging APIでテキスト・画像・スタンプの3種メッセージをBot送信", tech: "Next.js, TypeScript, LINE Messaging API", url: "https://line-notify-app-keita2399s-projects.vercel.app" },
-  { name: "LINE Claude Sync", desc: "LINE↔Claude Code CLIの会話自動同期。モバイルとCLIの文脈共有", tech: "Next.js, TypeScript, LINE API, Gemini API, Claude API, GitHub Gist", url: "/demo/chat" },
   { name: "アートさんぽシリーズ", desc: "4美術館API+Wikidata SPARQL で作品取得、GLSL Shader・Three.js 3Dオランジュリー、7アプリ展開", tech: "Flutter, Dart, Three.js, GLSL, Vercel", url: "https://sanpo-monet.vercel.app" },
   { name: "レガシーコード変換プロジェクト", desc: "13言語・44万行超→3万行（平均85%削減）コード変換", tech: "COBOL, PL/I, RPG, VB6, FastAPI, React, Claude Code", url: "/works/legacy-conversions" },
-  { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js, AI活用", url: "https://gstate-gk.github.io/legacy-code-museum/" },
+  { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
 /* ──────────────── shared inline‑style helpers ──────────────── */
