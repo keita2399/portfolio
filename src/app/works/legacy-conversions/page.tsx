@@ -3,8 +3,17 @@ import type { Metadata } from "next";
 import { legacyProjects } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "レガシーコード変換プロジェクト — 松井 慶太",
-  description: "10言語・41万行のレガシーシステム変換実績",
+  title: "レガシーコード変換プロジェクト",
+  description: "COBOL・PL/I・VB6・RPGなど10言語・41万行のレガシーシステム変換実績。松井慶太によるレガシー現代化プロジェクト一覧。",
+  alternates: {
+    canonical: "https://portfolio-two-orpin-45.vercel.app/works/legacy-conversions",
+  },
+  openGraph: {
+    title: "レガシーコード変換プロジェクト — 松井 慶太",
+    description: "COBOL・PL/I・VB6・RPGなど10言語・41万行のレガシーシステム変換実績。",
+    url: "https://portfolio-two-orpin-45.vercel.app/works/legacy-conversions",
+    type: "website",
+  },
 };
 
 export default function LegacyConversionsPage() {

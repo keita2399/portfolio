@@ -3,8 +3,17 @@ import type { Metadata } from "next";
 import ResumeExcelDownload from "@/components/ResumeExcelDownload";
 
 export const metadata: Metadata = {
-  title: "業務経歴書 — 松井 慶太",
-  description: "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア。業務経歴書。",
+  title: "業務経歴書",
+  description: "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア松井慶太の業務経歴書。TypeScript・Next.js・AI開発・レガシー現代化の実績。",
+  alternates: {
+    canonical: "https://portfolio-two-orpin-45.vercel.app/resume",
+  },
+  openGraph: {
+    title: "業務経歴書 — 松井 慶太",
+    description: "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア。TypeScript・Next.js・AI開発・レガシー現代化の実績。",
+    url: "https://portfolio-two-orpin-45.vercel.app/resume",
+    type: "profile",
+  },
 };
 
 const skills = [
