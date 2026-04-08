@@ -1,4 +1,4 @@
-export type ProjectCategory = "flagship" | "demo" | "personal";
+export type ProjectCategory = "flagship" | "demo" | "personal" | "tools";
 
 export type Project = {
   slug: string;
@@ -134,7 +134,7 @@ export const projects: Project[] = [
   },
   {
     slug: "estimate-ai",
-    category: "personal",
+    category: "tools",
     title: "AI開発アシスタント",
     badge: "社内ツール",
     badgeColor: "#2563eb",
@@ -180,7 +180,7 @@ export const projects: Project[] = [
   },
   {
     slug: "excel-to-web",
-    category: "personal",
+    category: "tools",
     title: "Excel → Web/GAS化",
     badge: "デモ公開中",
     badgeColor: "#059669",
@@ -219,7 +219,7 @@ export const projects: Project[] = [
   // === 技術デモ ===
   {
     slug: "portfolio-chatbot",
-    category: "demo",
+    category: "tools",
     title: "AIチャットボット（このサイト）",
     badge: "このサイトで稼働中",
     badgeColor: "#c8860a",
@@ -228,7 +228,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-03-28",
+    updatedAt: "2026-04-07",
     githubRepo: "keita2399/portfolio",
     detail: {
       overview:
@@ -256,7 +256,7 @@ export const projects: Project[] = [
   },
   {
     slug: "contract-checker",
-    category: "demo",
+    category: "tools",
     title: "契約書リスクチェッカー",
     badge: "デモ公開中",
     badgeColor: "#10b981",
@@ -267,7 +267,7 @@ export const projects: Project[] = [
       "契約書をアップロードするだけで、AIが条項ごとにリスクを判定。自動更新・違約金・損害賠償上限なし・知的財産権の全譲渡・競業避止など、フリーランスが見落としがちな不利条項を検出し、具体的な修正案を提示。",
     stats: ["Gemini Vision API", "条項別リスク判定"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
-    updatedAt: "2026-03-16",
+    updatedAt: "2026-04-05",
     githubRepo: "keita2399/contract-checker",
     detail: {
       overview:
@@ -295,7 +295,7 @@ export const projects: Project[] = [
   },
   {
     slug: "receipt-scanner",
-    category: "demo",
+    category: "tools",
     title: "AI 経費仕分けツール",
     badge: "デモ公開中",
     badgeColor: "#f59e0b",
@@ -336,7 +336,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-document-checker",
-    category: "demo",
+    category: "tools",
     title: "AI 書類解析アプリ",
     badge: "デモ公開中",
     badgeColor: "#6366f1",
@@ -519,7 +519,7 @@ export const projects: Project[] = [
   },
   {
     slug: "line-claude-sync",
-    category: "personal",
+    category: "tools",
     title: "LINE Claude Sync",
     badge: "デモ公開中",
     badgeColor: "#06c755",
