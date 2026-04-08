@@ -583,6 +583,44 @@ export const projects: Project[] = [
       },
     },
   },
+  {
+    slug: "invoice-app",
+    category: "personal",
+    title: "フリーランス向け請求書管理システム",
+    badge: "本番稼働中",
+    badgeColor: "#7c3aed",
+    borderColor: "#7c3aed",
+    externalUrl: "https://invoice-app-djb3.onrender.com",
+    githubRepo: "keita2399/invoice-app",
+    description:
+      "フリーランスが実際に使えることを目標に、見積書・請求書・顧客管理を一元化したWebアプリ。Ruby on Rails 8 + Hotwire のモダン構成でゼロから構築し、Render + PostgreSQL に本番デプロイ済み。",
+    stats: ["顧客・見積書・請求書の一元管理", "Devise認証でマルチユーザー対応", "Render + PostgreSQL 本番デプロイ済み"],
+    tags: ["Ruby on Rails", "Ruby", "PostgreSQL", "Devise", "Tailwind CSS", "Hotwire", "Render"],
+    updatedAt: "2026-04-08",
+    detail: {
+      overview:
+        "「Railsも書ける」をポートフォリオで証明するために作成した実用ツール。顧客管理・見積書・請求書の作成から一覧・詳細表示まで、フリーランスの請求業務をカバーするCRUDアプリ。Rails 8 + Hotwire + Tailwind CSS のモダン構成で、開発から本番デプロイまで一気通貫で実施。",
+      challenges: [
+        "accepts_nested_attributes_for による明細行のネスト入力（動的行追加）",
+        "SQLite（開発）/ PostgreSQL（本番）の切り替えとRenderへのデプロイ設定",
+        "Tailwind CSS の本番ビルド順序（tailwindcss:build → assets:precompile）の解決",
+        "Devise + i18n による全メッセージの日本語化",
+      ],
+      approach: [
+        "current_user スコープでデータを完全分離し、マルチユーザー対応を実現",
+        "bin/render-build.sh でビルド手順を管理し、Render の CI/CD に対応",
+        "rails-i18n gem + devise.ja.yml でUI・バリデーション・フラッシュメッセージを全日本語化",
+        "Solid Cache / Solid Queue / Solid Cable を PostgreSQL の別テーブルで運用",
+      ],
+      results: [
+        "本番環境（Render）への完全デプロイ達成",
+        "見積書から請求書への転記機能で業務フローを効率化",
+        "Railsの基本設計（MVC・認証・DB設計・デプロイ）を網羅した実装",
+      ],
+      techDetail:
+        "Ruby 3.4 + Rails 8.1 + Propshaft + Tailwind CSS。Devise による認証、accepts_nested_attributes_for による明細行管理。開発環境は SQLite、本番は PostgreSQL（Render）。Hotwire（Turbo + Stimulus）によるSPA的UX。",
+    },
+  },
   // === レガシーコード変換（サマリー） ===
   {
     slug: "legacy-conversions",
