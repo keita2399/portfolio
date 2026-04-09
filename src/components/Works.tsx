@@ -99,8 +99,8 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
                   key={tag}
                   style={{
                     fontSize: 10, padding: "2px 8px",
-                    border: `1px solid ${project.badgeColor}44`,
-                    color: project.badgeColor, borderRadius: 2,
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "rgba(219,234,254,0.8)", borderRadius: 2,
                   }}
                 >
                   {tag}
