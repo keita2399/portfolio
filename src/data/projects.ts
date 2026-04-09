@@ -11,6 +11,7 @@ export type Project = {
   tags: string[];
   updatedAt?: string;
   githubRepo?: string;
+  githubPublic?: boolean;
   category?: ProjectCategory;
   externalUrl?: string;
   thumbnail?: string;
@@ -104,6 +105,7 @@ export const projects: Project[] = [
     tags: ["Flutter", "Dart", "Three.js", "GLSL Shader", "LINE Messaging API", "Vercel", "Met Museum API", "AIC API", "Cleveland API", "Smithsonian API", "Wikidata SPARQL", "Next.js", "PWA"],
     updatedAt: "2026-04-07",
     githubRepo: "keita2399/met_gallery",
+    githubPublic: true,
     detail: {
       overview:
         "メトロポリタン美術館・シカゴ美術館・クリーブランド美術館・スミソニアン博物館のパブリックAPIとWikidata SPARQLを活用し、数十万点のコレクションをスマホで鑑賞できるWebアプリシリーズ。Flutter Webでクロスプラットフォーム対応し、Three.jsによる3Dオランジュリー美術館（モネの睡蓮）とGPUフラグメントシェーダーによるスポットライト演出を実現。LINEボットが毎朝6時に6作品のカルーセルをプッシュ配信。美術館さんぽ3種・画家さんぽ3種・特集さんぽ1種の計7アプリを公開中。",
@@ -228,8 +230,9 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-08",
+    updatedAt: "2026-04-09",
     githubRepo: "keita2399/portfolio",
+    githubPublic: true,
     detail: {
       overview:
         "ポートフォリオサイトの訪問者が、スキル・実績・受けたい案件について自由に質問できるAIチャットボット。業務経歴書の全情報（40年分のプロジェクト履歴、スキル、業務知識等）をprofile.mdとしてGemini AIに渡し、RAG的にナレッジベースとして活用。プロフィールにない情報は「お問い合わせください」と正直に回答する設計。",
@@ -269,6 +272,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
     updatedAt: "2026-04-05",
     githubRepo: "keita2399/contract-checker",
+    githubPublic: true,
     detail: {
       overview:
         "契約書の画像をアップロードすると、Gemini 2.5 Flash が全条項を読み取り、フリーランス・個人事業主にとって不利な条項をHIGH/MEDIUM/LOW/SAFEの4段階で判定。条項ごとに問題点と具体的な修正案を提示し、欠落している条項（損害賠償上限、解除条件等）も検出する。",
@@ -308,6 +312,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "Gemini API", "Chrome拡張", "Google Drive API", "eSCL"],
     updatedAt: "2026-04-07",
     githubRepo: "keita2399/receipt-scanner",
+    githubPublic: true,
     detail: {
       overview:
         "ネットワークスキャナー（eSCLプロトコル）・スマホカメラ・ファイルアップロードの3経路でレシートを取り込み、Gemini 2.5 Flashのマルチモーダル機能で解析する。従来のOCRが「文字を読む」だけなのに対し、Geminiは画像全体の文脈を理解して構造化するため、手書きメモ・デザイン文字のロゴ・軽減税率の※マーク・30品目超のスーパーレシートも高精度で処理できる。読み取った明細を仕事/家庭/按分で仕分けし、勘定科目を設定。Google Driveに月別JSONで保存し、期間指定でCSV出力して確定申告に使う。",
@@ -532,6 +537,7 @@ export const projects: Project[] = [
     tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
     updatedAt: "2026-03-14",
     githubRepo: "keita2399/line-claude-sync",
+    githubPublic: true,
     detail: {
       overview:
         "スマホのLINEからアプリのアイデアをAIに相談し、その会話ログがPCのClaude Code CLIに自動で共有される仕組み。外出先での思いつきを帰宅後の開発にシームレスに繋げる。",
@@ -701,6 +707,7 @@ export const legacyProjects: Project[] = [
     tags: ["PL/I", "Stratus VOS", "FastAPI", "React", "WebSocket"],
     updatedAt: "2026-03-12",
     githubRepo: "gstate-gk/habitat-1986",
+    githubPublic: true,
     detail: {
       overview:
         "Lucasfilm Games Division（現LucasArts）が1986年にPL/Iで開発した世界初のグラフィカルMMO「Habitat」を、Python + Reactに完全変換。Stratus VOSという消滅したプラットフォームからの救出作業。「アバター」という用語を仮想空間の分身として初めて使ったのがこのHabitat。",
