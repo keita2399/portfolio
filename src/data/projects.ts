@@ -46,7 +46,7 @@ export const projects: Project[] = [
     description:
       "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、双方合意の136人日見積もりをAI協働開発で2週間強に短縮。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
     stats: ["32画面", "67 APIエンドポイント", "19モデル"],
-    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer", "Python"],
+    tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer", "Python", "Playwright"],
     updatedAt: "2026-03",
     thumbnail: "/thumbnails/btob-matching-arch.svg",
     detail: {

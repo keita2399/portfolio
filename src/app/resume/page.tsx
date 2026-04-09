@@ -37,19 +37,19 @@ const aiWorkflow = [
 
 const careerHighlights = [
   {
-    title: "建設現場向け発生土・受入土マッチングプラットフォーム新規開発",
-    meta: "建設 ｜ フルスタック（1人請負） ｜ 3ヶ月（2026/01〜2026/03）",
-    desc: "建設現場間で発生土・受入土をマッチングするSaaSプラットフォームを、企画ヒアリングから本番デプロイ・運用まで単独で担当。AIペア開発（Claude Code）により、当初見積もり136人日を大幅に超える機能を3ヶ月で実装・リリース。",
-    tech: "Next.js 14 (App Router), TypeScript, React 18, Prisma, PostgreSQL (Neon), Tailwind CSS, Vercel, Vercel Blob",
+    title: "BtoB業種特化マッチングSaaS新規開発",
+    meta: "建設 ｜ フルスタック（1人請負） ｜ 2026/01〜（継続中）",
+    desc: "特定業種の企業間マッチングを電話・FAXからWebプラットフォームに置き換えるSaaS。企画ヒアリングから参画し、双方合意の136人日見積もりをAI協働開発（Claude Code）で2週間強に短縮して初期リリース。その後も継続的に機能拡張中（LINE連携・AI判定・チャット・PWA対応等）。",
+    tech: "Next.js 14 (App Router), TypeScript, React 18, Prisma 6, PostgreSQL (Neon), Tailwind CSS, Vercel, Vercel Blob, Vercel Cron, Google Maps API, LINE Messaging API, Gemini API, nodemailer, PWA, dayjs, Python, Playwright",
     features: [
-      { cat: "地図検索", detail: "Google Maps API連携。ジオコーディング、最大500件ピン同時表示、Haversine距離計算" },
-      { cat: "認証・セキュリティ", detail: "HMAC-SHA256署名付きCookie認証、CSRF対策、アカウントロック、ロールベースアクセス制御" },
-      { cat: "決済連携", detail: "ZEUS Payment Service CGIコールバック処理、IP検証、サブスクリプション管理" },
-      { cat: "LINE連携", detail: "LINE Messaging API。6桁コード認証によるアカウント紐付け、各種通知配信" },
-      { cat: "AI検証", detail: "Gemini APIによる許可証OCR検証・現場情報の整合性チェック。AI使用量管理画面" },
-      { cat: "管理ダッシュボード", detail: "会員・現場・決済・トラブル・メール配信・CSV出力・メンテナンスモード" },
-      { cat: "自動処理", detail: "cronによるトライアル期限通知・工期完了自動チェック" },
-      { cat: "ドキュメント", detail: "設計書・運用手順書・操作マニュアル（コードベースとの整合性をAIレビューで担保）" },
+      { cat: "地図検索", detail: "Google Maps API連携。ジオコーディング、最大500件ピン同時表示。32画面・67 APIエンドポイント・19モデル" },
+      { cat: "認証・セキュリティ", detail: "Cookie (httpOnly) + HMAC-SHA256署名認証、CSRF対策、ロールベースアクセス制御、XSS防止" },
+      { cat: "決済連携", detail: "外部決済サービス Webhook連携・署名検証、サブスクリプション管理" },
+      { cat: "LINE連携", detail: "LINE Messaging API。Webhook受信・Push通知、10種類以上の通知に対応" },
+      { cat: "AI判定", detail: "Gemini 2.5 Flash による登録情報の自動判定（構造化出力）。AI使用量管理画面" },
+      { cat: "管理ダッシュボード", detail: "会員・決済・メールテンプレート管理・CSV出力・AI使用量・利用料設定" },
+      { cat: "自動処理", detail: "Vercel Cronによる日次バッチで各種期限を自動通知（メール＋LINE）" },
+      { cat: "運用補助", detail: "Python（psycopg2）でDBダミーデータ投入・スキーマ定義書自動生成・メールテンプレートCSVインポート" },
     ],
   },
   {
@@ -80,7 +80,7 @@ const careerHighlights = [
 
 const projectList = [
   { no: 1, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
-  { no: 2, industry: "建設", system: "マッチングプラットフォーム", role: "フルスタック", period: "26/01-26/03（3）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE, Gemini AI" },
+  { no: 2, industry: "建設", system: "BtoBマッチングSaaS", role: "フルスタック", period: "26/01〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE Messaging API, Gemini API, PWA, Playwright" },
   { no: 3, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
   { no: 4, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
   { no: 5, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
@@ -103,7 +103,7 @@ const projectList = [
 ];
 
 const portfolio = [
-  { name: "BtoB業種特化マッチングSaaS", desc: "業務課題を事業化。企画から3ヶ月で本番稼働（約30画面・40API・24テーブル）", tech: "Next.js, TypeScript, Prisma, PostgreSQL, LINE API, Gemini API, Claude API", url: "NDA" },
+  { name: "BtoB業種特化マッチングSaaS", desc: "136人日見積もりをAI協働開発で2週間強に短縮。32画面・67 API・19モデル、継続拡張中", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, LINE Messaging API, Gemini API, Google Maps API, PWA, Playwright", url: "NDA" },
   { name: "DX提案アシスタント", desc: "業務の流れを言葉で説明するだけでAIが業務フロー図・ボトルネック分析・要件定義書を自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API, SSE", url: "https://estimate-ai-xi.vercel.app/flow" },
   { name: "Excel→Web/GAS化", desc: "Excelアップロード→構造分析→Web化プロトタイプ自動生成。VBA・ActiveX対応", tech: "Next.js, TypeScript, SheetJS, Gemini API, CFB", url: "https://estimate-ai-xi.vercel.app/excel" },
   { name: "AI見積もりアシスタント", desc: "作りたいアプリを説明するだけで画面設計・技術選定・工数見積もりを自動生成", tech: "Next.js, TypeScript, Gemini API, Claude API", url: "https://estimate-ai-xi.vercel.app/estimate" },
