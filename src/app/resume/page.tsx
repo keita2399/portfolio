@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import ResumeExcelDownload from "@/components/ResumeExcelDownload";
+import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "業務経歴書",
@@ -118,284 +119,337 @@ const portfolio = [
   { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];
 
-/* ──────────────── shared inline‑style helpers ──────────────── */
-const sectionTitle = (text: string) => (
-  <h2 style={{ fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 700, marginBottom: 24, paddingBottom: 8, borderBottom: "2px solid var(--accent)" }}>
-    {text}
-  </h2>
+/* ──────────────── Design tokens ──────────────── */
+const D = {
+  bg: "#0f172a",
+  bgCard: "rgba(255,255,255,0.05)",
+  bgCardHover: "rgba(255,255,255,0.08)",
+  bgHead: "rgba(255,255,255,0.08)",
+  border: "rgba(255,255,255,0.12)",
+  borderAccent: "#2563eb",
+  accent: "#3b82f6",
+  accentLight: "#93c5fd",
+  text: "rgba(203,213,225,0.95)",
+  textLight: "rgba(148,163,184,0.9)",
+  textMuted: "rgba(100,116,139,0.9)",
+  white: "#fff",
+};
+
+/* ──────────────── shared style helpers ──────────────── */
+const sectionTitle = (label: string, title: string) => (
+  <div style={{ marginBottom: 32 }}>
+    <div style={{ fontSize: 10, color: D.accentLight, letterSpacing: 4, marginBottom: 10, opacity: 0.8 }}>
+      {label}
+    </div>
+    <h2 style={{
+      fontSize: "clamp(18px, 3vw, 26px)", fontWeight: 700, color: D.white,
+      paddingBottom: 10, borderBottom: `1px solid ${D.border}`,
+    }}>
+      {title}
+    </h2>
+  </div>
 );
 
-const tableCell: React.CSSProperties = { padding: "8px 12px", borderBottom: "1px solid var(--border)", fontSize: 13, verticalAlign: "top" };
-const tableHead: React.CSSProperties = { ...tableCell, background: "var(--bg-alt)", fontWeight: 600, whiteSpace: "nowrap" };
+const tableCell: React.CSSProperties = {
+  padding: "8px 12px",
+  borderBottom: `1px solid ${D.border}`,
+  fontSize: 13,
+  verticalAlign: "top",
+  color: D.text,
+};
+const tableHead: React.CSSProperties = {
+  ...tableCell,
+  background: D.bgHead,
+  fontWeight: 600,
+  whiteSpace: "nowrap",
+  color: D.accentLight,
+};
 
 export default function ResumePage() {
   return (
-    <div style={{ maxWidth: 900, margin: "0 auto", padding: "60px 32px 60px" }}>
-      {/* Back link */}
-      <Link href="/" style={{ fontSize: 12, color: "var(--accent)", textDecoration: "none", letterSpacing: 1 }}>
-        ← ポートフォリオに戻る
-      </Link>
-
-      {/* Header */}
-      <div style={{ marginTop: 24, marginBottom: 24 }}>
-        <h1 style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 700, marginBottom: 6 }}>
-          業務<span style={{ color: "var(--accent)" }}>経歴書</span>
-        </h1>
-        <p style={{ fontSize: 13, color: "var(--text-light)", marginBottom: 12 }}>
-          更新日: 2026年3月28日
-        </p>
-
-        {/* Download buttons */}
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <a
-            href="/業務経歴書_松井慶太.pdf"
-            download
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              padding: "10px 20px", fontSize: 13, fontWeight: 600,
-              background: "var(--accent)", color: "#fff",
-              borderRadius: 4, textDecoration: "none",
-              transition: "opacity 0.2s",
-            }}
-            onMouseOver={undefined}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            PDF ダウンロード
-          </a>
-          <ResumeExcelDownload projectList={projectList} skills={skills} portfolio={portfolio} />
-        </div>
-      </div>
-
-      {/* Profile hero — Web: dark / Print(PDF): white */}
-      <style>{`
-        .profile-hero {
-          background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%);
-          border: 1px solid rgba(200,134,10,0.2);
-          border-radius: 8px; padding: 28px 32px; margin-bottom: 32px;
-        }
-        .profile-hero .profile-name { color: #c8860a; }
-        .profile-hero .profile-name-en { color: #b0a594; }
-        .profile-hero .profile-tagline { color: #d4c5a9; }
-        .profile-hero .profile-meta { color: #b0a594; }
-        .profile-hero .profile-link { color: #c8860a; border-bottom: 1px solid rgba(200,134,10,0.3); }
-        @media print {
-          .profile-hero {
-            background: #fff !important;
-            border: 1px solid var(--border) !important;
-            border-top: 3px solid var(--accent) !important;
+    <>
+      <Navbar />
+      <div style={{ background: D.bg, minHeight: "100vh" }}>
+        {/* Page styles */}
+        <style>{`
+          .resume-page { color: ${D.text}; }
+          .resume-card {
+            border: 1px solid ${D.border};
+            border-radius: 6px;
+            background: ${D.bgCard};
+            backdrop-filter: blur(12px);
+            transition: border-color 0.2s, background 0.2s;
           }
-          .profile-hero .profile-name { color: #1a1a1a !important; }
-          .profile-hero .profile-name-en { color: var(--text-muted) !important; }
-          .profile-hero .profile-tagline { color: #333 !important; }
-          .profile-hero .profile-meta { color: var(--text-light) !important; }
-          .profile-hero .profile-link { color: var(--accent) !important; border-bottom-color: var(--accent) !important; }
-        }
-      `}</style>
-      <div className="profile-hero">
-        <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
-          <div className="profile-name" style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, lineHeight: 1.2 }}>
-            松井 慶太
+          .resume-card:hover { border-color: rgba(59,130,246,0.4); background: ${D.bgCardHover}; }
+          .resume-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+          /* Print styles */
+          @media print {
+            .resume-page-wrapper { background: #fff !important; }
+            .resume-card { background: #fff !important; border-color: #e5e2dc !important; }
+            .resume-page { color: #2a2a2a !important; }
+            nav { display: none !important; }
+          }
+        `}</style>
+
+        <div className="resume-page resume-page-wrapper" style={{ maxWidth: 900, margin: "0 auto", padding: "88px 32px 80px" }}>
+          {/* Back link */}
+          <Link href="/" style={{ fontSize: 11, color: D.accentLight, textDecoration: "none", letterSpacing: 1, opacity: 0.8 }}>
+            ← ポートフォリオに戻る
+          </Link>
+
+          {/* Header */}
+          <div style={{ marginTop: 24, marginBottom: 28 }}>
+            <div style={{ fontSize: 10, color: D.accentLight, letterSpacing: 4, marginBottom: 10, opacity: 0.8 }}>
+              // RESUME
+            </div>
+            <h1 style={{ fontSize: "clamp(28px, 5vw, 42px)", fontWeight: 700, marginBottom: 6, color: D.white }}>
+              業務<span style={{ color: D.accentLight }}>経歴書</span>
+            </h1>
+            <p style={{ fontSize: 13, color: D.textMuted, marginBottom: 16 }}>
+              更新日: 2026年3月28日
+            </p>
+
+            {/* Download buttons */}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <a
+                href="/業務経歴書_松井慶太.pdf"
+                download
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  padding: "10px 20px", fontSize: 13, fontWeight: 600,
+                  background: D.borderAccent, color: "#fff",
+                  borderRadius: 4, textDecoration: "none",
+                  transition: "background 0.2s",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                PDF ダウンロード
+              </a>
+              <ResumeExcelDownload projectList={projectList} skills={skills} portfolio={portfolio} />
+            </div>
           </div>
-          <div className="profile-name-en" style={{ fontSize: 12, letterSpacing: 1 }}>Keita Matsui</div>
-        </div>
 
-        <p className="profile-tagline" style={{ fontSize: 14, marginTop: 14, lineHeight: 1.6, fontStyle: "italic", borderLeft: "2px solid var(--accent)", paddingLeft: 16 }}>
-          AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア
-        </p>
-
-        <div className="profile-meta" style={{ display: "flex", flexWrap: "wrap", gap: "12px 28px", marginTop: 16, fontSize: 13 }}>
-          <span>IT業界 約40年（1985年〜）</span>
-          <span>拠点: 山梨県</span>
-          <span>フルスタック ／ AI協働開発</span>
-        </div>
-
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 14, fontSize: 12 }}>
-          <a className="profile-link" href="https://portfolio-two-orpin-45.vercel.app" target="_blank" rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}>
-            Portfolio Site ↗
-          </a>
-          <a className="profile-link" href="https://github.com/keita2399/portfolio" target="_blank" rel="noopener noreferrer"
-            style={{ textDecoration: "none" }}>
-            GitHub ↗
-          </a>
-        </div>
-      </div>
-
-      {/* AI協働開発 */}
-      <section style={{ marginBottom: 32 }}>
-        {sectionTitle("AI協働開発")}
-        <p className="font-serif-jp" style={{ fontSize: 14, color: "var(--text-light)", lineHeight: 1.7, marginBottom: 16 }}>
-          AIを補助ツールとしてではなく、設計パートナーとして活用するスタイルを確立。
-        </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
-          {aiWorkflow.map((w) => (
-            <div key={w.phase} style={{
-              border: "1px solid var(--border)", borderRadius: 4,
-              padding: "16px 20px", background: "#fff",
-            }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--accent)", marginBottom: 6, letterSpacing: 1 }}>{w.phase}</div>
-              <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.7 }}>{w.desc}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* スキルサマリー */}
-      <section style={{ marginBottom: 48, breakBefore: "page" }}>
-        {sectionTitle("スキルサマリー")}
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <tbody>
-            {skills.map((s) => (
-              <tr key={s.category}>
-                <td style={tableHead}>{s.category}</td>
-                <td className="font-serif-jp" style={tableCell}>{s.detail}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
-
-      {/* 業務経歴（抜粋） */}
-      <section style={{ marginBottom: 48 }}>
-        {sectionTitle("業務経歴（抜粋）")}
-        <div style={{ display: "grid", gap: 24 }}>
-          {careerHighlights.map((c, i) => (
-            <div key={i} style={{
-              border: "1px solid var(--border)", borderLeft: "3px solid var(--accent)",
-              borderRadius: 4, background: "#fff", padding: "20px 24px",
-            }}>
-              <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>{i + 1}. {c.title}</h3>
-              <div style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 12 }}>{c.meta}</div>
-              <p className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 12 }}>{c.desc}</p>
-              <div style={{ fontSize: 12, marginBottom: 12 }}>
-                <span style={{ fontWeight: 600 }}>技術構成: </span>
-                <span style={{ color: "var(--text-light)" }}>{c.tech}</span>
+          {/* Profile hero */}
+          <div style={{
+            background: "linear-gradient(135deg, rgba(30,58,138,0.4) 0%, rgba(15,23,42,0.6) 100%)",
+            border: `1px solid rgba(59,130,246,0.3)`,
+            borderLeft: `3px solid ${D.borderAccent}`,
+            borderRadius: 8, padding: "28px 32px", marginBottom: 40,
+            backdropFilter: "blur(12px)",
+          }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
+              <div style={{ fontSize: "clamp(24px, 4vw, 32px)", fontWeight: 800, lineHeight: 1.2, color: D.white }}>
+                松井 慶太
               </div>
-              {c.features && (
-                <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                  <tbody>
-                    {c.features.map((f) => (
-                      <tr key={f.cat}>
-                        <td style={{ ...tableHead, fontSize: 11, width: 120 }}>{f.cat}</td>
-                        <td className="font-serif-jp" style={{ ...tableCell, fontSize: 12 }}>{f.detail}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
-              {c.bullets && (
-                <ul style={{ paddingLeft: 20, margin: 0 }}>
-                  {c.bullets.map((b) => (
-                    <li key={b} className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8 }}>{b}</li>
-                  ))}
-                </ul>
-              )}
+              <div style={{ fontSize: 12, letterSpacing: 1, color: D.textLight }}>Keita Matsui</div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* ポートフォリオ */}
-      <section style={{ marginBottom: 48 }}>
-        {sectionTitle("ポートフォリオ（デモ公開中）")}
-        <div style={{ display: "grid", gap: 8 }}>
-          {portfolio.map((p) => (
-            <div key={p.name} style={{
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              padding: "12px 16px", border: "1px solid var(--border)", borderRadius: 4, background: "#fff",
+            <p style={{
+              fontSize: 14, marginTop: 14, lineHeight: 1.6, fontStyle: "italic",
+              borderLeft: `2px solid ${D.accent}`, paddingLeft: 16,
+              color: "rgba(203,213,225,0.9)",
             }}>
-              <div>
-                <div style={{ fontSize: 13, fontWeight: 600 }}>{p.name}</div>
-                <div className="font-serif-jp" style={{ fontSize: 11, color: "var(--text-light)" }}>{p.desc}</div>
-                <div style={{ fontSize: 10, color: "var(--text-muted)", marginTop: 2 }}>{p.tech}</div>
-              </div>
-              {!["NDA", "非公開", "社内ツール", "このサイトで稼働中"].includes(p.url) ? (
-                <a href={p.url} target="_blank" rel="noopener noreferrer"
-                  style={{ fontSize: 10, color: "#10b981", fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 12 }}>
-                  DEMO ↗
-                </a>
-              ) : (
-                <span style={{ fontSize: 10, color: "var(--text-muted)", flexShrink: 0, marginLeft: 12 }}>{p.url}</span>
-              )}
+              AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア
+            </p>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 28px", marginTop: 16, fontSize: 13, color: D.textLight }}>
+              <span>IT業界 約40年（1985年〜）</span>
+              <span>拠点: 山梨県</span>
+              <span>フルスタック ／ AI協働開発</span>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* 自己PR */}
-      <section style={{ marginBottom: 48 }}>
-        {sectionTitle("自己PR")}
-        <div className="font-serif-jp" style={{ fontSize: 14, color: "var(--text)", lineHeight: 1.9 }}>
-          <p style={{ marginBottom: 16 }}>
-            ユーザーの業務や利用シーンを理解した上で「実際に動くもの」を作ることを最も重視している。40年のキャリアの中で、COBOL/PLIの汎用機時代からJava、C#.NETを経て、現在のTypeScript/React/Next.jsに至るまで、常に実装の現場に身を置いてきた。
-          </p>
-          <p style={{ marginBottom: 16 }}>
-            現在はAIエージェントとの協働開発により、一人でも設計から本番運用まで完結できる体制を確立している。これは単にコードを速く書けるということではなく、設計の壁打ち、コードレビュー、セキュリティチェック、ドキュメント整合性検証までを含む、開発プロセス全体の質と速度を両立させるものである。
-          </p>
-          <p>
-            チーム開発でも同じ手法を持ち込むことで、メンバーとしての生産性を大幅に引き上げることが可能。PM/リーダー経験（最大26ヶ月・4名チーム）もあるが、現在は実装を主軸とした価値提供を志向している。
-          </p>
-        </div>
-      </section>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginTop: 14, fontSize: 12 }}>
+              <a href="https://portfolio-two-orpin-45.vercel.app" target="_blank" rel="noopener noreferrer"
+                style={{ color: D.accentLight, textDecoration: "none", borderBottom: `1px solid rgba(147,197,253,0.3)` }}>
+                Portfolio Site ↗
+              </a>
+              <a href="https://github.com/keita2399/portfolio" target="_blank" rel="noopener noreferrer"
+                style={{ color: D.accentLight, textDecoration: "none", borderBottom: `1px solid rgba(147,197,253,0.3)` }}>
+                GitHub ↗
+              </a>
+            </div>
+          </div>
 
-      {/* プロジェクト一覧 */}
-      <section style={{ marginBottom: 48 }}>
-        {sectionTitle("プロジェクト一覧（全21件）")}
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 700 }}>
-            <thead>
-              <tr>
-                {["No.", "業種", "システム名", "役割", "期間", "主要技術"].map((h) => (
-                  <th key={h} style={{ ...tableHead, fontSize: 11, borderBottom: "2px solid var(--accent)" }}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {projectList.map((p) => (
-                <tr key={p.no}>
-                  <td style={{ ...tableCell, textAlign: "center", fontWeight: 600 }}>{p.no}</td>
-                  <td style={{ ...tableCell, whiteSpace: "nowrap" }}>{p.industry}</td>
-                  <td style={{ ...tableCell, fontWeight: 500, whiteSpace: "nowrap" }}>{p.system}</td>
-                  <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.role}</td>
-                  <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.period}</td>
-                  <td style={{ ...tableCell, fontSize: 11, color: "var(--text-light)" }}>{p.tech}</td>
-                </tr>
+          {/* AI協働開発 */}
+          <section style={{ marginBottom: 40 }}>
+            {sectionTitle("// 01 — AI WORKFLOW", "AI協働開発")}
+            <p className="font-serif-jp" style={{ fontSize: 14, color: D.textLight, lineHeight: 1.7, marginBottom: 16 }}>
+              AIを補助ツールとしてではなく、設計パートナーとして活用するスタイルを確立。
+            </p>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 12 }}>
+              {aiWorkflow.map((w) => (
+                <div key={w.phase} className="resume-card" style={{ padding: "16px 20px" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: D.accentLight, marginBottom: 6, letterSpacing: 1 }}>{w.phase}</div>
+                  <div className="font-serif-jp" style={{ fontSize: 12, color: D.textLight, lineHeight: 1.7 }}>{w.desc}</div>
+                </div>
               ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      {/* Download footer */}
-      <div style={{
-        textAlign: "center", padding: "32px 0", borderTop: "1px solid var(--border)",
-      }}>
-        <a
-          href="/業務経歴書_松井慶太.pdf"
-          download
-          className="cta-primary"
-          style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            padding: "12px 28px", fontSize: 14, fontWeight: 600,
-            background: "var(--accent)", color: "#fff",
-            borderRadius: 4, textDecoration: "none",
-          }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-            <polyline points="7 10 12 15 17 10" />
-            <line x1="12" y1="15" x2="12" y2="3" />
-          </svg>
-          PDF ダウンロード
-        </a>
-        <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 12 }}>
-          A4 サイズ・印刷対応
-        </p>
+          {/* スキルサマリー */}
+          <section style={{ marginBottom: 48, breakBefore: "page" }}>
+            {sectionTitle("// 02 — SKILLS", "スキルサマリー")}
+            <div style={{ borderRadius: 6, overflow: "hidden", border: `1px solid ${D.border}` }}>
+              <table className="resume-table" style={{ width: "100%", borderCollapse: "collapse" }}>
+                <tbody>
+                  {skills.map((s) => (
+                    <tr key={s.category}>
+                      <td style={tableHead}>{s.category}</td>
+                      <td className="font-serif-jp" style={tableCell}>{s.detail}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* 業務経歴（抜粋） */}
+          <section style={{ marginBottom: 48 }}>
+            {sectionTitle("// 03 — CAREER", "業務経歴（抜粋）")}
+            <div style={{ display: "grid", gap: 20 }}>
+              {careerHighlights.map((c, i) => (
+                <div key={i} className="resume-card" style={{
+                  borderLeft: `3px solid ${D.accent}`,
+                  borderRadius: 6, padding: "20px 24px",
+                }}>
+                  <h3 style={{ fontSize: 15, fontWeight: 600, marginBottom: 4, color: D.white }}>{i + 1}. {c.title}</h3>
+                  <div style={{ fontSize: 12, color: D.accentLight, marginBottom: 12, opacity: 0.8 }}>{c.meta}</div>
+                  <p className="font-serif-jp" style={{ fontSize: 13, color: D.textLight, lineHeight: 1.8, marginBottom: 12 }}>{c.desc}</p>
+                  <div style={{ fontSize: 12, marginBottom: 12 }}>
+                    <span style={{ fontWeight: 600, color: D.accentLight }}>技術構成: </span>
+                    <span style={{ color: D.textLight }}>{c.tech}</span>
+                  </div>
+                  {c.features && (
+                    <div style={{ borderRadius: 4, overflow: "hidden", border: `1px solid ${D.border}` }}>
+                      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                        <tbody>
+                          {c.features.map((f) => (
+                            <tr key={f.cat}>
+                              <td style={{ ...tableHead, fontSize: 11, width: 120 }}>{f.cat}</td>
+                              <td className="font-serif-jp" style={{ ...tableCell, fontSize: 12 }}>{f.detail}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                  {c.bullets && (
+                    <ul style={{ paddingLeft: 20, margin: 0 }}>
+                      {c.bullets.map((b) => (
+                        <li key={b} className="font-serif-jp" style={{ fontSize: 12, color: D.textLight, lineHeight: 1.8 }}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ポートフォリオ */}
+          <section style={{ marginBottom: 48 }}>
+            {sectionTitle("// 04 — PORTFOLIO", "ポートフォリオ（デモ公開中）")}
+            <div style={{ display: "grid", gap: 8 }}>
+              {portfolio.map((p) => (
+                <div key={p.name} className="resume-card" style={{
+                  display: "flex", justifyContent: "space-between", alignItems: "center",
+                  padding: "12px 16px",
+                }}>
+                  <div>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: D.white }}>{p.name}</div>
+                    <div className="font-serif-jp" style={{ fontSize: 11, color: D.textLight }}>{p.desc}</div>
+                    <div style={{ fontSize: 10, color: D.textMuted, marginTop: 2 }}>{p.tech}</div>
+                  </div>
+                  {!["NDA", "非公開", "社内ツール", "このサイトで稼働中"].includes(p.url) ? (
+                    <a href={p.url} target="_blank" rel="noopener noreferrer"
+                      style={{ fontSize: 10, color: "#34d399", fontWeight: 600, textDecoration: "none", flexShrink: 0, marginLeft: 12 }}>
+                      DEMO ↗
+                    </a>
+                  ) : (
+                    <span style={{ fontSize: 10, color: D.textMuted, flexShrink: 0, marginLeft: 12 }}>{p.url}</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 自己PR */}
+          <section style={{ marginBottom: 48 }}>
+            {sectionTitle("// 05 — ABOUT", "自己PR")}
+            <div className="font-serif-jp" style={{ fontSize: 14, color: D.textLight, lineHeight: 1.9 }}>
+              <p style={{ marginBottom: 16 }}>
+                ユーザーの業務や利用シーンを理解した上で「実際に動くもの」を作ることを最も重視している。40年のキャリアの中で、COBOL/PLIの汎用機時代からJava、C#.NETを経て、現在のTypeScript/React/Next.jsに至るまで、常に実装の現場に身を置いてきた。
+              </p>
+              <p style={{ marginBottom: 16 }}>
+                現在はAIエージェントとの協働開発により、一人でも設計から本番運用まで完結できる体制を確立している。これは単にコードを速く書けるということではなく、設計の壁打ち、コードレビュー、セキュリティチェック、ドキュメント整合性検証までを含む、開発プロセス全体の質と速度を両立させるものである。
+              </p>
+              <p>
+                チーム開発でも同じ手法を持ち込むことで、メンバーとしての生産性を大幅に引き上げることが可能。PM/リーダー経験（最大26ヶ月・4名チーム）もあるが、現在は実装を主軸とした価値提供を志向している。
+              </p>
+            </div>
+          </section>
+
+          {/* プロジェクト一覧 */}
+          <section style={{ marginBottom: 48 }}>
+            {sectionTitle("// 06 — PROJECTS", "プロジェクト一覧（全21件）")}
+            <div style={{ overflowX: "auto", borderRadius: 6, border: `1px solid ${D.border}` }}>
+              <table className="resume-table" style={{ width: "100%", borderCollapse: "collapse", minWidth: 700 }}>
+                <thead>
+                  <tr>
+                    {["No.", "業種", "システム名", "役割", "期間", "主要技術"].map((h) => (
+                      <th key={h} style={{ ...tableHead, fontSize: 11, borderBottom: `2px solid ${D.accent}` }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {projectList.map((p) => (
+                    <tr key={p.no}>
+                      <td style={{ ...tableCell, textAlign: "center", fontWeight: 600, color: D.accentLight }}>{p.no}</td>
+                      <td style={{ ...tableCell, whiteSpace: "nowrap" }}>{p.industry}</td>
+                      <td style={{ ...tableCell, fontWeight: 500, whiteSpace: "nowrap", color: D.white }}>{p.system}</td>
+                      <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.role}</td>
+                      <td style={{ ...tableCell, fontSize: 11, whiteSpace: "nowrap" }}>{p.period}</td>
+                      <td style={{ ...tableCell, fontSize: 11, color: D.textLight }}>{p.tech}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* Download footer */}
+          <div style={{
+            textAlign: "center", padding: "32px 0",
+            borderTop: `1px solid ${D.border}`,
+          }}>
+            <a
+              href="/業務経歴書_松井慶太.pdf"
+              download
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                padding: "12px 28px", fontSize: 14, fontWeight: 600,
+                background: D.borderAccent, color: "#fff",
+                borderRadius: 4, textDecoration: "none",
+                transition: "background 0.2s",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              PDF ダウンロード
+            </a>
+            <p style={{ fontSize: 11, color: D.textMuted, marginTop: 12 }}>
+              A4 サイズ・印刷対応
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
