@@ -20,8 +20,8 @@ export default function Navbar() {
   return (
     <nav style={{
       position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-      background: "rgba(250,249,246,0.92)", backdropFilter: "blur(12px)",
-      borderBottom: "1px solid var(--border)",
+      background: "rgba(15,23,42,0.92)", backdropFilter: "blur(12px)",
+      borderBottom: "1px solid rgba(255,255,255,0.08)",
       display: "flex", justifyContent: "center", alignItems: "center",
       padding: "0 32px", height: 56,
     }}>
@@ -33,9 +33,12 @@ export default function Navbar() {
             onClick={(e) => scrollTo(e, link.href)}
             className="nav-link"
             style={{
-              color: "var(--text-light)", fontSize: 12, letterSpacing: 1,
+              color: "rgba(203,213,225,0.8)", fontSize: 12, letterSpacing: 1,
               textDecoration: "none", padding: 4, cursor: "pointer",
+              transition: "color 0.2s",
             }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "#93c5fd"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(203,213,225,0.8)"; }}
           >
             {link.label}
           </a>
@@ -46,10 +49,13 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="nav-link"
           style={{
-            color: "var(--text-light)", fontSize: 12, letterSpacing: 1,
+            color: "rgba(203,213,225,0.8)", fontSize: 12, letterSpacing: 1,
             textDecoration: "none", padding: 4, cursor: "pointer",
             display: "inline-flex", alignItems: "center", gap: 5,
+            transition: "color 0.2s",
           }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = "#93c5fd"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(203,213,225,0.8)"; }}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -57,7 +63,7 @@ export default function Navbar() {
           </svg>
           記事
           <span style={{
-            fontSize: 9, background: "var(--accent)", color: "#fff",
+            fontSize: 9, background: "#2563eb", color: "#fff",
             padding: "1px 6px", borderRadius: 8, fontWeight: 600, lineHeight: 1.4,
           }}>
             Zenn
@@ -65,13 +71,15 @@ export default function Navbar() {
         </a>
         <Link
           href="/resume"
-          className="cta-primary"
           style={{
             color: "#fff", fontSize: 11, letterSpacing: 1, fontWeight: 600,
             textDecoration: "none", padding: "5px 14px", cursor: "pointer",
-            background: "var(--accent)", borderRadius: 3,
+            background: "#2563eb", borderRadius: 3,
             display: "inline-flex", alignItems: "center", gap: 5,
+            transition: "background 0.2s",
           }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#1d4ed8"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#2563eb"; }}
         >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />

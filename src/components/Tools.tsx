@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import FadeIn from "./FadeIn";
 
 // --- モックスクリーン定義 ---
@@ -14,7 +15,7 @@ function ToolSlideshow({ screens, color }: { screens: MockScreen[]; color: strin
   }, [screens.length]);
 
   return (
-    <div style={{ position: "relative", height: "100%", overflow: "hidden", background: "#fafaf7" }}>
+    <div style={{ position: "relative", height: "100%", overflow: "hidden", background: "#f8faff" }}>
       <div style={{ padding: "16px 20px", height: "calc(100% - 28px)", display: "flex", flexDirection: "column" }}>
         <div style={{ fontSize: 10, color, fontWeight: 700, marginBottom: 8, letterSpacing: 1 }}>
           {screens[idx].title}
@@ -298,7 +299,7 @@ function chatbotScreens(): MockScreen[] {
         ].map((m, i) => (
           <div key={i} style={{ display: "flex", justifyContent: m.from === "user" ? "flex-end" : "flex-start", marginBottom: 6 }}>
             <div style={{
-              background: m.from === "user" ? "#c8860a" : "#f5f5f0",
+              background: m.from === "user" ? "#2563eb" : "#f5f5f0",
               color: m.from === "user" ? "#fff" : "#1a1a1a",
               borderRadius: 8, padding: "5px 10px", fontSize: 8, maxWidth: "80%", lineHeight: 1.5,
             }}>{m.text}</div>
@@ -401,92 +402,99 @@ const tools = [
 
 export default function Tools() {
   return (
-    <section id="tools" style={{ padding: "100px 32px", borderTop: "1px solid var(--border)" }}>
+    <section id="tools" style={{ padding: "100px 32px", background: "#fff", borderTop: "1px solid #e5e7eb" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <FadeIn>
-          <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
+          <div style={{ fontSize: 10, color: "#2563eb", letterSpacing: 4, marginBottom: 12 }}>
             // TOOLS
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
-            自社開発の<span style={{ color: "var(--accent)" }}>AIツール</span>
+            自社開発の<span style={{ color: "#2563eb" }}>AIツール</span>
           </h2>
-          <p className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 48 }}>
+          <p className="font-serif-jp" style={{ fontSize: 13, color: "#666", lineHeight: 1.8, marginBottom: 48 }}>
             業務分析・見積もり・開発を加速するツールを自社開発しています
           </p>
         </FadeIn>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {tools.map((tool) => (
-            <FadeIn key={tool.title}>
+            <motion.div
+              key={tool.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, delay: 0, ease: [0.16, 1, 0.3, 1] }}
+              style={{
+                border: "1px solid #e5e7eb",
+                borderTop: `3px solid ${tool.color}`,
+                borderRadius: 4, overflow: "hidden", background: "#fff",
+                boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+              }}
+            >
+              {/* ヘッダー */}
               <div style={{
-                border: "1px solid var(--border)", borderRadius: 4,
-                overflow: "hidden", background: "#fff",
+                padding: "16px 28px",
+                borderBottom: "1px solid #f0f0f0",
+                display: "flex", alignItems: "center", gap: 16,
               }}>
-                {/* ヘッダー */}
-                <div style={{
-                  padding: "16px 28px",
-                  borderBottom: "1px solid var(--border)",
-                  display: "flex", alignItems: "center", gap: 16,
-                }}>
-                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: tool.color, flexShrink: 0 }} />
-                  <div style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{tool.title}</div>
+                <div style={{ width: 8, height: 8, borderRadius: "50%", background: tool.color, flexShrink: 0 }} />
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{tool.title}</div>
+              </div>
+
+              {/* コンテンツ */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 220 }}>
+                {/* 左: スライドショー */}
+                <div style={{ borderRight: "1px solid #f0f0f0" }}>
+                  <ToolSlideshow screens={tool.screens} color={tool.color} />
                 </div>
 
-                {/* コンテンツ */}
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 220 }}>
-                  {/* 左: スライドショー */}
-                  <div style={{ borderRight: "1px solid var(--border)" }}>
-                    <ToolSlideshow screens={tool.screens} color={tool.color} />
-                  </div>
-
-                  {/* 右: 説明 */}
-                  <div style={{ padding: "20px 28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-                    <div>
-                      <div className="font-serif-jp" style={{ fontSize: 12, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 14 }}>
-                        {tool.desc}
-                      </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                        {tool.tags.map((tag) => (
-                          <span key={tag} style={{
-                            fontSize: 10, color: tool.color,
-                            background: `${tool.color}10`,
-                            border: `1px solid ${tool.color}30`,
-                            borderRadius: 3, padding: "2px 8px",
-                          }}>{tag}</span>
-                        ))}
-                      </div>
+                {/* 右: 説明 */}
+                <div style={{ padding: "20px 28px", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                  <div>
+                    <div className="font-serif-jp" style={{ fontSize: 12, color: "#555", lineHeight: 1.8, marginBottom: 14 }}>
+                      {tool.desc}
                     </div>
-                    <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                        {tool.demoNote ? (
-                          <span style={{ fontSize: 11, color: tool.color, fontWeight: 600 }}>
-                            {tool.demoNote}
-                          </span>
-                        ) : tool.demoUrl ? (
-                          <a
-                            href={tool.demoUrl}
-                            target={tool.demoUrl.startsWith("http") ? "_blank" : undefined}
-                            rel={tool.demoUrl.startsWith("http") ? "noopener noreferrer" : undefined}
-                            style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}
-                          >
-                            デモを試す ↗
-                          </a>
-                        ) : (
-                          <span style={{ fontSize: 11, color: "var(--text-faint)" }}>
-                            デモをお試しになりたい方は<a href="#contact" style={{ color: "var(--accent)", textDecoration: "underline" }}>お問い合わせ</a>ください
-                          </span>
-                        )}
-                      </div>
-                      {tool.detailLink && (
-                        <a href={tool.detailLink} style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}>
-                          詳細を見る →
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                      {tool.tags.map((tag) => (
+                        <span key={tag} style={{
+                          fontSize: 10, color: tool.color,
+                          background: `${tool.color}10`,
+                          border: `1px solid ${tool.color}30`,
+                          borderRadius: 3, padding: "2px 8px",
+                        }}>{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ marginTop: 14, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                      {tool.demoNote ? (
+                        <span style={{ fontSize: 11, color: tool.color, fontWeight: 600 }}>
+                          {tool.demoNote}
+                        </span>
+                      ) : tool.demoUrl ? (
+                        <a
+                          href={tool.demoUrl}
+                          target={tool.demoUrl.startsWith("http") ? "_blank" : undefined}
+                          rel={tool.demoUrl.startsWith("http") ? "noopener noreferrer" : undefined}
+                          style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}
+                        >
+                          デモを試す ↗
                         </a>
+                      ) : (
+                        <span style={{ fontSize: 11, color: "#999" }}>
+                          デモをお試しになりたい方は<a href="#contact" style={{ color: "#2563eb", textDecoration: "underline" }}>お問い合わせ</a>ください
+                        </span>
                       )}
                     </div>
+                    {tool.detailLink && (
+                      <a href={tool.detailLink} style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}>
+                        詳細を見る →
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
       </div>

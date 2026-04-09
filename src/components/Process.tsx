@@ -1,6 +1,7 @@
 "use client";
 
-import FadeIn from "./FadeIn";
+import { motion } from "framer-motion";
+import SectionCTA from "./SectionCTA";
 
 const steps = [
   {
@@ -31,78 +32,112 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" style={{ padding: "100px 32px", background: "var(--bg-alt)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <FadeIn>
-          <div style={{ fontSize: 10, color: "var(--accent)", letterSpacing: 4, marginBottom: 12 }}>
+    <section id="process" style={{ padding: "100px 32px", position: "relative", overflow: "hidden" }}>
+      {/* Background */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://images.unsplash.com/photo-1553877522-43269d4ea984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+          alt=""
+          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+        />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(135deg, rgba(15,23,42,0.95) 0%, rgba(30,58,138,0.90) 50%, rgba(15,23,42,0.95) 100%)",
+        }} />
+      </div>
+
+      <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div style={{ fontSize: 10, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 12 }}>
             // HOW I WORK
           </div>
-          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
-            アイデアから<span style={{ color: "var(--accent)" }}>プロダクト</span>へ
+          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#fff" }}>
+            アイデアから<span style={{ color: "#93c5fd" }}>プロダクト</span>へ
           </h2>
-          <p className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 48 }}>
+          <p className="font-serif-jp" style={{ fontSize: 13, color: "rgba(219,234,254,0.7)", lineHeight: 1.8, marginBottom: 48 }}>
             建設業向けマッチングSaaSを3ヶ月で本番稼働させた実例をもとに、進め方をご紹介します
           </p>
-        </FadeIn>
+        </motion.div>
 
         <div style={{ display: "grid", gap: 0, position: "relative" }}>
           {/* Vertical line */}
           <div style={{
             position: "absolute", left: 23, top: 24, bottom: 24,
-            width: 1, background: "var(--border)", zIndex: 0,
+            width: 1, background: "linear-gradient(to bottom, #60a5fa, #2563eb, #1e3a8a)", zIndex: 0,
           }} />
 
           {steps.map((s, i) => (
-            <FadeIn key={s.phase}>
-              <div style={{ display: "flex", gap: 24, position: "relative", zIndex: 1, paddingBottom: i < steps.length - 1 ? 40 : 0 }}>
-                {/* Phase circle */}
-                <div style={{
-                  width: 48, height: 48, borderRadius: "50%", flexShrink: 0,
-                  background: "#fff", border: "2px solid var(--accent)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 14, fontWeight: 700, color: "var(--accent)",
-                }}>
-                  {s.phase}
-                </div>
+            <motion.div
+              key={s.phase}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              style={{ display: "flex", gap: 24, position: "relative", zIndex: 1, paddingBottom: i < steps.length - 1 ? 40 : 0 }}
+            >
+              {/* Phase circle */}
+              <div style={{
+                width: 48, height: 48, borderRadius: "50%", flexShrink: 0,
+                background: "rgba(37,99,235,0.3)", border: "2px solid #60a5fa",
+                backdropFilter: "blur(8px)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontSize: 14, fontWeight: 700, color: "#93c5fd",
+              }}>
+                {s.phase}
+              </div>
 
-                {/* Content */}
+              {/* Content */}
+              <div style={{
+                flex: 1,
+                background: "rgba(255,255,255,0.07)", backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: 4, padding: "20px 24px",
+              }}>
+                <div style={{ fontSize: 15, fontWeight: 600, color: "#fff", marginBottom: 8 }}>
+                  {s.title}
+                </div>
+                <div className="font-serif-jp" style={{ fontSize: 13, color: "rgba(219,234,254,0.8)", lineHeight: 1.8, marginBottom: 12 }}>
+                  {s.desc}
+                </div>
                 <div style={{
-                  flex: 1, background: "#fff", border: "1px solid var(--border)",
-                  borderRadius: 4, padding: "20px 24px",
+                  fontSize: 12, color: "rgba(147,197,253,0.6)", borderTop: "1px solid rgba(255,255,255,0.1)",
+                  paddingTop: 10, lineHeight: 1.7,
                 }}>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: "#1a1a1a", marginBottom: 8 }}>
-                    {s.title}
-                  </div>
-                  <div className="font-serif-jp" style={{ fontSize: 13, color: "var(--text-light)", lineHeight: 1.8, marginBottom: 12 }}>
-                    {s.desc}
-                  </div>
-                  <div style={{
-                    fontSize: 12, color: "var(--text-faint)", borderTop: "1px solid var(--border)",
-                    paddingTop: 10, lineHeight: 1.7,
-                  }}>
-                    <span style={{ color: "var(--accent)", fontWeight: 600, marginRight: 8 }}>実例:</span>
-                    {s.detail}
-                  </div>
+                  <span style={{ color: "#60a5fa", fontWeight: 600, marginRight: 8 }}>実例:</span>
+                  {s.detail}
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
 
         {/* Summary */}
-        <FadeIn>
-          <div style={{
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{
             marginTop: 48, padding: "20px 28px",
-            background: "linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%)",
-            borderRadius: 4, border: "1px solid rgba(200,134,10,0.2)",
-            textAlign: "center",
-          }}>
-            <div className="font-serif-jp" style={{ fontSize: 14, color: "#d4c5a9", lineHeight: 1.8 }}>
-              この全工程を<span style={{ color: "#c8860a", fontWeight: 600 }}>一人で完結</span>できるのが、
-              40年の業務経験 × AI協働開発の強みです
-            </div>
+            background: "rgba(255,255,255,0.07)", backdropFilter: "blur(12px)",
+            border: "1px solid rgba(255,255,255,0.15)",
+            borderLeft: "3px solid #60a5fa",
+            borderRadius: 4, textAlign: "center",
+          }}
+        >
+          <div className="font-serif-jp" style={{ fontSize: 14, color: "rgba(219,234,254,0.9)", lineHeight: 1.8 }}>
+            この全工程を<span style={{ color: "#93c5fd", fontWeight: 600 }}>一人で完結</span>できるのが、
+            40年の業務経験 × AI協働開発の強みです
           </div>
-        </FadeIn>
+        </motion.div>
+
+        <SectionCTA />
       </div>
     </section>
   );

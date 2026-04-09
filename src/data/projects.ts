@@ -43,7 +43,7 @@ export const projects: Project[] = [
     badgeColor: "#2563eb",
     borderColor: "#2563eb",
     description:
-      "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、当初見積もり136人日を超える規模のシステムを3ヶ月・一人で構築。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
+      "特定業種の企業間マッチングを、電話とFAXからWebプラットフォームに置き換える提案用システム。企画段階のヒアリングから参画し、双方合意の136人日見積もりをAI協働開発で2週間強に短縮。LINE連携・AI判定・チャット・PWA対応など継続的に機能拡張中。",
     stats: ["32画面", "67 APIエンドポイント", "19モデル"],
     tags: ["Next.js 14", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS", "Vercel", "Neon DB", "Cookie認証", "Google Maps API", "LINE Messaging API", "Gemini API", "PWA", "nodemailer", "Python"],
     updatedAt: "2026-03",
@@ -228,7 +228,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-07",
+    updatedAt: "2026-04-08",
     githubRepo: "keita2399/portfolio",
     detail: {
       overview:
