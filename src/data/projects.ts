@@ -667,6 +667,48 @@ export const projects: Project[] = [
         "PHP 8.3 + Laravel 13 + Blade テンプレート + Tailwind CSS + Vite。Laravel Breeze による認証、Policy クラスによるユーザー認可、Observer パターンによるステータス変更履歴。開発環境は SQLite、本番は PostgreSQL（Railway）。Docker マルチステージビルドで Node.js ビルドと Apache 実行環境を分離。",
     },
   },
+  {
+    slug: "skin-diagnosis",
+    category: "personal",
+    title: "AI肌診断アプリ",
+    badge: "本番稼働中",
+    badgeColor: "#ec4899",
+    borderColor: "#ec4899",
+    externalUrl: "https://skin-diagnosis-gold.vercel.app",
+    githubRepo: "keita2399/skin-diagnosis",
+    githubPublic: true,
+    description:
+      "美容クリニック向けのAI肌診断Webアプリ。スマホカメラで顔を撮影し、5ステップの問診に答えるだけで、Gemini Vision APIが肌年齢・悩み・施術提案を生成。カメラ・問診・結果表示をすべてNext.jsで実装し、Vercelに本番デプロイ済み。",
+    stats: ["Gemini 2.5 Flash Vision", "5ステップ問診", "施術提案3件生成"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS", "Framer Motion", "Zod", "Vercel"],
+    updatedAt: "2026-04-10",
+    thumbnail: undefined,
+    detail: {
+      overview:
+        "美容クリニック向けのAI肌診断Webアプリ。スマホカメラで顔写真を撮影し、肌の悩み・状態・気になる部位・年齢・ダウンタイム許容の5ステップ問診を組み合わせることで、Gemini 2.5 Flash Vision APIが推定肌年齢・懸念事項ランキング・施術提案3件・総評を生成。Next.js App RouterでカメラUI・問診フロー・結果表示を一貫実装し、Vercelに本番デプロイ済み。",
+      challenges: [
+        "カメラ撮影UIに顔ガイド楕円オーバーレイを重ねるCanvas合成",
+        "Gemini Vision APIへの画像＋テキスト混在プロンプト設計",
+        "APIレスポンスのZodスキーマバリデーションによる型安全化",
+        "Framer Motionを使ったウェルカム・ローディング・結果画面のアニメーション",
+        "gemini-2.0-flash廃止による新規ユーザー向けモデル切り替え対応",
+      ],
+      approach: [
+        "Next.js App RouterでUIフロー（welcome→camera→diagnosis→loading→result）をステート管理",
+        "buildDiagnosisPrompt()で問診情報をGemini向けのプロンプトに変換",
+        "DiagnosisResultSchemaでレスポンスをZod検証し、不正形式を早期検知",
+        "カメラはMediaDevices APIで実装。顔ガイドはCSSオーバーレイで表示",
+        "Framer Motionで各画面に自然なトランジションとローディングアニメーションを追加",
+      ],
+      results: [
+        "カメラ撮影〜AI診断〜結果表示まで一気通貫で動作するMVPを完成",
+        "Vercel本番デプロイ済み・スマホブラウザで即体験可能",
+        "ランサーズの肌診断サポートツール開発案件に提案実績あり",
+      ],
+      techDetail:
+        "Next.js 15 (App Router) + TypeScript + Tailwind CSS + Framer Motion。Google Gemini 2.5 Flash Vision APIをinlineData形式で呼び出し、Zod (DiagnosisResultSchema) でレスポンスを型安全に検証。Vercelにデプロイ済み。",
+    },
+  },
   // === レガシーコード変換（サマリー） ===
   {
     slug: "legacy-conversions",
