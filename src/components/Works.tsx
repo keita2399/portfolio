@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import SectionCTA from "./SectionCTA";
+import TechStackFilter from "./TechStackFilter";
 import { getFlagshipProjects, getDemoProjects, getPersonalProjects, type Project } from "@/data/projects";
 
 function WorkCard({ project, index }: { project: Project; index: number }) {
@@ -192,6 +193,8 @@ export default function Works() {
             実績・<span style={{ color: "#93c5fd" }}>プロジェクト</span>
           </h2>
         </motion.div>
+
+        <TechStackFilter />
 
         {/* Impact banner */}
         <motion.div
