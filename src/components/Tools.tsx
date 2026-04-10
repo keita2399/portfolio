@@ -536,6 +536,14 @@ export default function Tools() {
                           target={tool.demoUrl.startsWith("http") ? "_blank" : undefined}
                           rel={tool.demoUrl.startsWith("http") ? "noopener noreferrer" : undefined}
                           style={{ fontSize: 11, color: tool.color, textDecoration: "none", fontWeight: 600 }}
+                          onClick={() => {
+                            if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+                              (window as any).gtag("event", "demo_click", {
+                                tool_name: tool.title,
+                                demo_url: tool.demoUrl,
+                              });
+                            }
+                          }}
                         >
                           デモを試す ↗
                         </a>

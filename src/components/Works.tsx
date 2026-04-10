@@ -19,7 +19,20 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
         </Link>
       )
     : ({ children }: { children: React.ReactNode }) => (
-        <a href={href} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "inherit" }}>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "inherit" }}
+          onClick={() => {
+            if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+              (window as any).gtag("event", "demo_click", {
+                tool_name: project.title,
+                demo_url: href,
+              });
+            }
+          }}
+        >
           {children}
         </a>
       );
