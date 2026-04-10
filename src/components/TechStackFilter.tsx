@@ -138,14 +138,14 @@ function ModalProjectCard({ project, highlightTag }: { project: Project; highlig
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-          <div style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>{project.title}</div>
-          <div style={{ fontSize: 11, color: project.badgeColor, letterSpacing: 1, fontWeight: 600, flexShrink: 0, marginLeft: 12 }}>
+          <div style={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>{project.title}</div>
+          <div style={{ fontSize: 12, color: project.badgeColor, letterSpacing: 1, fontWeight: 600, flexShrink: 0, marginLeft: 12 }}>
             {project.badge}
           </div>
         </div>
         <div
           className="font-serif-jp"
-          style={{ fontSize: 13, color: "rgba(219,234,254,0.7)", lineHeight: 1.8, marginBottom: 12, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+          style={{ fontSize: 14, color: "rgba(219,234,254,0.7)", lineHeight: 1.8, marginBottom: 12, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
         >
           {project.description}
         </div>
@@ -157,7 +157,7 @@ function ModalProjectCard({ project, highlightTag }: { project: Project; highlig
               <span
                 key={t}
                 style={{
-                  fontSize: 11, padding: "3px 10px",
+                  fontSize: 12, padding: "3px 10px",
                   background: isHighlight ? `${color}30` : "transparent",
                   border: `1px solid ${isHighlight ? color : `${color}44`}`,
                   color: isHighlight ? color : `${color}99`,
@@ -283,8 +283,8 @@ export default function TechStackFilter() {
                 border: `1px solid ${getCategoryColor(selectedTag)}55`,
                 borderTop: `3px solid ${getCategoryColor(selectedTag)}`,
                 borderRadius: 6,
-                width: "100%", maxWidth: 640,
-                maxHeight: "80vh", overflow: "hidden",
+                width: "100%", maxWidth: 780,
+                maxHeight: "85vh", overflow: "hidden",
                 display: "flex", flexDirection: "column",
               }}
             >
@@ -295,11 +295,11 @@ export default function TechStackFilter() {
                 display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0,
               }}>
                 <div>
-                  <div style={{ fontSize: 9, color: getCategoryColor(selectedTag), letterSpacing: 3, marginBottom: 6, fontWeight: 600 }}>
+                  <div style={{ fontSize: 10, color: getCategoryColor(selectedTag), letterSpacing: 3, marginBottom: 6, fontWeight: 600 }}>
                     {getCategoryLabel(selectedTag).toUpperCase()}
                   </div>
-                  <div style={{ fontSize: 18, fontWeight: 700, color: "#fff" }}>{selectedTag}</div>
-                  <div style={{ fontSize: 11, color: "rgba(148,163,184,0.7)", marginTop: 4 }}>
+                  <div style={{ fontSize: 20, fontWeight: 700, color: "#fff" }}>{selectedTag}</div>
+                  <div style={{ fontSize: 12, color: "rgba(148,163,184,0.7)", marginTop: 4 }}>
                     {modalProjects.length} プロジェクトで使用
                   </div>
                 </div>
