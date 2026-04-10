@@ -288,6 +288,51 @@ function lineScreens(): MockScreen[] {
   ];
 }
 
+function skinDiagnosisScreens(): MockScreen[] {
+  return [
+    { title: "STEP 1 — カメラで顔を撮影", content: (
+      <div style={{ width: "100%", maxWidth: 240, display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+        <div style={{ position: "relative", width: 100, height: 120, background: "#f8f0f5", border: "2px solid #ec4899", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ width: 60, height: 80, border: "2px dashed #ec4899", borderRadius: "50%", opacity: 0.6 }} />
+          <div style={{ position: "absolute", top: 6, right: 6, fontSize: 8, background: "#ec4899", color: "#fff", borderRadius: 3, padding: "1px 5px" }}>LIVE</div>
+        </div>
+        <div style={{ fontSize: 8, color: "#ec4899", fontWeight: 600 }}>顔ガイドに合わせて撮影</div>
+      </div>
+    )},
+    { title: "STEP 2 — 5ステップ問診", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 5 }}>
+        {[
+          ["肌の悩み", "毛穴・くすみ・シミ"],
+          ["肌の状態", "混合肌"],
+          ["気になる部位", "頬・額"],
+          ["年齢レンジ", "40代"],
+          ["ダウンタイム", "1週間以内"],
+        ].map(([label, val], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #fce7f3" }}>
+            <span style={{ color: "#999" }}>{label}</span>
+            <span style={{ color: "#ec4899", fontWeight: 600 }}>{val}</span>
+          </div>
+        ))}
+      </div>
+    )},
+    { title: "STEP 3 — AI診断結果", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#fdf2f8" border="#f9a8d4" style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ fontSize: 8, color: "#ec4899" }}>推定肌年齢</div>
+          <div style={{ fontSize: 22, fontWeight: 800, color: "#ec4899" }}>38歳</div>
+          <div style={{ fontSize: 8, color: "#999" }}>実年齢より若め</div>
+        </Box>
+        {[["毛穴の開き", "HIGH"], ["乾燥", "MEDIUM"], ["色ムラ", "LOW"]].map(([concern, level], i) => (
+          <Box key={i} bg="#fff" border="#fce7f3" style={{ marginBottom: 4, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 9, color: "#374151" }}>{concern}</span>
+            <Tag color={level === "HIGH" ? "#DC2626" : level === "MEDIUM" ? "#D97706" : "#059669"}>{level}</Tag>
+          </Box>
+        ))}
+      </div>
+    )},
+  ];
+}
+
 function chatbotScreens(): MockScreen[] {
   return [
     { title: "ポートフォリオに質問", content: (
@@ -391,6 +436,16 @@ const tools = [
     demoUrl: "/demo/chat",
     detailLink: "/works/line-claude-sync",
     githubRepo: "keita2399/line-claude-sync",
+  },
+  {
+    title: "AI肌診断アプリ",
+    desc: "美容クリニック向けのAI肌診断Webアプリ。スマホカメラで顔を撮影し、5ステップの問診に答えるだけで、Gemini Vision APIが肌年齢・懸念事項・施術提案3件を生成します。",
+    tags: ["Gemini Vision API", "カメラ撮影", "肌年齢診断", "施術提案"],
+    color: "#ec4899",
+    screens: skinDiagnosisScreens(),
+    demoUrl: "https://skin-diagnosis-gold.vercel.app",
+    detailLink: "/works/skin-diagnosis",
+    githubRepo: "keita2399/skin-diagnosis",
   },
   {
     title: "AIチャットボット",

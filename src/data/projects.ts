@@ -669,7 +669,7 @@ export const projects: Project[] = [
   },
   {
     slug: "skin-diagnosis",
-    category: "personal",
+    category: "tools",
     title: "AI肌診断アプリ",
     badge: "本番稼働中",
     badgeColor: "#ec4899",
