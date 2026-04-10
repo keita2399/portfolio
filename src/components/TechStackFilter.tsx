@@ -126,7 +126,7 @@ function ModalProjectCard({ project, highlightTag }: { project: Project; highlig
           border: `1px solid rgba(255,255,255,0.12)`,
           borderLeft: `3px solid ${project.borderColor}`,
           borderRadius: 4,
-          padding: "16px 20px",
+          padding: "20px 24px",
           transition: "all 0.2s",
           cursor: "pointer",
         }}
@@ -138,18 +138,18 @@ function ModalProjectCard({ project, highlightTag }: { project: Project; highlig
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 6 }}>
-          <div style={{ fontSize: 13, fontWeight: 600, color: "#fff" }}>{project.title}</div>
-          <div style={{ fontSize: 9, color: project.badgeColor, letterSpacing: 1, fontWeight: 600, flexShrink: 0, marginLeft: 12 }}>
+          <div style={{ fontSize: 15, fontWeight: 600, color: "#fff" }}>{project.title}</div>
+          <div style={{ fontSize: 11, color: project.badgeColor, letterSpacing: 1, fontWeight: 600, flexShrink: 0, marginLeft: 12 }}>
             {project.badge}
           </div>
         </div>
         <div
           className="font-serif-jp"
-          style={{ fontSize: 11, color: "rgba(219,234,254,0.7)", lineHeight: 1.7, marginBottom: 10, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+          style={{ fontSize: 13, color: "rgba(219,234,254,0.7)", lineHeight: 1.8, marginBottom: 12, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}
         >
           {project.description}
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
           {project.tags.map((t) => {
             const isHighlight = t === highlightTag;
             const color = getCategoryColor(t);
@@ -157,7 +157,7 @@ function ModalProjectCard({ project, highlightTag }: { project: Project; highlig
               <span
                 key={t}
                 style={{
-                  fontSize: 9, padding: "2px 8px",
+                  fontSize: 11, padding: "3px 10px",
                   background: isHighlight ? `${color}30` : "transparent",
                   border: `1px solid ${isHighlight ? color : `${color}44`}`,
                   color: isHighlight ? color : `${color}99`,
