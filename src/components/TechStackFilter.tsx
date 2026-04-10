@@ -104,7 +104,7 @@ function groupedTags(tagMap: Map<string, Project[]>): { category: string; color:
 }
 
 // モーダル内のプロジェクトカード（シンプル版）
-function ModalProjectCard({ project }: { project: Project }) {
+function ModalProjectCard({ project, highlightTag }: { project: Project; highlightTag: string }) {
   const href = project.externalUrl?.startsWith("/")
     ? project.externalUrl
     : project.externalUrl
@@ -150,24 +150,26 @@ function ModalProjectCard({ project }: { project: Project }) {
           {project.description}
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-          {project.tags.slice(0, 6).map((t) => (
-            <span
-              key={t}
-              style={{
-                fontSize: 9, padding: "1px 7px",
-                border: `1px solid ${getCategoryColor(t)}44`,
-                color: getCategoryColor(t),
-                borderRadius: 2, opacity: 0.85,
-              }}
-            >
-              {t}
-            </span>
-          ))}
-          {project.tags.length > 6 && (
-            <span style={{ fontSize: 9, color: "rgba(148,163,184,0.5)", padding: "1px 4px" }}>
-              +{project.tags.length - 6}
-            </span>
-          )}
+          {project.tags.map((t) => {
+            const isHighlight = t === highlightTag;
+            const color = getCategoryColor(t);
+            return (
+              <span
+                key={t}
+                style={{
+                  fontSize: 9, padding: "2px 8px",
+                  background: isHighlight ? `${color}30` : "transparent",
+                  border: `1px solid ${isHighlight ? color : `${color}44`}`,
+                  color: isHighlight ? color : `${color}99`,
+                  borderRadius: 2,
+                  fontWeight: isHighlight ? 700 : 400,
+                  boxShadow: isHighlight ? `0 0 6px ${color}55` : "none",
+                }}
+              >
+                {t}
+              </span>
+            );
+          })}
         </div>
       </div>
     </a>
@@ -317,7 +319,7 @@ export default function TechStackFilter() {
               {/* プロジェクト一覧 */}
               <div style={{ overflowY: "auto", padding: "16px 24px 24px", display: "flex", flexDirection: "column", gap: 10 }}>
                 {modalProjects.map((p) => (
-                  <ModalProjectCard key={p.slug} project={p} />
+                  <ModalProjectCard key={p.slug} project={p} highlightTag={selectedTag!} />
                 ))}
               </div>
             </motion.div>
