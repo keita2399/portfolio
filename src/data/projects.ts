@@ -260,7 +260,7 @@ export const projects: Project[] = [
   {
     slug: "contract-checker",
     category: "tools",
-    title: "契約書リスクチェッカー",
+    title: "AI契約書チェッカー",
     badge: "デモ公開中",
     badgeColor: "#10b981",
     borderColor: "#10b981",
@@ -342,7 +342,7 @@ export const projects: Project[] = [
   {
     slug: "ai-document-checker",
     category: "tools",
-    title: "AI 書類解析アプリ",
+    title: "AI書類分析ツール",
     badge: "デモ公開中",
     badgeColor: "#6366f1",
     borderColor: "#6366f1",
