@@ -627,6 +627,46 @@ export const projects: Project[] = [
         "Ruby 3.4 + Rails 8.1 + Propshaft + Tailwind CSS。Devise による認証、accepts_nested_attributes_for による明細行管理。開発環境は SQLite、本番は PostgreSQL（Render）。Hotwire（Turbo + Stimulus）によるSPA的UX。",
     },
   },
+  {
+    slug: "freelance-manager",
+    category: "personal",
+    title: "FreelanceManager - 案件管理ツール",
+    badge: "本番稼働中",
+    badgeColor: "#4f46e5",
+    borderColor: "#4f46e5",
+    externalUrl: "https://freelance-manager-production-f7c9.up.railway.app",
+    githubRepo: "keita2399/FreelanceManager",
+    description:
+      "「PHPもLaravelも書ける」をポートフォリオで証明するために作成した実用ツール。クライアント・案件・請求書を一元管理するフリーランス向けWebアプリ。Laravel 13 + Blade のサーバーサイドレンダリング構成で、Docker + Railway に本番デプロイ済み。",
+    stats: ["クライアント・案件・請求書のCRUD", "Policyクラスによるユーザー認可", "Docker + Railway 本番デプロイ済み"],
+    tags: ["PHP 8.3", "Laravel", "Blade", "PostgreSQL", "Tailwind CSS", "Docker", "Railway"],
+    updatedAt: "2026-04-10",
+    detail: {
+      overview:
+        "フリーランス向けの案件・クライアント・請求書を一元管理するWebアプリ。Laravel 13 + Blade のサーバーサイドレンダリング構成でゼロから構築し、Docker マルチステージビルド + Railway に本番デプロイ済み。デモアカウントのワンクリックログインでポートフォリオとして即体験できる。",
+      challenges: [
+        "PHPネイティブ未対応のRailwayへのDockerデプロイ設定",
+        "Apache MPM競合（mpm_event vs mpm_prefork）の解消",
+        "リバースプロキシ経由のHTTPS強制（Mixed Content対策）",
+        "PostgreSQLの外部キー制約によるマイグレーション順序の管理",
+      ],
+      approach: [
+        "Dockerマルチステージビルド（Node.js→PHP Apache）でNode.jsとApacheを分離",
+        "docker-entrypoint.sh でApache起動前にMPMシンボリックリンクを削除",
+        "TrustProxies設定でRailwayのリバースプロキシ経由HTTPSに対応",
+        "Laravel Policyクラスでユーザーごとのデータ完全分離を実現",
+        "Observerパターンでプロジェクトステータス変更履歴を自動記録",
+      ],
+      results: [
+        "本番環境（Railway + PostgreSQL）への完全デプロイ達成",
+        "ブラウザ印刷APIを活用した請求書PDF出力を実装",
+        "デモアカウントワンクリックログインで採用担当者がすぐ体験可能",
+        "PHPの基本設計（MVC・認証・ポリシー・Observer・デプロイ）を網羅した実装",
+      ],
+      techDetail:
+        "PHP 8.3 + Laravel 13 + Blade テンプレート + Tailwind CSS + Vite。Laravel Breeze による認証、Policy クラスによるユーザー認可、Observer パターンによるステータス変更履歴。開発環境は SQLite、本番は PostgreSQL（Railway）。Docker マルチステージビルドで Node.js ビルドと Apache 実行環境を分離。",
+    },
+  },
   // === レガシーコード変換（サマリー） ===
   {
     slug: "legacy-conversions",

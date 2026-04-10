@@ -42,6 +42,16 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
     ],
   },
   {
+    label: "PHP / Laravel",
+    color: "#818cf8",
+    tags: ["PHP 8.3", "Laravel", "Blade", "Docker", "Railway"],
+  },
+  {
+    label: "Ruby / Rails",
+    color: "#f87171",
+    tags: ["Ruby on Rails", "Ruby", "Devise", "Hotwire", "Render"],
+  },
+  {
     label: "Infra / Tools",
     color: "#94a3b8",
     tags: ["Vercel", "Playwright", "HMAC", "Python"],
