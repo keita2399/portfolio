@@ -216,10 +216,10 @@ export default function TechStackFilter() {
 
         {grouped.map(({ category, color, tags }) => (
           <div key={category} style={{ marginBottom: 16 }}>
-            <div style={{ fontSize: 9, color, letterSpacing: 3, marginBottom: 8, fontWeight: 600 }}>
+            <div style={{ fontSize: 10, color, letterSpacing: 3, marginBottom: 10, fontWeight: 600 }}>
               {category.toUpperCase()}
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {tags.map((tag) => {
                 const count = tagMap.get(tag)?.length ?? 0;
                 return (
@@ -227,13 +227,13 @@ export default function TechStackFilter() {
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
                     style={{
-                      fontSize: 10, padding: "4px 10px",
+                      fontSize: 13, padding: "6px 14px",
                       background: `${color}14`,
                       border: `1px solid ${color}44`,
                       color,
-                      borderRadius: 2, cursor: "pointer",
+                      borderRadius: 3, cursor: "pointer",
                       transition: "all 0.15s",
-                      display: "flex", alignItems: "center", gap: 5,
+                      display: "flex", alignItems: "center", gap: 6,
                     }}
                     onMouseEnter={(e) => {
                       const el = e.currentTarget;
@@ -247,7 +247,7 @@ export default function TechStackFilter() {
                     }}
                   >
                     {tag}
-                    <span style={{ fontSize: 9, opacity: 0.6, fontWeight: 700 }}>×{count}</span>
+                    <span style={{ fontSize: 11, opacity: 0.6, fontWeight: 700 }}>×{count}</span>
                   </button>
                 );
               })}
