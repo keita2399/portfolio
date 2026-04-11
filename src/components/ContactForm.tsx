@@ -188,10 +188,35 @@ export default function ContactForm() {
               />
             </div>
             <div>
+              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>ご相談の種別</div>
+              <select
+                name="inquiry_type" required
+                style={{
+                  ...inputStyle,
+                  appearance: "none" as const,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(147,197,253,0.8)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "right 14px center",
+                  paddingRight: 40,
+                  cursor: "pointer",
+                }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+              >
+                <option value="" disabled selected style={{ background: "#0f172a" }}>選択してください</option>
+                <option value="新規開発の依頼" style={{ background: "#0f172a" }}>新規開発の依頼</option>
+                <option value="レガシーシステムの刷新" style={{ background: "#0f172a" }}>レガシーシステムの刷新</option>
+                <option value="既存システムの改修・拡張" style={{ background: "#0f172a" }}>既存システムの改修・拡張</option>
+                <option value="AI活用の相談" style={{ background: "#0f172a" }}>AI活用の相談</option>
+                <option value="まず話を聞きたい" style={{ background: "#0f172a" }}>まず話を聞きたい</option>
+                <option value="その他" style={{ background: "#0f172a" }}>その他</option>
+              </select>
+            </div>
+            <div>
               <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>ご用件</div>
               <textarea
                 name="message" required
-                placeholder="ご依頼内容・案件概要をお書きください"
+                placeholder="案件の概要・背景・ご要望など、ざっくりで構いません"
                 rows={5}
                 style={{ ...inputStyle, resize: "vertical" as const }}
                 onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
@@ -205,7 +230,7 @@ export default function ContactForm() {
               style={{
                 padding: "14px 32px", background: "#2563eb", color: "#fff",
                 border: "none", borderRadius: 2, fontSize: 12, letterSpacing: 2,
-                cursor: "pointer", fontWeight: 700, alignSelf: "flex-start",
+                cursor: "pointer", fontWeight: 700, width: "100%",
                 opacity: status === "sending" ? 0.6 : 1,
                 transition: "background 0.2s",
               }}
