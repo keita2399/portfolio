@@ -7,27 +7,30 @@ export default function SectionCTA() {
   };
 
   return (
-    <div style={{ marginTop: 48, textAlign: "center" }}>
+    <div style={{ marginTop: 56, textAlign: "center" }}>
+      <p style={{ fontSize: 13, color: "rgba(219,234,254,0.6)", marginBottom: 16, letterSpacing: 0.5 }}>
+        まずは30分の無料相談から
+      </p>
       <a
         href="#contact"
         onClick={scrollTo}
         style={{
-          fontSize: 12, color: "#93c5fd", textDecoration: "none",
-          letterSpacing: 2, fontWeight: 600,
-          padding: "10px 28px", border: "1px solid rgba(147,197,253,0.4)",
+          fontSize: 14, color: "#fff", textDecoration: "none",
+          letterSpacing: 2, fontWeight: 700,
+          padding: "16px 48px", background: "#2563eb",
           borderRadius: 2, transition: "all 0.2s", display: "inline-block",
-          backdropFilter: "blur(4px)",
+          boxShadow: "0 4px 24px rgba(37,99,235,0.4)",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.background = "rgba(147,197,253,0.15)";
-          e.currentTarget.style.borderColor = "#93c5fd";
+          e.currentTarget.style.background = "#1d4ed8";
+          e.currentTarget.style.boxShadow = "0 6px 32px rgba(37,99,235,0.6)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.background = "transparent";
-          e.currentTarget.style.borderColor = "rgba(147,197,253,0.4)";
+          e.currentTarget.style.background = "#2563eb";
+          e.currentTarget.style.boxShadow = "0 4px 24px rgba(37,99,235,0.4)";
         }}
       >
-        相談してみる →
+        無料で相談する →
       </a>
     </div>
   );

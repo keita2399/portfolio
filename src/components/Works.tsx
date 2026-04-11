@@ -91,6 +91,19 @@ function WorkCard({ project, index }: { project: Project; index: number }) {
               {project.description}
             </div>
 
+            {project.category === "flagship" && project.detail.results[0] && (
+              <div style={{
+                fontSize: 11, color: "rgba(134,239,172,0.9)",
+                background: "rgba(134,239,172,0.07)",
+                border: "1px solid rgba(134,239,172,0.2)",
+                borderLeft: "3px solid rgba(134,239,172,0.6)",
+                borderRadius: 2, padding: "8px 12px", marginBottom: 12,
+                lineHeight: 1.7,
+              }}>
+                ✓ {project.detail.results[0]}
+              </div>
+            )}
+
             <div style={{ marginBottom: 14 }}>
               <div style={{ display: "flex", gap: 24, fontSize: 11, color: "rgba(147,197,253,0.6)" }}>
                 {project.stats.map((stat, i) => (
