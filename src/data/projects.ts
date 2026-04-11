@@ -91,6 +91,49 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "matching-app",
+    category: "flagship",
+    title: "マッチングWebアプリ",
+    badge: "公開中",
+    badgeColor: "#db2777",
+    borderColor: "#db2777",
+    externalUrl: "https://matching-app-jet.vercel.app",
+    description:
+      "Next.js 15 + Firebase + Stripe + Vercel Blob で構築したマッチングWebアプリ。ユーザー登録・プロフィール設定・いいね・マッチング・リアルタイムチャット・掲示板・プレミアム課金・管理画面をフルスタックで実装。ランサーズ案件（50〜100万円）の提案用デモとして開発し、本番環境にデプロイ済み。",
+    stats: ["10画面+管理画面", "Firebase Auth + Firestore", "Stripe Checkout連携"],
+    tags: ["Next.js 15", "TypeScript", "Firebase Auth", "Firestore", "Vercel Blob", "Stripe", "Tailwind CSS", "Vercel"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "ユーザー登録（メール認証）からプロフィール設定・写真アップロード・ユーザー一覧・いいね・マッチング・リアルタイムチャット・掲示板・プレミアム課金・管理画面まで、マッチングサービスに必要な全機能をフルスタックで実装。Firebase StorageがSparkプランで利用不可のためVercel Blobで代替し、Stripe Checkoutでサブスクリプション課金、Firebase Admin SDKでサーバーサイド管理操作を実現。",
+      challenges: [
+        "Firebase StorageがSparkプランで利用不可 → Vercel Blobで代替（/api/upload Route Handler経由）",
+        "Firestoreセキュリティルールでチャット参加者のみがメッセージを読み書きできる権限設計",
+        "リアルタイムチャットの未読バッジ管理（送信時increment・開封時reset）",
+        "無料プランのいいね上限（10回）・メッセージ上限（5通）管理とStripeプレミアムへの誘導",
+        "BANユーザーのログイン拒否（Firebase Authログイン後にFirestoreのbannedフラグを確認してsignOut）",
+        "Firestore複合インデックス（chats: uids CONTAINS + updatedAt DESC）のデプロイ",
+      ],
+      approach: [
+        "Next.js 15 App Routerで認証フロー（(auth)）とアプリ本体（(app)）をRoute Groupで分離",
+        "Firebase Auth + FirestoreクライアントSDKで認証・DB操作を一元管理。セキュリティルールで権限制御",
+        "Vercel Blob（/api/upload）で写真アップロード。Firebase Storageの代替として完全に機能",
+        "Firestore onSnapshotでリアルタイムチャットを実装。unread_{uid}フィールドで未読管理",
+        "Stripe Checkout → Webhook（/api/stripe/webhook）→ Firebase Admin SDK でプレミアム付与",
+        "管理画面はADMIN_EMAILSホワイトリストでアクセス制限。BAN・通報確認をFirestoreで管理",
+      ],
+      results: [
+        "マッチングアプリのMVP全機能を一人・短期間で実装・本番デプロイ",
+        "ユーザー登録〜チャットまでの全フローが動作するデモを https://matching-app-jet.vercel.app で公開",
+        "ダミーユーザー10人・チャット7組・掲示板8件のサンプルデータで即デモ可能な状態に",
+        "Stripe Checkoutによるプレミアムサブスクリプション課金フロー実装",
+        "管理画面でユーザーBAN・通報確認が可能な運用機能も実装",
+      ],
+      techDetail:
+        "Next.js 15 (App Router) + TypeScript + Tailwind CSS。認証・DB: Firebase Auth / Firestore（クライアントSDK + セキュリティルール）。画像: Vercel Blob（/api/upload Route Handler）。決済: Stripe Checkout + Webhook（Firebase Admin SDKでプレミアム付与）。リアルタイム: Firestore onSnapshot。デプロイ: Vercel。",
+    },
+  },
+  {
     slug: "sanpo-series",
     category: "flagship",
     title: "アートさんぽシリーズ",
@@ -230,7 +273,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-09",
+    updatedAt: "2026-04-10",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
@@ -1264,6 +1307,62 @@ export const legacyProjects: Project[] = [
         "コード鑑定書（#019）も制作",
       ],
       techDetail: "React + TypeScript。パターンマッチングエンジンを正規表現で再実装。DOCTORスクリプトのルールセットをJSON構造化。",
+    },
+  },
+  {
+    slug: "es-correction-ai",
+    category: "demo",
+    title: "ES添削AIシステム",
+    badge: "デモ公開中",
+    badgeColor: "#2563eb",
+    borderColor: "#2563eb",
+    externalUrl: "https://es-correction-demo.vercel.app/input",
+    description:
+      "就職活動のエントリーシートをAIが添削するWebアプリ。業界・職種ごとに評価観点を切り替え、論理性・具体性・熱意の3軸でスコアリング。良い点・改善点・改善提案文をGemini APIで生成。",
+    stats: ["業界×職種で評価観点切替", "Gemini 2.5 Flash"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS", "Vercel"],
+    updatedAt: "2026-04",
+    githubRepo: "keita2399/es-correction-demo",
+    githubPublic: true,
+    detail: {
+      overview:
+        "就職活動支援サービス向けに開発したES添削AIシステムのデモ。業界（IT・メーカー・金融・コンサルティング）と職種（営業・エンジニア・企画・マーケティング）の組み合わせに応じてプロンプトの評価観点を動的に切り替え、Gemini 2.5 Flashが論理性・具体性・熱意の3軸でスコアリングし、改善提案文を生成する。",
+      challenges: [
+        "業界×職種ごとに異なる評価観点をプロンプトに落とし込む設計",
+        "Gemini APIのJSONレスポンスの安定したパースと異常系ハンドリング",
+        "入力画面→添削結果画面へのデータ受け渡し（sessionStorage活用）",
+      ],
+      approach: [
+        "業界×職種マトリクスで評価観点を定義し、APIルート内でプロンプトを動的生成",
+        "Gemini 2.5 FlashにJSONのみ返却するよう指示し、コードブロック混入も除去して安定パース",
+        "Next.js App Router + Route HandlersでAPI構成をシンプルに統一",
+        "sessionStorageで画面間データを受け渡し、URLを汚さない設計",
+      ],
+      results: [
+        "業界4×職種4の16パターンで評価観点を切り替え可能",
+        "総合スコア・3軸スコア・良い点・改善点・改善提案文を一画面で表示",
+        "Vercelにデプロイ済み・即デモ可能",
+      ],
+      techDetail:
+        "Next.js 16 + TypeScript + Tailwind CSS。Gemini 2.5 Flash（@google/generative-ai）をRoute Handlersから呼び出し。Vercelでホスティング。",
+      designDoc: {
+        architecture:
+          "ブラウザ（Client Component）\n  業界・職種選択 + ES本文入力\n       │ POST /api/correct\n       ▼\n  Route Handler（Server）\n  ├─ 業界×職種 → 評価観点プロンプト生成\n  ├─ Gemini 2.5 Flash API呼び出し\n  └─ JSONパース → レスポンス返却\n       │ sessionStorage保存\n       ▼\n  フィードバック画面\n  ├─ 総合スコア\n  ├─ 3軸スコア（論理性/具体性/熱意）\n  ├─ 良い点・改善点\n  └─ 改善提案文",
+        dataFlow: [
+          "ユーザーが業界・職種・設問タイトル・ES本文を入力",
+          "POST /api/correct に送信",
+          "サーバー側で業界×職種の評価観点をプロンプトに埋め込み",
+          "Gemini 2.5 Flash APIを呼び出してJSON形式のフィードバックを取得",
+          "sessionStorageに保存してフィードバック画面へリダイレクト",
+          "フィードバック画面でスコア・コメント・改善提案文を表示",
+        ],
+        apiSpecs: [
+          { method: "POST", path: "/api/correct", description: "業界・職種・設問・ES本文を受け取り、Gemini APIでフィードバックJSONを返す" },
+        ],
+        envVars: [
+          { name: "GEMINI_API_KEY", required: true, description: "Google AI Studio で発行したGemini APIキー" },
+        ],
+      },
     },
   },
 ];
