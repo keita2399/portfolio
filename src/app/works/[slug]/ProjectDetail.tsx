@@ -175,6 +175,35 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </div>
         </FadeIn>
 
+        {/* Results summary box */}
+        <FadeIn>
+          <section style={{ marginBottom: 48 }}>
+            <div style={{
+              padding: "28px 32px",
+              background: `linear-gradient(135deg, ${project.badgeColor}0d, ${project.badgeColor}05)`,
+              border: `1px solid ${project.badgeColor}33`,
+              borderLeft: `4px solid ${project.badgeColor}`,
+              borderRadius: 4,
+            }}>
+              <div style={{ fontSize: 11, color: project.badgeColor, letterSpacing: 3, marginBottom: 16, fontWeight: 700 }}>
+                このプロジェクトで実現できたこと
+              </div>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {project.detail.results.map((item, i) => (
+                  <li key={i} style={{
+                    display: "flex", gap: 12,
+                    marginBottom: i < project.detail.results.length - 1 ? 10 : 0,
+                    fontSize: 13, color: "#1a1a1a", lineHeight: 1.7, fontWeight: 500,
+                  }}>
+                    <span style={{ color: project.badgeColor, fontSize: 16, flexShrink: 0 }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        </FadeIn>
+
         {/* Overview */}
         <FadeIn>
           <section style={{ marginBottom: 48 }}>
@@ -198,23 +227,6 @@ export default function ProjectDetail({ project }: { project: Project }) {
             </section>
           </FadeIn>
         )}
-
-        {/* Challenges */}
-        <FadeIn>
-          <section style={{ marginBottom: 48 }}>
-            <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
-              技術的チャレンジ
-            </h2>
-            <ul style={{ listStyle: "none", padding: 0 }}>
-              {project.detail.challenges.map((item, i) => (
-                <li key={i} style={{ display: "flex", gap: 12, marginBottom: 12, fontSize: 13, color: "var(--text-light)", lineHeight: 1.7 }}>
-                  <span style={{ color: project.badgeColor, fontWeight: 700, flexShrink: 0 }}>▸</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </section>
-        </FadeIn>
 
         {/* Approach */}
         <FadeIn>
@@ -244,25 +256,20 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </section>
         </FadeIn>
 
-        {/* Results */}
+        {/* Challenges */}
         <FadeIn>
           <section style={{ marginBottom: 48 }}>
-            <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: `2px solid ${project.borderColor}` }}>
-              成果
+            <h2 style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a", marginBottom: 16, paddingBottom: 8, borderBottom: "2px solid #ddd" }}>
+              技術的な取り組み
             </h2>
-            <div style={{
-              padding: 24, background: "#fff", border: "1px solid var(--border)",
-              borderLeft: `4px solid ${project.borderColor}`, borderRadius: 4,
-            }}>
-              <ul style={{ listStyle: "none", padding: 0 }}>
-                {project.detail.results.map((item, i) => (
-                  <li key={i} style={{ display: "flex", gap: 12, marginBottom: i < project.detail.results.length - 1 ? 12 : 0, fontSize: 13, color: "var(--text)", lineHeight: 1.7 }}>
-                    <span style={{ color: project.badgeColor, fontSize: 16 }}>✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {project.detail.challenges.map((item, i) => (
+                <li key={i} style={{ display: "flex", gap: 12, marginBottom: 12, fontSize: 13, color: "var(--text-light)", lineHeight: 1.7 }}>
+                  <span style={{ color: project.badgeColor, fontWeight: 700, flexShrink: 0 }}>▸</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
           </section>
         </FadeIn>
 
@@ -432,9 +439,39 @@ export default function ProjectDetail({ project }: { project: Project }) {
           </>
         )}
 
+        {/* CTA */}
+        <FadeIn>
+          <div style={{
+            textAlign: "center", padding: "48px 32px",
+            background: `linear-gradient(135deg, ${project.badgeColor}0d, ${project.badgeColor}05)`,
+            border: `1px solid ${project.badgeColor}22`,
+            borderRadius: 4, marginBottom: 32,
+          }}>
+            <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 8 }}>
+              同様の案件・類似する課題をお持ちの方へ
+            </div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#1a1a1a", marginBottom: 24, lineHeight: 1.5 }}>
+              まずはお気軽にご相談ください
+            </div>
+            <Link
+              href="/#contact"
+              style={{
+                display: "inline-block", padding: "14px 48px",
+                background: project.badgeColor, color: "#fff",
+                borderRadius: 2, fontSize: 14, letterSpacing: 2,
+                fontWeight: 700, textDecoration: "none",
+                boxShadow: `0 4px 20px ${project.badgeColor}44`,
+                transition: "all 0.2s",
+              }}
+            >
+              相談する →
+            </Link>
+          </div>
+        </FadeIn>
+
         {/* Back link */}
         <FadeIn>
-          <div style={{ textAlign: "center", paddingTop: 24 }}>
+          <div style={{ textAlign: "center", paddingTop: 8 }}>
             <Link
               href="/#works"
               style={{
