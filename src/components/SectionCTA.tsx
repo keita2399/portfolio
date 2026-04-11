@@ -9,7 +9,7 @@ export default function SectionCTA() {
   return (
     <div style={{ marginTop: 56, textAlign: "center" }}>
       <p style={{ fontSize: 13, color: "rgba(219,234,254,0.6)", marginBottom: 16, letterSpacing: 0.5 }}>
-        まずは30分の無料相談から
+        まずは30分、お気軽にご相談ください
       </p>
       <a
         href="#contact"
@@ -30,7 +30,7 @@ export default function SectionCTA() {
           e.currentTarget.style.boxShadow = "0 4px 24px rgba(37,99,235,0.4)";
         }}
       >
-        無料で相談する →
+        相談する →
       </a>
     </div>
   );
