@@ -80,7 +80,6 @@ export default function Hero() {
 
           <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 17px)", color: "rgba(219,234,254,0.85)", marginBottom: 32, lineHeight: 1.9, maxWidth: 560, fontWeight: 300 }}>
             40年の業務システム経験 × AI協働開発。<br />
-            136人日見積もりを2週間強で一人実装した実績があります。<br />
             企画から運用まで、一人でチーム規模の成果を出します。
           </div>
 
@@ -141,15 +140,17 @@ export default function Hero() {
           }}
         >
           {[
-            { value: 136, suffix: "人日", label: "双方合意の見積もり規模を", sub: "2週間強で単独実装" },
-            { value: 44, suffix: "万行超", label: "13言語の", sub: "レガシー変換実績" },
-            { value: 40, suffix: "年", label: "業務システム", sub: "開発経験" },
-          ].map(({ value, suffix, label, sub }) => (
+            { value: 136, suffix: "人日", label: "通常見積もりの案件を", sub: "2週間強で一人実装（約10倍速）", highlight: true },
+            { value: 44, suffix: "万行超", label: "13言語の", sub: "レガシー変換実績", highlight: false },
+            { value: 40, suffix: "年", label: "業務システム", sub: "開発経験", highlight: false },
+          ].map(({ value, suffix, label, sub, highlight }) => (
             <div key={label} style={{
-              background: "rgba(255,255,255,0.05)", backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.1)", borderRadius: 4, padding: "20px 24px",
+              background: highlight ? "rgba(37,99,235,0.15)" : "rgba(255,255,255,0.05)",
+              backdropFilter: "blur(8px)",
+              border: highlight ? "1px solid rgba(37,99,235,0.5)" : "1px solid rgba(255,255,255,0.1)",
+              borderRadius: 4, padding: "20px 24px",
             }}>
-              <div style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: "#fff", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: highlight ? "#93c5fd" : "#fff", lineHeight: 1, marginBottom: 8 }}>
                 <StatCounter end={value} suffix={suffix} />
               </div>
               <div style={{ fontSize: 11, color: "rgba(147,197,253,0.8)", lineHeight: 1.6 }}>
