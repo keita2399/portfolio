@@ -443,6 +443,44 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "buildscan-ai",
+    category: "tools",
+    title: "BuildScan AI",
+    badge: "デモ公開中",
+    badgeColor: "#0369a1",
+    borderColor: "#0369a1",
+    externalUrl: "https://buildscan-front.onrender.com",
+    thumbnail: "/thumbnails/buildscan-ai.svg",
+    description:
+      "建設書類（見積書・工程表・仕様書）のPDF・画像をアップロードするだけで、GeminiのマルチモーダルAIが工事名・金額・工期・工事項目を自動抽出し、構造化JSONとCSVで出力。Figmaで設計→React実装→Renderデプロイまで一貫して構築したポートフォリオデモ。",
+    stats: ["Gemini 2.5 Flash", "PDF/画像→構造化JSON"],
+    tags: ["Python", "FastAPI", "React", "TypeScript", "Gemini API", "Render", "Figma"],
+    updatedAt: "2026-04-12",
+    githubRepo: "keita2399/Figmabuildscanaidemoscreen",
+    detail: {
+      overview:
+        "建設書類をAIで瞬時に構造化するデモアプリ。PDF・JPG・PNGをアップロードするだけで、Gemini 2.5 FlashのマルチモーダルAPIが書類を解析し、工事名・会社名・合計金額・工期・工事項目を構造化JSONとして抽出。信頼度スコア（総合・工事名・金額・工期）付きで結果を表示し、JSONコピー・CSVダウンロードに対応。",
+      challenges: [
+        "建設書類の多様なフォーマット（手書き・印刷・スキャン品質差）への対応",
+        "GeminiへのPDF・画像送信とBase64エンコーディングの実装",
+        "フロントエンド（Render Static Site）とバックエンド（Render Web Service）の分離デプロイ",
+      ],
+      approach: [
+        "Gemini 2.5 FlashのマルチモーダルAPIでPDF・画像を直接解析",
+        "FastAPIバックエンドでファイル受け取り→Gemini API呼び出し→JSON返却",
+        "Figmaで画面設計後、AIコード生成でReact実装を加速",
+        "フロント：Render Static Site、バックエンド：Render Web Serviceで分離デプロイ",
+      ],
+      results: [
+        "見積書・工程表・仕様書の主要フィールドを自動抽出",
+        "信頼度スコア（総合・工事名・金額・工期）で抽出精度を可視化",
+        "JSONコピー・BOM付きCSVダウンロードでデータ活用を即時化",
+      ],
+      techDetail:
+        "Python FastAPI + Gemini 2.5 Flash（マルチモーダル）+ React + TypeScript + Vite + Tailwind CSS。フロントエンドはFigmaで設計してAI生成コードをベースに実装。バックエンドはuvicorn + python-multipartでファイル受信、google-generativeaiでGemini APIを呼び出し。Render（Web Service + Static Site）にデプロイ。",
+    },
+  },
+  {
     slug: "travel-time-app",
     category: "demo",
     title: "移動時間計算アプリ",

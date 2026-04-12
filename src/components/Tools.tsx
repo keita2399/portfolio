@@ -182,6 +182,40 @@ function documentScreens(): MockScreen[] {
   ];
 }
 
+function buildScanScreens(): MockScreen[] {
+  const color = "#0369a1";
+  return [
+    { title: "PDF / 画像をアップロード", content: (
+      <div style={{ width: "100%", maxWidth: 240, border: `2px dashed ${color}`, borderRadius: 8, padding: 20, textAlign: "center", background: "#f0f9ff" }}>
+        <div style={{ fontSize: 24, marginBottom: 4 }}>🏗️</div>
+        <div style={{ fontSize: 9, color, fontWeight: 600 }}>見積書 / 工程表 / 仕様書</div>
+        <div style={{ fontSize: 8, color: "#999", marginTop: 4 }}>PDF・JPG・PNGに対応</div>
+      </div>
+    )},
+    { title: "Gemini AIが建設書類を解析", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        {[["工事名", "新宿オフィスビル改修工事"], ["合計金額", "¥45,800,000"], ["工期", "2026/05 〜 2026/08"]].map(([k, v], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "4px 0", borderBottom: "1px solid #f3f4f6" }}>
+            <span style={{ color: "#999" }}>{k}</span>
+            <span style={{ color: "#1a1a1a", fontWeight: 600 }}>{v}</span>
+          </div>
+        ))}
+      </div>
+    )},
+    { title: "信頼度スコアで精度を確認", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 6 }}>
+        {[["総合スコア", "92%", "88%"], ["工事名", "95%", "90%"], ["金額", "88%", "85%"], ["工期", "85%", "80%"]].map(([label, w], i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span style={{ fontSize: 8, color: "#666", minWidth: 48 }}>{label}</span>
+            <Bar w={w as string} color="#22C55E" />
+            <span style={{ fontSize: 8, fontWeight: 700, color, minWidth: 24 }}>{w}</span>
+          </div>
+        ))}
+      </div>
+    )},
+  ];
+}
+
 function contractScreens(): MockScreen[] {
   return [
     { title: "契約書をアップロード", content: (
@@ -454,6 +488,16 @@ const tools = [
     screens: documentScreens(),
     demoUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
     detailLink: "/works/ai-document-checker",
+  },
+  {
+    title: "BuildScan AI",
+    desc: "建設書類（見積書・工程表・仕様書）のPDF・画像をアップロードするだけで、GeminiのマルチモーダルAIが工事名・金額・工期・工事項目を自動抽出し、構造化JSONとCSVで出力します。",
+    tags: ["建設書類解析", "Gemini 2.5 Flash", "PDF/画像→JSON", "CSVエクスポート"],
+    color: "#0369a1",
+    screens: buildScanScreens(),
+    demoUrl: "https://buildscan-front.onrender.com",
+    detailLink: "/works/buildscan-ai",
+    githubRepo: "keita2399/Figmabuildscanaidemoscreen",
   },
   {
     title: "AI契約書チェッカー",
