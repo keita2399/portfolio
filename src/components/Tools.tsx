@@ -369,6 +369,54 @@ function chatbotScreens(): MockScreen[] {
   ];
 }
 
+function realEstateScreens(): MockScreen[] {
+  return [
+    { title: "STEP 1 — PDFアップロード", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 6 }}>
+        <Box bg="#eff6ff" border="#bfdbfe" style={{ textAlign: "center", padding: "10px 0" }}>
+          <div style={{ fontSize: 16, marginBottom: 4 }}>📄</div>
+          <div style={{ fontSize: 9, color: "#2563eb", fontWeight: 700 }}>PDFをドラッグ＆ドロップ</div>
+          <div style={{ fontSize: 8, color: "#999", marginTop: 2 }}>登記簿謄本 / ハザードマップ / 都市計画図</div>
+        </Box>
+        {["登記簿謄本_全部事項.pdf", "hazardmap_chiyoda.pdf"].map((f, i) => (
+          <Box key={i} bg="#fff" border="#bfdbfe" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span style={{ fontSize: 8, color: "#374151" }}>{f}</span>
+            <Tag color="#2563eb">✓</Tag>
+          </Box>
+        ))}
+      </div>
+    )},
+    { title: "STEP 2 — AI自動抽出中", content: (
+      <div style={{ width: "100%", maxWidth: 260, display: "flex", flexDirection: "column", gap: 5 }}>
+        {[
+          ["所在", "特別区南都町1丁目"],
+          ["地番", "101"],
+          ["地目", "宅地"],
+          ["所有者氏名", "法務五郎"],
+          ["取得原因", "売買"],
+        ].map(([label, val], i) => (
+          <div key={i} style={{ display: "flex", justifyContent: "space-between", fontSize: 8, padding: "3px 0", borderBottom: "1px solid #dbeafe" }}>
+            <span style={{ color: "#999" }}>{label}</span>
+            <span style={{ color: "#2563eb", fontWeight: 600 }}>{val}</span>
+          </div>
+        ))}
+        <div style={{ fontSize: 8, color: "#2563eb", textAlign: "right", marginTop: 2 }}>20 / 34項目 抽出完了</div>
+      </div>
+    )},
+    { title: "STEP 3 — Excelダウンロード", content: (
+      <div style={{ width: "100%", maxWidth: 260 }}>
+        <Box bg="#eff6ff" border="#bfdbfe" style={{ textAlign: "center", marginBottom: 8 }}>
+          <div style={{ fontSize: 9, color: "#2563eb", fontWeight: 700, marginBottom: 4 }}>重要事項説明書.xlsx</div>
+          <div style={{ fontSize: 8, color: "#999" }}>34項目中 20項目 自動入力済み</div>
+        </Box>
+        <Box bg="#2563eb" border="#2563eb" style={{ textAlign: "center", color: "#fff", fontWeight: 700, fontSize: 9, cursor: "pointer" }}>
+          ⬇ Excelをダウンロード
+        </Box>
+      </div>
+    )},
+  ];
+}
+
 // --- ツール定義 ---
 const tools = [
   {
@@ -446,6 +494,16 @@ const tools = [
     demoUrl: "https://skin-diagnosis-gold.vercel.app",
     detailLink: "/works/skin-diagnosis",
     githubRepo: "keita2399/skin-diagnosis",
+  },
+  {
+    title: "不動産書類AI自動入力",
+    desc: "登記簿謄本・ハザードマップ等のPDFをアップロードするだけで、Gemini AIが34項目を自動抽出し、重要事項説明書のExcelに自動入力します。",
+    tags: ["PDF解析", "34項目自動抽出", "Excel自動入力", "Gemini API"],
+    color: "#2563EB",
+    screens: realEstateScreens(),
+    demoUrl: "https://real-estate-ai-zb95.onrender.com",
+    detailLink: "/works/real-estate-ai",
+    githubRepo: "keita2399/real-estate-ai",
   },
   {
     title: "AIチャットボット",

@@ -273,7 +273,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-10",
+    updatedAt: "2026-04-11",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
@@ -750,6 +750,46 @@ export const projects: Project[] = [
       ],
       techDetail:
         "Next.js 15 (App Router) + TypeScript + Tailwind CSS + Framer Motion。Google Gemini 2.5 Flash Vision APIをinlineData形式で呼び出し、Zod (DiagnosisResultSchema) でレスポンスを型安全に検証。Vercelにデプロイ済み。",
+    },
+  },
+  // === 不動産書類AI自動入力 ===
+  {
+    slug: "real-estate-ai",
+    category: "tools",
+    title: "不動産書類AI自動入力",
+    badge: "デモ公開中",
+    badgeColor: "#2563EB",
+    borderColor: "#2563EB",
+    externalUrl: "https://real-estate-ai-zb95.onrender.com",
+    githubRepo: "keita2399/real-estate-ai",
+    githubPublic: true,
+    description:
+      "登記簿謄本・ハザードマップ等のPDFをアップロードするだけで、Gemini AIが34項目を自動抽出し、重要事項説明書のExcelに書き込む不動産業務特化ツール。",
+    stats: ["Gemini 2.5 Flash", "34項目自動抽出", "Renderデプロイ済み"],
+    tags: ["Python", "Flask", "Gemini API", "openpyxl", "Render"],
+    updatedAt: "2026-04-12",
+    detail: {
+      overview:
+        "不動産取引で必須の重要事項説明書作成を効率化するWebツール。登記簿謄本・ハザードマップ・都市計画図などのPDFを複数まとめてアップロードすると、Gemini 2.5 Flash APIが所在・地番・地目・所有者・抵当権・用途地域・ハザード情報など34項目を自動抽出し、Excelテンプレートに書き込んで返却する。宅建業者情報はブラウザのlocalStorageに保存されるため、入力は初回のみ。Renderにデプロイ済みで即デモ可能。",
+      challenges: [
+        "openpyxlの結合セルへの書き込み（先頭セルを特定するロジックが必要）",
+        "Gemini Files APIで複数PDFを一括送信し34項目のJSONを安定出力させるプロンプト設計",
+        "Vercelの4.5MB/10秒制限を回避するためRenderを選択",
+        "Excelテンプレートをゼロから設計（重要事項説明書の書式を再現）",
+      ],
+      approach: [
+        "google-genai SDKのFiles APIでPDFをアップロードし、generate_contentでJSON出力を指定",
+        "openpyxlでmerged_cells.rangesを走査して結合セルの先頭セルを特定し書き込み",
+        "宅建業者情報をFormData経由でサーバーに送信し、localStorageで永続化",
+        "gunicorn --timeout 120でPDF処理の待機時間に対応",
+      ],
+      results: [
+        "登記簿謄本サンプルで34項目中20項目を自動抽出・入力",
+        "Renderにデプロイ済み・デモURLで即体験可能",
+        "Lancers案件（予算50〜100万円）に提案実績あり",
+      ],
+      techDetail:
+        "Python + Flask + Google Gemini 2.5 Flash（Files API）+ openpyxl + gunicorn。フロントはHTML/CSS/JSのシングルページ（ドラッグ&ドロップ＋localStorage）。Renderにデプロイ。",
     },
   },
   // === レガシーコード変換（サマリー） ===
@@ -1307,6 +1347,45 @@ export const legacyProjects: Project[] = [
         "コード鑑定書（#019）も制作",
       ],
       techDetail: "React + TypeScript。パターンマッチングエンジンを正規表現で再実装。DOCTORスクリプトのルールセットをJSON構造化。",
+    },
+  },
+  {
+    slug: "elearning-demo",
+    category: "demo",
+    title: "eラーニングプラットフォーム デモ",
+    badge: "提案用デモ",
+    badgeColor: "#4f46e5",
+    borderColor: "#4f46e5",
+    externalUrl: "https://elearning-demo-sage.vercel.app",
+    thumbnail: "https://images.unsplash.com/photo-1603354350317-6f7aaa5911c5?w=800&q=80",
+    description:
+      "ランサーズ案件（50〜100万円）の提案用に作成したeラーニングプラットフォームのデモ。Figmaでデザインを設計・React コードを生成し、認証・受講登録・進捗管理・学習履歴をフル実装。バックエンドなし・localStorage のみで本格的な学習フローを再現。",
+    stats: ["Figmaデザイン → React生成", "7画面フル実装", "localStorage認証・進捗管理"],
+    tags: ["React", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "React Router v7", "Figma", "Vercel"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "ランサーズに掲載されたeラーニングプラットフォーム開発案件（予算50〜100万円）への提案用デモ。「動くもので提案したい」という方針のもと、Figmaでデザインを設計してReactコードを生成し、そこに認証・受講フロー・進捗管理を実装。バックエンドなし・localStorageのみで会員登録からレッスン完了まで一連の学習体験を再現した。",
+      challenges: [
+        "Figma生成のVite/React SPAをベースに、ルート認証ガード・コンテキスト・永続化を後付けで組み込む設計",
+        "バックエンドなしでログイン・会員登録・ログアウト・デモアカウントを動作させる仕組み",
+        "受講登録→レッスン完了→進捗バー更新という一連のフローをlocalStorageで整合性を保って実装",
+        "未受講ユーザーにカリキュラムをロック表示し、受講後に解放する状態管理",
+      ],
+      approach: [
+        "Figmaがエクスポートした完成度の高いReact/Tailwindコードをそのまま活用し、最短で動くデモを構築",
+        "localStorage認証をauth.tsに集約。デモアカウント2種（学習者・管理者）を固定値で内蔵",
+        "progress.tsでenrollment・lesson完了をlocalStorageに永続化。getCourseProgress()で進捗率を動的算出",
+        "RequireAuth コンポーネントでルートガードを実装。未ログインは /login にリダイレクト",
+        "React Context（useAuth）で認証状態をアプリ全体に伝播",
+      ],
+      results: [
+        "提案当日にデモURLを提示できる状態でランサーズに応募",
+        "ダッシュボード・コース一覧・コース詳細・レッスン・学習履歴・設定・管理者の7画面を実装",
+        "Figmaデザイン → 実装 → Vercelデプロイまでを短期間で完遂",
+      ],
+      techDetail:
+        "React 18 + TypeScript + Vite 6。UIはFigma生成のshadcn/ui + Tailwind CSS v4。ルーティングはReact Router v7（RequireAuthガード）。認証・進捗はlocalStorage（バックエンドなし）。Vercel（vercel.json SPAリライト設定）にデプロイ。",
     },
   },
   {

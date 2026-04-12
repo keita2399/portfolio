@@ -54,7 +54,7 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
   {
     label: "Infra / Tools",
     color: "#94a3b8",
-    tags: ["Vercel", "Playwright", "HMAC", "Python"],
+    tags: ["Vercel", "Playwright", "HMAC", "Python", "Figma"],
   },
 ];
 
