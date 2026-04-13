@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./ScrollIndicator";
+import ParticleField from "./ParticleField";
 
 function StatCounter({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -42,17 +43,13 @@ export default function Hero() {
 
   return (
     <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", padding: "80px 32px 40px", position: "relative", overflow: "hidden" }}>
-      {/* Background image */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="https://images.unsplash.com/photo-1608858132869-4fe7467333b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-          alt=""
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
-        />
+      {/* Three.js Particle Field Background */}
+      <div style={{ position: "absolute", inset: 0, zIndex: 0, background: "#000" }}>
+        <ParticleField />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(135deg, rgba(15,23,42,0.96) 0%, rgba(30,58,138,0.90) 50%, rgba(15,23,42,0.96) 100%)",
+          background: "linear-gradient(135deg, rgba(15,23,42,0.80) 0%, rgba(30,58,138,0.65) 50%, rgba(15,23,42,0.80) 100%)",
+          zIndex: 1,
         }} />
       </div>
 

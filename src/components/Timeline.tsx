@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Timeline3D from "./Timeline3D";
 
 const entries = [
   {
@@ -42,9 +43,26 @@ export default function Timeline() {
           <div style={{ fontSize: 10, color: "#2563eb", letterSpacing: 4, marginBottom: 12 }}>
             // 02 — CAREER
           </div>
-          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 60, color: "#1a1a1a" }}>
+          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 40, color: "#1a1a1a" }}>
             Career
           </h2>
+        </motion.div>
+
+        {/* 3D Timeline Visualization */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          style={{ marginBottom: 48 }}
+        >
+          <Timeline3D
+            items={[
+              { period: "1985–99",  title: "金融基幹システム構築",        description: "生命保険・人事管理など止まることが許されない基幹システムを開発。", tech: "COBOL / PL/I", index: 0 },
+              { period: "2000–19",  title: "PM・リードエンジニア",         description: "証券・保険・B2B取引など多業種で要件定義から本番リリースまでを牽引。",  tech: "Java / Spring Boot / Oracle", index: 1 },
+              { period: "2020–",    title: "AI協働フルスタック開発",       description: "Claude Codeを活用し、一人でチーム規模の成果を実現。",             tech: "TypeScript / Next.js / Claude", index: 2 },
+            ]}
+          />
         </motion.div>
 
         <div style={{ position: "relative" }}>
