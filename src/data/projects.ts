@@ -1482,6 +1482,110 @@ export const legacyProjects: Project[] = [
       },
     },
   },
+  {
+    slug: "kaitori-ai",
+    category: "demo",
+    title: "AI連携リユース買取システム",
+    badge: "デモ公開中",
+    badgeColor: "#0891b2",
+    borderColor: "#0891b2",
+    githubRepo: "keita2399/Figmakaitoriai",
+    description:
+      "リユースショップ向けのAI買取査定Webアプリ。商品情報を入力するだけでAIが相場を検索・分析し、買取価格を自動算出。LangChain + LangGraph による多段階AI処理と Prisma + Neon DB によるデータ管理を組み合わせたフルスタック実装。",
+    stats: ["AI相場検索・買取価格自動算出", "LangGraph 多段階処理", "Prisma + Neon DB"],
+    tags: ["Next.js", "TypeScript", "LangChain", "LangGraph", "Gemini API", "Prisma", "Neon DB", "Tailwind CSS", "shadcn/ui"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "リユースショップの買取業務を効率化するAI査定システム。商品名・状態・ブランド等を入力するとLangGraphの多段階パイプラインが相場検索・価格分析・買取価格算出を自動実行。Figmaデザインから実装まで一貫して構築し、Prisma + Neon DB でユーザー認証とデータ永続化を実現。",
+      challenges: [
+        "LangGraph StateGraph による多段階AI処理フローの設計と状態管理",
+        "Gemini API の複数キーフォールバックによる安定稼働",
+        "Prisma + Neon DB (PostgreSQL) のスキーマ設計とマイグレーション管理",
+      ],
+      approach: [
+        "LangGraph の Annotation.Root で状態を型安全に管理し、ノード間でデータを引き継ぐ設計",
+        "複数の Gemini API キーをラウンドロビンで切り替え、レート制限に対応",
+        "Next.js App Router のサーバーコンポーネントと Route Handlers でフロントとAPIを統合",
+      ],
+      results: [
+        "商品情報入力から買取価格提示まで自動化",
+        "LangChain / LangGraph を活用した実践的なAIパイプライン実装",
+        "Figmaデザインからフルスタック実装まで一貫開発",
+      ],
+      techDetail:
+        "Next.js + TypeScript + Tailwind CSS + shadcn/ui。LangChain + LangGraph（StateGraph）でAI処理パイプラインを構築。Prisma ORM + Neon DB（PostgreSQL）でデータ管理。Gemini API をメインLLMとして使用。",
+    },
+  },
+  {
+    slug: "project-manager",
+    category: "personal",
+    title: "Laravelプロジェクト管理アプリ",
+    badge: "本番稼働中",
+    badgeColor: "#dc2626",
+    borderColor: "#dc2626",
+    description:
+      "フリーランス向けのクライアント・案件・請求書・アクティビティを一元管理するWebアプリ。PHP 8.3 + Laravel + Blade のサーバーサイドレンダリング構成で構築し、DomPDF による請求書PDF出力、Dockerマルチステージビルドでデプロイ。",
+    stats: ["クライアント・案件・請求書・活動履歴のCRUD", "DomPDF で請求書PDF出力", "Dockerマルチステージビルド"],
+    tags: ["PHP 8.3", "Laravel", "Blade", "PostgreSQL", "DomPDF", "Docker", "Tailwind CSS"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "クライアント管理・案件管理・請求書管理・プロジェクト活動履歴の4軸でフリーランス業務をカバーするWebアプリ。Laravel のリソースコントローラで RESTful な設計を実現し、barryvdh/laravel-dompdf で請求書PDFを出力。Docker マルチステージビルド（Node.js → PHP/Apache）で本番環境に対応。",
+      challenges: [
+        "Laravel Policyクラスによるユーザーごとのデータ完全分離",
+        "DomPDFでの日本語フォント対応と請求書レイアウト調整",
+        "Dockerマルチステージビルド（フロントビルド → PHP/Apache）の構成",
+      ],
+      approach: [
+        "Route::resource で CRUD エンドポイントを簡潔に定義",
+        "ProjectActivityObserver でステータス変更を自動記録",
+        "デモログイン機能で即体験できるUXを実現",
+      ],
+      results: [
+        "クライアント・案件・請求書・活動履歴の一元管理を実現",
+        "DomPDF で請求書を即時PDF出力",
+        "Docker対応でポータブルな本番環境を構築",
+      ],
+      techDetail:
+        "PHP 8.3 + Laravel + Blade テンプレート。barryvdh/laravel-dompdf で請求書PDF生成。PostgreSQL + Eloquent ORM。Docker マルチステージビルド（Node.js でフロントビルド → PHP 8.3/Apache で本番稼働）。",
+    },
+  },
+  {
+    slug: "estimate-ai-api",
+    category: "personal",
+    title: "AI見積もりAPIサーバー（LangGraph）",
+    badge: "本番稼働中",
+    badgeColor: "#7c3aed",
+    borderColor: "#7c3aed",
+    githubRepo: "keita2399/estimate-ai-api",
+    description:
+      "AI開発アシスタント（estimate-ai）のバックエンドAPIサーバー。Express.js + LangGraph の StateGraph で Gemini/Claude のマルチモデルフォールバックを実装。複数の Gemini API キーをラウンドロビンで切り替え、レート制限時は Claude API に自動フォールバックする堅牢なAI推論基盤。",
+    stats: ["Gemini 複数キーのラウンドロビン", "Claude API へ自動フォールバック", "LangGraph StateGraph"],
+    tags: ["Node.js", "Express", "LangChain", "LangGraph", "Gemini API", "Claude API", "TypeScript"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "estimate-ai フロントエンドから呼び出されるバックエンドAPIサーバー。LangGraph の StateGraph でAI推論フローを状態機械として管理し、複数の Gemini API キー（最大3つ）をラウンドロビンで消費、すべて失敗した場合は Claude API（Anthropic）へ自動フォールバックする高可用性設計。JSON の不完全なレスポンスも自動修復して安定稼働を実現。",
+      challenges: [
+        "LangGraph StateGraph による AI フォールバックフローの型安全な設計",
+        "不完全な JSON レスポンスの自動修復ロジック（括弧補完・クォート修正）",
+        "CORS ホワイトリスト管理と本番・ローカル環境の切り替え",
+      ],
+      approach: [
+        "Annotation.Root で state を定義し、keyIndex / round でリトライ制御",
+        "tryParseJSON で正規表現ベースのJSONフォールバックパースを実装",
+        "環境変数で複数 Gemini キーを管理し、インデックスをラウンドロビン更新",
+      ],
+      results: [
+        "Gemini API のレート制限を複数キーのフォールバックで回避",
+        "Claude API への自動切り替えで単一LLM障害への耐性を確保",
+        "不完全JSONの自動修復でAPIの安定稼働を実現",
+      ],
+      techDetail:
+        "Node.js + Express + TypeScript。LangChain（@langchain/google-genai, @langchain/anthropic）+ LangGraph（StateGraph）。Gemini 2.5 Flash / Claude Sonnet をマルチモデルで運用。CORS設定で本番フロントエンドURLをホワイトリスト管理。",
+    },
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
