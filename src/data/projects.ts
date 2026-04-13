@@ -101,7 +101,7 @@ export const projects: Project[] = [
     description:
       "Next.js 15 + Firebase + Stripe + Vercel Blob で構築したマッチングWebアプリ。ユーザー登録・プロフィール設定・いいね・マッチング・リアルタイムチャット・掲示板・プレミアム課金・管理画面をフルスタックで実装。ランサーズ案件（50〜100万円）の提案用デモとして開発し、本番環境にデプロイ済み。",
     stats: ["10画面+管理画面", "Firebase Auth + Firestore", "Stripe Checkout連携"],
-    tags: ["Next.js 15", "TypeScript", "Firebase Auth", "Firestore", "Vercel Blob", "Stripe", "Tailwind CSS", "Vercel"],
+    tags: ["Next.js 15", "TypeScript", "Firebase Auth", "Firestore", "Vercel Blob", "Stripe", "Tailwind CSS", "Vercel", "shadcn/ui", "react-webcam"],
     updatedAt: "2026-04",
     detail: {
       overview:
@@ -194,7 +194,7 @@ export const projects: Project[] = [
     description:
       "DX提案・Excel変換・AI見積もりの3つの機能を統合。業務分析から見積もり、製造資料の生成までを一気通貫で支援。発注者との初回打ち合わせで「その場で提案書と見積もり」が出せる営業ツール。",
     stats: ["DX提案 + Excel変換 + AI見積もり", "一般版/リベルタ版の2モード見積もり", "製造資料自動生成"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "AI活用", "SSE"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "LangChain", "LangGraph", "Upstash Redis", "Mermaid.js", "ExcelJS", "Resend", "AI活用", "SSE"],
     updatedAt: "2026-04-03",
     githubRepo: "keita2399/estimate-ai",
     detail: {
@@ -273,7 +273,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-11",
+    updatedAt: "2026-04-13",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
@@ -312,8 +312,8 @@ export const projects: Project[] = [
     description:
       "契約書をアップロードするだけで、AIが条項ごとにリスクを判定。自動更新・違約金・損害賠償上限なし・知的財産権の全譲渡・競業避止など、フリーランスが見落としがちな不利条項を検出し、具体的な修正案を提示。",
     stats: ["Gemini Vision API", "条項別リスク判定"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "AI活用", "Tailwind CSS"],
-    updatedAt: "2026-04-05",
+    tags: ["Next.js", "TypeScript", "Gemini API", "LangChain", "pdf-to-img", "AI活用", "Tailwind CSS"],
+    updatedAt: "2026-04-13",
     githubRepo: "keita2399/contract-checker",
     githubPublic: true,
     detail: {
@@ -352,7 +352,7 @@ export const projects: Project[] = [
     description:
       "ネットワークスキャナー・カメラ・ファイルの3経路でレシートを取り込み、Gemini 2.5 Flashのマルチモーダル機能が単なる文字起こしではなく「文脈を理解して構造化」。30品目超のスーパーレシートも一発で店舗名・税率・勘定科目まで判定。仕分け・Google Drive保存・期間指定CSVで確定申告に直結。",
     stats: ["Gemini 2.5 Flash マルチモーダル", "Chrome拡張+Native Messaging"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "Chrome拡張", "Google Drive API", "eSCL"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Chrome拡張", "Google Drive API", "Google OAuth", "next-auth", "eSCL"],
     updatedAt: "2026-04-07",
     githubRepo: "keita2399/receipt-scanner",
     githubPublic: true,
@@ -394,7 +394,7 @@ export const projects: Project[] = [
     description:
       "Gemini Vision APIを使った書類自動解析アプリ。画像をアップロードするだけで、AIが書類の種類・記載内容・有効期限・注意点を自動判定。建設業許可証など業務書類の確認を効率化。",
     stats: ["Gemini Vision API", "画像→構造化データ"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "LangChain", "Tailwind CSS"],
     updatedAt: "2026-03-15",
     githubRepo: "keita2399/ai-document-checker",
     detail: {
@@ -615,8 +615,8 @@ export const projects: Project[] = [
     description:
       "移動中にスマホで思いついたアイデアを、LINEでAIに伝えるだけでPCの開発環境に自動で共有。「いつでもどこでも開発を止めない」ワークフローを実現した、自分のために作ったツール。",
     stats: ["LINE → Gist → CLI 自動同期", "Gemini/Claude 切替"],
-    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "GitHub Gist"],
-    updatedAt: "2026-03-14",
+    tags: ["Next.js", "TypeScript", "LINE Messaging API", "Gemini API", "Claude API", "LangChain", "GitHub Gist"],
+    updatedAt: "2026-04-13",
     githubRepo: "keita2399/line-claude-sync",
     githubPublic: true,
     detail: {
@@ -761,7 +761,7 @@ export const projects: Project[] = [
     description:
       "美容クリニック向けのAI肌診断Webアプリ。スマホカメラで顔を撮影し、5ステップの問診に答えるだけで、Gemini Vision APIが肌年齢・悩み・施術提案を生成。カメラ・問診・結果表示をすべてNext.jsで実装し、Vercelに本番デプロイ済み。",
     stats: ["Gemini 2.5 Flash Vision", "5ステップ問診", "施術提案3件生成"],
-    tags: ["Next.js", "TypeScript", "Gemini API", "Tailwind CSS", "Framer Motion", "Zod", "Vercel"],
+    tags: ["Next.js", "TypeScript", "Gemini API", "LangChain", "react-webcam", "shadcn/ui", "Tailwind CSS", "Framer Motion", "Zod", "Vercel"],
     updatedAt: "2026-04-10",
     thumbnail: undefined,
     detail: {
