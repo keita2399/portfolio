@@ -9,10 +9,10 @@ const FORMSPREE_URL = "https://formspree.io/f/mlgpjyzp";
 
 const inputStyle: React.CSSProperties = {
   width: "100%", padding: "12px 16px",
-  background: "rgba(255,255,255,0.07)", backdropFilter: "blur(8px)",
-  border: "1px solid rgba(255,255,255,0.2)", borderRadius: 2,
-  color: "#fff", fontSize: 13, fontFamily: "inherit",
-  outline: "none", transition: "border-color 0.2s",
+  background: "#fff",
+  border: "1px solid #dde3ee", borderRadius: 4,
+  color: "#1e293b", fontSize: 13, fontFamily: "inherit",
+  outline: "none", transition: "border-color 0.2s, box-shadow 0.2s",
 };
 
 export default function ContactForm() {
@@ -46,7 +46,7 @@ export default function ContactForm() {
         />
         <div style={{
           position: "absolute", inset: 0,
-          background: "linear-gradient(135deg, rgba(15,23,42,0.96) 0%, rgba(30,58,138,0.91) 50%, rgba(15,23,42,0.96) 100%)",
+          background: "linear-gradient(135deg, rgba(255,255,255,0.93) 0%, rgba(239,246,255,0.90) 50%, rgba(255,255,255,0.93) 100%)",
         }} />
       </div>
 
@@ -57,29 +57,30 @@ export default function ContactForm() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div style={{ fontSize: 10, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 12 }}>
+          <div style={{ fontSize: 10, color: "#2563eb", letterSpacing: 4, marginBottom: 12 }}>
             // 06 — CONTACT
           </div>
-          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#fff" }}>
-            ご<span style={{ color: "#93c5fd" }}>連絡</span>
+          <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1e293b" }}>
+            ご<span style={{ color: "#2563eb" }}>連絡</span>
           </h2>
-          <div className="font-serif-jp" style={{ fontSize: 13, color: "rgba(219,234,254,0.7)", marginBottom: 24 }}>
+          <div className="font-serif-jp" style={{ fontSize: 13, color: "#64748b", marginBottom: 24 }}>
             案件のご依頼・お問い合わせはこちらからお送りください
           </div>
 
           {/* まず話す CTA */}
           <div style={{
             padding: "20px 24px", marginBottom: 24,
-            background: "rgba(255,255,255,0.07)", backdropFilter: "blur(12px)",
-            border: "1px solid rgba(147,197,253,0.4)",
-            borderLeft: "3px solid #60a5fa",
-            borderRadius: 2,
+            background: "#fff",
+            border: "1px solid #bfdbfe",
+            borderLeft: "3px solid #2563eb",
+            borderRadius: 4,
+            boxShadow: "0 1px 6px rgba(37,99,235,0.08)",
           }}>
-            <div style={{ fontSize: 11, color: "#93c5fd", letterSpacing: 2, marginBottom: 6 }}>FIRST STEP</div>
-            <div className="font-serif-jp" style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 4 }}>
+            <div style={{ fontSize: 11, color: "#2563eb", letterSpacing: 2, marginBottom: 6 }}>FIRST STEP</div>
+            <div className="font-serif-jp" style={{ fontSize: 14, fontWeight: 700, color: "#1e293b", marginBottom: 4 }}>
               まずは30分、気軽にお話しください
             </div>
-            <div className="font-serif-jp" style={{ fontSize: 12, color: "rgba(219,234,254,0.7)", marginBottom: 14, lineHeight: 1.7 }}>
+            <div className="font-serif-jp" style={{ fontSize: 12, color: "#64748b", marginBottom: 14, lineHeight: 1.7 }}>
               「こんなことできますか？」「どのくらいかかりますか？」<br />
               ざっくりした相談から大歓迎です。
             </div>
@@ -104,13 +105,14 @@ export default function ContactForm() {
           <div style={{
             display: "flex", alignItems: "center", gap: 12,
             padding: "12px 16px", marginBottom: 48,
-            background: "rgba(255,255,255,0.07)", backdropFilter: "blur(8px)",
-            border: "1px solid rgba(255,255,255,0.15)", borderRadius: 2,
+            background: "#fff",
+            border: "1px solid #dde3ee", borderRadius: 4,
+            boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
           }}>
-            <span style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", flexShrink: 0 }}>MAIL</span>
+            <span style={{ fontSize: 11, color: "#2563eb", flexShrink: 0, fontWeight: 700 }}>MAIL</span>
             <a
               href="mailto:keita2399@gmail.com"
-              style={{ fontSize: 13, color: "rgba(219,234,254,0.9)", textDecoration: "none", letterSpacing: 0.5 }}
+              style={{ fontSize: 13, color: "#1e293b", textDecoration: "none", letterSpacing: 0.5 }}
             >
               keita2399@gmail.com
             </a>
@@ -123,13 +125,14 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             style={{
               padding: 40, textAlign: "center",
-              background: "rgba(255,255,255,0.07)", backdropFilter: "blur(12px)",
-              border: "1px solid rgba(96,165,250,0.4)", borderRadius: 2,
+              background: "#fff",
+              border: "1px solid #bfdbfe", borderRadius: 4,
+              boxShadow: "0 2px 12px rgba(37,99,235,0.08)",
             }}
           >
-            <div style={{ fontSize: 24, marginBottom: 12, color: "#60a5fa" }}>✓</div>
-            <div style={{ color: "#93c5fd", fontSize: 14, letterSpacing: 2 }}>送信しました</div>
-            <div className="font-serif-jp" style={{ color: "rgba(219,234,254,0.7)", fontSize: 12, marginTop: 8 }}>内容を確認のうえ、ご連絡いたします</div>
+            <div style={{ fontSize: 24, marginBottom: 12, color: "#2563eb" }}>✓</div>
+            <div style={{ color: "#2563eb", fontSize: 14, letterSpacing: 2 }}>送信しました</div>
+            <div className="font-serif-jp" style={{ color: "#64748b", fontSize: 12, marginTop: 8 }}>内容を確認のうえ、ご連絡いたします</div>
           </motion.div>
         )}
 
@@ -139,18 +142,19 @@ export default function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             style={{
               padding: 40, textAlign: "center",
-              background: "rgba(255,255,255,0.07)", backdropFilter: "blur(12px)",
-              border: "1px solid rgba(220,38,38,0.4)", borderRadius: 2,
+              background: "#fff",
+              border: "1px solid #fecaca", borderRadius: 4,
+              boxShadow: "0 2px 12px rgba(220,38,38,0.06)",
             }}
           >
-            <div style={{ fontSize: 24, marginBottom: 12, color: "#f87171" }}>!</div>
-            <div style={{ color: "#f87171", fontSize: 14, letterSpacing: 2 }}>送信に失敗しました</div>
-            <div className="font-serif-jp" style={{ color: "rgba(219,234,254,0.7)", fontSize: 12, marginTop: 8 }}>
+            <div style={{ fontSize: 24, marginBottom: 12, color: "#ef4444" }}>!</div>
+            <div style={{ color: "#ef4444", fontSize: 14, letterSpacing: 2 }}>送信に失敗しました</div>
+            <div className="font-serif-jp" style={{ color: "#64748b", fontSize: 12, marginTop: 8 }}>
               お手数ですが、時間をおいて再度お試しください
             </div>
             <button
               onClick={() => setStatus("idle")}
-              style={{ marginTop: 16, fontSize: 12, color: "#93c5fd", textDecoration: "underline", cursor: "pointer", background: "none", border: "none" }}
+              style={{ marginTop: 16, fontSize: 12, color: "#2563eb", textDecoration: "underline", cursor: "pointer", background: "none", border: "none" }}
             >
               もう一度試す
             </button>
@@ -170,57 +174,57 @@ export default function ContactForm() {
             <input type="hidden" name="_language" value="ja" />
 
             <div>
-              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>お名前</div>
+              <div style={{ fontSize: 11, color: "#475569", marginBottom: 6, letterSpacing: 1, fontWeight: 600 }}>お名前</div>
               <input
                 type="text" name="name" required placeholder="山田 太郎"
                 style={inputStyle}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.12)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "#dde3ee"; e.currentTarget.style.boxShadow = "none"; }}
               />
             </div>
             <div>
-              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>メールアドレス</div>
+              <div style={{ fontSize: 11, color: "#475569", marginBottom: 6, letterSpacing: 1, fontWeight: 600 }}>メールアドレス</div>
               <input
                 type="email" name="_replyto" required placeholder="taro@example.com"
                 style={inputStyle}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.12)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "#dde3ee"; e.currentTarget.style.boxShadow = "none"; }}
               />
             </div>
             <div>
-              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>ご相談の種別</div>
+              <div style={{ fontSize: 11, color: "#475569", marginBottom: 6, letterSpacing: 1, fontWeight: 600 }}>ご相談の種別</div>
               <select
                 name="inquiry_type" required
                 style={{
                   ...inputStyle,
                   appearance: "none" as const,
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(147,197,253,0.8)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`,
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "right 14px center",
                   paddingRight: 40,
                   cursor: "pointer",
                 }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.12)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "#dde3ee"; e.currentTarget.style.boxShadow = "none"; }}
               >
-                <option value="" disabled selected style={{ background: "#0f172a" }}>選択してください</option>
-                <option value="新規開発の依頼" style={{ background: "#0f172a" }}>新規開発の依頼</option>
-                <option value="レガシーシステムの刷新" style={{ background: "#0f172a" }}>レガシーシステムの刷新</option>
-                <option value="既存システムの改修・拡張" style={{ background: "#0f172a" }}>既存システムの改修・拡張</option>
-                <option value="AI活用の相談" style={{ background: "#0f172a" }}>AI活用の相談</option>
-                <option value="まず話を聞きたい" style={{ background: "#0f172a" }}>まず話を聞きたい</option>
-                <option value="その他" style={{ background: "#0f172a" }}>その他</option>
+                <option value="" disabled selected style={{ background: "#fff", color: "#1e293b" }}>選択してください</option>
+                <option value="新規開発の依頼" style={{ background: "#fff", color: "#1e293b" }}>新規開発の依頼</option>
+                <option value="レガシーシステムの刷新" style={{ background: "#fff", color: "#1e293b" }}>レガシーシステムの刷新</option>
+                <option value="既存システムの改修・拡張" style={{ background: "#fff", color: "#1e293b" }}>既存システムの改修・拡張</option>
+                <option value="AI活用の相談" style={{ background: "#fff", color: "#1e293b" }}>AI活用の相談</option>
+                <option value="まず話を聞きたい" style={{ background: "#fff", color: "#1e293b" }}>まず話を聞きたい</option>
+                <option value="その他" style={{ background: "#fff", color: "#1e293b" }}>その他</option>
               </select>
             </div>
             <div>
-              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.7)", marginBottom: 6, letterSpacing: 1 }}>ご用件</div>
+              <div style={{ fontSize: 11, color: "#475569", marginBottom: 6, letterSpacing: 1, fontWeight: 600 }}>ご用件</div>
               <textarea
                 name="message" required
                 placeholder="案件の概要・背景・ご要望など、ざっくりで構いません"
                 rows={5}
                 style={{ ...inputStyle, resize: "vertical" as const }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = "#60a5fa"; }}
-                onBlur={(e) => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)"; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = "#2563eb"; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(37,99,235,0.12)"; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = "#dde3ee"; e.currentTarget.style.boxShadow = "none"; }}
               />
             </div>
 
