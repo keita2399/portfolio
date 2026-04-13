@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Timeline3D from "./Timeline3D";
+import CareerBackground from "./CareerBackground";
 
 const entries = [
   {
@@ -32,8 +33,16 @@ const entries = [
 
 export default function Timeline() {
   return (
-    <section id="timeline" style={{ padding: "100px 32px", background: "#fff" }}>
-      <div style={{ maxWidth: 900, margin: "0 auto" }}>
+    <section id="timeline" style={{
+      padding: "100px 32px",
+      background: "linear-gradient(160deg, #f8faff 0%, #eef3ff 50%, #f8faff 100%)",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      {/* Animated network background */}
+      <CareerBackground />
+
+      <div style={{ maxWidth: 900, margin: "0 auto", position: "relative", zIndex: 1 }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
