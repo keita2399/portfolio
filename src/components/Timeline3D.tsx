@@ -90,14 +90,15 @@ export default function Timeline3D({ items }: Timeline3DProps) {
       scene.add(new THREE.Line(lineGeometry, lineMaterial));
     }
 
-    let mouseX = 0;
-    let mouseY = 0;
+    // マウスオフセット（補助）
+    let mouseOffsetX = 0;
+    let mouseOffsetY = 0;
 
     const handleMouseMove = (event: MouseEvent) => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
-      mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+      mouseOffsetX = ((event.clientX - rect.left) / rect.width * 2 - 1) * 1.5;
+      mouseOffsetY = (-((event.clientY - rect.top) / rect.height) * 2 + 1) * 1.0;
     };
     containerRef.current.addEventListener("mousemove", handleMouseMove);
 
@@ -115,13 +116,22 @@ export default function Timeline3D({ items }: Timeline3DProps) {
     const animate = () => {
       const time = clock.getElapsedTime();
 
-      camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
-      camera.position.y += (mouseY * 2 - camera.position.y) * 0.05;
+      // カメラを時間ベースで自動周回（ホバー不要）
+      const orbitRadius = 8;
+      const orbitSpeed = 0.3;
+      const targetX = Math.sin(time * orbitSpeed) * orbitRadius + mouseOffsetX;
+      const targetY = Math.cos(time * orbitSpeed * 0.4) * 2    + mouseOffsetY;
+      const targetZ = Math.cos(time * orbitSpeed) * orbitRadius;
+      camera.position.x += (targetX - camera.position.x) * 0.04;
+      camera.position.y += (targetY - camera.position.y) * 0.04;
+      camera.position.z += (targetZ - camera.position.z) * 0.04;
       camera.lookAt(0, 0, 0);
 
+      // ノードの自転 + 浮遊
       nodes.forEach((node) => {
-        node.rotation.y += 0.01;
-        node.position.y += Math.sin(time + node.userData.index) * 0.001;
+        node.rotation.y += 0.012;
+        node.position.y =
+          (node.userData.index - 1) * 2 + Math.sin(time * 0.8 + node.userData.index * 1.2) * 0.25;
       });
 
       renderer.render(scene, camera);
