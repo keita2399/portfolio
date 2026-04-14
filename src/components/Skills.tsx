@@ -14,6 +14,7 @@ const experiencedSkills = [
   { name: "Java / Spring Boot", pct: 85 },
   { name: "PostgreSQL", pct: 80 },
   { name: "Python / FastAPI", pct: 70 },
+  { name: "Figma（UIデザイン・仕様書作成）", pct: 70 },
 ];
 
 export default function Skills() {

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { logUsage } from "@/lib/logUsage";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY!;
 
@@ -70,6 +71,8 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
     const reply =
       data.candidates?.[0]?.content?.parts?.[0]?.text || "（応答なし）";
+
+    logUsage({ project: "portfolio", model: "gemini-2.5-flash", inputTokens: data.usageMetadata?.promptTokenCount ?? 0, outputTokens: data.usageMetadata?.candidatesTokenCount ?? 0 });
 
     return NextResponse.json({ reply });
   } catch (err) {

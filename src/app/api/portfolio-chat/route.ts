@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import { logUsage } from "@/lib/logUsage";
 
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 
@@ -66,6 +67,8 @@ ${profile}`;
     if (!text) {
       return NextResponse.json({ error: "No response from AI" }, { status: 502 });
     }
+
+    logUsage({ project: "portfolio", model: "gemini-2.5-flash", inputTokens: result.usageMetadata?.promptTokenCount ?? 0, outputTokens: result.usageMetadata?.candidatesTokenCount ?? 0 });
 
     return NextResponse.json({ reply: text });
   } catch (error) {

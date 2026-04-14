@@ -12,11 +12,43 @@ type Props = {
   portfolio: PortfolioRow[];
 };
 
+const profileData = [
+  ["項目", "内容"],
+  ["氏名", "松井 慶太（Keita Matsui）"],
+  ["拠点", "山梨県"],
+  ["経験年数", "IT業界 約40年（1985年〜）"],
+  [""],
+  ["── キャッチコピー ──", ""],
+  ["", "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア"],
+  [""],
+  ["── 強み・PR ──", ""],
+  ["設計力", "要件定義から本番運用まで全工程を一人で完遂。136人日見積もりをAI協働開発で2週間強に短縮した実績あり。"],
+  ["技術幅", "TypeScript / React / Next.js を軸に、PHP（Laravel）・Ruby（Rails）・Python・Java など多言語対応。フロントからインフラまでフルスタックで担当可能。"],
+  ["AI活用", "Claude Code をペアパートナーとして設計・実装・レビュー・ドキュメント整合性検証に一貫活用。AIを補助ツールではなく設計パートナーとして使うスタイルを確立。"],
+  ["デザイン", "Figmaで仕様書・UIデザインを作成し、ReactコードとしてエクスポートしてそのままWebアプリに組み込む一気通貫の開発フローを実践。"],
+  ["レガシー対応", "COBOL・PL/I・RPG・VB6 等13言語・44万行超のレガシーコードをモダンWebに変換した実績。既存システムのリプレイス案件にも強い。"],
+  [""],
+  ["── AI協働開発フロー ──", ""],
+  ["設計", "要件をAIと壁打ちし、DB設計・API設計・画面構成を短時間で固める"],
+  ["実装", "AIとのペアプログラミングで、コード品質を維持しながら高速に実装"],
+  ["レビュー", "AIによるコードレビュー・セキュリティチェック・ドキュメント整合性検証"],
+  ["ドキュメント", "設計書・運用手順書・操作マニュアルをコードベースと常に同期"],
+  [""],
+  ["── リンク ──", ""],
+  ["ポートフォリオ", "https://portfolio-two-orpin-45.vercel.app"],
+  ["GitHub", "https://github.com/keita2399"],
+];
+
 export default function ResumeExcelDownload({ projectList, skills, portfolio }: Props) {
   const handleDownload = () => {
     const wb = XLSX.utils.book_new();
 
-    // ── Sheet 1: 業務経歴一覧 ──
+    // ── Sheet 1: 自己紹介・PR ──
+    const ws0 = XLSX.utils.aoa_to_sheet(profileData);
+    ws0["!cols"] = [{ wch: 20 }, { wch: 80 }];
+    XLSX.utils.book_append_sheet(wb, ws0, "自己紹介・PR");
+
+    // ── Sheet 2: 業務経歴一覧 ──
     const projectData = [
       ["No", "業種", "システム名", "役割", "期間", "技術"],
       ...projectList.map((p) => [p.no, p.industry, p.system, p.role, p.period, p.tech]),
@@ -25,7 +57,7 @@ export default function ResumeExcelDownload({ projectList, skills, portfolio }: 
     ws1["!cols"] = [{ wch: 4 }, { wch: 10 }, { wch: 24 }, { wch: 18 }, { wch: 20 }, { wch: 50 }];
     XLSX.utils.book_append_sheet(wb, ws1, "業務経歴一覧");
 
-    // ── Sheet 2: スキル ──
+    // ── Sheet 3: スキル ──
     const skillData = [
       ["カテゴリ", "詳細"],
       ...skills.map((s) => [s.category, s.detail]),
@@ -34,7 +66,7 @@ export default function ResumeExcelDownload({ projectList, skills, portfolio }: 
     ws2["!cols"] = [{ wch: 20 }, { wch: 80 }];
     XLSX.utils.book_append_sheet(wb, ws2, "スキル");
 
-    // ── Sheet 3: ポートフォリオ ──
+    // ── Sheet 4: ポートフォリオ ──
     const portfolioData = [
       ["名称", "説明", "技術スタック", "公開状態 / URL"],
       ...portfolio.map((p) => [p.name, p.desc, p.tech, p.url]),

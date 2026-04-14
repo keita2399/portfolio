@@ -23,26 +23,35 @@ async function main() {
   // Wait for fonts
   await page.waitForTimeout(2000);
 
+  // Expand collapsed project list
+  await page.evaluate(() => {
+    // Click the "全 N 件を表示 ▼" button if present
+    const buttons = Array.from(document.querySelectorAll("button"));
+    const expandBtn = buttons.find((b) => b.textContent?.includes("件を表示"));
+    if (expandBtn) expandBtn.click();
+  });
+  await page.waitForTimeout(300);
+
   // Hide elements not needed in PDF
   await page.addStyleTag({
     content: `
-      /* Hide nav, back link, download buttons, chatbot */
+      /* Hide nav, back/download buttons, chatbot, no-print elements */
       nav { display: none !important; }
-      a[href="/"] { display: none !important; }
-      a[download] { display: none !important; }
-      div:has(> a.cta-primary[download]) { display: none !important; }
+      .no-print { display: none !important; }
       button[style*="position: fixed"] { display: none !important; }
       div[style*="position: fixed"] { display: none !important; }
       /* White background */
       body { background: #fff !important; }
+      /* Ensure collapsible content is fully visible */
+      .collapsible-content { max-height: none !important; overflow: visible !important; }
     `,
   });
 
-  // Reduce top padding (from 100px nav offset to 32px)
+  // Reduce top padding for print
   await page.evaluate(() => {
-    const container = document.querySelector('div[style*="100px 32px"]') as HTMLElement;
+    const container = document.querySelector(".resume-page") as HTMLElement;
     if (container) {
-      container.style.paddingTop = "32px";
+      container.style.paddingTop = "24px";
     }
   });
 
