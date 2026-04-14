@@ -189,17 +189,17 @@ export const projects: Project[] = [
       { src: "/thumbnails/dx-proposal-flow.png", caption: "DX提案: 業務内容を入力するだけで業務フロー図を自動生成" },
       { src: "/thumbnails/dx-proposal-analysis.png", caption: "DX提案: 工程ごとのボトルネック・リスクを可視化" },
       { src: "/thumbnails/dx-proposal-suggest.png", caption: "DX提案: システム化提案（優先度・期待効果付き）" },
-      { src: "/thumbnails/dx-proposal-summary.png", caption: "AI見積もり: 一般版とリベルタ版の工数比較" },
+      { src: "/thumbnails/dx-proposal-summary.png", caption: "AI見積もり: 一般版と自社版の工数比較" },
     ],
     description:
       "DX提案・Excel変換・AI見積もりの3つの機能を統合。業務分析から見積もり、製造資料の生成までを一気通貫で支援。発注者との初回打ち合わせで「その場で提案書と見積もり」が出せる営業ツール。",
-    stats: ["DX提案 + Excel変換 + AI見積もり", "一般版/リベルタ版の2モード見積もり", "製造資料自動生成"],
+    stats: ["DX提案 + Excel変換 + AI見積もり", "一般版/自社版の2モード見積もり", "製造資料自動生成"],
     tags: ["Next.js", "TypeScript", "Gemini API", "Claude API", "LangChain", "LangGraph", "Upstash Redis", "Mermaid.js", "ExcelJS", "Resend", "AI活用", "SSE"],
     updatedAt: "2026-04-03",
     githubRepo: "keita2399/estimate-ai",
     detail: {
       overview:
-        "業務のDX化を支援する統合アシスタント。【DX提案】業務フロー図の自動生成 → ボトルネック分析 → システム化提案 → 要件定義書生成。【Excel変換】ExcelのWebアプリ化/GAS化提案 + プロトタイプ生成。VBA/ActiveX対応。【AI見積もり】画面設計 → 技術スタック比較 → 一般版/リベルタ版の2モード工数見積もり → 製造資料（DB設計・API設計・実装順序）の自動生成。",
+        "業務のDX化を支援する統合アシスタント。【DX提案】業務フロー図の自動生成 → ボトルネック分析 → システム化提案 → 要件定義書生成。【Excel変換】ExcelのWebアプリ化/GAS化提案 + プロトタイプ生成。VBA/ActiveX対応。【AI見積もり】画面設計 → 技術スタック比較 → 一般版/自社版の2モード工数見積もり → 製造資料（DB設計・API設計・実装順序）の自動生成。",
       challenges: [
         "曖昧な業務記述から正確なフロー図を生成するプロンプト設計",
         "一般的な開発会社とAI活用開発の2モード見積もりの係数設計",
@@ -210,14 +210,14 @@ export const projects: Project[] = [
       approach: [
         "DX提案: 6段階AIパイプライン（フロー図→現状分析→提案→質問→要件定義→総合提案）",
         "Excel変換: VBA/ActiveX検出 → Web化 vs GAS化の適性判定 → プロトタイプ自動生成",
-        "見積もり: 一般版（100%）とリベルタ版（50-60%）を並行生成・タブ切替表示",
+        "見積もり: 一般版（100%）と自社版（50-60%）を並行生成・タブ切替表示",
         "製造資料: 画面設計+技術スタックからDB設計・API設計・実装順序をMarkdown出力",
         "Renderリトライ・起動待ち処理でスリープ対策、タイムアウト階層設計",
       ],
       results: [
         "業務分析から見積もり・製造資料まで一気通貫で5分で完成",
         "DX提案書・要件定義書・概算見積書・製造資料の4種類の出力に対応",
-        "一般版/リベルタ版の比較で「AI活用の価値」を可視化",
+        "一般版/自社版の比較で「AI活用の価値」を可視化",
         "Excel変換ではVBA/ActiveXの検出・Web化/GAS化の自動判定",
       ],
       techDetail: "Next.js + TypeScript + Tailwind CSS。Gemini 2.5 Flash / Claude Haiku 4.5 のデュアルAI構成（SSEストリーミング）。フロー図はMermaid記法で生成しSVGレンダリング。ExcelJSによる帳票出力。バックエンドはExpress.js（Render）でAI API呼び出しを集約。",
@@ -273,7 +273,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-13",
+    updatedAt: "2026-04-14",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
