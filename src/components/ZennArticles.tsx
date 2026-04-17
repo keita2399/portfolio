@@ -28,7 +28,7 @@ export default async function ZennArticles() {
   if (articles.length === 0) return null;
 
   return (
-    <section style={{ padding: "60px 32px 0", position: "relative" }}>
+    <section style={{ padding: "60px 32px 40px", background: "#0f172a", position: "relative" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
         <div style={{ fontSize: 10, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 12 }}>
           // ARTICLES
