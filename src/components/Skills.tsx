@@ -3,8 +3,15 @@
 import { motion } from "framer-motion";
 import SectionCTA from "./SectionCTA";
 
+const aiSkills = [
+  { name: "Claude API / Anthropic SDK", pct: 95 },
+  { name: "エージェント設計 (Claude Code)", pct: 90 },
+  { name: "プロンプトエンジニアリング", pct: 90 },
+  { name: "RAG構築", pct: 75 },
+  { name: "LangChain / LangGraph", pct: 70 },
+];
+
 const primarySkills = [
-  { name: "AI活用 (Claude Code)", pct: 95 },
   { name: "TypeScript", pct: 85 },
   { name: "React / Next.js", pct: 85 },
   { name: "Node.js / Prisma", pct: 80 },
@@ -50,6 +57,36 @@ export default function Skills() {
         </motion.div>
 
         <div style={{ maxWidth: 600 }}>
+          {/* AI / LLM */}
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ fontSize: 13, letterSpacing: 1, marginBottom: 24, fontWeight: 600, color: "#34d399" }}>AI / LLM</div>
+            <div style={{ display: "grid", gap: 20 }}>
+              {aiSkills.map((s, index) => (
+                <motion.div
+                  key={s.name}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                    <span style={{ fontSize: 13, color: "#fff" }}>{s.name}</span>
+                    <span style={{ fontSize: 10, color: "#34d399", letterSpacing: 0.5 }}>AI</span>
+                  </div>
+                  <div style={{ height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2, overflow: "hidden" }}>
+                    <motion.div
+                      style={{ height: "100%", background: "linear-gradient(to right, #34d399, #10b981)", borderRadius: 2 }}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${s.pct}%` }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 1, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* Primary */}
           <div style={{ marginBottom: 40 }}>
             <div style={{ fontSize: 13, color: "#93c5fd", letterSpacing: 1, marginBottom: 24, fontWeight: 600 }}>Primary</div>
