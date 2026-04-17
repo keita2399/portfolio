@@ -60,28 +60,22 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ fontSize: 11, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 16 }}>
-            // フルスタックエンジニア × AI協働開発
-          </div>
-
-          <div className="font-serif-jp" style={{ fontSize: "clamp(12px, 1.8vw, 15px)", color: "rgba(147,197,253,0.7)", marginBottom: 16, lineHeight: 1.8 }}>
-            「作りたいものはあるが、開発できる人がいない」<br />
-            「古いシステムをどうにかしたいが、仕様書もない」<br />
-            「予算は限られているが、確実に動くものが欲しい」
+            // 業務委託 / 副業 / 正社員 応募受付中
           </div>
 
           <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20, color: "#fff" }}>
-            欲しいものを伝えてください
+            AI × 40年の業務経験で
             <br />
-            <span style={{ color: "#93c5fd" }}>動くシステムをお届けします</span>
+            <span style={{ color: "#93c5fd" }}>開発チームを即戦力で加速します</span>
           </h1>
 
           <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 17px)", color: "rgba(219,234,254,0.85)", marginBottom: 32, lineHeight: 1.9, maxWidth: 560, fontWeight: 300 }}>
-            40年の業務システム経験 × AI協働開発。<br />
-            企画から運用まで、一人でチーム規模の成果を出します。
+            Claude API・RAG・LangChainを実装で使えるフルスタックエンジニア。<br />
+            AIエージェント設計から本番稼働まで、一人でチーム規模の成果を出します。
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
-            {["人手不足でも開発できる", "仕様書なしでレガシー刷新", "AI活用で短納期対応", "企画〜運用まで一貫"].map((t) => (
+            {["AI / LLM 実装経験", "フルスタック", "リモート対応", "即戦力"].map((t) => (
               <span key={t} style={{
                 fontSize: 11, padding: "5px 14px",
                 border: "1px solid rgba(255,255,255,0.2)",
@@ -96,8 +90,7 @@ export default function Hero() {
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 48 }}>
             <a
-              href="#works"
-              onClick={(e) => scrollTo(e, "#works")}
+              href="/resume"
               style={{
                 padding: "13px 32px", background: "#2563eb", color: "#fff",
                 borderRadius: 2, fontSize: 13, letterSpacing: 2,
@@ -107,7 +100,7 @@ export default function Hero() {
               onMouseEnter={(e) => { e.currentTarget.style.background = "#1d4ed8"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "#2563eb"; }}
             >
-              実績を見る
+              経歴書を見る
             </a>
             <a
               href="#contact"
@@ -121,7 +114,7 @@ export default function Hero() {
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; }}
             >
-              相談する →
+              連絡する →
             </a>
           </div>
         </motion.div>
