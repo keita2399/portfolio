@@ -273,7 +273,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-18",
+    updatedAt: "2026-04-20",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
@@ -552,8 +552,8 @@ export const projects: Project[] = [
     thumbnail: "/thumbnails/machikoe.svg",
     description:
       "地方議会の議事録をAIが要約し、住民が自分ごととして意見を届けられるWebアプリ。富士河口湖町・船橋市の議事録を自動収集し、スタンス選択→AI下書き生成→X投稿/パブコメ送付まで一気通貫で対応。",
-    stats: ["Gemini 2.5 Flash", "議事録AI要約"],
-    tags: ["Next.js", "TypeScript", "Prisma", "Neon", "Gemini API", "Playwright"],
+    stats: ["LangChain", "Gemini 2.5 Flash", "議事録AI要約"],
+    tags: ["Next.js", "TypeScript", "Prisma", "Neon", "LangChain", "Gemini API", "Playwright"],
     updatedAt: "2026-04-20",
     githubRepo: "keita2399/machikoe",
     githubPublic: true,
@@ -569,7 +569,8 @@ export const projects: Project[] = [
       approach: [
         "Next.js App Router + Prisma + Neon PostgreSQLでフルスタック構成",
         "スクレイパーは議事録システムごとに分離（scrape-kaigiroku.ts / scrape-funabashi.ts）",
-        "Gemini APIで要約・影響説明・意見下書きの3種類のプロンプトを設計",
+        "LangChain（@langchain/google-genai）でAI呼び出しを抽象化し、モデル変更・複数プロバイダー追加に対応できる構成",
+        "Gemini 2.5 Flashで要約・影響説明・意見下書きの3種類のプロンプトを設計",
         "コピー＋フォームを開くUXで「貼るだけ」導線を実現",
       ],
       results: [
