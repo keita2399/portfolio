@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3577A6;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#3577A6;stop-opacity:0.03"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+
+  <!-- Left panel: item list -->
+  <rect x="20" y="20" width="200" height="320" rx="8" fill="#fff" stroke="#3577A6" stroke-opacity="0.15" stroke-width="1"/>
+  <!-- Risk items -->
+  <rect x="30" y="40" width="180" height="44" rx="4" fill="#FDECEC"/>
+  <rect x="30" y="40" width="3" height="44" rx="2" fill="#B4343A"/>
+  <rect x="40" y="52" width="100" height="8" rx="3" fill="#B4343A" fill-opacity="0.4"/>
+  <rect x="40" y="65" width="140" height="6" rx="3" fill="#B4343A" fill-opacity="0.2"/>
+
+  <rect x="30" y="92" width="180" height="44" rx="4" fill="#FDECEC" fill-opacity="0.5"/>
+  <rect x="30" y="92" width="3" height="44" rx="2" fill="#B4343A" fill-opacity="0.5"/>
+  <rect x="40" y="104" width="90" height="8" rx="3" fill="#B4343A" fill-opacity="0.3"/>
+  <rect x="40" y="117" width="130" height="6" rx="3" fill="#B4343A" fill-opacity="0.15"/>
+
+  <!-- Watch items -->
+  <rect x="30" y="150" width="180" height="44" rx="4" fill="#FEF5E3"/>
+  <rect x="30" y="150" width="3" height="44" rx="2" fill="#96660E"/>
+  <rect x="40" y="162" width="110" height="8" rx="3" fill="#96660E" fill-opacity="0.4"/>
+  <rect x="40" y="175" width="150" height="6" rx="3" fill="#96660E" fill-opacity="0.2"/>
+
+  <!-- OK items -->
+  <rect x="40" y="215" width="8" height="8" rx="999" fill="#3D7239" fill-opacity="0.6"/>
+  <rect x="55" y="217" width="120" height="6" rx="3" fill="#3D7239" fill-opacity="0.3"/>
+  <rect x="40" y="232" width="8" height="8" rx="999" fill="#3D7239" fill-opacity="0.6"/>
+  <rect x="55" y="234" width="100" height="6" rx="3" fill="#3D7239" fill-opacity="0.3"/>
+  <rect x="40" y="249" width="8" height="8" rx="999" fill="#3D7239" fill-opacity="0.6"/>
+  <rect x="55" y="251" width="130" height="6" rx="3" fill="#3D7239" fill-opacity="0.3"/>
+
+  <!-- Right panel: detail -->
+  <rect x="235" y="20" width="385" height="320" rx="8" fill="#fff" stroke="#3577A6" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Badge -->
+  <rect x="255" y="40" width="90" height="20" rx="10" fill="#FDECEC" stroke="#F4C5C5" stroke-width="1"/>
+  <rect x="261" y="47" width="6" height="6" rx="999" fill="#B4343A"/>
+  <rect x="272" y="49" width="60" height="5" rx="2" fill="#B4343A" fill-opacity="0.5"/>
+
+  <!-- Title -->
+  <rect x="255" y="70" width="200" height="14" rx="3" fill="#1E272F" fill-opacity="0.7"/>
+  <rect x="255" y="90" width="160" height="10" rx="3" fill="#1E272F" fill-opacity="0.4"/>
+
+  <!-- Explanation box -->
+  <rect x="255" y="115" width="345" height="80" rx="8" fill="#F8FAFB" stroke="#E2E8EE" stroke-width="1"/>
+  <rect x="268" y="128" width="80" height="7" rx="2" fill="#8792A0" fill-opacity="0.6"/>
+  <rect x="268" y="143" width="310" height="6" rx="2" fill="#2E3942" fill-opacity="0.35"/>
+  <rect x="268" y="155" width="290" height="6" rx="2" fill="#2E3942" fill-opacity="0.25"/>
+  <rect x="268" y="167" width="240" height="6" rx="2" fill="#2E3942" fill-opacity="0.2"/>
+
+  <!-- Question box -->
+  <rect x="255" y="210" width="345" height="90" rx="8" fill="#FDECEC" stroke="#F4C5C5" stroke-width="1"/>
+  <rect x="268" y="223" width="100" height="7" rx="2" fill="#B4343A" fill-opacity="0.5"/>
+  <rect x="268" y="238" width="300" height="6" rx="2" fill="#1E272F" fill-opacity="0.4"/>
+  <rect x="268" y="250" width="270" height="6" rx="2" fill="#1E272F" fill-opacity="0.3"/>
+  <!-- AI sparkle -->
+  <text x="585" y="48" font-family="system-ui" font-size="18" fill="#3577A6" fill-opacity="0.3">✦</text>
+  <text x="600" y="60" font-family="system-ui" font-size="10" fill="#3577A6" fill-opacity="0.3">AI</text>
+</svg>
