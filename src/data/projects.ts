@@ -93,7 +93,7 @@ export const projects: Project[] = [
   {
     slug: "matching-app",
     category: "flagship",
-    title: "マッチングWebアプリ",
+    title: "マッチングアプリ",
     badge: "公開中",
     badgeColor: "#db2777",
     borderColor: "#db2777",
@@ -303,7 +303,7 @@ export const projects: Project[] = [
   {
     slug: "contract-checker",
     category: "tools",
-    title: "AI契約書チェッカー",
+    title: "契約書リスクチェッカー",
     badge: "デモ公開中",
     badgeColor: "#10b981",
     borderColor: "#10b981",
@@ -343,7 +343,7 @@ export const projects: Project[] = [
   {
     slug: "receipt-scanner",
     category: "tools",
-    title: "AI 経費仕分けツール",
+    title: "経費仕分けツール",
     badge: "デモ公開中",
     badgeColor: "#f59e0b",
     borderColor: "#f59e0b",
@@ -385,7 +385,7 @@ export const projects: Project[] = [
   {
     slug: "ai-document-checker",
     category: "tools",
-    title: "AI書類分析ツール",
+    title: "AI書類チェッカー",
     badge: "デモ公開中",
     badgeColor: "#6366f1",
     borderColor: "#6366f1",
@@ -715,7 +715,7 @@ export const projects: Project[] = [
   {
     slug: "freelance-manager",
     category: "personal",
-    title: "FreelanceManager - 案件管理ツール",
+    title: "案件管理ツール",
     badge: "本番稼働中",
     badgeColor: "#4f46e5",
     borderColor: "#4f46e5",
@@ -755,7 +755,7 @@ export const projects: Project[] = [
   {
     slug: "skin-diagnosis",
     category: "tools",
-    title: "AI肌診断アプリ",
+    title: "AI肌診断",
     badge: "本番稼働中",
     badgeColor: "#ec4899",
     borderColor: "#ec4899",
@@ -863,7 +863,7 @@ export const projects: Project[] = [
 export const legacyProjects: Project[] = [
   {
     slug: "legacy-code-archive",
-    title: "Legacy Code Museum & コード鑑定書",
+    title: "Legacy Code Museum",
     badge: "鑑定書38本",
     badgeColor: "#d4a574",
     borderColor: "#d4a574",
@@ -1394,7 +1394,7 @@ export const legacyProjects: Project[] = [
   {
     slug: "elearning-demo",
     category: "demo",
-    title: "eラーニングプラットフォーム デモ",
+    title: "eラーニングプラットフォーム",
     badge: "提案用デモ",
     badgeColor: "#4f46e5",
     borderColor: "#4f46e5",
