@@ -542,6 +542,71 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "machikoe",
+    category: "demo",
+    title: "マチコエ",
+    badge: "デモ公開中",
+    badgeColor: "#0ea57e",
+    borderColor: "#0ea57e",
+    externalUrl: "https://machikoe.vercel.app",
+    thumbnail: "/thumbnails/machikoe.svg",
+    description:
+      "地方議会の議事録をAIが要約し、住民が自分ごととして意見を届けられるWebアプリ。富士河口湖町・船橋市の議事録を自動収集し、スタンス選択→AI下書き生成→X投稿/パブコメ送付まで一気通貫で対応。",
+    stats: ["Gemini 2.5 Flash", "議事録AI要約"],
+    tags: ["Next.js", "TypeScript", "Prisma", "Neon", "Gemini API", "Playwright"],
+    updatedAt: "2026-04-20",
+    githubRepo: "keita2399/machikoe",
+    githubPublic: true,
+    detail: {
+      overview:
+        "地方議会の議事録をスクレイピングで自動収集し、Gemini 2.5 Flashで要約・住民への影響説明・意見下書きを生成するWebアプリ。住民がスタンスを選ぶだけで意見文が生成され、X（@役場公式）への投稿またはパブリックコメントのコピー＋フォーム起動で意見表明まで完結する。",
+      challenges: [
+        "kaigiroku.net（Playwright必須）とVOICES/Web（JSON API直叩き）という2種類の異なる議事録システムへの対応",
+        "発言個別URLの取得（data-doc属性からcouncil_id/schedule_id/minute_idを逆算）",
+        "ブラウザのSame-Origin Policyによりパブコメフォームへの自動入力が不可能な問題",
+        "AIの下書きが「応援文」になりがちな問題（箇条書き＋主張を言い切る形式への誘導）",
+      ],
+      approach: [
+        "Next.js App Router + Prisma + Neon PostgreSQLでフルスタック構成",
+        "スクレイパーは議事録システムごとに分離（scrape-kaigiroku.ts / scrape-funabashi.ts）",
+        "Gemini APIで要約・影響説明・意見下書きの3種類のプロンプトを設計",
+        "コピー＋フォームを開くUXで「貼るだけ」導線を実現",
+      ],
+      results: [
+        "富士河口湖町35件・船橋市直近1年分のデータをDBに自動収集",
+        "スタンス選択→AI下書き生成→X投稿/パブコメまで30秒で完了",
+        "みんなの声ダッシュボードで賛成/反対/条件付き賛成の集計をグラフ表示",
+        "発言の個別URLリンクで議案原文へのダイレクトアクセスを実現",
+      ],
+      techDetail:
+        "Next.js 16 + TypeScript + Prisma v7 + Neon PostgreSQL + LangChain（@langchain/google-genai）+ Gemini 2.5 Flash + Playwright。スクレイピングはPlaywright（kaigiroku.net）とfetch（VOICES/Web JSON API）を使い分け。Vercelにデプロイ。",
+      designDoc: {
+        architecture:
+          "スクレイパー（Playwright / fetch）\n  └─ data/kaigiroku-raw.json / funabashi-raw.json\n       │ import-to-db.ts / import-funabashi.ts\n       ▼\n  Neon PostgreSQL（Topic / Opinion）\n       │ Prisma Client\n       ▼\n  Next.js API Routes\n  ├─ /api/topics/[id]          GET\n  ├─ /api/topics/[id]/impact   POST（AI影響説明）\n  ├─ /api/topics/[id]/draft    POST（AI意見下書き）\n  └─ /api/opinions             POST/GET\n       ▼\n  Next.js Pages\n  ├─ /                        議題一覧\n  ├─ /topics/[id]             議題詳細＋影響説明\n  ├─ /topics/[id]/opinion     意見投稿\n  └─ /dashboard               みんなの声集計",
+        dataFlow: [
+          "スクレイパーが議事録サイトから発言テキスト・URL・日付を収集",
+          "インポートスクリプトがGemini APIで要約を生成しDBに登録",
+          "ユーザーがトップページで議題を選択",
+          "立場（住民/事業者）を選ぶとAIが影響説明を生成",
+          "スタンス（賛成/条件付き/反対）を選ぶとAIが意見下書きを生成",
+          "編集後にみんなの声投稿・X送信・パブコメコピーのいずれかで意見表明",
+        ],
+        apiSpecs: [
+          { method: "GET", path: "/api/topics/[id]", description: "議題詳細を返す" },
+          { method: "POST", path: "/api/topics/[id]/impact", description: "住民/事業者への影響説明をAI生成" },
+          { method: "POST", path: "/api/topics/[id]/draft", description: "スタンスに応じた意見下書きをAI生成" },
+          { method: "POST", path: "/api/opinions", description: "意見をDBに記録" },
+        ],
+        dataModels:
+          "model Topic {\n  id          String\n  title       String\n  summary     String\n  rawText     String\n  meetingDate DateTime\n  meetingName String\n  keywords    String[]\n  sourceUrl   String?\n  status      String\n  opinions    Opinion[]\n}\n\nmodel Opinion {\n  id        String\n  topicId   String\n  stance    String  // agree / conditional / disagree\n  userType  String  // resident / business / other\n  content   String\n  anonymous Boolean\n}",
+        envVars: [
+          { name: "DATABASE_URL", required: true, description: "Neon PostgreSQL接続文字列" },
+          { name: "GEMINI_API_KEY", required: true, description: "Google Gemini APIキー" },
+        ],
+      },
+    },
+  },
+  {
     slug: "line-claude-sync",
     category: "tools",
     title: "LINE Claude Sync",
