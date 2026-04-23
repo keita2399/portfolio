@@ -126,6 +126,9 @@ const portfolio = [
   { name: "移動時間計算アプリ", desc: "Google Maps APIで4移動手段の所要時間・ルートを比較表示", tech: "Next.js, TypeScript, Google Maps API", url: "https://travel-time-app-keita2399s-projects.vercel.app" },
   { name: "LINE 通知デモアプリ", desc: "LINE Messaging APIでテキスト・画像・スタンプの3種メッセージをBot送信", tech: "Next.js, TypeScript, LINE Messaging API", url: "https://line-notify-app-keita2399s-projects.vercel.app" },
   { name: "アートさんぽシリーズ", desc: "4美術館API+Wikidata SPARQL で作品取得、GLSL Shader・Three.js 3Dオランジュリー、7アプリ展開", tech: "Flutter, Dart, Three.js, GLSL, Vercel", url: "https://sanpo-monet.vercel.app" },
+  { name: "不動産書類 AIガイド", desc: "不動産書類PDFをアップロードするだけでAIが書類種別を自動判定してリスク・注意点・確認事項を解説。重要事項説明書・賃貸借契約書・登記簿謄本など5種類に対応", tech: "Next.js, TypeScript, LangChain, Gemini API, Vercel", url: "https://juusetsu-checker.vercel.app" },
+  { name: "不動産業務 AIエージェント", desc: "売買・賃貸・査定・法律・契約の5カテゴリに自動分類して回答するAIチャット。LangGraph StateGraphで推論フローを管理", tech: "Next.js, TypeScript, LangChain, LangGraph, Gemini API, Claude API", url: "https://real-estate-ai-guide.vercel.app" },
+  { name: "重要事項説明書 AI自動作成", desc: "登記簿・ハザードマップなどのPDFからAIが重要事項説明書Excelを自動生成。テンプレート管理・作成履歴機能付き", tech: "Next.js, TypeScript, LangChain, Gemini API, xlsx, Tailwind CSS", url: "https://real-estate-input.vercel.app" },
   { name: "レガシーコード変換プロジェクト", desc: "13言語・44万行超→3万行（平均85%削減）コード変換", tech: "COBOL, PL/I, RPG, VB6, FastAPI, React, Claude Code", url: "/works/legacy-conversions" },
   { name: "Legacy Code Museum & コード鑑定書", desc: "383K件のコードコメント収集・感情分析・インタラクティブ展示＋鑑定書38本", tech: "Python, Next.js, TypeScript, D3.js", url: "https://gstate-gk.github.io/legacy-code-museum/" },
 ];

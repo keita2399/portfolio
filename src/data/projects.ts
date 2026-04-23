@@ -14,6 +14,7 @@ export type Project = {
   githubPublic?: boolean;
   category?: ProjectCategory;
   externalUrl?: string;
+  lineAccounts?: { label: string; url: string }[];
   thumbnail?: string;
   screenshots?: { src: string; caption: string }[];
   // 詳細ページ用
@@ -483,11 +484,11 @@ export const projects: Project[] = [
   {
     slug: "juusetsu-checker",
     category: "demo",
-    title: "不動産書類チェッカー",
+    title: "不動産書類 AIガイド",
     badge: "デモ公開中",
     badgeColor: "#3577A6",
     borderColor: "#3577A6",
-    externalUrl: "https://doc-reader-pied.vercel.app",
+    externalUrl: "https://juusetsu-checker.vercel.app",
     thumbnail: "/thumbnails/juusetsu-checker.svg",
     description:
       "不動産書類のPDFをアップロードするだけで、AIが書類の種類を自動判定してリスク・注意点・確認事項を分かりやすく解説。重要事項説明書・賃貸借契約書・登記簿謄本・売買契約書・収支内訳書の5種類に対応。",
@@ -549,6 +550,10 @@ export const projects: Project[] = [
     badgeColor: "#0ea57e",
     borderColor: "#0ea57e",
     externalUrl: "https://machikoe.vercel.app",
+    lineAccounts: [
+      { label: "富士河口湖町", url: "https://line.me/R/ti/p/@977znxrk" },
+      { label: "船橋市", url: "https://line.me/R/ti/p/@018ohgfe" },
+    ],
     thumbnail: "/thumbnails/machikoe.svg",
     description:
       "地方議会の議事録をAIが要約し、住民が自分ごととして意見を届けられるWebアプリ。富士河口湖町・船橋市の議事録を自動収集し、スタンス選択→AI下書き生成→X投稿/パブコメ送付まで一気通貫で対応。",
@@ -794,46 +799,6 @@ export const projects: Project[] = [
         "Next.js 15 (App Router) + TypeScript + Tailwind CSS + Framer Motion。Google Gemini 2.5 Flash Vision APIをinlineData形式で呼び出し、Zod (DiagnosisResultSchema) でレスポンスを型安全に検証。Vercelにデプロイ済み。",
     },
   },
-  // === 不動産書類AI自動入力 ===
-  {
-    slug: "real-estate-ai",
-    category: "tools",
-    title: "不動産書類AI自動入力",
-    badge: "デモ公開中",
-    badgeColor: "#2563EB",
-    borderColor: "#2563EB",
-    externalUrl: "https://real-estate-ai-zb95.onrender.com",
-    githubRepo: "keita2399/real-estate-ai",
-    githubPublic: true,
-    description:
-      "登記簿謄本・ハザードマップ等のPDFをアップロードするだけで、Gemini AIが34項目を自動抽出し、重要事項説明書のExcelに書き込む不動産業務特化ツール。",
-    stats: ["Gemini 2.5 Flash", "34項目自動抽出", "Renderデプロイ済み"],
-    tags: ["Python", "Flask", "Gemini API", "openpyxl", "Render"],
-    updatedAt: "2026-04-12",
-    detail: {
-      overview:
-        "不動産取引で必須の重要事項説明書作成を効率化するWebツール。登記簿謄本・ハザードマップ・都市計画図などのPDFを複数まとめてアップロードすると、Gemini 2.5 Flash APIが所在・地番・地目・所有者・抵当権・用途地域・ハザード情報など34項目を自動抽出し、Excelテンプレートに書き込んで返却する。宅建業者情報はブラウザのlocalStorageに保存されるため、入力は初回のみ。Renderにデプロイ済みで即デモ可能。",
-      challenges: [
-        "openpyxlの結合セルへの書き込み（先頭セルを特定するロジックが必要）",
-        "Gemini Files APIで複数PDFを一括送信し34項目のJSONを安定出力させるプロンプト設計",
-        "Vercelの4.5MB/10秒制限を回避するためRenderを選択",
-        "Excelテンプレートをゼロから設計（重要事項説明書の書式を再現）",
-      ],
-      approach: [
-        "google-genai SDKのFiles APIでPDFをアップロードし、generate_contentでJSON出力を指定",
-        "openpyxlでmerged_cells.rangesを走査して結合セルの先頭セルを特定し書き込み",
-        "宅建業者情報をFormData経由でサーバーに送信し、localStorageで永続化",
-        "gunicorn --timeout 120でPDF処理の待機時間に対応",
-      ],
-      results: [
-        "登記簿謄本サンプルで34項目中20項目を自動抽出・入力",
-        "Renderにデプロイ済み・デモURLで即体験可能",
-        "Lancers案件（予算50〜100万円）に提案実績あり",
-      ],
-      techDetail:
-        "Python + Flask + Google Gemini 2.5 Flash（Files API）+ openpyxl + gunicorn。フロントはHTML/CSS/JSのシングルページ（ドラッグ&ドロップ＋localStorage）。Renderにデプロイ。",
-    },
-  },
   // === レガシーコード変換（サマリー） ===
   {
     slug: "legacy-conversions",
@@ -855,6 +820,44 @@ export const projects: Project[] = [
       approach: [],
       results: [],
       techDetail: "",
+    },
+  },
+  {
+    slug: "line-setup",
+    category: "tools",
+    title: "line-setup",
+    badge: "OSS",
+    badgeColor: "#06C755",
+    borderColor: "#06C755",
+    externalUrl: "https://github.com/keita2399/line-setup",
+    githubRepo: "keita2399/line-setup",
+    githubPublic: true,
+    description:
+      "LINE公式アカウントのリッチメニュー設定を自動化するGo製CLIツール。画像生成・アップロード・デフォルト設定まで1コマンドで完結。複数自治体への展開など反復作業を効率化。",
+    stats: ["Go", "LINE Messaging API", "CLI"],
+    tags: ["Go", "Cobra", "LINE API", "CLI", "OSS"],
+    updatedAt: "2026-04-21",
+    detail: {
+      overview:
+        "LINE公式アカウントのリッチメニュー設定（画像生成・アップロード・デフォルト割り当て）を1コマンドで自動化するGo製CLIツール。マチコエプロジェクトで複数自治体のLINEアカウント設定を繰り返す中で、手動作業の煩雑さを解消するために開発した。",
+      challenges: [
+        "LINEのコンテンツAPIは api-data.line.me と api.line.me で別ホストになっており、同一と誤認しやすい",
+        "Go標準ライブラリに日本語テキスト描画機能がなく、OSごとにシステムフォントの自動検出が必要",
+        "リッチメニューは一度画像をアップロードすると差し替えができないため、更新時は削除→再作成が必要",
+      ],
+      approach: [
+        "github.com/spf13/cobra でサブコマンド構成（add / list / delete）",
+        "github.com/fogleman/gg で 2500×843 PNG をプログラム生成（グラデーション＋テキスト）",
+        "Windows/macOS/Linux のシステムフォントを自動検出し、--font フラグで上書き可能",
+        "LINE Messaging API クライアントを internal/api に分離し、再利用可能な設計",
+      ],
+      results: [
+        "自治体追加時のリッチメニュー設定を約20分の手作業から1コマンド（数秒）に短縮",
+        "add / list / delete の3コマンドで運用に必要な操作をカバー",
+        "go install で即インストール可能なシングルバイナリとして配布",
+      ],
+      techDetail:
+        "Go 1.22 + Cobra v1.10 + fogleman/gg v1.3 + golang.org/x/image。LINE Messaging API（api.line.me）とContent API（api-data.line.me）を直接呼び出し。外部依存を最小限に抑えたシングルバイナリ構成。",
     },
   },
 ];
@@ -1588,6 +1591,76 @@ export const legacyProjects: Project[] = [
       ],
       techDetail:
         "Node.js + Express + TypeScript。LangChain（@langchain/google-genai, @langchain/anthropic）+ LangGraph（StateGraph）。Gemini 2.5 Flash / Claude Sonnet をマルチモデルで運用。CORS設定で本番フロントエンドURLをホワイトリスト管理。",
+    },
+  },
+  {
+    slug: "real-estate-agent",
+    category: "demo",
+    title: "不動産業務 AIエージェント",
+    badge: "デモ公開中",
+    badgeColor: "#166534",
+    borderColor: "#166534",
+    externalUrl: "https://real-estate-ai-guide.vercel.app",
+    description:
+      "不動産業務に特化したAIチャットエージェント。売買・賃貸・査定・法律・契約の5カテゴリに対応し、質問を入力するだけでGemini 2.5 Flashが回答をカテゴリ分類付きで返す。LangGraph StateGraphでマルチステップ推論フローを管理。",
+    stats: ["5カテゴリ対応", "Gemini 2.5 Flash", "LangGraph StateGraph"],
+    tags: ["Next.js", "TypeScript", "LangChain", "LangGraph", "Gemini API", "Claude API"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "不動産業務の質問をAIが回答するチャットエージェント。売買・賃貸・査定・法律・契約・その他の6カテゴリに自動分類し、カテゴリバッジ付きで回答を表示。LangGraph StateGraphで推論フローを状態機械として管理し、Gemini 2.5 Flashをメインモデルとして使用。",
+      challenges: [
+        "LangGraph StateGraphによる不動産特化推論フローの設計",
+        "質問内容から売買・賃貸・査定・法律・契約を自動分類するプロンプト設計",
+        "カテゴリバッジ付きのチャットUIの実装",
+      ],
+      approach: [
+        "LangChain @langchain/google-genai でGemini 2.5 Flashを呼び出し",
+        "StateGraphで質問分類→回答生成のフローを管理",
+        "カテゴリ別カラーバッジで視覚的に分類表示",
+      ],
+      results: [
+        "売買・賃貸・査定・法律・その他の5カテゴリに自動分類して回答",
+        "不動産専門知識に特化したプロンプトで精度の高い回答を実現",
+        "LangGraphによる拡張可能なエージェントアーキテクチャを構築",
+      ],
+      techDetail:
+        "Next.js + TypeScript。LangChain（@langchain/google-genai, @langchain/anthropic）+ LangGraph（StateGraph）。Gemini 2.5 Flash を不動産業務特化モデルとして運用。",
+    },
+  },
+  {
+    slug: "real-estate-input",
+    category: "demo",
+    title: "重要事項説明書 AI自動作成",
+    badge: "デモ公開中",
+    badgeColor: "#1e3a5f",
+    borderColor: "#1e3a5f",
+    externalUrl: "https://real-estate-input.vercel.app",
+    description:
+      "登記簿・ハザードマップなどのPDFをアップロードするだけでAIが重要事項説明書のExcelを自動生成するWebアプリ。テンプレート管理画面と作成履歴機能を備え、会社情報をヘッダーに自動挿入。",
+    stats: ["PDF→重説Excel自動生成", "テンプレート管理", "作成履歴機能"],
+    tags: ["Next.js", "TypeScript", "LangChain", "Gemini API", "xlsx", "Tailwind CSS"],
+    updatedAt: "2026-04",
+    detail: {
+      overview:
+        "登記簿・ハザードマップ・都市計画・建築確認などの書類PDFからAIが重要事項説明書のExcelを自動作成するNext.js Webアプリ。メイン画面でPDFをアップロードしてテンプレートを選択するだけで自動入力が完了。テンプレート管理画面でExcelテンプレートのフィールドマッピングを管理し、会社情報モーダルで事務所情報をヘッダーに自動挿入。",
+      challenges: [
+        "複数PDF種別（登記・ハザード・都市計画等）の自動識別とフィールドマッピング",
+        "テンプレート管理画面でのExcelフィールド定義のUI設計",
+        "作成履歴のlocalStorage永続化と復元",
+      ],
+      approach: [
+        "LangChain @langchain/google-genai でGemini APIを呼び出しPDF内容を構造化抽出",
+        "xlsxライブラリでExcelファイルの生成・ダウンロード",
+        "AppShell + Screen切り替えパターンでテンプレート管理とメイン画面をSPA管理",
+      ],
+      results: [
+        "登記簿・ハザードマップ等の書類PDFから重要事項説明書Excelを自動生成",
+        "テンプレート管理画面でフィールドマッピングをGUI操作で設定可能",
+        "作成履歴で過去の出力を管理・再利用できる業務フローを実現",
+      ],
+      techDetail:
+        "Next.js + TypeScript + Tailwind CSS。LangChain（@langchain/google-genai）+ Gemini API。xlsxライブラリでExcel生成。テンプレート・履歴はlocalStorageで永続化。Vercelにデプロイ可能な構成。",
     },
   },
 ];
