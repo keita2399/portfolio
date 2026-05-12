@@ -5,6 +5,13 @@ import SectionCTA from "./SectionCTA";
 
 const serviceTypes = [
   {
+    title: "技術顧問・アドバイザー",
+    desc: "AI SaaS立ち上げの技術判断パートナーとして参画します。アーキテクチャレビュー・技術選定・開発体制設計から、AI協働ワークフローの導入支援まで。月次固定 + レベニューシェア型も対応。対応領域: アーキテクチャ設計 / コードレビュー、チームへのAI活用導入支援、技術選定・PoC評価、採用支援(技術面接同席など)。",
+    example: "例: AIエージェントSaaSの技術顧問(月額固定 + 売上連動)",
+    icon: "00",
+    isNew: true,
+  },
+  {
     title: "「こんなサービスを作りたい」を形にする",
     desc: "アイデア段階から入り、要件を一緒に整理して、動くシステムとして本番稼働させます。SaaS・業務アプリ・管理画面など。",
     example: "例: 建設業向けマッチングSaaSを企画から3ヶ月で本番稼働",
@@ -88,9 +95,23 @@ export default function Services() {
                 borderRadius: 4,
                 display: "flex", flexDirection: "column",
                 transition: "all 0.3s",
+                position: "relative",
               }}
               whileHover={{ scale: 1.02, borderColor: "rgba(96,165,250,0.5)" }}
             >
+              {s.isNew && (
+                <div style={{
+                  position: "absolute", top: 14, right: 14,
+                  fontSize: 10, letterSpacing: 1.5, fontWeight: 700,
+                  color: "#fbbf24",
+                  padding: "3px 8px",
+                  border: "1px solid rgba(251,191,36,0.5)",
+                  background: "rgba(251,191,36,0.1)",
+                  borderRadius: 2,
+                }}>
+                  NEW
+                </div>
+              )}
               <div style={{ fontSize: 28, fontWeight: 800, color: "#93c5fd", opacity: 0.4, marginBottom: 12 }}>
                 {s.icon}
               </div>
