@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "松井 慶太 — ITエンジニア ポートフォリオ";
+export const alt = "松井慶太 | AIエージェント開発・技術顧問";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -62,56 +62,59 @@ export default function OgImage() {
         </div>
 
         {/* 中央：メインコンテンツ */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <div
-            style={{
-              color: "#888888",
-              fontSize: "22px",
-              letterSpacing: "2px",
-            }}
-          >
-            ITエンジニア
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <div
             style={{
               color: "#f5f0e8",
-              fontSize: "80px",
+              fontSize: "56px",
               fontWeight: "700",
-              lineHeight: "1.1",
+              lineHeight: "1.2",
               letterSpacing: "-1px",
             }}
           >
-            松井 慶太
+            設計は人間、実装はAIエージェント。
           </div>
           <div
             style={{
-              color: "#aaaaaa",
-              fontSize: "26px",
+              color: "#c8860a",
+              fontSize: "44px",
+              fontWeight: "700",
+              lineHeight: "1.3",
+              letterSpacing: "-0.5px",
               marginTop: "8px",
-              lineHeight: "1.5",
             }}
           >
-            TypeScript・Next.js・AIでモダンWebを開発。
+            一人でチーム規模の開発速度を出します。
           </div>
         </div>
 
-        {/* 下部：タグ */}
-        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-          {["TypeScript / Next.js", "React", "AI開発", "DX推進"].map((tag) => (
-            <div
-              key={tag}
-              style={{
-                border: "1px solid #333333",
-                borderRadius: "4px",
-                padding: "8px 18px",
-                color: "#888888",
-                fontSize: "16px",
-                letterSpacing: "1px",
-              }}
-            >
-              {tag}
+        {/* 下部：署名 + スタック */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            borderTop: "1px solid #333333",
+            paddingTop: "20px",
+          }}
+        >
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <div style={{ color: "#f5f0e8", fontSize: "22px", fontWeight: 600 }}>
+              松井慶太 / フリーランスエンジニア
             </div>
-          ))}
+            <div style={{ color: "#888888", fontSize: "16px", letterSpacing: "1px" }}>
+              AIエージェント開発・技術顧問
+            </div>
+          </div>
+          <div
+            style={{
+              color: "#888888",
+              fontSize: "18px",
+              letterSpacing: "2px",
+            }}
+          >
+            Claude · Next.js · Gemini
+          </div>
         </div>
       </div>
     ),
