@@ -60,22 +60,23 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ fontSize: 11, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 16 }}>
-            // 業務委託 / 副業 / 正社員 応募受付中
+            // 業務委託 / 技術顧問 / 副業 応募受付中
           </div>
 
-          <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20, color: "#fff" }}>
-            AI × 40年の業務経験で
+          <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20, color: "#fff", maxWidth: 820 }}>
+            設計は人間、実装はAIエージェント。
             <br />
-            <span style={{ color: "#93c5fd" }}>開発チームを即戦力で加速します</span>
+            <span style={{ color: "#93c5fd" }}>一人でチーム規模の開発速度を出します。</span>
           </h1>
 
-          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 17px)", color: "rgba(219,234,254,0.85)", marginBottom: 32, lineHeight: 1.9, maxWidth: 560, fontWeight: 300 }}>
-            Claude API・RAG・LangChainを実装で使えるフルスタックエンジニア。<br />
-            AIエージェント設計から本番稼働まで、一人でチーム規模の成果を出します。
+          <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 17px)", color: "rgba(219,234,254,0.85)", marginBottom: 32, lineHeight: 1.9, maxWidth: 620, fontWeight: 300 }}>
+            Claude Code CLI を主軸にした設計駆動開発で、
+            SaaS立ち上げから本番運用、レガシー刷新まで単独完結。
+            40年の業務理解 × AI協働ワークフローで、初手から品質と速度を両立します。
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>
-            {["AI / LLM 実装経験", "フルスタック", "リモート対応", "即戦力"].map((t) => (
+            {["AIエージェント開発", "設計駆動", "フルスタック", "フルリモート / 山梨"].map((t) => (
               <span key={t} style={{
                 fontSize: 11, padding: "5px 14px",
                 border: "1px solid rgba(255,255,255,0.2)",
@@ -130,17 +131,22 @@ export default function Hero() {
           }}
         >
           {[
-            { value: 136, suffix: "人日", label: "通常見積もりの案件を", sub: "2週間強で一人実装（約10倍速）", highlight: true },
-            { value: 44, suffix: "万行超", label: "13言語の", sub: "レガシー変換実績", highlight: false },
-            { value: 40, suffix: "年", label: "業務システム", sub: "開発経験", highlight: false },
-          ].map(({ value, suffix, label, sub, highlight }) => (
+            { prefix: "136人日 → ", value: 3, suffix: "週間", label: "通常見積もりを", sub: "AI協働で実装", highlight: true },
+            { prefix: "44万行超 → ", value: 3, suffix: "万行", label: "13言語の", sub: "レガシー変換実績", highlight: false },
+            { prefix: "", value: 40, suffix: "年", label: "業務システム", sub: "開発経験", highlight: false },
+          ].map(({ prefix, value, suffix, label, sub, highlight }) => (
             <div key={label} style={{
               background: highlight ? "rgba(37,99,235,0.15)" : "rgba(255,255,255,0.05)",
               backdropFilter: "blur(8px)",
               border: highlight ? "1px solid rgba(37,99,235,0.5)" : "1px solid rgba(255,255,255,0.1)",
               borderRadius: 4, padding: "20px 24px",
             }}>
-              <div style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 800, color: highlight ? "#93c5fd" : "#fff", lineHeight: 1, marginBottom: 8 }}>
+              <div style={{ fontSize: "clamp(22px, 3.5vw, 32px)", fontWeight: 800, color: highlight ? "#93c5fd" : "#fff", lineHeight: 1.15, marginBottom: 8 }}>
+                {prefix && (
+                  <span style={{ fontSize: "0.65em", fontWeight: 600, color: highlight ? "rgba(147,197,253,0.65)" : "rgba(255,255,255,0.5)", marginRight: 4 }}>
+                    {prefix}
+                  </span>
+                )}
                 <StatCounter end={value} suffix={suffix} />
               </div>
               <div style={{ fontSize: 11, color: "rgba(147,197,253,0.8)", lineHeight: 1.6 }}>
