@@ -38,6 +38,43 @@ export type Project = {
 export const projects: Project[] = [
   // === 主要実績（flagship） ===
   {
+    slug: "vintage-camper-club",
+    category: "flagship",
+    title: "ビンテージキャンパー会員制プラットフォーム",
+    badge: "稼働中",
+    badgeColor: "#10b981",
+    borderColor: "#10b981",
+    description:
+      "ビンテージキャンピングカーオーナー向け会員制Webサービス。LINE Login認証・YouTubeチャンネル連携・AI車両故障診断チャットボット（RAG）の3機能を中核に構築。LLM・Embedding を Google Gemini（Vertex AI）で統一し、サーバーレス構成で運用コスト最適化。",
+    stats: ["LINE Login会員制", "Gemini RAGによる故障診断", "YouTube Data API連携"],
+    tags: ["Next.js 15", "TypeScript", "Prisma", "Neon", "Vertex AI", "Gemini", "Embedding", "LINE Login", "YouTube Data API", "Vercel"],
+    updatedAt: "2026-05",
+    detail: {
+      overview:
+        "ビンテージキャンピングカーオーナー向けの会員制Webサービス。LINE Loginによるシームレスな認証、YouTubeチャンネル連携による動画コンテンツの自動同期、Google Gemini（Vertex AI）の RAG による車両故障の対話型診断チャットボットを中核機能として構築。LLM と Embedding を Gemini に統一することで、運用コストと運用責任を最小化したサーバーレス構成。",
+      challenges: [
+        "ビンテージ車両特有の故障パターンを、限られた整備マニュアルから対話型診断に落とし込む RAG 設計",
+        "LINE Login（OAuth 2.0）と Next.js App Router セッションのシームレスな統合",
+        "YouTube Data API のクォータ管理と、チャンネル更新を会員サイトへ自動反映する同期パイプライン",
+        "LLM と Embedding の供給元を Gemini（Vertex AI）に統一して、APIキー管理・課金経路をシンプル化",
+      ],
+      approach: [
+        "Next.js 15 App Router + Prisma + Neon でフロント / API / DB を統合し、サーバーレス構成で運用",
+        "LINE Login を Next.js のセッションに橋渡しし、会員プロフィールを Prisma で管理",
+        "Vertex AI Embedding で整備情報・FAQ をベクトル化し、pgvector で類似検索 → Gemini で回答生成（RAG）",
+        "YouTube Data API でチャンネル動画を定期同期し、会員向け一覧として配信",
+      ],
+      results: [
+        "LINE Login認証によるシームレスな会員体験",
+        "Gemini RAGによる車両故障の対話型診断",
+        "YouTube Data API連携で動画コンテンツ自動同期",
+        "LLM・Embedding をVertex AIに一本化し、運用コストと依存先を最適化",
+      ],
+      techDetail:
+        "Next.js 15 (App Router) + TypeScript + Tailwind CSS。DB: Prisma + PostgreSQL (Neon) + pgvector。AI: Google Gemini (Vertex AI) + Vertex AI Embedding。認証: LINE Login (OAuth 2.0)。外部API: YouTube Data API。ホスティング: Vercel（サーバーレス）。",
+    },
+  },
+  {
     slug: "btob-matching",
     category: "flagship",
     title: "BtoB業種特化マッチングSaaS",
@@ -274,7 +311,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-04-20",
+    updatedAt: "2026-04-23",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
@@ -494,7 +531,7 @@ export const projects: Project[] = [
       "不動産書類のPDFをアップロードするだけで、AIが書類の種類を自動判定してリスク・注意点・確認事項を分かりやすく解説。重要事項説明書・賃貸借契約書・登記簿謄本・売買契約書・収支内訳書の5種類に対応。",
     stats: ["Gemini 2.5 Flash", "5書類対応"],
     tags: ["Next.js", "TypeScript", "LangChain", "Gemini API"],
-    updatedAt: "2026-04-20",
+    updatedAt: "2026-04-22",
     githubRepo: "keita2399/juusetsu-checker",
     githubPublic: true,
     detail: {
@@ -559,7 +596,7 @@ export const projects: Project[] = [
       "地方議会の議事録をAIが要約し、住民が自分ごととして意見を届けられるWebアプリ。富士河口湖町・船橋市の議事録を自動収集し、スタンス選択→AI下書き生成→X投稿/パブコメ送付まで一気通貫で対応。",
     stats: ["LangChain", "Gemini 2.5 Flash", "議事録AI要約"],
     tags: ["Next.js", "TypeScript", "Prisma", "Neon", "LangChain", "Gemini API", "Playwright"],
-    updatedAt: "2026-04-20",
+    updatedAt: "2026-04-21",
     githubRepo: "keita2399/machikoe",
     githubPublic: true,
     detail: {
