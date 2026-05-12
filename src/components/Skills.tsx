@@ -4,17 +4,26 @@ import { motion } from "framer-motion";
 import SectionCTA from "./SectionCTA";
 
 const aiSkills = [
-  { name: "Claude API / Anthropic SDK", pct: 95 },
-  { name: "エージェント設計 (Claude Code)", pct: 90 },
+  { name: "Claude Code CLI / Claude Agent SDK", pct: 95 },
+  { name: "Gemini 2.5 (Vertex AI / API)", pct: 90 },
+  { name: "AIエージェント設計・実装", pct: 90 },
   { name: "プロンプトエンジニアリング", pct: 90 },
-  { name: "RAG構築", pct: 75 },
+  { name: "RAG構築 (pgvector / Vertex AI Search)", pct: 80 },
+];
+
+const aiExperiencedSkills = [
+  { name: "Anthropic API / OpenAI API", pct: 80 },
+  { name: "Vercel AI SDK", pct: 75 },
   { name: "LangChain / LangGraph", pct: 70 },
+  { name: "MCP (Model Context Protocol) サーバー実装", pct: 70 },
 ];
 
 const primarySkills = [
   { name: "TypeScript", pct: 85 },
-  { name: "React / Next.js", pct: 85 },
-  { name: "Node.js / Prisma", pct: 80 },
+  { name: "Next.js 15 (App Router)", pct: 85 },
+  { name: "React 19", pct: 85 },
+  { name: "Node.js / Prisma / Neon", pct: 80 },
+  { name: "Tailwind CSS / shadcn/ui", pct: 80 },
 ];
 
 const experiencedSkills = [
@@ -59,7 +68,8 @@ export default function Skills() {
         <div style={{ maxWidth: 600 }}>
           {/* AI / LLM */}
           <div style={{ marginBottom: 48 }}>
-            <div style={{ fontSize: 13, letterSpacing: 1, marginBottom: 24, fontWeight: 600, color: "#34d399" }}>AI / LLM</div>
+            <div style={{ fontSize: 13, letterSpacing: 1, marginBottom: 16, fontWeight: 600, color: "#34d399" }}>AI / LLM</div>
+            <div style={{ fontSize: 10, color: "rgba(167,243,208,0.7)", letterSpacing: 1, marginBottom: 16 }}>// PRIMARY — 日常的に使用</div>
             <div style={{ display: "grid", gap: 20 }}>
               {aiSkills.map((s, index) => (
                 <motion.div
@@ -76,6 +86,33 @@ export default function Skills() {
                   <div style={{ height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2, overflow: "hidden" }}>
                     <motion.div
                       style={{ height: "100%", background: "linear-gradient(to right, #34d399, #10b981)", borderRadius: 2 }}
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${s.pct}%` }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 1, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div style={{ fontSize: 10, color: "rgba(167,243,208,0.5)", letterSpacing: 1, marginTop: 28, marginBottom: 16 }}>// EXPERIENCED — 実装経験あり</div>
+            <div style={{ display: "grid", gap: 20 }}>
+              {aiExperiencedSkills.map((s, index) => (
+                <motion.div
+                  key={s.name}
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+                    <span style={{ fontSize: 13, color: "rgba(220,252,231,0.85)" }}>{s.name}</span>
+                    <span style={{ fontSize: 10, color: "rgba(110,231,183,0.7)", letterSpacing: 0.5 }}>AI</span>
+                  </div>
+                  <div style={{ height: 4, background: "rgba(255,255,255,0.1)", borderRadius: 2, overflow: "hidden" }}>
+                    <motion.div
+                      style={{ height: "100%", background: "linear-gradient(to right, rgba(52,211,153,0.55), rgba(16,185,129,0.55))", borderRadius: 2 }}
                       initial={{ width: 0 }}
                       whileInView={{ width: `${s.pct}%` }}
                       viewport={{ once: true, margin: "-100px" }}
@@ -180,7 +217,7 @@ export default function Skills() {
           >
             <div style={{ fontSize: 11, color: "#93c5fd", marginBottom: 8, letterSpacing: 1 }}>NOTE</div>
             <div className="font-serif-jp" style={{ fontSize: 12, color: "rgba(219,234,254,0.8)", lineHeight: 1.8 }}>
-              AIエージェント（Claude Code）との協働開発を標準ワークフローとし、設計・実装・レビュー・ドキュメント作成を一人で完結。直近ではSaaSプラットフォームを3ヶ月で本番稼働させた実績があります。40年の業務理解力 × AIの開発速度で、一人でチーム規模の成果を出すスタイルです。
+              Claude Code CLI を主軸とした設計駆動開発をワークフローとして確立しています。設計判断は人間、実装はAIエージェントという役割分担で、設計・実装・レビュー・ドキュメント作成・テストまで一人で完結。複数案件の並行稼働と、技術顧問としての伴走支援も同じワークフローで対応しています。
             </div>
           </motion.div>
         </div>
