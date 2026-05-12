@@ -452,7 +452,34 @@ function realEstateScreens(): MockScreen[] {
 }
 
 // --- ツール定義 ---
-const tools = [
+type ToolTier = "PRODUCTION" | "DEMO" | "EXPERIMENT";
+
+const tierStyles: Record<ToolTier, { color: string; bg: string; border: string }> = {
+  PRODUCTION: { color: "#059669", bg: "rgba(16,185,129,0.10)", border: "rgba(16,185,129,0.45)" },
+  DEMO:       { color: "#0284c7", bg: "rgba(14,165,233,0.10)", border: "rgba(14,165,233,0.45)" },
+  EXPERIMENT: { color: "#7c3aed", bg: "rgba(124,58,237,0.10)", border: "rgba(124,58,237,0.45)" },
+};
+
+const tierLabels: Record<ToolTier, string> = {
+  PRODUCTION: "🟢 PRODUCTION",
+  DEMO:       "🔵 DEMO",
+  EXPERIMENT: "🟣 EXPERIMENT",
+};
+
+const tierOrder: Record<ToolTier, number> = { PRODUCTION: 0, DEMO: 1, EXPERIMENT: 2 };
+
+const tools: Array<{
+  title: string;
+  desc: string;
+  tags: string[];
+  color: string;
+  screens: MockScreen[];
+  tier: ToolTier;
+  demoUrl?: string;
+  demoNote?: string;
+  detailLink?: string;
+  githubRepo?: string;
+}> = [
   {
     title: "DX提案アシスタント",
     desc: "業務の流れを言葉で説明するだけで、AIが業務フロー図を自動生成し、ボトルネックを分析、システム化の提案書を作成します。",
@@ -461,6 +488,7 @@ const tools = [
     screens: flowScreens(),
     demoUrl: "https://estimate-ai-xi.vercel.app/flow",
     detailLink: "/works/estimate-ai",
+    tier: "DEMO",
   },
   {
     title: "Excel→Web/GAS化",
@@ -470,6 +498,7 @@ const tools = [
     screens: excelScreens(),
     demoUrl: "https://estimate-ai-xi.vercel.app/excel",
     detailLink: "/works/excel-to-web",
+    tier: "DEMO",
   },
   {
     title: "AI見積もりアシスタント",
@@ -479,6 +508,7 @@ const tools = [
     screens: estimateScreens(),
     demoUrl: "https://estimate-ai-xi.vercel.app/estimate",
     detailLink: "/works/ai-estimate",
+    tier: "DEMO",
   },
   {
     title: "AI書類分析ツール",
@@ -488,6 +518,7 @@ const tools = [
     screens: documentScreens(),
     demoUrl: "https://ai-document-checker-keita2399s-projects.vercel.app",
     detailLink: "/works/ai-document-checker",
+    tier: "DEMO",
   },
   {
     title: "BuildScan AI",
@@ -498,6 +529,7 @@ const tools = [
     demoUrl: "https://buildscan-front.onrender.com",
     detailLink: "/works/buildscan-ai",
     githubRepo: "keita2399/Figmabuildscanaidemoscreen",
+    tier: "PRODUCTION",
   },
   {
     title: "AI契約書チェッカー",
@@ -508,6 +540,7 @@ const tools = [
     demoUrl: "https://contract-checker-vert.vercel.app",
     detailLink: "/works/contract-checker",
     githubRepo: "keita2399/contract-checker",
+    tier: "DEMO",
   },
   {
     title: "AI 経費仕分けツール",
@@ -518,6 +551,7 @@ const tools = [
     demoUrl: "https://receipt-scanner-iota.vercel.app",
     detailLink: "/works/receipt-scanner",
     githubRepo: "keita2399/receipt-scanner",
+    tier: "PRODUCTION",
   },
   {
     title: "LINE×Claude連携ボット",
@@ -528,6 +562,7 @@ const tools = [
     demoUrl: "/demo/chat",
     detailLink: "/works/line-claude-sync",
     githubRepo: "keita2399/line-claude-sync",
+    tier: "EXPERIMENT",
   },
   {
     title: "AI肌診断アプリ",
@@ -538,6 +573,7 @@ const tools = [
     demoUrl: "https://skin-diagnosis-gold.vercel.app",
     detailLink: "/works/skin-diagnosis",
     githubRepo: "keita2399/skin-diagnosis",
+    tier: "DEMO",
   },
   {
     title: "不動産書類AI自動入力",
@@ -548,6 +584,7 @@ const tools = [
     demoUrl: "https://real-estate-ai-zb95.onrender.com",
     detailLink: "/works/real-estate-ai",
     githubRepo: "keita2399/real-estate-ai",
+    tier: "PRODUCTION",
   },
   {
     title: "AIチャットボット",
@@ -558,8 +595,11 @@ const tools = [
     demoNote: "右下の 💬 ボタンから今すぐ試せます",
     detailLink: "/works/portfolio-chatbot",
     githubRepo: "keita2399/portfolio",
+    tier: "EXPERIMENT",
   },
 ];
+
+const orderedTools = [...tools].sort((a, b) => tierOrder[a.tier] - tierOrder[b.tier]);
 
 export default function Tools() {
   return (
@@ -572,13 +612,30 @@ export default function Tools() {
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 12, color: "#1a1a1a" }}>
             自社開発の<span style={{ color: "#2563eb" }}>AIツール</span>
           </h2>
-          <p className="font-serif-jp" style={{ fontSize: 13, color: "#666", lineHeight: 1.8, marginBottom: 48 }}>
-            業務分析・見積もり・開発を加速するツールを自社開発しています
+          <p className="font-serif-jp" style={{ fontSize: 13, color: "#666", lineHeight: 1.8, marginBottom: 16 }}>
+            業務分析・見積もり・開発を加速するツール群を自社開発しています。
           </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, fontSize: 11, color: "#666", marginBottom: 48 }}>
+            {(["PRODUCTION", "DEMO", "EXPERIMENT"] as ToolTier[]).map((t) => {
+              const desc = t === "PRODUCTION" ? "実案件で稼働中" : t === "DEMO" ? "営業・検証用デモ" : "技術検証";
+              const s = tierStyles[t];
+              return (
+                <span key={t} style={{
+                  display: "inline-flex", alignItems: "center", gap: 6,
+                  fontSize: 10, letterSpacing: 1, fontWeight: 700,
+                  color: s.color, background: s.bg,
+                  border: `1px solid ${s.border}`,
+                  borderRadius: 3, padding: "3px 10px",
+                }}>
+                  {tierLabels[t]} <span style={{ fontWeight: 400, color: "#666", letterSpacing: 0 }}>= {desc}</span>
+                </span>
+              );
+            })}
+          </div>
         </FadeIn>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          {tools.map((tool) => (
+          {orderedTools.map((tool) => (
             <motion.div
               key={tool.title}
               initial={{ opacity: 0, y: 24 }}
@@ -599,7 +656,17 @@ export default function Tools() {
                 display: "flex", alignItems: "center", gap: 16,
               }}>
                 <div style={{ width: 8, height: 8, borderRadius: "50%", background: tool.color, flexShrink: 0 }} />
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a" }}>{tool.title}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#1a1a1a", flex: 1 }}>{tool.title}</div>
+                <span style={{
+                  fontSize: 9, letterSpacing: 1, fontWeight: 700,
+                  color: tierStyles[tool.tier].color,
+                  background: tierStyles[tool.tier].bg,
+                  border: `1px solid ${tierStyles[tool.tier].border}`,
+                  borderRadius: 3, padding: "3px 8px",
+                  flexShrink: 0,
+                }}>
+                  {tierLabels[tool.tier]}
+                </span>
               </div>
 
               {/* コンテンツ */}
