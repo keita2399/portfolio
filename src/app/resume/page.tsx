@@ -6,13 +6,13 @@ import Navbar from "@/components/Navbar";
 
 export const metadata: Metadata = {
   title: "業務経歴書",
-  description: "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア松井慶太の業務経歴書。TypeScript・Next.js・AI開発・レガシー現代化の実績。",
+  description: "設計は人間、実装はAIエージェント。企画から本番運用まで一人で完結する松井慶太の業務経歴書。Next.js・TypeScript・AI協働開発・40年の業務理解。",
   alternates: {
     canonical: "https://portfolio-two-orpin-45.vercel.app/resume",
   },
   openGraph: {
     title: "業務経歴書 — 松井 慶太",
-    description: "AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア。TypeScript・Next.js・AI開発・レガシー現代化の実績。",
+    description: "設計は人間、実装はAIエージェント。企画から本番運用まで一人で完結する松井慶太の業務経歴書。Next.js・TypeScript・AI協働開発・40年の業務理解。",
     url: "https://portfolio-two-orpin-45.vercel.app/resume",
     type: "profile",
   },
@@ -39,7 +39,21 @@ const aiWorkflow = [
 
 const careerHighlights = [
   {
-    title: "BtoB業種特化マッチングSaaS新規開発",
+    title: "The Vintage Salon（ヴィンテージキャンパー会員制プラットフォーム）",
+    meta: "会員制コミュニティ／モビリティ ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（2026/06/06 本番リリース予定／現在テストフェーズ）",
+    desc: "クライアント: GoldenMUGI合同会社　公開URL: https://thevintagesalon.jp　サービス商標登録済み。クラシックキャンピングカーオーナーのための会員制プラットフォーム。クライアントとの直接契約で、企画段階からアーキテクチャ設計・実装・本番デプロイまで単独で担当。12ヶ月保守契約付き。",
+    tech: "Next.js 14（App Router）, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Stripe, LINE Login, YouTube Data API",
+    features: [
+      { cat: "メンバーシップ", detail: "3階層メンバーシップ、Stripe決済連携" },
+      { cat: "認証", detail: "LINE Login によるメンバー認証（ターゲット層のSNS利用実態に合致）" },
+      { cat: "AI整備サポート", detail: "Vertex AI Search + Gemini Embedding による RAG実装、車両故障診断チャットボット" },
+      { cat: "メディア統合", detail: "YouTube Data API連携、チャンネル動画のシームレス表示" },
+      { cat: "コミュニティ", detail: "オーナーズコミュニティ、RVパーク予約" },
+      { cat: "設計判断", detail: "LLM・Embeddingを Vertex AI（Gemini）に統一、Cloudflare R2 で Vercel Pro と帯域コスト分離" },
+    ],
+  },
+  {
+    title: "建設業向けBtoBマッチングSaaS新規開発",
     meta: "建設 ｜ フルスタック（1人請負） ｜ 2026/01〜（継続中）",
     desc: "特定業種の企業間マッチングを電話・FAXからWebプラットフォームに置き換えるSaaS。企画ヒアリングから参画し、双方合意の136人日見積もりをAI協働開発（Claude Code）で2週間強に短縮して初期リリース。その後も継続的に機能拡張中（LINE連携・AI判定・チャット・PWA対応等）。",
     tech: "Next.js 14 (App Router), TypeScript, React 18, Prisma 6, PostgreSQL (Neon), Tailwind CSS, Vercel, Vercel Blob, Vercel Cron, Google Maps API, LINE Messaging API, Gemini API, nodemailer, PWA, dayjs, Python, Playwright",
@@ -67,49 +81,51 @@ const careerHighlights = [
     ],
   },
   {
-    title: "B2B取引DXプラットフォーム開発・保守",
-    meta: "金融 ｜ メンバー ｜ 20ヶ月（2024/04〜2025/11）",
-    desc: "B2B取引DXプラットフォームの開発・保守に継続参画。要件定義・基本設計からPostgreSQLバージョンアップ対応、データ加工ツール開発、リリース対応まで幅広く担当。",
-    tech: "Spring Boot, PostgreSQL (Aurora RDS), AWS, Shell, Git",
-  },
-  {
     title: "変額保険WEBシステム開発・インターネット拡張",
     meta: "保険 ｜ 開発リーダー兼PM（4名体制） ｜ 26ヶ月（2021/03〜2023/05）",
     desc: "複雑な変額保険WEBシステムの要件定義から製造を一貫して主導。プロジェクトのインターネット展開に伴い、Azureへの移行とアジャイル（スクラム）開発の導入を技術面から推進。",
     tech: "Java, jQuery, Oracle, VB, Azure",
   },
+  {
+    title: "B2B取引DXプラットフォーム開発・保守",
+    meta: "金融 ｜ メンバー ｜ 20ヶ月（2024/04〜2025/11）",
+    desc: "B2B取引DXプラットフォームの開発・保守に継続参画。要件定義・基本設計からPostgreSQLバージョンアップ対応、データ加工ツール開発、リリース対応まで幅広く担当。",
+    tech: "Spring Boot, PostgreSQL (Aurora RDS), AWS, Shell, Git",
+  },
 ];
 
 const projectList = [
-  { no: 1, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
-  { no: 2, industry: "建設", system: "BtoBマッチングSaaS", role: "フルスタック", period: "26/01〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE Messaging API, Gemini API, PWA, Playwright" },
-  { no: 3, industry: "教育", system: "eラーニングプラットフォーム（提案用デモ）", role: "個人開発", period: "26/04", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma, Vercel" },
-  { no: 4, industry: "一般", system: "マッチングWebアプリ（ポートフォリオ）", role: "個人開発", period: "26/04", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS, Vercel" },
-  { no: 5, industry: "IT", system: "フリーランス向け請求書管理システム", role: "個人開発", period: "26/04", tech: "Ruby on Rails 8, Ruby, PostgreSQL, Devise, Tailwind CSS, Hotwire, Render" },
-  { no: 6, industry: "IT", system: "FreelanceManager（案件管理ツール）", role: "個人開発", period: "26/04", tech: "PHP 8.3, Laravel 13, Blade, PostgreSQL, Tailwind CSS, Docker, Railway" },
-  { no: 7, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
-  { no: 8, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
-  { no: 9, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
-  { no: 10, industry: "商社", system: "ECサイト移行", role: "PM", period: "23/06-23/11（6）", tech: "MySQL, SQL" },
-  { no: 11, industry: "保険", system: "変額保険管理システム", role: "PM兼開発リーダー", period: "21/03-23/05（26）", tech: "Java, jQuery, Oracle, VB, Azure" },
-  { no: 12, industry: "小売業", system: "ECサイト管理", role: "PMOメンバー", period: "20/10-21/02（5）", tech: "Oracle" },
-  { no: 13, industry: "輸送機器", system: "販売支援", role: "PMリーダー", period: "19/07-20/09（15）", tech: "Linux, Oracle, Java, VBA" },
-  { no: 14, industry: "小売業", system: "ECサイト管理", role: "PMリーダー", period: "19/04-19/06（3）", tech: "Linux, MySQL, Java" },
-  { no: 15, industry: "生保", system: "営業サポート", role: "メンバー", period: "18/07-19/03（9）", tech: "PostgreSQL, VBA" },
-  { no: 16, industry: "生保", system: "保全ペーパーレス対応", role: "PMリーダー", period: "17/04-18/06（15）", tech: "Oracle, Java, JavaScript, jQuery, COBOL" },
-  { no: 17, industry: "新聞", system: "会員サイト管理", role: "PMリーダー兼メンバー", period: "16/08-17/03（8）", tech: "PostgreSQL, Hibernate, Java, JavaScript" },
-  { no: 18, industry: "公共", system: "年金管理", role: "サブリーダー", period: "16/03-16/07（5）", tech: "Oracle, Java" },
-  { no: 19, industry: "証券", system: "取引管理", role: "サブリーダー兼メンバー", period: "15/04-16/01（10）", tech: "Oracle, Java" },
-  { no: 20, industry: "商社", system: "建機リース・レンタル管理", role: "PMリーダー兼メンバー", period: "14/10-15/03（6）", tech: "Oracle, Java" },
-  { no: 21, industry: "商社", system: "船便貿易管理", role: "サブリーダー兼メンバー", period: "13/07-14/01（7）", tech: "Oracle, Java, JavaScript" },
-  { no: 22, industry: "通信", system: "システム開発工程管理", role: "サブリーダー兼メンバー", period: "13/01-13/06（6）", tech: "Oracle, PostgreSQL, Java, C#.NET, Spring" },
-  { no: 23, industry: "公共", system: "音声コード管理", role: "PM", period: "10/06-12/12（30）", tech: "C, C++, C#" },
-  { no: 24, industry: "電機", system: "人事管理", role: "PM", period: "02/04-09/04（85）", tech: "COBOL, PLI, Java" },
-  { no: 25, industry: "電機", system: "健康管理", role: "PM", period: "00/04-02/03（23）", tech: "Java, JavaScript" },
+  { no: 1, industry: "会員制", system: "The Vintage Salon", role: "フルスタック", period: "26/05〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vertex AI（Gemini）, Stripe, LINE Login, YouTube Data API" },
+  { no: 2, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
+  { no: 3, industry: "建設", system: "BtoBマッチングSaaS", role: "フルスタック", period: "26/01〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE Messaging API, Gemini API, PWA, Playwright" },
+  { no: 4, industry: "教育", system: "eラーニングプラットフォーム（提案用デモ）", role: "個人開発", period: "26/04", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma, Vercel" },
+  { no: 5, industry: "一般", system: "マッチングWebアプリ（ポートフォリオ）", role: "個人開発", period: "26/04", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS, Vercel" },
+  { no: 6, industry: "IT", system: "フリーランス向け請求書管理システム", role: "個人開発", period: "26/04", tech: "Ruby on Rails 8, Ruby, PostgreSQL, Devise, Tailwind CSS, Hotwire, Render" },
+  { no: 7, industry: "IT", system: "FreelanceManager（案件管理ツール）", role: "個人開発", period: "26/04", tech: "PHP 8.3, Laravel 13, Blade, PostgreSQL, Tailwind CSS, Docker, Railway" },
+  { no: 8, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
+  { no: 9, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
+  { no: 10, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
+  { no: 11, industry: "商社", system: "ECサイト移行", role: "PM", period: "23/06-23/11（6）", tech: "MySQL, SQL" },
+  { no: 12, industry: "保険", system: "変額保険管理システム", role: "PM兼開発リーダー", period: "21/03-23/05（26）", tech: "Java, jQuery, Oracle, VB, Azure" },
+  { no: 13, industry: "小売業", system: "ECサイト管理", role: "PMOメンバー", period: "20/10-21/02（5）", tech: "Oracle" },
+  { no: 14, industry: "輸送機器", system: "販売支援", role: "PMリーダー", period: "19/07-20/09（15）", tech: "Linux, Oracle, Java, VBA" },
+  { no: 15, industry: "小売業", system: "ECサイト管理", role: "PMリーダー", period: "19/04-19/06（3）", tech: "Linux, MySQL, Java" },
+  { no: 16, industry: "生保", system: "営業サポート", role: "メンバー", period: "18/07-19/03（9）", tech: "PostgreSQL, VBA" },
+  { no: 17, industry: "生保", system: "保全ペーパーレス対応", role: "PMリーダー", period: "17/04-18/06（15）", tech: "Oracle, Java, JavaScript, jQuery, COBOL" },
+  { no: 18, industry: "新聞", system: "会員サイト管理", role: "PMリーダー兼メンバー", period: "16/08-17/03（8）", tech: "PostgreSQL, Hibernate, Java, JavaScript" },
+  { no: 19, industry: "公共", system: "年金管理", role: "サブリーダー", period: "16/03-16/07（5）", tech: "Oracle, Java" },
+  { no: 20, industry: "証券", system: "取引管理", role: "サブリーダー兼メンバー", period: "15/04-16/01（10）", tech: "Oracle, Java" },
+  { no: 21, industry: "商社", system: "建機リース・レンタル管理", role: "PMリーダー兼メンバー", period: "14/10-15/03（6）", tech: "Oracle, Java" },
+  { no: 22, industry: "商社", system: "船便貿易管理", role: "サブリーダー兼メンバー", period: "13/07-14/01（7）", tech: "Oracle, Java, JavaScript" },
+  { no: 23, industry: "通信", system: "システム開発工程管理", role: "サブリーダー兼メンバー", period: "13/01-13/06（6）", tech: "Oracle, PostgreSQL, Java, C#.NET, Spring" },
+  { no: 24, industry: "公共", system: "音声コード管理", role: "PM", period: "10/06-12/12（30）", tech: "C, C++, C#" },
+  { no: 25, industry: "電機", system: "人事管理", role: "PM", period: "02/04-09/04（85）", tech: "COBOL, PLI, Java" },
+  { no: 26, industry: "電機", system: "健康管理", role: "PM", period: "00/04-02/03（23）", tech: "Java, JavaScript" },
 ];
 
 const portfolio = [
-  { name: "BtoB業種特化マッチングSaaS", desc: "136人日見積もりをAI協働開発で2週間強に短縮。32画面・67 API・19モデル、継続拡張中", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, LINE Messaging API, Gemini API, Google Maps API, PWA, Playwright", url: "NDA" },
+  { name: "The Vintage Salon（GoldenMUGI合同会社）", desc: "クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断を実装。商標登録済み、2026/06 本番リリース予定（現在テストフェーズ）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Vertex AI Search, Stripe, LINE Login, YouTube Data API", url: "https://thevintagesalon.jp" },
+  { name: "建設業向けBtoBマッチングSaaS", desc: "136人日見積もりをAI協働開発で2週間強に短縮。32画面・67 API・19モデル、継続拡張中", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, LINE Messaging API, Gemini API, Google Maps API, PWA, Playwright", url: "NDA" },
   { name: "マッチングWebアプリ", desc: "ユーザー登録・いいね・マッチング・リアルタイムチャット・Stripe課金・管理画面をフルスタックで実装", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS", url: "https://matching-app-jet.vercel.app" },
   { name: "eラーニングプラットフォーム デモ", desc: "Figmaでデザイン設計・Reactコード生成後、認証・受講登録・進捗管理・学習履歴を7画面フル実装。ランサーズ案件への提案用デモ", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma", url: "https://elearning-demo-sage.vercel.app" },
   { name: "フリーランス向け請求書管理システム", desc: "顧客・見積書・請求書を一元管理。Rails 8 + Hotwire + Tailwind CSSでゼロから構築し、Render + PostgreSQLに本番デプロイ", tech: "Ruby on Rails 8, Ruby, PostgreSQL, Devise, Tailwind CSS, Hotwire, Render", url: "https://invoice-app-djb3.onrender.com" },
@@ -192,14 +208,17 @@ export default function ResumePage() {
                 松井 慶太
               </h1>
               <p style={{ fontSize: 14, color: "#6b7280", letterSpacing: 1, marginBottom: 20 }}>Keita Matsui</p>
-              <p style={{ fontSize: "clamp(14px, 2vw, 17px)", fontWeight: 600, color: "#374151", borderLeft: "4px solid #111827", paddingLeft: 16, lineHeight: 1.5, marginBottom: 20 }}>
-                AIペア開発で、一人で「チーム」の成果を出すフルスタックエンジニア
+              <p style={{ fontSize: "clamp(15px, 2.2vw, 19px)", fontWeight: 700, color: "#111827", borderLeft: "4px solid #111827", paddingLeft: 16, lineHeight: 1.5, marginBottom: 10 }}>
+                設計は人間、実装はAIエージェント。企画から本番運用まで一人で完結。
+              </p>
+              <p style={{ fontSize: "clamp(13px, 1.8vw, 15px)", fontWeight: 500, color: "#374151", paddingLeft: 20, lineHeight: 1.7, marginBottom: 20 }}>
+                IT業界40年の業務理解 × AI協働開発で、初手から品質と速度を両立します。
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 24px", fontSize: 13, color: "#6b7280", marginBottom: 28 }}>
                 <span>IT業界 約40年（1985年〜）</span>
                 <span>拠点: 山梨県</span>
                 <span>フルスタック ／ AI協働開発</span>
-                <span>更新日: 2026年4月12日</span>
+                <span>更新日: 2026年5月26日</span>
               </div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                 <a href="/業務経歴書_松井慶太.pdf" download style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", fontSize: 13, fontWeight: 600, background: "#111827", color: "#fff", borderRadius: 4, textDecoration: "none" }}>
@@ -336,13 +355,13 @@ export default function ResumePage() {
           <SectionHeader label="About" title="自己PR" />
           <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.9 }}>
             <p style={{ marginBottom: 16 }}>
-              ユーザーの業務や利用シーンを理解した上で「実際に動くもの」を作ることを最も重視している。40年のキャリアの中で、COBOL/PLIの汎用機時代からJava、C#.NETを経て、現在のTypeScript/React/Next.jsに至るまで、常に実装の現場に身を置いてきた。
+              現在の主軸は、Next.js／TypeScript を中心としたモダンスタックでの開発である。Claude Code を実装パートナーとし、企画から本番運用までを一人で完遂する開発スタイルを確立している。直近では The Vintage Salon（クラシックキャンピングカーオーナー向け会員制プラットフォーム）を2026年6月本番リリースに向けて単独で開発中。Next.js 14・TypeScript・Vertex AI（Gemini）を用いた構成で、企画段階から本番デプロイ・保守までを単独で担当している。
             </p>
             <p style={{ marginBottom: 16 }}>
-              現在はAIエージェントとの協働開発により、一人でも設計から本番運用まで完結できる体制を確立している。これは単にコードを速く書けるということではなく、設計の壁打ち、コードレビュー、セキュリティチェック、ドキュメント整合性検証までを含む、開発プロセス全体の質と速度を両立させるものである。
+              私の価値は、コードを書く速度ではなく、誤った設計に気づける速度にある。実装の詳細は Claude Code との協働で構築し、私は要件定義・アーキテクチャ判断・業務整合性レビュー・セキュリティ観点の検証に集中する。コードを書く行為そのものではなく、何を作るべきかの判断と、作られたものの妥当性検証が私の領域である。
             </p>
             <p>
-              チーム開発でも同じ手法を持ち込むことで、メンバーとしての生産性を大幅に引き上げることが可能。PM/リーダー経験（最大26ヶ月・4名チーム）もあるが、現在は実装を主軸とした価値提供を志向している。
+              IT業界40年のキャリアでは、生命保険・変額保険・建設・公共・商社など21プロジェクトを経験し、大手企業の業務領域における要件翻訳の勘どころを蓄積してきた。PM・リーダー経験（最大26ヶ月・4名チーム）もあるが、現在はAI協働開発を前提とした少人数体制での推進に最も適性がある。
             </p>
           </div>
         </div>

@@ -66,13 +66,11 @@ export default function Hero() {
           <h1 style={{ fontSize: "clamp(28px, 6vw, 56px)", fontWeight: 700, lineHeight: 1.15, marginBottom: 20, color: "#fff", maxWidth: 820 }}>
             設計は人間、実装はAIエージェント。
             <br />
-            <span style={{ color: "#93c5fd" }}>一人でチーム規模の開発速度を出します。</span>
+            <span style={{ color: "#93c5fd" }}>企画から本番運用まで一人で完結。</span>
           </h1>
 
           <div className="font-serif-jp" style={{ fontSize: "clamp(13px, 2vw, 17px)", color: "rgba(219,234,254,0.85)", marginBottom: 32, lineHeight: 1.9, maxWidth: 620, fontWeight: 300 }}>
-            Claude Code CLI を主軸にした設計駆動開発で、
-            SaaS立ち上げから本番運用、レガシー刷新まで単独完結。
-            40年の業務理解 × AI協働ワークフローで、初手から品質と速度を両立します。
+            IT業界40年の業務理解 × AI協働開発で、初手から品質と速度を両立します。
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 40 }}>

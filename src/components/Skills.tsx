@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import SectionCTA from "./SectionCTA";
 
 const aiSkills = [
-  { name: "Claude Code CLI / Claude Agent SDK", pct: 95 },
-  { name: "Gemini 2.5 (Vertex AI / API)", pct: 90 },
+  { name: "Claude Code CLI（主力開発ツール）", pct: 95 },
+  { name: "Gemini 2.5（Vertex AI / API）", pct: 90 },
   { name: "AIエージェント設計・実装", pct: 90 },
   { name: "プロンプトエンジニアリング", pct: 90 },
-  { name: "RAG構築 (pgvector / Vertex AI Search)", pct: 80 },
+  { name: "The Vintage Salon にて Vertex AI Search + Gemini Embedding による RAG実装", pct: 85 },
 ];
 
 const aiExperiencedSkills = [
@@ -16,6 +16,7 @@ const aiExperiencedSkills = [
   { name: "Vercel AI SDK", pct: 75 },
   { name: "LangChain / LangGraph", pct: 70 },
   { name: "MCP (Model Context Protocol) サーバー実装", pct: 70 },
+  { name: "RAG基礎技術（pgvector）", pct: 75 },
 ];
 
 const primarySkills = [
