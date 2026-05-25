@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     siteName: "松井 慶太 ポートフォリオ",
     title: "松井慶太 | AIエージェント開発・技術顧問",
     description:
-      "設計は人間、実装はAIエージェント。一人でチーム規模の開発速度を実現。",
+      "設計は人間、実装はAIエージェント。企画から本番運用まで一人で完結。",
   },
   twitter: {
     card: "summary_large_image",
     title: "松井慶太 | AIエージェント開発・技術顧問",
     description:
-      "設計は人間、実装はAIエージェント。一人でチーム規模の開発速度を実現。",
+      "設計は人間、実装はAIエージェント。企画から本番運用まで一人で完結。",
   },
   alternates: {
     canonical: BASE_URL,

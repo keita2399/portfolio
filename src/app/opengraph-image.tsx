@@ -84,7 +84,7 @@ export default function OgImage() {
               marginTop: "8px",
             }}
           >
-            一人でチーム規模の開発速度を出します。
+            企画から本番運用まで一人で完結。
           </div>
         </div>
 
