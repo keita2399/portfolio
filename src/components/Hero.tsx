@@ -129,8 +129,8 @@ export default function Hero() {
           }}
         >
           {[
-            { prefix: "136人日 → ", value: 3, suffix: "週間", label: "通常見積もりを", sub: "AI協働で実装", highlight: true },
-            { prefix: "44万行超 → ", value: 3, suffix: "万行", label: "13言語の", sub: "レガシー変換実績", highlight: false },
+            { prefix: "1人で → ", value: 3, suffix: "つのSaaS", label: "企画から本番運用まで", sub: "TechnoBridge 法人プロダクト", highlight: true },
+            { prefix: "136人日 → ", value: 3, suffix: "週間", label: "通常見積もりを", sub: "AI協働で実装", highlight: false },
             { prefix: "", value: 40, suffix: "年", label: "業務システム", sub: "開発経験", highlight: false },
           ].map(({ prefix, value, suffix, label, sub, highlight }) => (
             <div key={label} style={{

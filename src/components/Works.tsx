@@ -220,8 +220,6 @@ export default function Works() {
           </h2>
         </motion.div>
 
-        <TechStackFilter />
-
         {/* Impact banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -320,6 +318,23 @@ export default function Works() {
               ))}
             </div>
           )}
+        </motion.div>
+
+        {/* 技術スタックで探す（補助） */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 32, marginTop: 32 }}
+        >
+          <h3 style={{ fontSize: 15, fontWeight: 600, color: "#fff", marginBottom: 6 }}>
+            技術スタックで探す
+          </h3>
+          <p className="font-serif-jp" style={{ fontSize: 11, color: "rgba(219,234,254,0.6)", marginBottom: 20 }}>
+            使用技術からプロジェクトを横断的に確認できます
+          </p>
+          <TechStackFilter />
         </motion.div>
 
         <SectionCTA />

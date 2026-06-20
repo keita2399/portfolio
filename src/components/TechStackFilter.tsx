@@ -10,7 +10,8 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
     label: "Frontend",
     color: "#60a5fa",
     tags: [
-      "Next.js", "Next.js 14", "React", "TypeScript", "JavaScript",
+      "Next.js", "Next.js 14", "Next.js 15", "Next.js 16", "React", "React 18", "React 19",
+      "TypeScript", "JavaScript",
       "Flutter", "Dart", "Three.js", "GLSL Shader", "Tailwind CSS",
       "HTML/CSS", "PWA", "Service Worker",
     ],
@@ -19,8 +20,10 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
     label: "Backend / DB",
     color: "#34d399",
     tags: [
-      "Prisma", "PostgreSQL", "Node.js", "Python", "FastAPI",
-      "nodemailer", "Neon DB", "dayjs", "Cookie認証", "SheetJS",
+      "Prisma", "Prisma 5", "Prisma 6", "Prisma 7", "PostgreSQL", "Neon Postgres", "Neon DB",
+      "Supabase", "pgvector", "RLS", "マルチテナント",
+      "Node.js", "Python", "FastAPI",
+      "nodemailer", "dayjs", "Cookie認証", "SheetJS",
       "Google Sheets API", "Vercel Cron",
     ],
   },
@@ -28,15 +31,15 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
     label: "AI / ML",
     color: "#a78bfa",
     tags: [
-      "Gemini API", "Gemini Vision", "Gemini 2.5 Flash", "Claude API",
-      "AI活用", "OpenAI API",
+      "Gemini", "Gemini API", "Gemini Vision", "Gemini 2.5 Flash", "Vertex AI", "Vertex AI Search",
+      "Claude", "Claude API", "AI活用", "OpenAI API",
     ],
   },
   {
     label: "External API",
     color: "#fb923c",
     tags: [
-      "LINE Messaging API", "Google Maps API",
+      "LINE Messaging API", "LINE Login", "Google Maps API", "Gmail API", "YouTube Data API", "Stripe",
       "Met Museum API", "AIC API", "Cleveland API",
       "Smithsonian API", "Wikidata SPARQL",
     ],
@@ -52,9 +55,13 @@ const CATEGORIES: { label: string; color: string; tags: string[] }[] = [
     tags: ["Ruby on Rails", "Ruby", "Devise", "Hotwire", "Render"],
   },
   {
-    label: "Infra / Tools",
+    label: "Auth / Infra / Tools",
     color: "#94a3b8",
-    tags: ["Vercel", "Playwright", "HMAC", "Python", "Figma"],
+    tags: [
+      "NextAuth v5", "Auth.js v5", "Firebase Auth", "Firestore",
+      "Vercel", "Vercel Pro", "Vercel Blob", "Cloudflare R2",
+      "Playwright", "HMAC", "Python", "Figma", "Excel出力",
+    ],
   },
 ];
 

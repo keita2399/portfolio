@@ -16,11 +16,11 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <Works />
       <Process />
       <Timeline />
       <Skills />
       <ZennArticles />
-      <Works />
       <Tools />
       <Services />
       <ContactForm />
