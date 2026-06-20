@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logUsage } from "@/lib/logUsage";
-
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY!;
+import { ai, GEMINI_MODEL } from "@/lib/gemini";
 
 type Message = { role: "user" | "model"; parts: [{ text: string }] };
 
@@ -44,39 +43,35 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       parts: [{ text: m.content }],
     }));
 
-    const res = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-          contents,
-        }),
-      }
-    );
+    const res = await ai.models.generateContent({
+      model: GEMINI_MODEL,
+      contents,
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+      },
+    });
 
-    const data = await res.json();
-    if (data.error) {
-      console.error("Gemini API error:", data.error);
-      const errorMsg =
-        data.error.code === 429
-          ? "Gemini APIの無料枠を超えたため、現在利用できません。時間をおいて再度お試しください。"
-          : "AIの応答に失敗しました";
-      return NextResponse.json(
-        { error: errorMsg },
-        { status: data.error.code === 429 ? 429 : 500 }
-      );
+    if (!res.text) {
+      return NextResponse.json({ error: "AIの応答に失敗しました" }, { status: 500 });
     }
 
-    const reply =
-      data.candidates?.[0]?.content?.parts?.[0]?.text || "（応答なし）";
+    logUsage({
+      project: "portfolio",
+      model: GEMINI_MODEL,
+      inputTokens: res.usageMetadata?.promptTokenCount ?? 0,
+      outputTokens: res.usageMetadata?.candidatesTokenCount ?? 0,
+    });
 
-    logUsage({ project: "portfolio", model: "gemini-2.5-flash", inputTokens: data.usageMetadata?.promptTokenCount ?? 0, outputTokens: data.usageMetadata?.candidatesTokenCount ?? 0 });
-
-    return NextResponse.json({ reply });
-  } catch (err) {
+    return NextResponse.json({ reply: res.text });
+  } catch (err: unknown) {
     console.error("Chat API error:", err);
+    // 429 rate limit
+    if (err instanceof Error && err.message.includes("429")) {
+      return NextResponse.json(
+        { error: "Gemini APIの無料枠を超えたため、現在利用できません。時間をおいて再度お試しください。" },
+        { status: 429 }
+      );
+    }
     return NextResponse.json(
       { error: "エラーが発生しました" },
       { status: 500 }

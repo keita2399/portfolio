@@ -2,12 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 import { logUsage } from "@/lib/logUsage";
-
-const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
+import { ai, GEMINI_MODEL } from "@/lib/gemini";
 
 export async function POST(req: NextRequest) {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) {
+  if (!process.env.GEMINI_API_KEY && process.env.GEMINI_BACKEND !== "vertex") {
     return NextResponse.json({ error: "API key not configured" }, { status: 500 });
   }
 
@@ -35,7 +33,7 @@ export async function POST(req: NextRequest) {
 === プロフィール情報 ===
 ${profile}`;
 
-    const contents = [];
+    const contents: { role: "user" | "model"; parts: [{ text: string }] }[] = [];
     if (history && Array.isArray(history)) {
       for (const msg of history.slice(-10)) {
         contents.push({
@@ -46,31 +44,28 @@ ${profile}`;
     }
     contents.push({ role: "user", parts: [{ text: message }] });
 
-    const response = await fetch(`${GEMINI_API_URL}?key=${apiKey}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        system_instruction: { parts: [{ text: systemPrompt }] },
-        contents,
-        generationConfig: { temperature: 0.7, maxOutputTokens: 1024 },
-      }),
+    const result = await ai.models.generateContent({
+      model: GEMINI_MODEL,
+      contents,
+      config: {
+        systemInstruction: systemPrompt,
+        temperature: 0.7,
+        maxOutputTokens: 1024,
+      },
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Gemini API error:", errorText);
-      return NextResponse.json({ error: "AI API error" }, { status: 502 });
-    }
-
-    const result = await response.json();
-    const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-    if (!text) {
+    if (!result.text) {
       return NextResponse.json({ error: "No response from AI" }, { status: 502 });
     }
 
-    logUsage({ project: "portfolio", model: "gemini-2.5-flash", inputTokens: result.usageMetadata?.promptTokenCount ?? 0, outputTokens: result.usageMetadata?.candidatesTokenCount ?? 0 });
+    logUsage({
+      project: "portfolio",
+      model: GEMINI_MODEL,
+      inputTokens: result.usageMetadata?.promptTokenCount ?? 0,
+      outputTokens: result.usageMetadata?.candidatesTokenCount ?? 0,
+    });
 
-    return NextResponse.json({ reply: text });
+    return NextResponse.json({ reply: result.text });
   } catch (error) {
     console.error("Chat error:", error);
     return NextResponse.json({ error: "Internal error" }, { status: 500 });

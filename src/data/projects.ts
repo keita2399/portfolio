@@ -320,7 +320,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-05-12",
+    updatedAt: "2026-05-25",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {
