@@ -37,6 +37,136 @@ export type Project = {
 
 export const projects: Project[] = [
   // === 主要実績（flagship） ===
+  // --- TechnoBridge（法人）プロダクトスイート ---
+  {
+    slug: "sesbrain-ai",
+    category: "flagship",
+    title: "SES Brain AI — SES営業自動化SaaS",
+    badge: "本番稼働中",
+    badgeColor: "#10b981",
+    borderColor: "#10b981",
+    description:
+      "「案件を探さないSESへ」。SES企業の営業を自動化するAIエージェント型SaaS。案件メールの自動取込からAI構造化解析、登録エンジニアとのAIマッチング、粗利自動計算、提案文の自動生成までを一気通貫で支援。初回ログインで会社単位のテナントが自動作成されるマルチテナント構成。TechnoBridge（法人）のプロダクトスイート中核として本番稼働中。",
+    stats: ["案件メール自動取込 → AI解析 → 提案生成", "pgvector × Claude のハイブリッドマッチング", "参画・工数・請求まで実装"],
+    tags: ["Next.js 16", "React 19", "TypeScript", "Prisma 7", "Neon Postgres", "pgvector", "NextAuth v5", "Gemini", "Claude", "Gmail API", "Vercel Blob", "Vercel Pro", "マルチテナント"],
+    updatedAt: "2026-06",
+    detail: {
+      overview:
+        "SES Brain AI は、SES（システムエンジニアリングサービス）企業の営業業務を自動化するAIエージェント型SaaS。コンセプトは「案件を探さないSESへ」。案件メールの自動取込・AI構造化解析・エンジニアとのAIマッチング・粗利計算・提案文生成までを支援し、営業を『案件探索』から『提案判断』へシフトさせる。初回ログイン時に会社単位（テナント）が自動作成され、企業ごとにデータが分離される。企画・設計・実装・本番デプロイまでを単独で担当。TechnoBridge（法人）のプロダクトスイート中核として本番稼働中。",
+      challenges: [
+        "案件メールの非定型テキストから単価・スキル・勤務地・商流を構造化する解析パイプライン",
+        "Gmail APIによる案件メールの自動取込と、gmailIdを用いた毎時cronの冪等化",
+        "エンジニア経歴書（PDF/Word）からスキル・経験年数・業界・役割を自動抽出するAI解析",
+        "マルチテナント環境での会社単位のデータ分離（tenantIdによる行レベルの絞り込み）",
+        "AIマッチングのコストと品質の両立（全候補をLLM採点するとコストが膨らむ）",
+        "粗利計算・ランク判定など、AIに任せず決定的ロジックで担保すべき業務計算の切り分け",
+      ],
+      approach: [
+        "Next.js 16（App Router）+ React 19 + TypeScript + Prisma 7 + Neon Postgres でフルスタック構成",
+        "NextAuth v5（Google OAuth）+ tenantId によるマルチテナント設計（会社単位のデータ分離）",
+        "Gmail API で案件メールを毎時自動取込。gmailId で冪等化し重複取込を防止",
+        "Gemini で案件解析・経歴書解析・提案文生成・テキスト埋め込みを実装",
+        "マッチングは三層構成：決定的ロジック（粗利計算・ランク閾値・ハード条件）→ pgvector（埋め込みで上位20名に粗く絞り込み）→ Claude（適合率と根拠を採点）でAPIコストを最小化",
+        "S/A/B/Cランク付けと予想粗利・確定粗利をダッシュボードで可視化",
+        "参画管理・作業日報・工数・請求書発行（精算自動計算・PDF出力）まで第二フェーズで実装",
+      ],
+      results: [
+        "案件取込からAIマッチング・提案生成・受注/失注記録までを一気通貫で実装し本番稼働（https://sesbrain-ai.vercel.app）",
+        "pgvector × Claude のハイブリッドマッチングで、LLM API呼び出しを絞りつつ適合率の根拠を提示",
+        "案件数・提案数・受注率・失注率・予想/確定粗利を可視化するダッシュボードを実装",
+        "案件元ごとの上乗せ額・推奨最低粗利を画面から設定できる独自ルール機能",
+        "MVP（第一フェーズ）に加え、参画・工数・請求の第二フェーズ機能まで実装済み",
+        "企画から本番デプロイ・運用まで単独で完結",
+      ],
+      techDetail:
+        "Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS v4。DB: Prisma 7 + Neon PostgreSQL + pgvector（1536次元・ベクトル検索）。認証: NextAuth v5（Google OAuth）+ マルチテナント（tenantId）。AI: Google Gemini（案件解析・経歴書解析・提案生成・埋め込み）+ Claude（適合率採点）。外部連携: Gmail API（案件メール自動取込・毎時cron）。ストレージ: Vercel Blob（経歴書PDF/Word）。ホスティング: Vercel Pro。提供: TechnoBridge（法人）。本番URL: https://sesbrain-ai.vercel.app",
+    },
+  },
+  {
+    slug: "securebase",
+    category: "flagship",
+    title: "SecureBase — 中小企業向けセキュリティ管理SaaS",
+    badge: "本番稼働中・営業利用",
+    badgeColor: "#0ea5e9",
+    borderColor: "#0ea5e9",
+    description:
+      "中小企業向けの統合ITセキュリティ管理プラットフォーム。顧問型セキュリティコンサルタント（vCISO）が顧客企業のIT資産・セキュリティ状況を可視化・スコア化し、AIが月次レポートで改善提案を行う。DB層のRLS（Row Level Security）でテナント分離を強制した参照実装。データは東京リージョン（Supabase Tokyo）で国内化済み。TechnoBridge（法人）プロダクトとして本番稼働・営業利用中。",
+    stats: ["IT資産・EOL・Windows Update管理", "セキュリティスコア × AI月次レポート", "RLSでDB層テナント分離（27テーブル）"],
+    tags: ["Next.js 14", "TypeScript", "Prisma 5", "Supabase", "PostgreSQL", "RLS", "Auth.js v5", "Gemini", "Vertex AI", "Vercel Pro", "マルチテナント", "vCISO"],
+    updatedAt: "2026-06",
+    detail: {
+      overview:
+        "SecureBase は、中小企業向けの統合ITセキュリティ管理プラットフォーム。顧問型セキュリティコンサルタント（vCISO）が顧客企業のIT資産・セキュリティ状況を可視化・スコア化し、AIが月次レポートで改善提案を行うSaaS。フェーズ0（共通基盤）＋フェーズ1（MVP）を実装。テナント分離をDB層のRLS（Row Level Security）で強制する設計で、TechnoBridge全アプリのRLS参照実装に位置づけられる。データは東京リージョン（Supabase Tokyo）で国内化済み。本番稼働・営業利用中。",
+      challenges: [
+        "顧問が複数の顧客企業を扱う中での、確実なテナント分離（アプリ層のミスでも越境させない）",
+        "IT資産・アカウント・ソフトウェア・ライセンスを横断的に台帳化する情報モデルの設計",
+        "EOL（サポート終了）やWindows Updateの状態から、リスクを継続的に検知する仕組み",
+        "AI生成レポートの品質と責任分界（誤った提案をそのまま顧客に出さない運用）",
+        "AIキー未設定や外部コネクタ未連携でも壊れずに動く、フォールバック設計",
+      ],
+      approach: [
+        "Next.js 14（App Router）+ TypeScript + Prisma 5 + PostgreSQL（Supabase 東京）でフルスタック構成",
+        "DB層でRLSを強制（app.current_tenant_id）。アプリ層は withTenant(tenantId, fn) で $transaction 内に set_config を実行し、同一コネクションでRLSを効かせる。未設定時はゼロ件返却のfail-safe",
+        "IT資産・ソフトウェア・Windows Update・EOL・ライセンスを一元管理し台帳を自動生成",
+        "複合指標からセキュリティスコアを算出し、トレンドを可視化",
+        "AI月次レポートは Gemini で生成し、DRAFT → REVIEWED → PUBLISHED のレビュー工程を必須化",
+        "AI機能は lib/ai に集約し、キー未設定時はサンプル/ルールベースにフォールバック。GEMINI_BACKEND=vertex で Vertex AI に切替可能",
+        "データ収集はコネクタを抽象化（CSVスタブ実装、M365/Workspace/Intune連携を拡張ポイントとして用意）",
+      ],
+      results: [
+        "IT資産管理・台帳自動生成・ソフトウェア管理・Windows Update管理・EOL管理・セキュリティスコア・AI月次レポートを実装し本番稼働（https://securebase-five.vercel.app）",
+        "RLSを27テーブルに完全実装し、DB層でテナント越境を防止する参照実装を構築",
+        "データを東京リージョン（Supabase Tokyo）に集約し国内化を完了",
+        "30以上のAPIルートを備えた管理プラットフォームを単独で構築",
+        "AIレポートのレビュー工程（DRAFT→REVIEWED→PUBLISHED）で生成物の品質を担保",
+        "営業デモ・実利用に耐える本番運用を単独で継続",
+      ],
+      techDetail:
+        "Next.js 14 (App Router) + TypeScript + Tailwind CSS。DB: Prisma 5 + PostgreSQL（Supabase 東京リージョン）+ RLS（27テーブル）。認証: Auth.js v5（Google OAuth）。テナント分離: RLS（app.current_tenant_id）+ withTenant/$transaction/set_config パターン。AI: Google Gemini（月次レポート生成ほか、Vertex AI 切替対応）。ホスティング: Vercel Pro。提供: TechnoBridge（法人）。本番URL: https://securebase-five.vercel.app",
+    },
+  },
+  {
+    slug: "sekisan-ai",
+    category: "flagship",
+    title: "積算AI — 建設図面の見積自動化",
+    badge: "MVP公開・検証準備中",
+    badgeColor: "#f59e0b",
+    borderColor: "#f59e0b",
+    description:
+      "建設業向けの図面見積AIツール。設計図面PDFをアップロードするだけで、AIが工事項目・数量を自動抽出し、単価マスタを適用して編集可能な見積書を生成・Excel出力する。最大10ファイルの並列解析に対応。フェーズ①（開発）の機能を実装済みで、本番URLで公開し顧客検証の準備中。TechnoBridge（法人）プロダクト。",
+    stats: ["図面PDF → 工事項目・数量を自動抽出", "単価マスタ自動適用 → Excel出力", "最大10ファイル並列解析"],
+    tags: ["Next.js 16", "React 19", "TypeScript", "Prisma 7", "PostgreSQL", "pgvector", "NextAuth v5", "Gemini", "Vertex AI", "Vercel Blob", "Excel出力", "マルチテナント"],
+    updatedAt: "2026-06",
+    detail: {
+      overview:
+        "積算AIは、建設業向けの図面見積AIツール。設計図面PDFをアップロードするだけで、Geminiが工事項目・数量を自動抽出し、標準単価マスタを適用して編集可能な見積書を生成、Excelとして出力する。最大10ファイルの並列アップロード・解析に対応。フェーズ①（開発・無料枠）の機能を実装済みで、本番URLで公開し、顧客契約時のフェーズ②検証へ移行する段階。TechnoBridge（法人）のプロダクトスイートの一つ。",
+      challenges: [
+        "設計図面PDFという非定型ドキュメントから、工事項目と数量を構造化して抽出する精度",
+        "複数図面（最大10ファイル）を同時にアップロード・並列解析する処理設計",
+        "AIの抽出結果を鵜呑みにせず、画面上で項目・数量・単価をインライン編集できるUX",
+        "標準単価マスタ（70項目）の自動マッピングと、物価トレンド（デフレーター）補正",
+        "無料枠から有償・本番へ段階的に移行できる、フェーズ別インフラ構成の設計",
+      ],
+      approach: [
+        "Next.js 16（App Router）+ React 19 + TypeScript + Prisma 7 でフルスタック構成",
+        "NextAuth v5（Google OAuth）+ マルチテナントでテナントごとにデータを分離",
+        "PDFアップロード（Vercel Blob）→ Gemini で工事項目・数量を抽出 → 単価マスタ自動適用 のパイプライン",
+        "見積テーブルは項目・数量・単価を画面で直接インライン編集できるUIを実装",
+        "見積書シート＋抽出テキスト参照シートをExcelとして出力",
+        "GEMINI_BACKEND=vertex で Vertex AI に切替可能。将来はGoogle Document AIでスキャンPDFのOCR、Cloudflare R2で大容量図面の本番保管に対応する設計",
+      ],
+      results: [
+        "図面PDFから工事項目・数量を自動抽出し、単価適用・Excel出力までを一気通貫で実装（https://sekisan-ai.vercel.app）",
+        "最大10ファイルの並列解析に対応",
+        "70項目の標準単価マスタ自動適用と、デフレーターによる物価補正",
+        "AI抽出結果のインライン編集で、実務に耐える見積調整を可能に",
+        "フェーズ①（開発）機能を完成させ、顧客検証（フェーズ②）への移行準備が完了",
+      ],
+      techDetail:
+        "Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS v4。DB: Prisma 7 + PostgreSQL（+ pgvector 1536次元）。認証: NextAuth v5（Google OAuth）+ マルチテナント。AI: Google Gemini（図面解析・工事項目抽出・数量推定、Vertex AI 切替対応）。将来: Google Document AI（スキャンPDFのOCR）。ストレージ: Vercel Blob（→ 本番はCloudflare R2想定）。出力: Excel（見積書＋抽出テキスト参照）。ホスティング: Vercel Pro。提供: TechnoBridge（法人）。本番URL: https://sekisan-ai.vercel.app",
+    },
+  },
+  // --- 受託・自社開発 ---
   {
     slug: "vintage-camper-club",
     category: "flagship",
@@ -320,7 +450,7 @@ export const projects: Project[] = [
       "このポートフォリオサイトに搭載されたAIアシスタント。右下の💬ボタンから、スキル・実績・受けたい案件について何でも質問可能。業務経歴書の全情報をナレッジベースとしてGemini AIに渡し、正確かつ親しみやすく回答。",
     stats: ["Gemini 2.5 Flash", "業務経歴ナレッジベース"],
     tags: ["Next.js", "TypeScript", "Gemini API", "AI活用"],
-    updatedAt: "2026-05-25",
+    updatedAt: "2026-06-20",
     githubRepo: "keita2399/portfolio",
     githubPublic: true,
     detail: {

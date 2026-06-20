@@ -37,8 +37,10 @@ AIを補助ツールとしてではなく、設計パートナーとして活用
 - C#.NET / VB.NET — 業務システム
 
 ### DB・インフラ
-- PostgreSQL（Neon / Aurora PostgreSQL）, Oracle, MySQL
-- Vercel, AWS, Azure
+- PostgreSQL（Neon / Supabase / Aurora PostgreSQL）, pgvector（ベクトル検索）, Oracle, MySQL
+- RLS（行レベルセキュリティ）によるマルチテナント分離設計
+- 認証: NextAuth / Auth.js v5（Google OAuth）, LINE Login, Firebase Auth
+- Vercel（Pro）, AWS, Azure, Cloudflare R2
 - Docker, nginx, GitHub Actions
 
 ### 外部サービス連携
@@ -63,30 +65,40 @@ AIを補助ツールとしてではなく、設計パートナーとして活用
 
 ## 業務知識
 - 金融（生命保険、変額保険、銀行、証券）
-- 建設業（残土マッチング、許可証管理）
+- 建設業（残土マッチング、許可証管理、図面積算・見積）
+- SES業界（案件マッチング、エンジニア管理、粗利計算、提案営業）
+- ITセキュリティ（中小企業向けIT資産管理、vCISO、セキュリティスコア・EOL管理）
 - BtoB取引DX
 - ECサイト
 
 ## 主要プロジェクト（ポートフォリオ掲載）
 
-### 本番稼働中
-1. **BtoBマッチングプラットフォーム** — 建設現場向け発生土・受入土マッチング。Next.js 14 + Prisma + PostgreSQL。約30画面・40API・24テーブル。AIペア開発で3ヶ月で構築（NDA）
+### TechnoBridge（自社法人）プロダクトスイート — メイン実績
+自社法人「TechnoBridge」のプロダクトとして、複数のマルチテナントSaaSを企画・設計・実装・本番デプロイまで単独で構築・運用している。基盤は Vercel Pro + Supabase（東京リージョン）+ Google Cloud（Vertex AI）。全アプリで DB層のRLS（行レベルセキュリティ）によるテナント分離を標準化し、データの国内化を進めている。
+
+1. **SES Brain AI** — SES企業の営業を自動化するAIエージェント型SaaS。「案件を探さないSESへ」がコンセプト。案件メールの自動取込（Gmail API・毎時cron）→ AI構造化解析 → エンジニアとのAIマッチング → 粗利計算 → 提案文生成までを一気通貫で支援。マッチングは「決定的ロジック（粗利・ランク）→ pgvectorで上位20名に絞り込み → Claudeで適合率採点」の三層構成。参画管理・工数・請求書発行まで実装。Next.js 16 + React 19 + Prisma 7 + Neon + pgvector + NextAuth v5 + Gemini + Claude。本番稼働中（https://sesbrain-ai.vercel.app）
+2. **SecureBase** — 中小企業向けの統合ITセキュリティ管理SaaS。顧問型セキュリティコンサルタント（vCISO）が顧客企業のIT資産・EOL・Windows Updateを管理し、セキュリティスコア化とAI月次レポート（DRAFT→REVIEWED→PUBLISHED）を提供。RLSを27テーブルに完全実装した参照実装で、データはSupabase東京リージョンで国内化済み。Next.js 14 + Prisma 5 + PostgreSQL（Supabase）+ Auth.js v5 + Gemini/Vertex AI。本番稼働・営業利用中（https://securebase-five.vercel.app）
+3. **積算AI** — 建設業向けの図面見積AIツール。設計図面PDFをアップロードするだけでAIが工事項目・数量を自動抽出、70項目の単価マスタを適用して編集可能な見積書を生成・Excel出力。最大10ファイル並列解析。Next.js 16 + React 19 + Prisma 7 + pgvector + NextAuth v5 + Gemini/Vertex AI + Vercel Blob。MVP公開・顧客検証準備中（https://sekisan-ai.vercel.app）
+
+### 本番稼働中（受託・自社）
+4. **The Vintage Salon（GoldenMUGI合同会社）** — クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断。商標登録済み、2026/06 本番リリース予定
+5. **BtoBマッチングプラットフォーム** — 建設現場向け発生土・受入土マッチング。Next.js 14 + Prisma + PostgreSQL。約30画面・40API・24テーブル。AIペア開発で3ヶ月で構築（NDA）
 
 ### AIアプリ（デモ公開中）
-2. **契約書リスクチェッカー** — 契約書をAIが条項ごとにリスク判定、修正案を提示
-3. **AIレシートスキャナー** — レシート撮影→OCR→勘定科目自動判定、信頼度スコア付き
-4. **AI書類解析** — Gemini Vision APIで書類を構造化データに変換
-5. **AIチャットボット（このサイト）** — 業務経歴書をナレッジベースにGemini AIで回答
+6. **契約書リスクチェッカー** — 契約書をAIが条項ごとにリスク判定、修正案を提示
+7. **AIレシートスキャナー** — レシート撮影→OCR→勘定科目自動判定、信頼度スコア付き
+8. **AI書類解析** — Gemini Vision APIで書類を構造化データに変換
+9. **AIチャットボット（このサイト）** — 業務経歴書をナレッジベースにGemini AIで回答
 
 ### LINE連携
-6. **LINE Claude Sync** — スマホLINE↔PC Claude Code自動同期
-7. **LINE通知デモ** — LINE Messaging API テキスト・画像・スタンプ送信
-8. **移動時間計算** — Google Maps API連携
+10. **LINE Claude Sync** — スマホLINE↔PC Claude Code自動同期
+11. **LINE通知デモ** — LINE Messaging API テキスト・画像・スタンプ送信
+12. **移動時間計算** — Google Maps API連携
 
 ### レガシーコード変換（副業的な関心事）
-9. **Legacy Code Museum** — 383K件のコメントを収集・分析するWebアプリ
-10. **PL/I → Web（Habitat 1986）** — 世界初MMOをブラウザで動作するデモに変換（82%削減）
-11. 他、C→Rust / COBOL→Web / VB6→Web / RPG→Web 等、合計10言語・41万行の変換実績
+13. **Legacy Code Museum** — 383K件のコメントを収集・分析するWebアプリ
+14. **PL/I → Web（Habitat 1986）** — 世界初MMOをブラウザで動作するデモに変換（82%削減）
+15. 他、C→Rust / COBOL→Web / VB6→Web / RPG→Web 等、合計10言語・41万行の変換実績
 
 ## 業務経歴（抜粋）
 - 建設現場マッチングプラットフォーム新規開発（フルスタック、1人請負 / 3ヶ月）

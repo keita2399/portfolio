@@ -21,8 +21,10 @@ export const metadata: Metadata = {
 const skills = [
   { category: "主軸技術", detail: "TypeScript, React, Next.js (App Router), Node.js, Prisma, Tailwind CSS" },
   { category: "対応可能", detail: "PHP（Laravel）, Ruby（Rails）, Python, Flutter/Dart, Java（Spring Boot）, JavaScript, jQuery, C#.NET, SQL" },
-  { category: "DB・インフラ", detail: "PostgreSQL（Neon / Aurora RDS）, Oracle, MySQL / Vercel, AWS, Azure, Railway, Docker" },
-  { category: "外部サービス連携", detail: "Google Maps API, LINE Messaging API, Gemini AI, Claude API, 決済サービス（ZEUS）, 美術館API（MET/AIC等）" },
+  { category: "DB・インフラ", detail: "PostgreSQL（Neon / Supabase / Aurora RDS）, pgvector, RLS（行レベルセキュリティ）, Oracle, MySQL / Vercel（Pro）, AWS, Azure, Railway, Cloudflare R2, Docker" },
+  { category: "認証・マルチテナント", detail: "NextAuth v5 / Auth.js v5（Google OAuth）, LINE Login, Firebase Auth, Cookie + HMAC署名 / テナント分離設計（RLS）" },
+  { category: "AI・LLM", detail: "Gemini / Vertex AI（RAG・Embedding・pgvectorベクトル検索）, Claude API, LangChain / LangGraph" },
+  { category: "外部サービス連携", detail: "Google Maps API, LINE Messaging API, Gmail API, Stripe, 決済サービス（ZEUS）, YouTube Data API, 美術館API（MET/AIC等）" },
   { category: "AI開発ツール", detail: "Claude Code（主力）, Claude API, GitHub Copilot" },
   { category: "デザインツール", detail: "Figma（UIデザイン・仕様書作成・Reactコード生成）" },
   { category: "開発手法", detail: "アジャイル（スクラム）、ウォーターフォール、全工程対応（要件定義〜運用）" },
@@ -38,6 +40,48 @@ const aiWorkflow = [
 ];
 
 const careerHighlights = [
+  {
+    title: "SES Brain AI — SES営業自動化SaaS（TechnoBridge）",
+    meta: "IT／SES ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（本番稼働中）",
+    desc: "提供: TechnoBridge（法人）　本番URL: https://sesbrain-ai.vercel.app　「案件を探さないSESへ」をコンセプトに、SES企業の営業業務を自動化するAIエージェント型SaaS。案件メールの自動取込からAI構造化解析・エンジニアのAIマッチング・粗利計算・提案文生成・受注/失注記録までを一気通貫で支援。初回ログインで会社単位のテナントが自動作成されるマルチテナント構成。企画から本番デプロイ・運用まで単独で担当。",
+    tech: "Next.js 16（App Router）, React 19, TypeScript, Prisma 7, Neon Postgres, pgvector, NextAuth v5, Gemini, Claude, Gmail API, Vercel Blob, Vercel Pro",
+    features: [
+      { cat: "案件取込", detail: "Gmail API で案件メールを毎時自動取込。gmailId で冪等化し重複取込を防止" },
+      { cat: "AI解析", detail: "案件メール・エンジニア経歴書（PDF/Word）から単価・スキル・経験年数・商流を構造化抽出" },
+      { cat: "AIマッチング", detail: "決定的ロジック（粗利・ランク）→ pgvector で上位20名に絞り込み → Claude で適合率採点の三層構成" },
+      { cat: "提案生成", detail: "候補者ごとに提案メール本文を自動生成。S/A/B/Cランクと予想/確定粗利を可視化" },
+      { cat: "業務管理", detail: "参画管理・作業日報・工数・請求書発行（精算自動計算・PDF出力）まで第二フェーズで実装" },
+      { cat: "マルチテナント", detail: "NextAuth v5（Google OAuth）+ tenantId で会社単位にデータ分離" },
+    ],
+  },
+  {
+    title: "SecureBase — 中小企業向けセキュリティ管理SaaS（TechnoBridge）",
+    meta: "IT／セキュリティ ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（本番稼働・営業利用中）",
+    desc: "提供: TechnoBridge（法人）　本番URL: https://securebase-five.vercel.app　顧問型セキュリティコンサルタント（vCISO）が顧客企業のIT資産・セキュリティ状況を可視化・スコア化し、AIが月次レポートで改善提案を行う統合ITセキュリティ管理プラットフォーム。テナント分離をDB層のRLS（Row Level Security）で強制する参照実装。データは東京リージョン（Supabase Tokyo）で国内化済み。",
+    tech: "Next.js 14（App Router）, TypeScript, Prisma 5, PostgreSQL（Supabase 東京）, RLS, Auth.js v5, Gemini, Vertex AI, Vercel Pro",
+    features: [
+      { cat: "IT資産管理", detail: "デバイス・アカウント・ソフトウェア・ライセンスを一元管理し台帳を自動生成" },
+      { cat: "リスク検知", detail: "Windows Update・EOL（サポート終了）の状態から脆弱性・リスクを継続検知" },
+      { cat: "スコアリング", detail: "複合指標からセキュリティスコアを算出しトレンドを可視化" },
+      { cat: "AI月次レポート", detail: "Gemini で改善提案を生成。DRAFT→REVIEWED→PUBLISHED のレビュー工程を必須化" },
+      { cat: "テナント分離", detail: "RLS（app.current_tenant_id）+ withTenant/$transaction/set_config を27テーブルに完全実装" },
+      { cat: "データ国内化", detail: "Supabase 東京リージョンへ集約し国内化を完了" },
+    ],
+  },
+  {
+    title: "積算AI — 建設図面の見積自動化（TechnoBridge）",
+    meta: "建設 ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（MVP公開・顧客検証準備中）",
+    desc: "提供: TechnoBridge（法人）　本番URL: https://sekisan-ai.vercel.app　設計図面PDFをアップロードするだけで、AIが工事項目・数量を自動抽出し、単価マスタを適用して編集可能な見積書を生成・Excel出力する建設業向けツール。最大10ファイルの並列解析に対応。フェーズ①（開発）の機能を実装し、本番URLで公開・顧客検証への移行準備が完了。",
+    tech: "Next.js 16（App Router）, React 19, TypeScript, Prisma 7, PostgreSQL, pgvector, NextAuth v5, Gemini, Vertex AI, Vercel Blob, Excel出力",
+    features: [
+      { cat: "図面解析", detail: "PDFアップロード（Vercel Blob）→ Gemini で工事項目・数量を自動抽出" },
+      { cat: "単価適用", detail: "70項目の標準単価マスタを自動マッピング。デフレーターで物価補正" },
+      { cat: "編集UX", detail: "見積テーブルの項目・数量・単価を画面で直接インライン編集" },
+      { cat: "並列処理", detail: "最大10ファイルを同時アップロード・並列解析" },
+      { cat: "出力", detail: "見積書シート＋抽出テキスト参照シートをExcelで出力" },
+      { cat: "拡張設計", detail: "Vertex AI 切替対応。将来はDocument AIでスキャンPDF OCR、Cloudflare R2で大容量保管" },
+    ],
+  },
   {
     title: "The Vintage Salon（ヴィンテージキャンパー会員制プラットフォーム）",
     meta: "会員制コミュニティ／モビリティ ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（2026/06/06 本番リリース予定／現在テストフェーズ）",
@@ -95,35 +139,41 @@ const careerHighlights = [
 ];
 
 const projectList = [
-  { no: 1, industry: "会員制", system: "The Vintage Salon", role: "フルスタック", period: "26/05〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vertex AI（Gemini）, Stripe, LINE Login, YouTube Data API" },
-  { no: 2, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
-  { no: 3, industry: "建設", system: "BtoBマッチングSaaS", role: "フルスタック", period: "26/01〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE Messaging API, Gemini API, PWA, Playwright" },
-  { no: 4, industry: "教育", system: "eラーニングプラットフォーム（提案用デモ）", role: "個人開発", period: "26/04", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma, Vercel" },
-  { no: 5, industry: "一般", system: "マッチングWebアプリ（ポートフォリオ）", role: "個人開発", period: "26/04", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS, Vercel" },
-  { no: 6, industry: "IT", system: "フリーランス向け請求書管理システム", role: "個人開発", period: "26/04", tech: "Ruby on Rails 8, Ruby, PostgreSQL, Devise, Tailwind CSS, Hotwire, Render" },
-  { no: 7, industry: "IT", system: "FreelanceManager（案件管理ツール）", role: "個人開発", period: "26/04", tech: "PHP 8.3, Laravel 13, Blade, PostgreSQL, Tailwind CSS, Docker, Railway" },
-  { no: 8, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
-  { no: 9, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
-  { no: 10, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
-  { no: 11, industry: "商社", system: "ECサイト移行", role: "PM", period: "23/06-23/11（6）", tech: "MySQL, SQL" },
-  { no: 12, industry: "保険", system: "変額保険管理システム", role: "PM兼開発リーダー", period: "21/03-23/05（26）", tech: "Java, jQuery, Oracle, VB, Azure" },
-  { no: 13, industry: "小売業", system: "ECサイト管理", role: "PMOメンバー", period: "20/10-21/02（5）", tech: "Oracle" },
-  { no: 14, industry: "輸送機器", system: "販売支援", role: "PMリーダー", period: "19/07-20/09（15）", tech: "Linux, Oracle, Java, VBA" },
-  { no: 15, industry: "小売業", system: "ECサイト管理", role: "PMリーダー", period: "19/04-19/06（3）", tech: "Linux, MySQL, Java" },
-  { no: 16, industry: "生保", system: "営業サポート", role: "メンバー", period: "18/07-19/03（9）", tech: "PostgreSQL, VBA" },
-  { no: 17, industry: "生保", system: "保全ペーパーレス対応", role: "PMリーダー", period: "17/04-18/06（15）", tech: "Oracle, Java, JavaScript, jQuery, COBOL" },
-  { no: 18, industry: "新聞", system: "会員サイト管理", role: "PMリーダー兼メンバー", period: "16/08-17/03（8）", tech: "PostgreSQL, Hibernate, Java, JavaScript" },
-  { no: 19, industry: "公共", system: "年金管理", role: "サブリーダー", period: "16/03-16/07（5）", tech: "Oracle, Java" },
-  { no: 20, industry: "証券", system: "取引管理", role: "サブリーダー兼メンバー", period: "15/04-16/01（10）", tech: "Oracle, Java" },
-  { no: 21, industry: "商社", system: "建機リース・レンタル管理", role: "PMリーダー兼メンバー", period: "14/10-15/03（6）", tech: "Oracle, Java" },
-  { no: 22, industry: "商社", system: "船便貿易管理", role: "サブリーダー兼メンバー", period: "13/07-14/01（7）", tech: "Oracle, Java, JavaScript" },
-  { no: 23, industry: "通信", system: "システム開発工程管理", role: "サブリーダー兼メンバー", period: "13/01-13/06（6）", tech: "Oracle, PostgreSQL, Java, C#.NET, Spring" },
-  { no: 24, industry: "公共", system: "音声コード管理", role: "PM", period: "10/06-12/12（30）", tech: "C, C++, C#" },
-  { no: 25, industry: "電機", system: "人事管理", role: "PM", period: "02/04-09/04（85）", tech: "COBOL, PLI, Java" },
-  { no: 26, industry: "電機", system: "健康管理", role: "PM", period: "00/04-02/03（23）", tech: "Java, JavaScript" },
+  { no: 1, industry: "IT／SES", system: "SES Brain AI（SES営業自動化SaaS・TechnoBridge）", role: "フルスタック", period: "26/06〜（継続中）", tech: "Next.js 16, React 19, TypeScript, Prisma 7, Neon Postgres, pgvector, NextAuth v5, Gemini, Claude, Gmail API, Vercel Pro" },
+  { no: 2, industry: "IT／セキュリティ", system: "SecureBase（中小企業向けセキュリティ管理SaaS・TechnoBridge）", role: "フルスタック", period: "26/06〜（継続中）", tech: "Next.js 14, TypeScript, Prisma 5, PostgreSQL（Supabase 東京）, RLS, Auth.js v5, Gemini, Vertex AI, Vercel Pro" },
+  { no: 3, industry: "建設", system: "積算AI（建設図面の見積自動化・TechnoBridge）", role: "フルスタック", period: "26/06〜（継続中）", tech: "Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, pgvector, NextAuth v5, Gemini, Vertex AI, Vercel Blob, Excel出力" },
+  { no: 4, industry: "会員制", system: "The Vintage Salon", role: "フルスタック", period: "26/05〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vertex AI（Gemini）, Stripe, LINE Login, YouTube Data API" },
+  { no: 5, industry: "IT", system: "レガシーコード近代化・鑑定書", role: "設計・開発・執筆", period: "26/03〜（継続中）", tech: "Python, FastAPI, React, Rust, Claude Code, 13レガシー言語" },
+  { no: 6, industry: "建設", system: "BtoBマッチングSaaS", role: "フルスタック", period: "26/01〜（継続中）", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, Google Maps API, LINE Messaging API, Gemini API, PWA, Playwright" },
+  { no: 7, industry: "教育", system: "eラーニングプラットフォーム（提案用デモ）", role: "個人開発", period: "26/04", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma, Vercel" },
+  { no: 8, industry: "一般", system: "マッチングWebアプリ（ポートフォリオ）", role: "個人開発", period: "26/04", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS, Vercel" },
+  { no: 9, industry: "IT", system: "フリーランス向け請求書管理システム", role: "個人開発", period: "26/04", tech: "Ruby on Rails 8, Ruby, PostgreSQL, Devise, Tailwind CSS, Hotwire, Render" },
+  { no: 10, industry: "IT", system: "FreelanceManager（案件管理ツール）", role: "個人開発", period: "26/04", tech: "PHP 8.3, Laravel 13, Blade, PostgreSQL, Tailwind CSS, Docker, Railway" },
+  { no: 11, industry: "金融", system: "B2B取引DX", role: "メンバー", period: "24/04-25/11（20）", tech: "Spring Boot, PostgreSQL, Aurora RDS, AWS" },
+  { no: 12, industry: "金融", system: "免税管理", role: "メンバー", period: "24/09-24/10（2）", tech: "AWS" },
+  { no: 13, industry: "通信", system: "電柱管理", role: "メンバー", period: "23/12-24/02（3）", tech: "—" },
+  { no: 14, industry: "商社", system: "ECサイト移行", role: "PM", period: "23/06-23/11（6）", tech: "MySQL, SQL" },
+  { no: 15, industry: "保険", system: "変額保険管理システム", role: "PM兼開発リーダー", period: "21/03-23/05（26）", tech: "Java, jQuery, Oracle, VB, Azure" },
+  { no: 16, industry: "小売業", system: "ECサイト管理", role: "PMOメンバー", period: "20/10-21/02（5）", tech: "Oracle" },
+  { no: 17, industry: "輸送機器", system: "販売支援", role: "PMリーダー", period: "19/07-20/09（15）", tech: "Linux, Oracle, Java, VBA" },
+  { no: 18, industry: "小売業", system: "ECサイト管理", role: "PMリーダー", period: "19/04-19/06（3）", tech: "Linux, MySQL, Java" },
+  { no: 19, industry: "生保", system: "営業サポート", role: "メンバー", period: "18/07-19/03（9）", tech: "PostgreSQL, VBA" },
+  { no: 20, industry: "生保", system: "保全ペーパーレス対応", role: "PMリーダー", period: "17/04-18/06（15）", tech: "Oracle, Java, JavaScript, jQuery, COBOL" },
+  { no: 21, industry: "新聞", system: "会員サイト管理", role: "PMリーダー兼メンバー", period: "16/08-17/03（8）", tech: "PostgreSQL, Hibernate, Java, JavaScript" },
+  { no: 22, industry: "公共", system: "年金管理", role: "サブリーダー", period: "16/03-16/07（5）", tech: "Oracle, Java" },
+  { no: 23, industry: "証券", system: "取引管理", role: "サブリーダー兼メンバー", period: "15/04-16/01（10）", tech: "Oracle, Java" },
+  { no: 24, industry: "商社", system: "建機リース・レンタル管理", role: "PMリーダー兼メンバー", period: "14/10-15/03（6）", tech: "Oracle, Java" },
+  { no: 25, industry: "商社", system: "船便貿易管理", role: "サブリーダー兼メンバー", period: "13/07-14/01（7）", tech: "Oracle, Java, JavaScript" },
+  { no: 26, industry: "通信", system: "システム開発工程管理", role: "サブリーダー兼メンバー", period: "13/01-13/06（6）", tech: "Oracle, PostgreSQL, Java, C#.NET, Spring" },
+  { no: 27, industry: "公共", system: "音声コード管理", role: "PM", period: "10/06-12/12（30）", tech: "C, C++, C#" },
+  { no: 28, industry: "電機", system: "人事管理", role: "PM", period: "02/04-09/04（85）", tech: "COBOL, PLI, Java" },
+  { no: 29, industry: "電機", system: "健康管理", role: "PM", period: "00/04-02/03（23）", tech: "Java, JavaScript" },
 ];
 
 const portfolio = [
+  { name: "SES Brain AI — SES営業自動化SaaS（TechnoBridge）", desc: "案件メール自動取込→AI構造化解析→pgvector×Claudeのエンジニアマッチング→粗利計算→提案文生成までを一気通貫で支援。参画・工数・請求まで実装したマルチテナントSaaS。本番稼働中", tech: "Next.js 16, React 19, TypeScript, Prisma 7, Neon Postgres, pgvector, NextAuth v5, Gemini, Claude, Gmail API, Vercel Pro", url: "https://sesbrain-ai.vercel.app" },
+  { name: "SecureBase — 中小企業向けセキュリティ管理SaaS（TechnoBridge）", desc: "vCISO向け統合ITセキュリティ管理。IT資産・EOL・Windows Update管理、セキュリティスコア、AI月次レポート。RLSでDB層テナント分離（27テーブル）、Supabase東京で国内化。本番稼働・営業利用中", tech: "Next.js 14, TypeScript, Prisma 5, PostgreSQL（Supabase 東京）, RLS, Auth.js v5, Gemini, Vertex AI, Vercel Pro", url: "https://securebase-five.vercel.app" },
+  { name: "積算AI — 建設図面の見積自動化（TechnoBridge）", desc: "図面PDFをアップロードするだけでAIが工事項目・数量を自動抽出、単価マスタ適用→編集可能な見積書をExcel出力。最大10ファイル並列解析。MVP公開・顧客検証準備中", tech: "Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, pgvector, NextAuth v5, Gemini, Vertex AI, Vercel Blob", url: "https://sekisan-ai.vercel.app" },
   { name: "The Vintage Salon（GoldenMUGI合同会社）", desc: "クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断を実装。商標登録済み、2026/06 本番リリース予定（現在テストフェーズ）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Vertex AI Search, Stripe, LINE Login, YouTube Data API", url: "https://thevintagesalon.jp" },
   { name: "建設業向けBtoBマッチングSaaS", desc: "136人日見積もりをAI協働開発で2週間強に短縮。32画面・67 API・19モデル、継続拡張中", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, LINE Messaging API, Gemini API, Google Maps API, PWA, Playwright", url: "NDA" },
   { name: "マッチングWebアプリ", desc: "ユーザー登録・いいね・マッチング・リアルタイムチャット・Stripe課金・管理画面をフルスタックで実装", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS", url: "https://matching-app-jet.vercel.app" },
@@ -218,7 +268,7 @@ export default function ResumePage() {
                 <span>IT業界 約40年（1985年〜）</span>
                 <span>拠点: 山梨県</span>
                 <span>フルスタック ／ AI協働開発</span>
-                <span>更新日: 2026年5月26日</span>
+                <span>更新日: 2026年6月20日</span>
               </div>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
                 <a href="/業務経歴書_松井慶太.pdf" download style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "10px 20px", fontSize: 13, fontWeight: 600, background: "#111827", color: "#fff", borderRadius: 4, textDecoration: "none" }}>
@@ -355,7 +405,7 @@ export default function ResumePage() {
           <SectionHeader label="About" title="自己PR" />
           <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.9 }}>
             <p style={{ marginBottom: 16 }}>
-              現在の主軸は、Next.js／TypeScript を中心としたモダンスタックでの開発である。Claude Code を実装パートナーとし、企画から本番運用までを一人で完遂する開発スタイルを確立している。直近では The Vintage Salon（クラシックキャンピングカーオーナー向け会員制プラットフォーム）を2026年6月本番リリースに向けて単独で開発中。Next.js 14・TypeScript・Vertex AI（Gemini）を用いた構成で、企画段階から本番デプロイ・保守までを単独で担当している。
+              現在の主軸は、Next.js／TypeScript を中心としたモダンスタックでの開発である。Claude Code を実装パートナーとし、企画から本番運用までを一人で完遂する開発スタイルを確立している。直近では自社法人「TechnoBridge」のプロダクトスイートとして、SES営業自動化SaaS「SES Brain AI」、中小企業向けセキュリティ管理SaaS「SecureBase」、建設図面の見積自動化「積算AI」を、いずれも企画・設計・実装・本番デプロイまで単独で構築。マルチテナント設計（NextAuth/Auth.js v5）、pgvector × LLM のハイブリッドAIマッチング、DB層のRLS（行レベルセキュリティ）によるテナント分離、データの東京リージョン国内化（Supabase Tokyo）まで、実運用に耐えるSaaSを一人で立ち上げている。並行して、会員制プラットフォーム The Vintage Salon（GoldenMUGI合同会社・商標登録済み）も本番リリースに向けて単独開発している。
             </p>
             <p style={{ marginBottom: 16 }}>
               私の価値は、コードを書く速度ではなく、誤った設計に気づける速度にある。実装の詳細は Claude Code との協働で構築し、私は要件定義・アーキテクチャ判断・業務整合性レビュー・セキュリティ観点の検証に集中する。コードを書く行為そのものではなく、何を作るべきかの判断と、作られたものの妥当性検証が私の領域である。
