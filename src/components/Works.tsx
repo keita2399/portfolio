@@ -213,7 +213,7 @@ export default function Works() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ fontSize: 10, color: "rgba(147,197,253,0.8)", letterSpacing: 4, marginBottom: 12 }}>
-            // 04 — WORKS
+            // 02 — WORKS
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 32, color: "#fff" }}>
             実績・<span style={{ color: "#93c5fd" }}>プロジェクト</span>

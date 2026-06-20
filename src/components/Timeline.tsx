@@ -50,7 +50,7 @@ export default function Timeline() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ fontSize: 10, color: "#2563eb", letterSpacing: 4, marginBottom: 12 }}>
-            // 02 — CAREER
+            // 03 — CAREER
           </div>
           <h2 style={{ fontSize: "clamp(24px, 5vw, 42px)", fontWeight: 700, marginBottom: 40, color: "#1a1a1a" }}>
             Career
