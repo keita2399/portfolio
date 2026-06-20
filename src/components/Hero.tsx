@@ -1,39 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import ScrollIndicator from "./ScrollIndicator";
 import ParticleField from "./ParticleField";
-
-function StatCounter({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          let startTime: number;
-          const animate = (currentTime: number) => {
-            if (!startTime) startTime = currentTime;
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / (duration * 1000), 1);
-            setCount(Math.floor(progress * end));
-            if (progress < 1) requestAnimationFrame(animate);
-          };
-          requestAnimationFrame(animate);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [end, duration]);
-
-  return <span ref={ref}>{count.toLocaleString()}{suffix}</span>;
-}
 
 export default function Hero() {
   const scrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -116,42 +85,6 @@ export default function Hero() {
               連絡する →
             </a>
           </div>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          style={{
-            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-            gap: 16, paddingTop: 32, borderTop: "1px solid rgba(255,255,255,0.15)",
-          }}
-        >
-          {[
-            { prefix: "1人で → ", value: 3, suffix: "つのSaaS", label: "企画から本番運用まで", sub: "TechnoBridge 法人プロダクト", highlight: true },
-            { prefix: "136人日 → ", value: 3, suffix: "週間", label: "通常見積もりを", sub: "AI協働で実装", highlight: false },
-            { prefix: "", value: 40, suffix: "年", label: "業務システム", sub: "開発経験", highlight: false },
-          ].map(({ prefix, value, suffix, label, sub, highlight }) => (
-            <div key={label} style={{
-              background: highlight ? "rgba(37,99,235,0.15)" : "rgba(255,255,255,0.05)",
-              backdropFilter: "blur(8px)",
-              border: highlight ? "1px solid rgba(37,99,235,0.5)" : "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 4, padding: "20px 24px",
-            }}>
-              <div style={{ fontSize: "clamp(22px, 3.5vw, 32px)", fontWeight: 800, color: highlight ? "#93c5fd" : "#fff", lineHeight: 1.15, marginBottom: 8 }}>
-                {prefix && (
-                  <span style={{ fontSize: "0.65em", fontWeight: 600, color: highlight ? "rgba(147,197,253,0.65)" : "rgba(255,255,255,0.5)", marginRight: 4 }}>
-                    {prefix}
-                  </span>
-                )}
-                <StatCounter end={value} suffix={suffix} />
-              </div>
-              <div style={{ fontSize: 11, color: "rgba(147,197,253,0.8)", lineHeight: 1.6 }}>
-                {label}<br />{sub}
-              </div>
-            </div>
-          ))}
         </motion.div>
 
         {/* Zenn link */}
