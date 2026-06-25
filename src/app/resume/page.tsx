@@ -84,7 +84,7 @@ const careerHighlights = [
   },
   {
     title: "The Vintage Salon（ヴィンテージキャンパー会員制プラットフォーム）",
-    meta: "会員制コミュニティ／モビリティ ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（2026/06/06 本番リリース予定／現在テストフェーズ）",
+    meta: "会員制コミュニティ／モビリティ ｜ フルスタック（1人請負・主開発者） ｜ 2026年〜継続中（2026/06/06 本番リリース済み）",
     desc: "クライアント: GoldenMUGI合同会社　公開URL: https://thevintagesalon.jp　サービス商標登録済み。クラシックキャンピングカーオーナーのための会員制プラットフォーム。クライアントとの直接契約で、企画段階からアーキテクチャ設計・実装・本番デプロイまで単独で担当。12ヶ月保守契約付き。",
     tech: "Next.js 14（App Router）, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Stripe, LINE Login, YouTube Data API",
     features: [
@@ -174,7 +174,7 @@ const portfolio = [
   { name: "SES Brain AI — SES営業自動化SaaS（TechnoBridge）", desc: "案件メール自動取込→AI構造化解析→pgvector×Claudeのエンジニアマッチング→粗利計算→提案文生成までを一気通貫で支援。参画・工数・請求まで実装したマルチテナントSaaS。本番稼働中", tech: "Next.js 16, React 19, TypeScript, Prisma 7, Neon Postgres, pgvector, NextAuth v5, Gemini, Claude, Gmail API, Vercel Pro", url: "https://sesbrain-ai.vercel.app" },
   { name: "SecureBase — 中小企業向けセキュリティ管理SaaS（TechnoBridge）", desc: "vCISO向け統合ITセキュリティ管理。IT資産・EOL・Windows Update管理、セキュリティスコア、AI月次レポート。RLSでDB層テナント分離（27テーブル）、Supabase東京で国内化。本番稼働・営業利用中", tech: "Next.js 14, TypeScript, Prisma 5, PostgreSQL（Supabase 東京）, RLS, Auth.js v5, Gemini, Vertex AI, Vercel Pro", url: "https://securebase-five.vercel.app" },
   { name: "積算AI — 建設図面の見積自動化（TechnoBridge）", desc: "図面PDFをアップロードするだけでAIが工事項目・数量を自動抽出、単価マスタ適用→編集可能な見積書をExcel出力。最大10ファイル並列解析。MVP公開・顧客検証準備中", tech: "Next.js 16, React 19, TypeScript, Prisma 7, PostgreSQL, pgvector, NextAuth v5, Gemini, Vertex AI, Vercel Blob", url: "https://sekisan-ai.vercel.app" },
-  { name: "The Vintage Salon（GoldenMUGI合同会社）", desc: "クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断を実装。商標登録済み、2026/06 本番リリース予定（現在テストフェーズ）", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Vertex AI Search, Stripe, LINE Login, YouTube Data API", url: "https://thevintagesalon.jp" },
+  { name: "The Vintage Salon（GoldenMUGI合同会社）", desc: "クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断を実装。商標登録済み、2026/06 本番リリース済み", tech: "Next.js 14, TypeScript, Prisma, Neon Postgres, Cloudflare R2, Vercel Pro, Vertex AI（Gemini）, Vertex AI Search, Stripe, LINE Login, YouTube Data API", url: "https://thevintagesalon.jp" },
   { name: "建設業向けBtoBマッチングSaaS", desc: "136人日見積もりをAI協働開発で2週間強に短縮。32画面・67 API・19モデル、継続拡張中", tech: "Next.js 14, TypeScript, Prisma, PostgreSQL, LINE Messaging API, Gemini API, Google Maps API, PWA, Playwright", url: "NDA" },
   { name: "マッチングWebアプリ", desc: "ユーザー登録・いいね・マッチング・リアルタイムチャット・Stripe課金・管理画面をフルスタックで実装", tech: "Next.js 15, TypeScript, Firebase Auth, Firestore, Vercel Blob, Stripe, Tailwind CSS", url: "https://matching-app-jet.vercel.app" },
   { name: "eラーニングプラットフォーム デモ", desc: "Figmaでデザイン設計・Reactコード生成後、認証・受講登録・進捗管理・学習履歴を7画面フル実装。ランサーズ案件への提案用デモ", tech: "React, TypeScript, Vite, shadcn/ui, Tailwind CSS, React Router v7, Figma", url: "https://elearning-demo-sage.vercel.app" },
@@ -405,7 +405,7 @@ export default function ResumePage() {
           <SectionHeader label="About" title="自己PR" />
           <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.9 }}>
             <p style={{ marginBottom: 16 }}>
-              現在の主軸は、Next.js／TypeScript を中心としたモダンスタックでの開発である。Claude Code を実装パートナーとし、企画から本番運用までを一人で完遂する開発スタイルを確立している。直近では自社法人「TechnoBridge」のプロダクトスイートとして、SES営業自動化SaaS「SES Brain AI」、中小企業向けセキュリティ管理SaaS「SecureBase」、建設図面の見積自動化「積算AI」を、いずれも企画・設計・実装・本番デプロイまで単独で構築。マルチテナント設計（NextAuth/Auth.js v5）、pgvector × LLM のハイブリッドAIマッチング、DB層のRLS（行レベルセキュリティ）によるテナント分離、データの東京リージョン国内化（Supabase Tokyo）まで、実運用に耐えるSaaSを一人で立ち上げている。並行して、会員制プラットフォーム The Vintage Salon（GoldenMUGI合同会社・商標登録済み）も本番リリースに向けて単独開発している。
+              現在の主軸は、Next.js／TypeScript を中心としたモダンスタックでの開発である。Claude Code を実装パートナーとし、企画から本番運用までを一人で完遂する開発スタイルを確立している。直近では自社法人「TechnoBridge」のプロダクトスイートとして、SES営業自動化SaaS「SES Brain AI」、中小企業向けセキュリティ管理SaaS「SecureBase」、建設図面の見積自動化「積算AI」を、いずれも企画・設計・実装・本番デプロイまで単独で構築。マルチテナント設計（NextAuth/Auth.js v5）、pgvector × LLM のハイブリッドAIマッチング、DB層のRLS（行レベルセキュリティ）によるテナント分離、データの東京リージョン国内化（Supabase Tokyo）まで、実運用に耐えるSaaSを一人で立ち上げている。並行して、会員制プラットフォーム The Vintage Salon（GoldenMUGI合同会社・商標登録済み）も単独開発し、2026年6月に本番リリース済みである。
             </p>
             <p style={{ marginBottom: 16 }}>
               私の価値は、コードを書く速度ではなく、誤った設計に気づける速度にある。実装の詳細は Claude Code との協働で構築し、私は要件定義・アーキテクチャ判断・業務整合性レビュー・セキュリティ観点の検証に集中する。コードを書く行為そのものではなく、何を作るべきかの判断と、作られたものの妥当性検証が私の領域である。

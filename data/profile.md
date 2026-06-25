@@ -81,7 +81,7 @@ AIを補助ツールとしてではなく、設計パートナーとして活用
 3. **積算AI** — 建設業向けの図面見積AIツール。設計図面PDFをアップロードするだけでAIが工事項目・数量を自動抽出、70項目の単価マスタを適用して編集可能な見積書を生成・Excel出力。最大10ファイル並列解析。Next.js 16 + React 19 + Prisma 7 + pgvector + NextAuth v5 + Gemini/Vertex AI + Vercel Blob。MVP公開・顧客検証準備中（https://sekisan-ai.vercel.app）
 
 ### 本番稼働中（受託・自社）
-4. **The Vintage Salon（GoldenMUGI合同会社）** — クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断。商標登録済み、2026/06 本番リリース予定
+4. **The Vintage Salon（GoldenMUGI合同会社）** — クラシックキャンピングカーオーナー向け会員制プラットフォーム。3階層メンバーシップ・Stripe決済・LINE Login・YouTube連携・Vertex AI Search RAG 故障診断。商標登録済み、2026/06 本番リリース済み
 5. **BtoBマッチングプラットフォーム** — 建設現場向け発生土・受入土マッチング。Next.js 14 + Prisma + PostgreSQL。約30画面・40API・24テーブル。AIペア開発で3ヶ月で構築（NDA）
 
 ### AIアプリ（デモ公開中）

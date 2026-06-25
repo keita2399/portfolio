@@ -171,18 +171,18 @@ export const projects: Project[] = [
     slug: "vintage-camper-club",
     category: "flagship",
     title: "The Vintage Salon",
-    badge: "2026/06 本番リリース予定",
+    badge: "2026/06 リリース済み",
     badgeColor: "#10b981",
     borderColor: "#10b981",
     externalUrl: "https://thevintagesalon.jp",
     description:
-      "Vintage Camper Club — クラシックキャンピングカーオーナーのための会員制プラットフォーム。運営: GoldenMUGI合同会社（クライアント直接契約・サービス商標登録済み）。企画から本番デプロイ・12ヶ月保守まで単独で担当。Next.js 14 + TypeScript + Vertex AI（Gemini）構成、現在テストフェーズで2026年6月本番リリース予定。",
+      "Vintage Camper Club — クラシックキャンピングカーオーナーのための会員制プラットフォーム。運営: GoldenMUGI合同会社（クライアント直接契約・サービス商標登録済み）。企画から本番デプロイ・12ヶ月保守まで単独で担当。Next.js 14 + TypeScript + Vertex AI（Gemini）構成、2026年6月に本番リリース済み。",
     stats: ["3階層メンバーシップ + Stripe決済", "Vertex AI Search RAG 故障診断", "LINE Login / YouTube連携"],
     tags: ["Next.js 14", "TypeScript", "Prisma", "Neon Postgres", "Cloudflare R2", "Vercel Pro", "Vertex AI", "Gemini", "Vertex AI Search", "Stripe", "LINE Login", "YouTube Data API"],
-    updatedAt: "2026-05",
+    updatedAt: "2026-06",
     detail: {
       overview:
-        "The Vintage Salon は、クラシックキャンピングカーオーナーのための会員制プラットフォーム。GoldenMUGI合同会社との直接契約で、企画段階からアーキテクチャ設計・実装・本番デプロイ・12ヶ月保守までを単独で担当（フルスタック / 1人請負・主開発者）。サービス名は商標登録済み。2026年6月6日に本番リリース予定、現在はテストフェーズ。LLM・Embedding を Vertex AI（Gemini）に統一し、Cloudflare R2 で Vercel Pro の帯域コストを分離した、運用コスト最適化のためのアーキテクチャ判断を採用。",
+        "The Vintage Salon は、クラシックキャンピングカーオーナーのための会員制プラットフォーム。GoldenMUGI合同会社との直接契約で、企画段階からアーキテクチャ設計・実装・本番デプロイ・12ヶ月保守までを単独で担当（フルスタック / 1人請負・主開発者）。サービス名は商標登録済み。2026年6月6日に本番リリース済み。LLM・Embedding を Vertex AI（Gemini）に統一し、Cloudflare R2 で Vercel Pro の帯域コストを分離した、運用コスト最適化のためのアーキテクチャ判断を採用。",
       challenges: [
         "クラシックキャンピングカー特有の故障パターンを、限られた整備情報から対話型診断に落とし込む RAG 設計",
         "LINE Login（OAuth 2.0）— ターゲット層の SNS 利用実態に合致した認証フローの実装",
@@ -201,7 +201,7 @@ export const projects: Project[] = [
         "オーナーズコミュニティ・RVパーク予約モジュールを設計、リリース後の段階的展開を準備",
       ],
       results: [
-        "クライアント直接契約・サービス商標登録済み、2026/06 本番リリース予定（現在テストフェーズ）",
+        "クライアント直接契約・サービス商標登録済み、2026/06 本番リリース済み",
         "3階層メンバーシップ + Stripe決済を会員フローと一体で実装",
         "LINE Login によるターゲット層に最適な認証体験",
         "Vertex AI Search + Gemini Embedding による RAG で、車両故障の対話型診断チャットボットを構築",
